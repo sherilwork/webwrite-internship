@@ -59,3 +59,24 @@
   filter: blur(80px);
   opacity: var(--highlight-opacity);
 }
+
+@keyframes rocket-launch {
+  0% { transform: translateY(0) translateX(0); opacity: 1; }
+  45% { transform: translateY(-15px) translateX(15px); opacity: 0; }
+  50% { transform: translateY(15px) translateX(-15px); opacity: 0; }
+  100% { transform: translateY(0) translateX(0); opacity: 1; }
+}
+
+.animate-rocket {
+  animation: rocket-launch 4s ease-in-out infinite;
+}
+
+@keyframes cloud-drift {
+  0% { transform: translateX(-5px); opacity: 0.2; }
+  50% { transform: translateX(5px); opacity: 0.5; }
+  100% { transform: translateX(-5px); opacity: 0.2; }
+}
+
+.animate-cloud {
+  animation: cloud-drift 6s ease-in-out infinite;
+}
