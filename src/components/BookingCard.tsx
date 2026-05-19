@@ -2,8 +2,20 @@
 "use client"
 
 import * as React from "react"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useMemo } from "react"
 import { ChevronLeft, ChevronRight, Globe, Calendar as CalendarIcon } from "lucide-react"
+import { 
+  format, 
+  addMonths, 
+  subMonths, 
+  startOfMonth, 
+  getDaysInMonth, 
+  getDay, 
+  isBefore, 
+  startOfDay, 
+  isSameDay,
+  isSameMonth
+} from "date-fns"
 import { cn } from "@/lib/utils"
 import Image from "next/image"
 import { PlaceHolderImages } from "@/lib/placeholder-images"
@@ -14,22 +26,38 @@ interface BookingCardProps {
 
 export function BookingCard({ imageUrl }: BookingCardProps) {
   const days = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"]
-  const dates = Array.from({ length: 31 }, (_, i) => i + 1)
   
   // State for interactive calendar
-  const [selectedDate, setSelectedDate] = useState<number | null>(19)
-  const [todayDate, setTodayDate] = useState<number | null>(null)
+  const [currentMonth, setCurrentMonth] = useState(new Date())
+  const [selectedDate, setSelectedDate] = useState<Date | null>(new Date())
+  const [today] = useState(startOfDay(new Date()))
 
-  useEffect(() => {
-    // Determine "today" only on client to avoid hydration mismatch
-    const now = new Date()
-    // For the mock, we assume we are in May 2026 if that's what the UI says,
-    // but typically we disable based on real current date.
-    setTodayDate(now.getDate())
-  }, [])
+  // Calculate calendar grid
+  const monthStart = startOfMonth(currentMonth)
+  const daysInMonth = getDaysInMonth(currentMonth)
+  const firstDayOfMonth = getDay(monthStart)
+  
+  const calendarDays = useMemo(() => {
+    const blanks = Array.from({ length: firstDayOfMonth }, (_, i) => null)
+    const monthDays = Array.from({ length: daysInMonth }, (_, i) => i + 1)
+    return [...blanks, ...monthDays]
+  }, [firstDayOfMonth, daysInMonth])
+
+  const handlePrevMonth = () => {
+    const prevMonth = subMonths(currentMonth, 1)
+    if (!isBefore(prevMonth, startOfMonth(today))) {
+      setCurrentMonth(prevMonth)
+    }
+  }
+
+  const handleNextMonth = () => {
+    setCurrentMonth(addMonths(currentMonth, 1))
+  }
 
   const illustration = PlaceHolderImages.find(img => img.id === 'consultation-illustration')
   const finalImageUrl = imageUrl || illustration?.imageUrl || "/hero-illustration.png"
+
+  const isPrevDisabled = isSameMonth(currentMonth, today)
 
   return (
     <div className="w-full max-w-2xl ml-auto overflow-hidden rounded-[1.5rem] bg-[#121212] shadow-2xl border border-white/10 flex flex-col md:flex-row transition-all duration-700 animate-in fade-in slide-in-from-bottom-8">
@@ -76,17 +104,27 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
               </div>
               <div className="text-left">
                 <p className="text-[8px] font-bold text-[#f5b800] uppercase">
-                  {selectedDate ? `Date: ${selectedDate}` : 'Select Date'}
+                  {selectedDate ? format(selectedDate, 'eeee, d') : 'Select Date'}
                 </p>
-                <p className="text-[10px] font-normal opacity-40">May 2026</p>
+                <p className="text-[10px] font-normal opacity-40">{format(currentMonth, 'MMMM yyyy')}</p>
               </div>
             </div>
             <div className="flex gap-0.5">
-              <button className="p-1 hover:bg-white/5 rounded-full transition-colors">
-                <ChevronLeft className="w-4 h-4 opacity-40" />
+              <button 
+                onClick={handlePrevMonth}
+                disabled={isPrevDisabled}
+                className={cn(
+                  "p-1 rounded-full transition-colors",
+                  isPrevDisabled ? "opacity-10 cursor-not-allowed" : "hover:bg-white/5 opacity-40"
+                )}
+              >
+                <ChevronLeft className="w-4 h-4" />
               </button>
-              <button className="p-1 hover:bg-white/5 rounded-full transition-colors">
-                <ChevronRight className="w-4 h-4 opacity-40" />
+              <button 
+                onClick={handleNextMonth}
+                className="p-1 hover:bg-white/5 rounded-full transition-colors opacity-40"
+              >
+                <ChevronRight className="w-4 h-4" />
               </button>
             </div>
           </div>
@@ -100,23 +138,21 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
             </div>
           ))}
           
-          {/* Empty slots for month start */}
-          <div className="h-7" />
-          <div className="h-7" />
-          <div className="h-7" />
-          <div className="h-7" />
-          <div className="h-7" />
+          {calendarDays.map((date, index) => {
+            if (date === null) return <div key={`empty-${index}`} className="h-7" />
 
-          {dates.map((date) => {
-            const isPast = todayDate !== null && date < todayDate;
+            const currentDayDate = new Date(currentMonth.getFullYear(), currentMonth.getMonth(), date)
+            const isPast = isBefore(currentDayDate, today)
+            const isSelected = selectedDate ? isSameDay(currentDayDate, selectedDate) : false
+
             return (
               <button
-                key={date}
+                key={`date-${date}`}
                 disabled={isPast}
-                onClick={() => setSelectedDate(date)}
+                onClick={() => setSelectedDate(currentDayDate)}
                 className={cn(
                   "h-7 w-7 mx-auto flex items-center justify-center rounded-full text-[10px] font-medium transition-all",
-                  date === selectedDate 
+                  isSelected 
                     ? "bg-[#f5b800] text-black shadow-[0_0_15px_rgba(245,184,0,0.3)] font-bold" 
                     : isPast
                       ? "opacity-20 cursor-not-allowed"
