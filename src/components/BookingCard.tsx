@@ -278,7 +278,7 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
       {/* Right Panel: Calendar (Minimalist White Theme) */}
       <div className="flex-1 p-5 text-black bg-white flex flex-col h-full">
         <div className="flex items-center justify-between mb-3">
-          <h4 className="text-[10px] font-bold uppercase tracking-[0.15em] text-black/30">Select Date</h4>
+          <h4 className="text-[10px] font-bold uppercase tracking-[0.15em] text-black/30 text-left">Select Date</h4>
           <div className="flex items-center gap-3">
             <div className="text-left">
               <p className="text-[16px] font-black text-[#f5b800] uppercase tracking-wider leading-none">
