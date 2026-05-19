@@ -24,12 +24,12 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
       {/* Left Panel: Brand & Info */}
       <div className="w-full md:w-[40%] bg-white p-6 flex flex-col items-center justify-between text-center border-r border-black/5">
         <div className="space-y-4 w-full">
-          {/* New Text Content */}
+          {/* Text Content */}
           <div className="space-y-3 pt-2">
-            <h3 className="text-black text-xl font-black uppercase tracking-tighter leading-none">
+            <h3 className="text-black text-xl font-bold uppercase tracking-tight leading-none">
               BOOK A FREE CONSULTATION
             </h3>
-            <p className="text-black/50 text-[10px] font-bold uppercase tracking-widest leading-tight px-4">
+            <p className="text-black/50 text-[10px] font-semibold uppercase tracking-wider leading-tight px-4">
               with India&apos;s leading digital marketing agency
             </p>
             <div className="w-16 h-1 bg-[#f5b800] mx-auto mt-2" />
@@ -49,22 +49,22 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
 
         <div className="mt-4 flex items-center gap-2">
            <div className="w-1.5 h-1.5 rounded-full bg-[#f5b800]" />
-           <span className="text-[8px] font-bold text-black/30 uppercase tracking-[0.2em]">Online consultation</span>
+           <span className="text-[8px] font-semibold text-black/30 uppercase tracking-widest">Online consultation</span>
         </div>
       </div>
 
       {/* Right Panel: Calendar */}
       <div className="flex-1 p-6 text-white bg-gradient-to-br from-[#1c1c1c] via-[#121212] to-[#0a0a0a]">
         <div className="flex items-center justify-between mb-6">
-          <h4 className="text-[10px] font-black uppercase tracking-widest opacity-60">Select Date & Time</h4>
+          <h4 className="text-[10px] font-bold uppercase tracking-widest opacity-60">Select Date & Time</h4>
           <div className="flex items-center gap-2">
             <div className="flex items-center gap-1.5">
               <div className="p-1 bg-white/5 rounded-md border border-white/10">
                 <CalendarIcon className="w-3 h-3 text-[#f5b800]" />
               </div>
               <div className="text-left">
-                <p className="text-[8px] font-black text-[#f5b800] uppercase">Tuesday, 19</p>
-                <p className="text-[10px] font-medium opacity-40">May 2026</p>
+                <p className="text-[8px] font-bold text-[#f5b800] uppercase">Tuesday, 19</p>
+                <p className="text-[10px] font-normal opacity-40">May 2026</p>
               </div>
             </div>
             <div className="flex gap-0.5">
@@ -81,7 +81,7 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
         {/* Calendar Grid */}
         <div className="grid grid-cols-7 gap-y-2 mb-6">
           {days.map((day) => (
-            <div key={day} className="text-center text-[7px] font-black text-white tracking-widest">
+            <div key={day} className="text-center text-[7px] font-bold text-white tracking-widest">
               {day}
             </div>
           ))}
@@ -97,9 +97,9 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
             <button
               key={date}
               className={cn(
-                "h-7 w-7 mx-auto flex items-center justify-center rounded-full text-[10px] font-bold transition-all",
+                "h-7 w-7 mx-auto flex items-center justify-center rounded-full text-[10px] font-medium transition-all",
                 date === selectedDate 
-                  ? "bg-[#f5b800] text-black shadow-[0_0_15px_rgba(245,184,0,0.3)]" 
+                  ? "bg-[#f5b800] text-black shadow-[0_0_15px_rgba(245,184,0,0.3)] font-bold" 
                   : "bg-white/[0.03] hover:bg-white/10 text-white/60"
               )}
             >
@@ -112,7 +112,7 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
         <div className="flex items-center justify-between mt-auto pt-4 border-t border-white/5">
           <div className="flex items-center gap-1.5">
             <Globe className="w-3 h-3 text-[#f5b800]" />
-            <span className="text-[9px] font-black text-[#f5b800] uppercase tracking-tight">Time Zone</span>
+            <span className="text-[9px] font-bold text-[#f5b800] uppercase tracking-wide">Time Zone</span>
           </div>
           <div className="bg-white/5 px-3 py-1.5 rounded-full border border-white/10 flex items-center gap-2">
             <span className="text-[9px] font-medium opacity-60">Asia/Kolkata</span>
