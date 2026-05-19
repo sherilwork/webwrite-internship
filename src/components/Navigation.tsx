@@ -17,7 +17,7 @@ export function Navigation() {
   ]
 
   return (
-    <header className="fixed top-8 left-0 right-0 z-50 flex justify-center px-4">
+    <header className="fixed top-14 left-0 right-0 z-50 flex justify-center px-4">
       <nav className="flex items-center justify-between w-full max-w-6xl px-4 py-2 bg-white/90 backdrop-blur-md rounded-full border border-border shadow-sm">
         <div className="flex items-center gap-2">
           <div className="bg-black rounded-full p-1.5 flex items-center justify-center">
