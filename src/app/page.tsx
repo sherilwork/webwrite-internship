@@ -16,7 +16,7 @@ export default function Home() {
     highlightOpacity: 0.3,
     edgeFade: true,
     highlights: true,
-    alignment: "center" as "center" | "left",
+    alignment: "right" as "center" | "left" | "right",
   })
 
   return (
