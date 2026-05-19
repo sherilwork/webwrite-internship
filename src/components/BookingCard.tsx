@@ -171,14 +171,14 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
             <h3 className="text-black text-xs font-bold uppercase tracking-wider">Select Time</h3>
           </div>
 
-          <div className="mb-2 shrink-0">
+          <div className="mb-2 shrink-0 px-2">
             <p className="text-[9px] font-bold text-[#f5b800] uppercase tracking-widest mb-1">
               {format(selectedDate, 'EEEE, MMMM d')}
             </p>
             <div className="h-px w-full bg-black/5" />
           </div>
 
-          <ScrollArea className="flex-1 -mx-2 px-2">
+          <ScrollArea className={cn("flex-1 -mx-2 px-2", isMobile ? "max-h-[220px]" : "")}>
             <div className="space-y-1.5 py-1">
               {TIME_SLOTS.map((time) => (
                 <button
@@ -201,7 +201,10 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
             </div>
           </ScrollArea>
 
-          <div className="pt-3 mt-auto shrink-0 bg-white border-t border-black/5">
+          <div className={cn(
+            "pt-3 mt-auto shrink-0 bg-white border-t border-black/5",
+            isMobile ? "pb-4 px-6" : ""
+          )}>
             <button
               disabled={!selectedTime}
               onClick={() => setIsDetailsStep(true)}
@@ -229,7 +232,7 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
             <h3 className="text-black text-xs font-bold uppercase tracking-wider">Your Details</h3>
           </div>
 
-          <div className="mb-3 shrink-0">
+          <div className="mb-3 shrink-0 px-2">
             <p className="text-[9px] font-bold text-[#f5b800] uppercase tracking-widest mb-1 flex items-center gap-1.5">
               <CalendarIcon className="w-2.5 h-2.5" />
               {selectedDate ? format(selectedDate, 'MMM d') : ''} @ {selectedTime}
@@ -237,8 +240,8 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
             <div className="h-px w-full bg-black/5" />
           </div>
 
-          <ScrollArea className="flex-1 -mx-2 px-2">
-            <div className="space-y-4 py-1">
+          <ScrollArea className={cn("flex-1 -mx-2 px-2", isMobile ? "max-h-[240px]" : "")}>
+            <div className={cn("space-y-4 py-1", isMobile ? "px-6" : "")}>
               <div className="space-y-1.5">
                 <Label htmlFor="name" className="text-[9px] font-bold uppercase tracking-widest text-black/40">Full Name</Label>
                 <div className="relative">
@@ -284,7 +287,10 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
             </div>
           </ScrollArea>
 
-          <div className="pt-3 mt-auto shrink-0 bg-white border-t border-black/5">
+          <div className={cn(
+            "pt-3 mt-auto shrink-0 bg-white border-t border-black/5",
+            isMobile ? "pb-4 px-6" : ""
+          )}>
             <button
               disabled={!formData.name || !formData.email}
               className={cn(
