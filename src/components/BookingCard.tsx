@@ -83,7 +83,7 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
   const isPrevDisabled = isSameMonth(currentMonth, today)
 
   return (
-    <div className="w-full max-w-2xl ml-auto overflow-hidden rounded-[1.5rem] bg-[#121212] shadow-2xl border border-white/10 flex flex-col md:flex-row transition-all duration-700 animate-in fade-in slide-in-from-bottom-8 md:h-[480px]">
+    <div className="w-full max-w-2xl ml-auto overflow-hidden rounded-[1.5rem] bg-[#121212] shadow-2xl border border-white/10 flex flex-col md:flex-row transition-all duration-700 animate-in fade-in slide-in-from-bottom-8 md:h-[420px]">
       {/* Left Panel: Branding -> Time Selection -> Details Form */}
       <div className="w-full md:w-[42%] bg-white p-6 flex flex-col justify-between border-r border-black/5 h-full relative overflow-hidden">
         {!selectedDate ? (
@@ -119,7 +119,7 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
         ) : !isDetailsStep ? (
           // STEP 2: Time Selection
           <div className="flex flex-col h-full animate-in fade-in slide-in-from-left-4 duration-500">
-            <div className="flex items-center gap-2 mb-6">
+            <div className="flex items-center gap-2 mb-4">
               <button 
                 onClick={() => {
                   setSelectedDate(null)
@@ -132,7 +132,7 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
               <h3 className="text-black text-sm font-bold uppercase tracking-wider">Select Time</h3>
             </div>
 
-            <div className="mb-4">
+            <div className="mb-3">
               <p className="text-[10px] font-bold text-[#f5b800] uppercase tracking-widest mb-1">
                 {format(selectedDate, 'EEEE, MMMM d')}
               </p>
@@ -140,13 +140,13 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
             </div>
 
             <ScrollArea className="flex-1 -mx-2 px-2">
-              <div className="space-y-2 py-2">
+              <div className="space-y-2 py-1">
                 {TIME_SLOTS.map((time) => (
                   <button
                     key={time}
                     onClick={() => setSelectedTime(time)}
                     className={cn(
-                      "w-full py-3 px-4 rounded-xl text-xs font-semibold transition-all border flex items-center justify-between group",
+                      "w-full py-2.5 px-4 rounded-xl text-xs font-semibold transition-all border flex items-center justify-between group",
                       selectedTime === time
                         ? "bg-[#f5b800] border-[#f5b800] text-black shadow-md"
                         : "bg-white border-black/5 text-black/60 hover:border-[#f5b800] hover:text-black"
@@ -166,7 +166,7 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
               disabled={!selectedTime}
               onClick={() => setIsDetailsStep(true)}
               className={cn(
-                "mt-6 w-full py-3 rounded-full text-xs font-bold uppercase tracking-widest transition-all",
+                "mt-4 w-full py-3 rounded-full text-xs font-bold uppercase tracking-widest transition-all",
                 selectedTime
                   ? "bg-black text-white hover:bg-black/80"
                   : "bg-black/5 text-black/20 cursor-not-allowed"
@@ -178,7 +178,7 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
         ) : (
           // STEP 3: Details Form
           <div className="flex flex-col h-full animate-in fade-in slide-in-from-left-4 duration-500">
-            <div className="flex items-center gap-2 mb-6">
+            <div className="flex items-center gap-2 mb-4">
               <button 
                 onClick={() => setIsDetailsStep(false)}
                 className="p-1.5 hover:bg-black/5 rounded-full transition-colors text-black/40 hover:text-black"
@@ -188,7 +188,7 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
               <h3 className="text-black text-sm font-bold uppercase tracking-wider">Enter Details</h3>
             </div>
 
-            <div className="mb-6">
+            <div className="mb-4">
               <p className="text-[10px] font-bold text-[#f5b800] uppercase tracking-widest mb-1 flex items-center gap-2">
                 <CalendarIcon className="w-3 h-3" />
                 {format(selectedDate, 'MMM d')} @ {selectedTime}
@@ -197,22 +197,22 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
             </div>
 
             <ScrollArea className="flex-1 -mx-2 px-2">
-              <div className="space-y-5 py-2">
-                <div className="space-y-2">
+              <div className="space-y-4 py-1">
+                <div className="space-y-1.5">
                   <Label htmlFor="name" className="text-[10px] font-bold uppercase tracking-widest text-black/40">Full Name</Label>
                   <div className="relative">
                     <User className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-black/20" />
                     <Input 
                       id="name"
                       placeholder="John Doe" 
-                      className="pl-10 h-11 bg-black/5 border-none focus-visible:ring-1 focus-visible:ring-[#f5b800] text-xs font-medium"
+                      className="pl-10 h-10 bg-black/5 border-none focus-visible:ring-1 focus-visible:ring-[#f5b800] text-xs font-medium"
                       value={formData.name}
                       onChange={(e) => setFormData({...formData, name: e.target.value})}
                     />
                   </div>
                 </div>
 
-                <div className="space-y-2">
+                <div className="space-y-1.5">
                   <Label htmlFor="email" className="text-[10px] font-bold uppercase tracking-widest text-black/40">Email Address</Label>
                   <div className="relative">
                     <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-black/20" />
@@ -220,21 +220,21 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
                       id="email"
                       type="email"
                       placeholder="john@example.com" 
-                      className="pl-10 h-11 bg-black/5 border-none focus-visible:ring-1 focus-visible:ring-[#f5b800] text-xs font-medium"
+                      className="pl-10 h-10 bg-black/5 border-none focus-visible:ring-1 focus-visible:ring-[#f5b800] text-xs font-medium"
                       value={formData.email}
                       onChange={(e) => setFormData({...formData, email: e.target.value})}
                     />
                   </div>
                 </div>
 
-                <div className="space-y-2">
-                  <Label htmlFor="notes" className="text-[10px] font-bold uppercase tracking-widest text-black/40">Additional Notes (Optional)</Label>
+                <div className="space-y-1.5">
+                  <Label htmlFor="notes" className="text-[10px] font-bold uppercase tracking-widest text-black/40">Additional Notes</Label>
                   <div className="relative">
                     <MessageSquare className="absolute left-3 top-3 w-4 h-4 text-black/20" />
                     <Textarea 
                       id="notes"
                       placeholder="Tell us about your project..." 
-                      className="pl-10 min-h-[100px] bg-black/5 border-none focus-visible:ring-1 focus-visible:ring-[#f5b800] text-xs font-medium resize-none"
+                      className="pl-10 min-h-[80px] bg-black/5 border-none focus-visible:ring-1 focus-visible:ring-[#f5b800] text-xs font-medium resize-none"
                       value={formData.notes}
                       onChange={(e) => setFormData({...formData, notes: e.target.value})}
                     />
@@ -246,7 +246,7 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
             <button
               disabled={!formData.name || !formData.email}
               className={cn(
-                "mt-6 w-full py-3 rounded-full text-xs font-bold uppercase tracking-widest transition-all shadow-lg",
+                "mt-4 w-full py-3 rounded-full text-xs font-bold uppercase tracking-widest transition-all shadow-lg",
                 formData.name && formData.email
                   ? "bg-[#f5b800] text-black hover:opacity-90"
                   : "bg-black/5 text-black/20 cursor-not-allowed shadow-none"
@@ -260,7 +260,7 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
 
       {/* Right Panel: Calendar */}
       <div className="flex-1 p-6 text-white bg-gradient-to-br from-[#1c1c1c] via-[#121212] to-[#0a0a0a] flex flex-col h-full">
-        <div className="flex items-center justify-between mb-6">
+        <div className="flex items-center justify-between mb-4">
           <h4 className="text-[10px] font-bold uppercase tracking-widest opacity-60">Select Date</h4>
           <div className="flex items-center gap-2">
             <div className="flex items-center gap-1.5">
@@ -271,7 +271,7 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
                 <p className="text-[8px] font-bold text-[#f5b800] uppercase">
                   {format(currentMonth, 'MMMM yyyy')}
                 </p>
-                <p className="text-[10px] font-normal opacity-40">Available slots</p>
+                <p className="text-[10px] font-normal opacity-40 leading-none">Available slots</p>
               </div>
             </div>
             <div className="flex gap-0.5">
@@ -296,7 +296,7 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
         </div>
 
         {/* Calendar Grid */}
-        <div className="grid grid-cols-7 gap-y-2 mb-6">
+        <div className="grid grid-cols-7 gap-y-1 mb-4">
           {days.map((day) => (
             <div key={day} className="text-center text-[7px] font-bold text-white tracking-widest">
               {day}
