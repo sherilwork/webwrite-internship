@@ -43,8 +43,8 @@ export default function Home() {
           alignment={settings.alignment}
         >
           <div className="w-full flex flex-col md:flex-row items-center justify-center md:justify-end gap-0">
-            {/* Left Side: Hero Overlay Image (Positioned to the left of the card) */}
-            <div className="relative w-full md:w-1/2 aspect-square max-w-[600px] md:-mr-40 z-0 animate-in fade-in slide-in-from-left-12 duration-1000 ease-out">
+            {/* Left Side: Hero Overlay Image (Positioned to overlap the card) */}
+            <div className="relative w-full md:w-1/2 aspect-square max-w-[600px] md:-mr-40 z-20 pointer-events-none animate-in fade-in slide-in-from-left-12 duration-1000 ease-out">
               <Image 
                 src={heroOverlay?.imageUrl || "/hero-section-overlay.png"}
                 alt="Hero Visual Overlay"
@@ -55,7 +55,7 @@ export default function Home() {
               />
             </div>
 
-            {/* Right Side: Booking Card (Z-index higher to sit on top of the overlap) */}
+            {/* Right Side: Booking Card (Z-index lower so image sits on top) */}
             <div className="w-full md:w-auto flex justify-end relative z-10">
               <BookingCard imageUrl="/hero-illustration.png" />
             </div>
