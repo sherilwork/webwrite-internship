@@ -24,7 +24,7 @@ export default function Home() {
   })
 
   // Typewriter effect state
-  const phrases = ["Digital Marketing", "Website development", "Meta ads", "Video editing"]
+  const phrases = ["Digital Marketing", "Meta ads", "Video editing"]
   const [phraseIndex, setPhraseIndex] = useState(0)
   const [currentText, setCurrentText] = useState("")
   const [isDeleting, setIsDeleting] = useState(false)
@@ -107,14 +107,14 @@ export default function Home() {
 
               {/* Strategy Session Headline - Dynamic Typewriter */}
               <div className="space-y-1 mt-2 w-full">
-                <h1 className="text-3xl md:text-5xl font-black text-black leading-[0.85] tracking-tighter flex flex-col min-h-[1.8em]">
-                  <div className="relative h-[1.1em] overflow-visible z-40">
+                <h1 className="text-3xl md:text-5xl font-black text-black leading-tight tracking-tighter flex items-center flex-wrap gap-x-3">
+                  <div className="relative inline-block h-[1.1em] min-w-[200px] md:min-w-[320px] overflow-visible z-40">
                     <span className="whitespace-nowrap absolute left-0 top-0">
                       {isMounted ? currentText : "Digital Marketing"}
                       <span className="inline-block w-[3px] h-[0.8em] bg-[#f5b800] ml-1 align-middle animate-pulse" />
                     </span>
                   </div>
-                  <span className="font-light text-black/80">Strategy Session</span>
+                  <span className="font-light text-black/80 whitespace-nowrap">Strategy Session</span>
                 </h1>
                 <div className="w-12 h-1 bg-[#f5b800] mt-3" />
               </div>
