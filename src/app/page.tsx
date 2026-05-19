@@ -46,7 +46,7 @@ export default function Home() {
             {/* Left Side: Hero Overlay Image */}
             <div className="relative w-full md:w-1/2 aspect-square max-w-[500px] animate-in fade-in slide-in-from-left-12 duration-1000 ease-out">
               <Image 
-                src={heroOverlay?.imageUrl || "/hero-overlay.png"}
+                src={heroOverlay?.imageUrl || "/hero-section-overlay.png"}
                 alt="Hero Visual Overlay"
                 fill
                 className="object-contain"

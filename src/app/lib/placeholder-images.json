@@ -10,7 +10,7 @@
     {
       "id": "hero-overlay",
       "description": "Hero Background Overlay",
-      "imageUrl": "/hero-overlay.png",
+      "imageUrl": "/hero-section-overlay.png",
       "imageHint": "abstract overlay"
     }
   ]
