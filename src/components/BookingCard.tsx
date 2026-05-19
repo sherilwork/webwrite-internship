@@ -49,7 +49,7 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
 
         <div className="mt-4 flex items-center gap-2">
            <div className="w-1.5 h-1.5 rounded-full bg-[#f5b800]" />
-           <span className="text-[8px] font-bold text-black/30 uppercase tracking-[0.2em]">Live Consultation</span>
+           <span className="text-[8px] font-bold text-black/30 uppercase tracking-[0.2em]">Online consultation</span>
         </div>
       </div>
 
