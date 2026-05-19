@@ -45,7 +45,7 @@ export default function Home() {
         >
           <div className="w-full flex flex-col md:flex-row items-center justify-center md:justify-end gap-0">
             {/* Left Side: Hero Overlay Image (Positioned to sit behind the card) */}
-            <div className="relative w-full md:w-1/2 aspect-square max-w-[600px] md:-mr-40 z-10 pointer-events-none animate-in fade-in slide-in-from-left-12 duration-1000 ease-out">
+            <div className="relative w-full md:w-1/2 aspect-[4/3] max-w-[550px] md:-mr-32 md:mt-12 z-10 pointer-events-none animate-in fade-in slide-in-from-left-12 duration-1000 ease-out">
               <Image 
                 src={heroOverlay?.imageUrl || "/hero-section-overlay.png"}
                 alt="Hero Visual Overlay"
