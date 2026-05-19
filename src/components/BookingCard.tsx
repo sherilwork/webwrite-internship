@@ -277,35 +277,35 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
       {/* Right Panel: Calendar (Minimalist White Theme) */}
       <div className="flex-1 p-5 text-black bg-white flex flex-col h-full">
         <div className="flex items-center justify-between mb-3">
-          <h4 className="text-[9px] font-bold uppercase tracking-widest text-black/40">Select Date</h4>
-          <div className="flex items-center gap-2">
-            <div className="flex items-center gap-1.5">
-              <div className="p-1 bg-black/5 rounded-md border border-black/5">
-                <CalendarIcon className="w-2.5 h-2.5 text-[#f5b800]" />
+          <h4 className="text-[10px] font-bold uppercase tracking-[0.15em] text-black/30">Select Date</h4>
+          <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2">
+              <div className="p-1.5 bg-black/5 rounded-md border border-black/5">
+                <CalendarIcon className="w-3.5 h-3.5 text-[#f5b800]" />
               </div>
               <div className="text-left">
-                <p className="text-[8px] font-bold text-[#f5b800] uppercase leading-none">
-                  {format(currentMonth, 'MMM yyyy')}
+                <p className="text-[11px] font-black text-[#f5b800] uppercase tracking-wider leading-none">
+                  {format(currentMonth, 'MMMM yyyy')}
                 </p>
-                <p className="text-[7px] font-normal text-black/30 leading-none mt-0.5">Available slots</p>
+                <p className="text-[8px] font-bold text-black/20 leading-none mt-1 uppercase tracking-tighter">Available slots</p>
               </div>
             </div>
-            <div className="flex gap-0.5">
+            <div className="flex gap-1">
               <button 
                 onClick={handlePrevMonth}
                 disabled={isPrevDisabled}
                 className={cn(
-                  "p-0.5 rounded-full transition-colors",
+                  "p-1 rounded-full transition-colors",
                   isPrevDisabled ? "opacity-10 cursor-not-allowed" : "hover:bg-black/5 text-black/40"
                 )}
               >
-                <ChevronLeft className="w-3.5 h-3.5" />
+                <ChevronLeft className="w-4 h-4" />
               </button>
               <button 
                 onClick={handleNextMonth}
-                className="p-0.5 hover:bg-black/5 rounded-full transition-colors text-black/40"
+                className="p-1 hover:bg-black/5 rounded-full transition-colors text-black/40"
               >
-                <ChevronRight className="w-3.5 h-3.5" />
+                <ChevronRight className="w-4 h-4" />
               </button>
             </div>
           </div>
