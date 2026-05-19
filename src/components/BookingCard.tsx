@@ -1,0 +1,127 @@
+
+"use client"
+
+import * as React from "react"
+import { ChevronLeft, ChevronRight, Globe, Calendar as CalendarIcon } from "lucide-react"
+import { cn } from "@/lib/utils"
+import Image from "next/image"
+import { PlaceHolderImages } from "@/lib/placeholder-images"
+
+export function BookingCard() {
+  const days = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"]
+  const dates = Array.from({ length: 31 }, (_, i) => i + 1)
+  const selectedDate = 19
+
+  const illustration = PlaceHolderImages.find(img => img.id === 'consultation-illustration')
+
+  return (
+    <div className="w-full max-w-2xl mx-auto overflow-hidden rounded-[1.5rem] bg-[#121212] shadow-2xl border border-white/10 flex flex-col md:flex-row transition-all duration-700 animate-in fade-in slide-in-from-bottom-8">
+      {/* Left Panel: Brand & Info */}
+      <div className="w-full md:w-[40%] bg-white p-6 flex flex-col items-center justify-between text-center border-r border-black/5">
+        <div className="space-y-4 w-full">
+          {illustration && (
+            <div className="relative w-full aspect-video rounded-lg overflow-hidden mb-6 bg-muted">
+              <Image 
+                src={illustration.imageUrl}
+                alt={illustration.description}
+                fill
+                className="object-cover"
+                data-ai-hint={illustration.imageHint}
+              />
+            </div>
+          )}
+          
+          <h3 className="text-black text-[11px] font-extrabold uppercase tracking-tighter leading-tight">
+            Book a FREE Consultation<br />
+            <span className="text-[9px] font-medium opacity-50 lowercase italic">with</span> <span className="text-black">Morādābād's</span>
+          </h3>
+          
+          <div className="flex flex-col items-center">
+            <div className="flex items-center gap-1">
+              <span className="text-lg font-black tracking-tighter text-black">DIGITAL</span>
+              <span className="text-lg font-light tracking-widest text-black/40">DOCTORS</span>
+            </div>
+            <div className="w-16 h-0.5 bg-[#f5b800] mt-1" />
+          </div>
+        </div>
+
+        <div className="mt-4 flex items-center gap-2">
+           <div className="w-1.5 h-1.5 rounded-full bg-[#f5b800]" />
+           <span className="text-[8px] font-bold text-black/30 uppercase tracking-[0.2em]">Live Consultation</span>
+        </div>
+      </div>
+
+      {/* Right Panel: Calendar */}
+      <div className="flex-1 p-6 text-white bg-gradient-to-br from-[#1c1c1c] via-[#121212] to-[#0a0a0a]">
+        <div className="flex items-center justify-between mb-6">
+          <h4 className="text-[10px] font-black uppercase tracking-widest opacity-60">Select Date & Time</h4>
+          <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1.5">
+              <div className="p-1 bg-white/5 rounded-md border border-white/10">
+                <CalendarIcon className="w-3 h-3 text-[#f5b800]" />
+              </div>
+              <div className="text-left">
+                <p className="text-[8px] font-black text-[#f5b800] uppercase">Tuesday, 19</p>
+                <p className="text-[10px] font-medium opacity-40">May 2026</p>
+              </div>
+            </div>
+            <div className="flex gap-0.5">
+              <button className="p-1 hover:bg-white/5 rounded-full transition-colors">
+                <ChevronLeft className="w-4 h-4 opacity-40" />
+              </button>
+              <button className="p-1 hover:bg-white/5 rounded-full transition-colors">
+                <ChevronRight className="w-4 h-4 opacity-40" />
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Calendar Grid */}
+        <div className="grid grid-cols-7 gap-y-2 mb-6">
+          {days.map((day) => (
+            <div key={day} className="text-center text-[7px] font-black opacity-30 tracking-widest">
+              {day}
+            </div>
+          ))}
+          
+          {/* Empty slots for month start (assuming May 2026 starts on Friday) */}
+          <div className="h-7" />
+          <div className="h-7" />
+          <div className="h-7" />
+          <div className="h-7" />
+          <div className="h-7" />
+
+          {dates.map((date) => (
+            <button
+              key={date}
+              className={cn(
+                "h-7 w-7 mx-auto flex items-center justify-center rounded-full text-[10px] font-bold transition-all",
+                date === selectedDate 
+                  ? "bg-[#f5b800] text-black shadow-[0_0_15px_rgba(245,184,0,0.3)]" 
+                  : "bg-white/[0.03] hover:bg-white/10 text-white/60"
+              )}
+            >
+              {date}
+            </button>
+          ))}
+        </div>
+
+        {/* Footer: Time Zone */}
+        <div className="flex items-center justify-between mt-auto pt-4 border-t border-white/5">
+          <div className="flex items-center gap-1.5">
+            <Globe className="w-3 h-3 text-[#f5b800]" />
+            <span className="text-[9px] font-black text-[#f5b800] uppercase tracking-tight">Time Zone</span>
+          </div>
+          <div className="bg-white/5 px-3 py-1.5 rounded-full border border-white/10 flex items-center gap-2">
+            <span className="text-[9px] font-medium opacity-60">Asia/Kolkata</span>
+            <div className="w-4 h-3 bg-white/10 rounded-sm flex flex-col overflow-hidden">
+              <div className="flex-1 bg-[#FF9933]" />
+              <div className="flex-1 bg-white" />
+              <div className="flex-1 bg-[#138808]" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}

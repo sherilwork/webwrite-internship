@@ -1,3 +1,4 @@
+
 "use client"
 
 import React, { useState } from "react"
@@ -5,6 +6,7 @@ import { GridBackground } from "@/components/GridBackground"
 import { HeroPreview } from "@/components/HeroPreview"
 import { Navigation } from "@/components/Navigation"
 import { Toaster } from "@/components/ui/toaster"
+import { BookingCard } from "@/components/BookingCard"
 
 export default function Home() {
   const [settings] = useState({
@@ -15,11 +17,6 @@ export default function Home() {
     edgeFade: true,
     highlights: true,
     alignment: "center" as "center" | "left",
-  })
-
-  const [copy] = useState({
-    headline: "Design with pure intent.",
-    bodyText: "Create stunning minimalist interfaces with a robust mathematical grid. Precision engineering for the modern creative professional.",
   })
 
   return (
@@ -35,12 +32,14 @@ export default function Home() {
         showEdgeFade={settings.edgeFade}
         showHighlights={settings.highlights}
       >
-        {/* Hero Preview */}
+        {/* Hero Content Container */}
         <HeroPreview 
-          headline={copy.headline} 
-          bodyText={copy.bodyText} 
+          headline="" 
+          bodyText="" 
           alignment={settings.alignment}
-        />
+        >
+          <BookingCard />
+        </HeroPreview>
       </GridBackground>
       
       <Toaster />

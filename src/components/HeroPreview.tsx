@@ -1,3 +1,4 @@
+
 "use client"
 
 import React from "react"
@@ -7,12 +8,12 @@ interface HeroPreviewProps {
   headline: string
   bodyText: string
   alignment: "center" | "left"
+  children?: React.ReactNode
 }
 
 export const HeroPreview = ({
-  headline,
-  bodyText,
   alignment,
+  children
 }: HeroPreviewProps) => {
   return (
     <div 
@@ -21,7 +22,7 @@ export const HeroPreview = ({
         alignment === "center" ? "items-center text-center" : "items-start text-left"
       )}
     >
-      {/* All content elements removed to maintain a pure minimalist background view */}
+      {children}
     </div>
   )
 }
