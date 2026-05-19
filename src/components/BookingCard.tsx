@@ -104,9 +104,9 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
   }
 
   return (
-    <div className="w-full max-w-xl ml-auto overflow-hidden rounded-[1.25rem] bg-white shadow-2xl border border-black/5 flex flex-col md:flex-row transition-all duration-700 animate-in fade-in slide-in-from-bottom-8 h-[420px]">
+    <div className="w-full max-w-xl ml-auto overflow-hidden rounded-[1.25rem] bg-white shadow-2xl border border-black/5 flex flex-col md:flex-row transition-all duration-700 animate-in fade-in slide-in-from-bottom-8 md:h-[420px]">
       {/* Left Panel: Branding -> Time Selection -> Details Form */}
-      <div className="w-full md:w-[44%] bg-white p-5 flex flex-col justify-between border-r border-black/5 h-full relative overflow-hidden">
+      <div className="w-full md:w-[44%] bg-white p-5 flex flex-col justify-between border-b md:border-b-0 md:border-r border-black/5 min-h-[380px] md:h-full relative overflow-hidden">
         {!selectedDate ? (
           // STEP 1: Branding / Illustration
           <div className="flex flex-col items-center text-center justify-between h-full w-full animate-in fade-in duration-500 pt-2 pb-1">
@@ -297,7 +297,7 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
       </div>
 
       {/* Right Panel: Calendar (Minimalist White Theme) */}
-      <div className="flex-1 p-5 text-black bg-white flex flex-col h-full">
+      <div className="flex-1 p-5 text-black bg-white flex flex-col min-h-[400px] md:h-full">
         <div className="flex items-center justify-between mb-3">
           <h4 className="text-[10px] font-bold uppercase tracking-[0.15em] text-black/30 text-left">Select Date</h4>
           <div className="flex items-center gap-3">

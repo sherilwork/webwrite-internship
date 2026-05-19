@@ -68,21 +68,21 @@ export function MobileHero() {
         highlightOpacity={settings.highlightOpacity}
         showEdgeFade={settings.edgeFade}
         showHighlights={settings.highlights}
-        className="min-h-screen pt-40 pb-12"
+        className="min-h-screen pt-36 pb-12"
       >
-        <div className="container mx-auto px-4 flex flex-col gap-10">
+        <div className="container mx-auto px-4 flex flex-col gap-6">
           
           {/* Content Area */}
-          <div className="flex flex-col items-center text-center gap-6 animate-in fade-in slide-in-from-bottom-8 duration-1000 ease-out z-30">
-            <div className="flex items-center gap-2 bg-white border border-black/5 rounded-full px-4 py-1.5 shadow-sm">
-              <div className="bg-[#f5b800] text-white px-3 py-1 rounded-full text-[8px] font-black tracking-widest uppercase shrink-0">
+          <div className="flex flex-col items-center text-center gap-4 animate-in fade-in slide-in-from-bottom-8 duration-1000 ease-out z-30">
+            <div className="flex items-center gap-2 bg-white border border-black/5 rounded-full px-4 py-1 shadow-sm">
+              <div className="bg-[#f5b800] text-white px-3 py-0.5 rounded-full text-[8px] font-black tracking-widest uppercase shrink-0">
                 CLARITY
               </div>
               <span className="text-[10px] font-bold text-black/70 tracking-tight">Starts with the Right Experts!</span>
             </div>
 
-            <div className="space-y-4 w-full">
-              <h1 className="text-3xl font-black text-black leading-tight tracking-tighter flex flex-col items-center gap-2">
+            <div className="space-y-2 w-full">
+              <h1 className="text-3xl font-black text-black leading-tight tracking-tighter flex flex-col items-center gap-1">
                 <div className="relative h-[1.2em] w-full flex justify-center overflow-visible">
                   <span className="whitespace-nowrap">
                     {isMounted ? currentText : phrases[0]}
@@ -91,7 +91,7 @@ export function MobileHero() {
                 </div>
                 <span className="font-light text-black/80">Strategy Session</span>
               </h1>
-              <div className="w-12 h-1 bg-[#f5b800] mx-auto" />
+              <div className="w-10 h-0.5 bg-[#f5b800] mx-auto" />
             </div>
 
             <p className="text-[11px] font-medium text-black/40 max-w-[280px] leading-relaxed mx-auto">
@@ -101,14 +101,14 @@ export function MobileHero() {
           </div>
 
           {/* Booking Section */}
-          <div className="flex flex-col items-center gap-8">
+          <div className="flex flex-col items-center gap-6">
             <div className="w-full max-w-sm z-30">
               <BookingCard imageUrl="/hero-illustration.png" />
             </div>
           </div>
 
           {/* Features Grid */}
-          <div className="grid grid-cols-1 gap-6 w-full max-w-xs mx-auto pt-8 pb-12">
+          <div className="grid grid-cols-1 gap-4 w-full max-w-xs mx-auto pt-6 pb-8">
             <div className="flex items-center gap-4 text-left">
               <div className="w-10 h-10 rounded-full border border-black/5 flex items-center justify-center bg-white shadow-sm shrink-0">
                 <Users className="w-4 h-4 text-black" />
