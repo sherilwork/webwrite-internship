@@ -100,8 +100,14 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
                 <div className="w-14 h-0.5 bg-[#f5b800] mx-auto mt-3" />
               </div>
 
-              {/* Signficantly increased margin-top to push image further down */}
-              <div className="relative w-full aspect-[4/3] rounded-lg overflow-hidden mt-20 bg-muted/20">
+              {/* Online consultation badge moved up */}
+              <div className="mt-1 flex items-center justify-center gap-1.5">
+                <div className="w-1.5 h-1.5 rounded-full bg-[#f5b800]" />
+                <span className="text-[8px] font-semibold text-black/40 uppercase tracking-widest">Online consultation</span>
+              </div>
+
+              {/* Illustration pushed further down */}
+              <div className="relative w-full aspect-[4/3] rounded-lg overflow-hidden mt-12 bg-muted/20">
                 <Image 
                   src={finalImageUrl}
                   alt="Consultation Illustration"
@@ -110,11 +116,6 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
                   data-ai-hint="medical consultation"
                 />
               </div>
-            </div>
-
-            <div className="mt-3 flex items-center gap-1.5">
-               <div className="w-1.5 h-1.5 rounded-full bg-[#f5b800]" />
-               <span className="text-[8px] font-semibold text-black/30 uppercase tracking-widest">Online consultation</span>
             </div>
           </div>
         ) : !isDetailsStep ? (
