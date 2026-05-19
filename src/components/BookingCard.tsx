@@ -89,18 +89,18 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
         {!selectedDate ? (
           // STEP 1: Branding / Illustration
           <div className="flex flex-col items-center text-center justify-between h-full w-full animate-in fade-in duration-500">
-            <div className="space-y-3 w-full">
-              <div className="space-y-2 pt-1">
-                <h3 className="text-black text-lg font-bold uppercase tracking-tight leading-none">
+            <div className="space-y-4 w-full">
+              <div className="space-y-2 pt-2">
+                <h3 className="text-black text-xl font-bold uppercase tracking-tight leading-none">
                   FREE CONSULTATION
                 </h3>
-                <p className="text-black/50 text-[9px] font-semibold uppercase tracking-wider leading-tight px-2">
+                <p className="text-black/50 text-[11px] font-semibold uppercase tracking-wider leading-tight px-2">
                   with our expert digital marketing team
                 </p>
-                <div className="w-12 h-0.5 bg-[#f5b800] mx-auto mt-2" />
+                <div className="w-14 h-0.5 bg-[#f5b800] mx-auto mt-3" />
               </div>
 
-              <div className="relative w-full aspect-[4/3] rounded-lg overflow-hidden mt-4 bg-muted/20">
+              <div className="relative w-full aspect-[4/3] rounded-lg overflow-hidden mt-6 bg-muted/20">
                 <Image 
                   src={finalImageUrl}
                   alt="Consultation Illustration"
