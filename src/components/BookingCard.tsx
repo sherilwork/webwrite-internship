@@ -88,40 +88,26 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
       <div className="w-full md:w-[44%] bg-white p-5 flex flex-col justify-between border-r border-black/5 h-full relative overflow-hidden">
         {!selectedDate ? (
           // STEP 1: Branding / Illustration
-          <div className="flex flex-col items-center text-center justify-between h-full w-full animate-in fade-in duration-500 pt-2">
-            <div className="space-y-4 w-full">
-              <div className="space-y-2">
+          <div className="flex flex-col items-center text-center justify-between h-full w-full animate-in fade-in duration-500 pt-2 pb-1">
+            <div className="flex flex-col items-center w-full">
+              <div className="space-y-1 w-full mb-3">
                 <h3 className="text-black text-xl font-bold uppercase tracking-tight leading-none">
                   FREE CONSULTATION
                 </h3>
                 <p className="text-black/50 text-[11px] font-semibold uppercase tracking-wider leading-tight px-2">
                   with our expert digital marketing team
                 </p>
-                <div className="w-14 h-0.5 bg-[#f5b800] mx-auto mt-3" />
+                <div className="w-14 h-0.5 bg-[#f5b800] mx-auto mt-2" />
               </div>
 
-              {/* Online consultation badge moved up */}
-              <div className="mt-1 flex flex-col items-center gap-2">
-                <div className="flex items-center justify-center gap-1.5">
-                  <div className="w-1.5 h-1.5 rounded-full bg-[#f5b800]" />
-                  <span className="text-[8px] font-semibold text-black/40 uppercase tracking-widest">Online consultation</span>
-                </div>
-                
-                {/* Contact Information */}
-                <div className="flex flex-col items-center gap-1 mt-1">
-                  <div className="flex items-center gap-2 text-black/60">
-                    <Phone className="w-2.5 h-2.5 text-[#f5b800]" />
-                    <span className="text-[9px] font-bold uppercase tracking-wider">+1 (555) 000-1234</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-black/60">
-                    <Mail className="w-2.5 h-2.5 text-[#f5b800]" />
-                    <span className="text-[9px] font-bold uppercase tracking-wider">contact@nextsaas.ai</span>
-                  </div>
-                </div>
+              {/* Online consultation badge */}
+              <div className="flex items-center justify-center gap-1.5 mb-6">
+                <div className="w-1.5 h-1.5 rounded-full bg-[#f5b800]" />
+                <span className="text-[8px] font-semibold text-black/40 uppercase tracking-widest">Online consultation</span>
               </div>
 
               {/* Illustration pushed down */}
-              <div className="relative w-full aspect-[4/3] rounded-lg overflow-hidden mt-6 bg-muted/20">
+              <div className="relative w-full aspect-[4/3] rounded-lg overflow-hidden mt-auto bg-muted/20">
                 <Image 
                   src={finalImageUrl}
                   alt="Consultation Illustration"
@@ -129,6 +115,18 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
                   className="object-cover"
                   data-ai-hint="medical consultation"
                 />
+              </div>
+            </div>
+
+            {/* Contact Information at the bottom, same line */}
+            <div className="flex items-center justify-center gap-4 w-full pt-4 border-t border-black/5">
+              <div className="flex items-center gap-1.5 text-black/60">
+                <Phone className="w-2.5 h-2.5 text-[#f5b800]" />
+                <span className="text-[8px] font-bold uppercase tracking-wider leading-none">+1 (555) 000-1234</span>
+              </div>
+              <div className="flex items-center gap-1.5 text-black/60">
+                <Mail className="w-2.5 h-2.5 text-[#f5b800]" />
+                <span className="text-[8px] font-bold uppercase tracking-wider leading-none">contact@nextsaas.ai</span>
               </div>
             </div>
           </div>
