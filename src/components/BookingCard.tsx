@@ -2,6 +2,7 @@
 "use client"
 
 import * as React from "react"
+import { useState, useEffect } from "react"
 import { ChevronLeft, ChevronRight, Globe, Calendar as CalendarIcon } from "lucide-react"
 import { cn } from "@/lib/utils"
 import Image from "next/image"
@@ -14,7 +15,18 @@ interface BookingCardProps {
 export function BookingCard({ imageUrl }: BookingCardProps) {
   const days = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"]
   const dates = Array.from({ length: 31 }, (_, i) => i + 1)
-  const selectedDate = 19
+  
+  // State for interactive calendar
+  const [selectedDate, setSelectedDate] = useState<number | null>(19)
+  const [todayDate, setTodayDate] = useState<number | null>(null)
+
+  useEffect(() => {
+    // Determine "today" only on client to avoid hydration mismatch
+    const now = new Date()
+    // For the mock, we assume we are in May 2026 if that's what the UI says,
+    // but typically we disable based on real current date.
+    setTodayDate(now.getDate())
+  }, [])
 
   const illustration = PlaceHolderImages.find(img => img.id === 'consultation-illustration')
   const finalImageUrl = imageUrl || illustration?.imageUrl || "/hero-illustration.png"
@@ -63,7 +75,9 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
                 <CalendarIcon className="w-3 h-3 text-[#f5b800]" />
               </div>
               <div className="text-left">
-                <p className="text-[8px] font-bold text-[#f5b800] uppercase">Tuesday, 19</p>
+                <p className="text-[8px] font-bold text-[#f5b800] uppercase">
+                  {selectedDate ? `Date: ${selectedDate}` : 'Select Date'}
+                </p>
                 <p className="text-[10px] font-normal opacity-40">May 2026</p>
               </div>
             </div>
@@ -93,19 +107,26 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
           <div className="h-7" />
           <div className="h-7" />
 
-          {dates.map((date) => (
-            <button
-              key={date}
-              className={cn(
-                "h-7 w-7 mx-auto flex items-center justify-center rounded-full text-[10px] font-medium transition-all",
-                date === selectedDate 
-                  ? "bg-[#f5b800] text-black shadow-[0_0_15px_rgba(245,184,0,0.3)] font-bold" 
-                  : "bg-white/[0.03] hover:bg-white/10 text-white/60"
-              )}
-            >
-              {date}
-            </button>
-          ))}
+          {dates.map((date) => {
+            const isPast = todayDate !== null && date < todayDate;
+            return (
+              <button
+                key={date}
+                disabled={isPast}
+                onClick={() => setSelectedDate(date)}
+                className={cn(
+                  "h-7 w-7 mx-auto flex items-center justify-center rounded-full text-[10px] font-medium transition-all",
+                  date === selectedDate 
+                    ? "bg-[#f5b800] text-black shadow-[0_0_15px_rgba(245,184,0,0.3)] font-bold" 
+                    : isPast
+                      ? "opacity-20 cursor-not-allowed"
+                      : "bg-white/[0.03] hover:bg-white/10 text-white/60"
+                )}
+              >
+                {date}
+              </button>
+            )
+          })}
         </div>
 
         {/* Footer: Time Zone */}
