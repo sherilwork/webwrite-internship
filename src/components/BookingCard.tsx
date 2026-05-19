@@ -81,7 +81,7 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
         {/* Calendar Grid */}
         <div className="grid grid-cols-7 gap-y-2 mb-6">
           {days.map((day) => (
-            <div key={day} className="text-center text-[7px] font-black opacity-30 tracking-widest">
+            <div key={day} className="text-center text-[7px] font-black text-white tracking-widest">
               {day}
             </div>
           ))}
