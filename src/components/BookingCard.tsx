@@ -118,8 +118,8 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
               </div>
             </div>
 
-            {/* Contact Information at the bottom, same line */}
-            <div className="flex items-center justify-center gap-4 w-full pt-4 border-t border-black/5">
+            {/* Contact Information at the bottom, stacked vertically */}
+            <div className="flex flex-col items-center justify-center gap-2 w-full pt-4 border-t border-black/5">
               <div className="flex items-center gap-1.5 text-black/60">
                 <Phone className="w-2.5 h-2.5 text-[#f5b800]" />
                 <span className="text-[8px] font-bold uppercase tracking-wider leading-none">+1 (555) 000-1234</span>
