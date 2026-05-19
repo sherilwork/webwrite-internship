@@ -3,7 +3,7 @@
 import React from "react"
 import { 
   Phone, 
-  Globe, 
+  Mail, 
   Briefcase, 
   Rocket, 
   Cloud, 
@@ -27,9 +27,9 @@ export function SubHeader() {
         </div>
         <div className="h-4 w-px bg-white/10" />
         <div className="flex items-center gap-2 group cursor-pointer">
-          <Globe className="w-4 h-4 text-[#f5b800]" />
+          <Mail className="w-4 h-4 text-[#f5b800]" />
           <span className="text-[11px] font-bold text-white/80 uppercase tracking-wider group-hover:text-white transition-colors">
-            Global Presence
+            info@nextsaas.ai
           </span>
         </div>
         <div className="h-4 w-px bg-white/10" />
