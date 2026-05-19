@@ -24,21 +24,18 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
       {/* Left Panel: Brand & Info */}
       <div className="w-full md:w-[40%] bg-white p-6 flex flex-col items-center justify-between text-center border-r border-black/5">
         <div className="space-y-4 w-full">
-          {/* Text content now at the top */}
-          <h3 className="text-black text-[11px] font-extrabold uppercase tracking-tighter leading-tight">
-            Book a FREE Consultation<br />
-            <span className="text-[9px] font-medium opacity-50 lowercase italic">with</span> <span className="text-black">Morādābād's</span>
-          </h3>
-          
-          <div className="flex flex-col items-center">
-            <div className="flex items-center gap-1">
-              <span className="text-lg font-black tracking-tighter text-black">DIGITAL</span>
-              <span className="text-lg font-light tracking-widest text-black/40">DOCTORS</span>
-            </div>
-            <div className="w-16 h-0.5 bg-[#f5b800] mt-1" />
+          {/* New Text Content */}
+          <div className="space-y-3 pt-2">
+            <h3 className="text-black text-xl font-black uppercase tracking-tighter leading-none">
+              BOOK A FREE CONSULTATION
+            </h3>
+            <p className="text-black/50 text-[10px] font-bold uppercase tracking-widest leading-tight px-4">
+              with India&apos;s leading digital marketing agency
+            </p>
+            <div className="w-16 h-1 bg-[#f5b800] mx-auto mt-2" />
           </div>
 
-          {/* Illustration now at the bottom of the top section */}
+          {/* Illustration section */}
           <div className="relative w-full aspect-video rounded-lg overflow-hidden mt-6 bg-muted">
             <Image 
               src={finalImageUrl}
