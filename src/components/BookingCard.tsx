@@ -100,8 +100,8 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
                 <div className="w-14 h-0.5 bg-[#f5b800] mx-auto mt-3" />
               </div>
 
-              {/* Increased margin-top to push image further down */}
-              <div className="relative w-full aspect-[4/3] rounded-lg overflow-hidden mt-10 bg-muted/20">
+              {/* Signficantly increased margin-top to push image further down */}
+              <div className="relative w-full aspect-[4/3] rounded-lg overflow-hidden mt-20 bg-muted/20">
                 <Image 
                   src={finalImageUrl}
                   alt="Consultation Illustration"
