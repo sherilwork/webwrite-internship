@@ -1,4 +1,3 @@
-
 "use client"
 
 import * as React from "react"
@@ -142,7 +141,7 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
                   setSelectedDate(null)
                   setSelectedTime(null)
                 }}
-                className="p-1 hover:bg-black/5 rounded-full transition-colors text-black/40 hover:text-black"
+                className="p-1.5 hover:bg-black/[0.03] rounded-full transition-colors text-black/40 hover:text-black"
               >
                 <ArrowLeft className="w-3.5 h-3.5" />
               </button>
@@ -171,7 +170,7 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
                   >
                     <span>{time}</span>
                     <Clock className={cn(
-                      "w-3 h-3 opacity-40 group-hover:opacity-100 transition-opacity",
+                      "w-3 h-3 opacity-20 group-hover:opacity-100 transition-opacity",
                       selectedTime === time && "opacity-100"
                     )} />
                   </button>
@@ -185,7 +184,7 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
               className={cn(
                 "mt-3 w-full py-2.5 rounded-full text-[10px] font-bold uppercase tracking-widest transition-all",
                 selectedTime
-                  ? "bg-black text-white hover:bg-black/80"
+                  ? "bg-black text-white hover:bg-black/90"
                   : "bg-black/5 text-black/20 cursor-not-allowed"
               )}
             >
@@ -198,7 +197,7 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
             <div className="flex items-center gap-2 mb-3">
               <button 
                 onClick={() => setIsDetailsStep(false)}
-                className="p-1 hover:bg-black/5 rounded-full transition-colors text-black/40 hover:text-black"
+                className="p-1.5 hover:bg-black/[0.03] rounded-full transition-colors text-black/40 hover:text-black"
               >
                 <ArrowLeft className="w-3.5 h-3.5" />
               </button>
@@ -263,10 +262,10 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
             <button
               disabled={!formData.name || !formData.email}
               className={cn(
-                "mt-3 w-full py-2.5 rounded-full text-[10px] font-bold uppercase tracking-widest transition-all shadow-md",
+                "mt-3 w-full py-2.5 rounded-full text-[10px] font-bold uppercase tracking-widest transition-all",
                 formData.name && formData.email
-                  ? "bg-[#f5b800] text-black hover:opacity-90"
-                  : "bg-black/5 text-black/20 cursor-not-allowed shadow-none"
+                  ? "bg-[#f5b800] text-black hover:opacity-90 shadow-sm"
+                  : "bg-black/5 text-black/20 cursor-not-allowed"
               )}
             >
               Confirm Appointment
@@ -293,15 +292,15 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
                 onClick={handlePrevMonth}
                 disabled={isPrevDisabled}
                 className={cn(
-                  "p-1 rounded-full transition-colors",
-                  isPrevDisabled ? "opacity-10 cursor-not-allowed" : "hover:bg-black/5 text-black/40"
+                  "p-1.5 rounded-full transition-colors",
+                  isPrevDisabled ? "opacity-10 cursor-not-allowed" : "hover:bg-black/[0.03] text-black/30 hover:text-black"
                 )}
               >
                 <ChevronLeft className="w-4 h-4" />
               </button>
               <button 
                 onClick={handleNextMonth}
-                className="p-1 hover:bg-black/5 rounded-full transition-colors text-black/40"
+                className="p-1.5 hover:bg-black/[0.03] rounded-full transition-colors text-black/30 hover:text-black"
               >
                 <ChevronRight className="w-4 h-4" />
               </button>
@@ -336,10 +335,10 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
                 className={cn(
                   "h-7 w-7 mx-auto flex items-center justify-center rounded-full text-[10px] font-medium transition-all",
                   isSelected 
-                    ? "bg-[#f5b800] text-black shadow-[0_0_12px_rgba(245,184,0,0.3)] font-bold" 
+                    ? "bg-[#f5b800] text-black shadow-sm font-bold" 
                     : isPast
                       ? "opacity-20 cursor-not-allowed"
-                      : "bg-black/[0.03] hover:bg-black/5 text-black/60"
+                      : "bg-black/[0.01] hover:bg-black/[0.04] text-black/60"
                 )}
               >
                 {date}
