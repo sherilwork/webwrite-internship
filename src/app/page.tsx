@@ -52,11 +52,11 @@ export default function Home() {
             <div className="flex-1 flex flex-col items-start text-left gap-3 animate-in fade-in slide-in-from-left-12 duration-1000 ease-out z-30">
               
               {/* Clarity Badge */}
-              <div className="flex items-center gap-1.5 bg-white border border-black/5 rounded-full px-2 py-0.5 shadow-sm">
-                <div className="bg-[#f5b800] text-white px-1.5 py-0.25 rounded-full text-[7px] font-bold tracking-widest uppercase">
+              <div className="flex items-center gap-2.5 bg-white border border-black/5 rounded-full px-4 py-1.5 shadow-sm">
+                <div className="bg-[#f5b800] text-white px-3 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase">
                   CLARITY
                 </div>
-                <span className="text-[8px] font-semibold text-black/60 tracking-tight">Starts with the Right Experts!</span>
+                <span className="text-[12px] font-semibold text-black/60 tracking-tight">Starts with the Right Experts!</span>
               </div>
 
               {/* Strategy Session Headline */}
