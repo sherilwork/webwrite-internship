@@ -20,7 +20,7 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
   const finalImageUrl = imageUrl || illustration?.imageUrl || "/hero-illustration.png"
 
   return (
-    <div className="w-full max-w-2xl mx-auto overflow-hidden rounded-[1.5rem] bg-[#121212] shadow-2xl border border-white/10 flex flex-col md:flex-row transition-all duration-700 animate-in fade-in slide-in-from-bottom-8">
+    <div className="w-full max-w-2xl ml-auto overflow-hidden rounded-[1.5rem] bg-[#121212] shadow-2xl border border-white/10 flex flex-col md:flex-row transition-all duration-700 animate-in fade-in slide-in-from-bottom-8">
       {/* Left Panel: Brand & Info */}
       <div className="w-full md:w-[40%] bg-white p-6 flex flex-col items-center justify-between text-center border-r border-black/5">
         <div className="space-y-4 w-full">
