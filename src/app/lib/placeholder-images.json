@@ -1,0 +1,10 @@
+{
+  "placeholderImages": [
+    {
+      "id": "consultation-illustration",
+      "description": "Digital Consultation Illustration",
+      "imageUrl": "/hero-illustration.png",
+      "imageHint": "medical consultation"
+    }
+  ]
+}
