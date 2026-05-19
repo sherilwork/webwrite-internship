@@ -83,14 +83,14 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
   const isPrevDisabled = isSameMonth(currentMonth, today)
 
   return (
-    <div className="w-full max-w-xl ml-auto overflow-hidden rounded-[1.25rem] bg-[#121212] shadow-2xl border border-white/10 flex flex-col md:flex-row transition-all duration-700 animate-in fade-in slide-in-from-bottom-8 md:h-[400px]">
+    <div className="w-full max-w-xl ml-auto overflow-hidden rounded-[1.25rem] bg-[#121212] shadow-2xl border border-white/10 flex flex-col md:flex-row transition-all duration-700 animate-in fade-in slide-in-from-bottom-8 h-[420px]">
       {/* Left Panel: Branding -> Time Selection -> Details Form */}
       <div className="w-full md:w-[44%] bg-white p-5 flex flex-col justify-between border-r border-black/5 h-full relative overflow-hidden">
         {!selectedDate ? (
           // STEP 1: Branding / Illustration
-          <div className="flex flex-col items-center text-center justify-between h-full w-full animate-in fade-in duration-500">
+          <div className="flex flex-col items-center text-center justify-between h-full w-full animate-in fade-in duration-500 pt-2">
             <div className="space-y-4 w-full">
-              <div className="space-y-2 pt-2">
+              <div className="space-y-2">
                 <h3 className="text-black text-xl font-bold uppercase tracking-tight leading-none">
                   FREE CONSULTATION
                 </h3>
@@ -100,7 +100,8 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
                 <div className="w-14 h-0.5 bg-[#f5b800] mx-auto mt-3" />
               </div>
 
-              <div className="relative w-full aspect-[4/3] rounded-lg overflow-hidden mt-6 bg-muted/20">
+              {/* Increased margin-top to push image further down */}
+              <div className="relative w-full aspect-[4/3] rounded-lg overflow-hidden mt-10 bg-muted/20">
                 <Image 
                   src={finalImageUrl}
                   alt="Consultation Illustration"
