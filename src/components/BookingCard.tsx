@@ -7,29 +7,32 @@ import { cn } from "@/lib/utils"
 import Image from "next/image"
 import { PlaceHolderImages } from "@/lib/placeholder-images"
 
-export function BookingCard() {
+interface BookingCardProps {
+  imageUrl?: string
+}
+
+export function BookingCard({ imageUrl }: BookingCardProps) {
   const days = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"]
   const dates = Array.from({ length: 31 }, (_, i) => i + 1)
   const selectedDate = 19
 
   const illustration = PlaceHolderImages.find(img => img.id === 'consultation-illustration')
+  const finalImageUrl = imageUrl || illustration?.imageUrl || "/hero-illustration.png"
 
   return (
     <div className="w-full max-w-2xl mx-auto overflow-hidden rounded-[1.5rem] bg-[#121212] shadow-2xl border border-white/10 flex flex-col md:flex-row transition-all duration-700 animate-in fade-in slide-in-from-bottom-8">
       {/* Left Panel: Brand & Info */}
       <div className="w-full md:w-[40%] bg-white p-6 flex flex-col items-center justify-between text-center border-r border-black/5">
         <div className="space-y-4 w-full">
-          {illustration && (
-            <div className="relative w-full aspect-video rounded-lg overflow-hidden mb-6 bg-muted">
-              <Image 
-                src={illustration.imageUrl}
-                alt={illustration.description}
-                fill
-                className="object-cover"
-                data-ai-hint={illustration.imageHint}
-              />
-            </div>
-          )}
+          <div className="relative w-full aspect-video rounded-lg overflow-hidden mb-6 bg-muted">
+            <Image 
+              src={finalImageUrl}
+              alt="Consultation Illustration"
+              fill
+              className="object-cover"
+              data-ai-hint="medical consultation"
+            />
+          </div>
           
           <h3 className="text-black text-[11px] font-extrabold uppercase tracking-tighter leading-tight">
             Book a FREE Consultation<br />
@@ -84,7 +87,7 @@ export function BookingCard() {
             </div>
           ))}
           
-          {/* Empty slots for month start (assuming May 2026 starts on Friday) */}
+          {/* Empty slots for month start */}
           <div className="h-7" />
           <div className="h-7" />
           <div className="h-7" />

@@ -38,7 +38,8 @@ export default function Home() {
           bodyText="" 
           alignment={settings.alignment}
         >
-          <BookingCard />
+          {/* Explicitly using the requested illustration path */}
+          <BookingCard imageUrl="/hero-illustration.png" />
         </HeroPreview>
       </GridBackground>
       

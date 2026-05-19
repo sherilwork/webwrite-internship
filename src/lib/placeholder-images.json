@@ -3,7 +3,7 @@
     {
       "id": "consultation-illustration",
       "description": "Digital Consultation Illustration",
-      "imageUrl": "https://picsum.photos/seed/doctor-consult/800/600",
+      "imageUrl": "/hero-illustration.png",
       "imageHint": "medical consultation"
     }
   ]
