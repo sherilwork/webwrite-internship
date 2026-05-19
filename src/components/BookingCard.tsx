@@ -24,16 +24,7 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
       {/* Left Panel: Brand & Info */}
       <div className="w-full md:w-[40%] bg-white p-6 flex flex-col items-center justify-between text-center border-r border-black/5">
         <div className="space-y-4 w-full">
-          <div className="relative w-full aspect-video rounded-lg overflow-hidden mb-6 bg-muted">
-            <Image 
-              src={finalImageUrl}
-              alt="Consultation Illustration"
-              fill
-              className="object-cover"
-              data-ai-hint="medical consultation"
-            />
-          </div>
-          
+          {/* Text content now at the top */}
           <h3 className="text-black text-[11px] font-extrabold uppercase tracking-tighter leading-tight">
             Book a FREE Consultation<br />
             <span className="text-[9px] font-medium opacity-50 lowercase italic">with</span> <span className="text-black">Morādābād's</span>
@@ -45,6 +36,17 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
               <span className="text-lg font-light tracking-widest text-black/40">DOCTORS</span>
             </div>
             <div className="w-16 h-0.5 bg-[#f5b800] mt-1" />
+          </div>
+
+          {/* Illustration now at the bottom of the top section */}
+          <div className="relative w-full aspect-video rounded-lg overflow-hidden mt-6 bg-muted">
+            <Image 
+              src={finalImageUrl}
+              alt="Consultation Illustration"
+              fill
+              className="object-cover"
+              data-ai-hint="medical consultation"
+            />
           </div>
         </div>
 
