@@ -1,4 +1,3 @@
-
 "use client"
 
 import * as React from "react"
@@ -178,7 +177,7 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
             <div className="h-px w-full bg-black/5" />
           </div>
 
-          <ScrollArea className={cn("flex-1 -mx-2 px-2", isMobile ? "max-h-[220px]" : "")}>
+          <ScrollArea className={cn("flex-1 -mx-2 px-2", isMobile ? "max-h-[200px]" : "")}>
             <div className="space-y-1.5 py-1">
               {TIME_SLOTS.map((time) => (
                 <button
@@ -203,7 +202,7 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
 
           <div className={cn(
             "pt-3 mt-auto shrink-0 bg-white border-t border-black/5",
-            isMobile ? "pb-4 px-6" : ""
+            isMobile ? "pb-10 px-6" : ""
           )}>
             <button
               disabled={!selectedTime}
@@ -240,7 +239,7 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
             <div className="h-px w-full bg-black/5" />
           </div>
 
-          <ScrollArea className={cn("flex-1 -mx-2 px-2", isMobile ? "max-h-[240px]" : "")}>
+          <ScrollArea className={cn("flex-1 -mx-2 px-2", isMobile ? "max-h-[220px]" : "")}>
             <div className={cn("space-y-4 py-1", isMobile ? "px-6" : "")}>
               <div className="space-y-1.5">
                 <Label htmlFor="name" className="text-[9px] font-bold uppercase tracking-widest text-black/40">Full Name</Label>
@@ -289,7 +288,7 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
 
           <div className={cn(
             "pt-3 mt-auto shrink-0 bg-white border-t border-black/5",
-            isMobile ? "pb-4 px-6" : ""
+            isMobile ? "pb-10 px-6" : ""
           )}>
             <button
               disabled={!formData.name || !formData.email}
