@@ -106,12 +106,14 @@ export default function Home() {
               </div>
 
               {/* Strategy Session Headline - Dynamic Typewriter */}
-              <div className="space-y-1 mt-2">
+              <div className="space-y-1 mt-2 w-full">
                 <h1 className="text-3xl md:text-5xl font-black text-black leading-[0.85] tracking-tighter flex flex-col min-h-[1.8em]">
-                  <span className="whitespace-nowrap relative">
-                    {isMounted ? currentText : "Digital Marketing"}
-                    <span className="inline-block w-[3px] h-[0.8em] bg-[#f5b800] ml-1 align-middle animate-pulse" />
-                  </span>
+                  <div className="relative h-[1.1em] overflow-visible z-40">
+                    <span className="whitespace-nowrap absolute left-0 top-0">
+                      {isMounted ? currentText : "Digital Marketing"}
+                      <span className="inline-block w-[3px] h-[0.8em] bg-[#f5b800] ml-1 align-middle animate-pulse" />
+                    </span>
+                  </div>
                   <span className="font-light text-black/80">Strategy Session</span>
                 </h1>
                 <div className="w-12 h-1 bg-[#f5b800] mt-3" />
