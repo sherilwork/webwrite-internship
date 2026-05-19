@@ -1,4 +1,3 @@
-
 "use client"
 
 import React, { useState } from "react"
@@ -6,6 +5,7 @@ import Image from "next/image"
 import { GridBackground } from "@/components/GridBackground"
 import { HeroPreview } from "@/components/HeroPreview"
 import { Navigation } from "@/components/Navigation"
+import { SubHeader } from "@/components/SubHeader"
 import { Toaster } from "@/components/ui/toaster"
 import { BookingCard } from "@/components/BookingCard"
 import { PlaceHolderImages } from "@/lib/placeholder-images"
@@ -25,6 +25,7 @@ export default function Home() {
 
   return (
     <main className="relative h-screen bg-background text-foreground selection:bg-primary selection:text-primary-foreground overflow-hidden">
+      <SubHeader />
       <Navigation />
       
       {/* Background Layer */}
@@ -45,7 +46,7 @@ export default function Home() {
         >
           <div className="w-full flex flex-col md:flex-row items-center justify-center md:justify-end gap-0">
             {/* Left Side: Hero Overlay Image (Positioned to sit behind the card) */}
-            <div className="relative w-full md:w-1/2 aspect-[4/3] max-w-[750px] md:-mr-48 md:mt-12 z-10 pointer-events-none animate-in fade-in slide-in-from-left-12 duration-1000 ease-out">
+            <div className="relative w-full md:w-1/2 aspect-[16/10] max-w-[750px] md:-mr-48 md:mt-12 z-10 pointer-events-none animate-in fade-in slide-in-from-left-12 duration-1000 ease-out">
               <Image 
                 src={heroOverlay?.imageUrl || "/hero-section-overlay.png"}
                 alt="Hero Visual Overlay"
