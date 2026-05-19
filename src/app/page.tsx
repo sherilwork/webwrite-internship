@@ -1,4 +1,3 @@
-
 "use client"
 
 import React, { useState } from "react"
@@ -48,10 +47,10 @@ export default function Home() {
         >
           <div className="w-full flex flex-col md:flex-row items-center justify-between gap-12 md:gap-4 h-full">
             
-            {/* Left Content Area: New Strategic Branding - Size Reduced by Half */}
+            {/* Left Content Area: Strategic Branding */}
             <div className="flex-1 flex flex-col items-start text-left gap-3 animate-in fade-in slide-in-from-left-12 duration-1000 ease-out z-30 h-full py-12">
               
-              {/* Clarity Badge - Enlarged and moved up */}
+              {/* Clarity Badge */}
               <div className="flex items-center gap-3 bg-white border border-black/5 rounded-full px-5 py-2 shadow-md -mt-2">
                 <div className="bg-[#f5b800] text-white px-4 py-1.5 rounded-full text-[11px] font-black tracking-widest uppercase shrink-0">
                   CLARITY
@@ -59,13 +58,13 @@ export default function Home() {
                 <span className="text-[14px] font-bold text-black/70 tracking-tight whitespace-nowrap">Starts with the Right Experts!</span>
               </div>
 
-              {/* Strategy Session Headline */}
+              {/* Strategy Session Headline - Size Increased */}
               <div className="space-y-1 mt-2">
-                <h1 className="text-xl md:text-3xl font-black text-black leading-[0.85] tracking-tighter">
+                <h1 className="text-3xl md:text-5xl font-black text-black leading-[0.85] tracking-tighter">
                   Digital Marketing <br />
                   <span className="font-light text-black/80">Strategy Session</span>
                 </h1>
-                <div className="w-8 h-0.5 bg-[#f5b800] mt-1.5" />
+                <div className="w-12 h-1 bg-[#f5b800] mt-3" />
               </div>
 
               {/* Sub-headline / Offer */}
@@ -74,7 +73,7 @@ export default function Home() {
                 <span className="text-black font-bold border-b border-black/10 pb-0.5">NextSaaS AI Strategy Experts</span>
               </p>
 
-              {/* Features Grid - Moved to bottom area */}
+              {/* Features Grid - Positioned above trusted brands */}
               <div className="grid grid-cols-3 gap-2 w-full max-w-sm py-4 mt-auto">
                 <div className="flex flex-col items-center text-center gap-1.5 group">
                   <div className="w-8 h-8 rounded-full border border-black/5 flex items-center justify-center bg-white shadow-sm transition-transform group-hover:scale-110 duration-300">
