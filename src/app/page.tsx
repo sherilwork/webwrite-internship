@@ -94,7 +94,7 @@ export default function Home() {
           <div className="w-full flex flex-col md:flex-row items-center justify-between gap-12 md:gap-4 h-full">
             
             {/* Left Content Area: Strategic Branding */}
-            <div className="flex-1 flex flex-col items-start text-left gap-3 animate-in fade-in slide-in-from-left-12 duration-1000 ease-out z-30 h-full pt-12 pb-4">
+            <div className="flex-1 flex flex-col items-start text-left gap-3 animate-in fade-in slide-in-from-left-12 duration-1000 ease-out z-30 h-full pt-12 pb-8">
               
               {/* Clarity Badge - Optimized Size */}
               <div className="flex items-center gap-2 bg-white border border-black/5 rounded-full px-2.5 py-1 shadow-sm -mt-4">
@@ -124,33 +124,33 @@ export default function Home() {
                 <span className="text-black font-bold border-b border-black/10 pb-0.5">Webwrite services Strategy Experts</span>
               </p>
 
-              {/* Features Grid - Positioned lower above trusted brands */}
-              <div className="grid grid-cols-3 gap-2 w-full max-w-sm py-4 mt-8">
-                <div className="flex flex-col items-center text-center gap-1.5 group">
-                  <div className="w-8 h-8 rounded-full border border-black/5 flex items-center justify-center bg-white shadow-sm transition-transform group-hover:scale-110 duration-300">
-                    <Users className="w-3.5 h-3.5 text-black" />
+              {/* Features Grid - Positioned at the absolute bottom and scaled up */}
+              <div className="grid grid-cols-3 gap-6 w-full max-w-lg py-6 mt-auto">
+                <div className="flex flex-col items-center text-center gap-2.5 group">
+                  <div className="w-12 h-12 rounded-full border border-black/5 flex items-center justify-center bg-white shadow-sm transition-transform group-hover:scale-110 duration-300">
+                    <Users className="w-5 h-5 text-black" />
                   </div>
                   <div>
-                    <h4 className="text-[8px] font-bold text-black uppercase tracking-wider">Expert Guidance</h4>
-                    <p className="text-[7px] text-black/40 mt-0.5 font-medium">Top industry strategists</p>
+                    <h4 className="text-[11px] font-bold text-black uppercase tracking-wider">Expert Guidance</h4>
+                    <p className="text-[10px] text-black/40 mt-0.5 font-medium leading-tight">Top industry strategists</p>
                   </div>
                 </div>
-                <div className="flex flex-col items-center text-center gap-1.5 group">
-                  <div className="w-8 h-8 rounded-full border border-black/5 flex items-center justify-center bg-white shadow-sm transition-transform group-hover:scale-110 duration-300">
-                    <Target className="w-3.5 h-3.5 text-black" />
+                <div className="flex flex-col items-center text-center gap-2.5 group">
+                  <div className="w-12 h-12 rounded-full border border-black/5 flex items-center justify-center bg-white shadow-sm transition-transform group-hover:scale-110 duration-300">
+                    <Target className="w-5 h-5 text-black" />
                   </div>
                   <div>
-                    <h4 className="text-[8px] font-bold text-black uppercase tracking-wider">Strategic Plan</h4>
-                    <p className="text-[7px] text-black/40 mt-0.5 font-medium">Custom-built roadmaps</p>
+                    <h4 className="text-[11px] font-bold text-black uppercase tracking-wider">Strategic Plan</h4>
+                    <p className="text-[10px] text-black/40 mt-0.5 font-medium leading-tight">Custom-built roadmaps</p>
                   </div>
                 </div>
-                <div className="flex flex-col items-center text-center gap-1.5 group">
-                  <div className="w-8 h-8 rounded-full border border-black/5 flex items-center justify-center bg-white shadow-sm transition-transform group-hover:scale-110 duration-300">
-                    <TrendingUp className="w-3.5 h-3.5 text-black" />
+                <div className="flex flex-col items-center text-center gap-2.5 group">
+                  <div className="w-12 h-12 rounded-full border border-black/5 flex items-center justify-center bg-white shadow-sm transition-transform group-hover:scale-110 duration-300">
+                    <TrendingUp className="w-5 h-5 text-black" />
                   </div>
                   <div>
-                    <h4 className="text-[8px] font-bold text-black uppercase tracking-wider">Growth Focus</h4>
-                    <p className="text-[7px] text-black/40 mt-0.5 font-medium">Measurable ROI & scale</p>
+                    <h4 className="text-[11px] font-bold text-black uppercase tracking-wider">Growth Focus</h4>
+                    <p className="text-[10px] text-black/40 mt-0.5 font-medium leading-tight">Measurable ROI & scale</p>
                   </div>
                 </div>
               </div>
