@@ -5,13 +5,13 @@
       "id": "consultation-illustration",
       "description": "Digital Consultation Illustration",
       "imageUrl": "/hero-illustration.png",
-      "imageHint": "medical consultation"
+      "imageHint": "professional consultant"
     },
     {
       "id": "hero-overlay",
-      "description": "Hero Background Overlay",
+      "description": "Professional Hero Portrait",
       "imageUrl": "/hero-section-overlay.png",
-      "imageHint": "abstract overlay"
+      "imageHint": "business woman"
     }
   ]
 }

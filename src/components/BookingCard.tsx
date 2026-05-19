@@ -106,15 +106,18 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
                 <span className="text-[8px] font-semibold text-black/40 uppercase tracking-widest">Online consultation</span>
               </div>
 
-              {/* Illustration pushed down */}
-              <div className="relative w-full aspect-[4/3] rounded-lg overflow-hidden mt-auto bg-muted/20">
-                <Image 
-                  src={finalImageUrl}
-                  alt="Consultation Illustration"
-                  fill
-                  className="object-cover"
-                  data-ai-hint="medical consultation"
-                />
+              {/* Illustration with background shape like reference */}
+              <div className="relative w-full aspect-[4/3] mt-auto">
+                <div className="absolute top-[10%] left-[15%] right-[5%] bottom-[5%] bg-blue-50 rounded-[2rem] -z-10" />
+                <div className="relative w-full h-full rounded-lg overflow-hidden bg-transparent">
+                  <Image 
+                    src={finalImageUrl}
+                    alt="Consultation Illustration"
+                    fill
+                    className="object-contain"
+                    data-ai-hint="professional consultant"
+                  />
+                </div>
               </div>
             </div>
 
