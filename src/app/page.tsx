@@ -53,10 +53,10 @@ export default function Home() {
               
               {/* Clarity Badge */}
               <div className="flex items-center gap-2.5 bg-white border border-black/5 rounded-full px-4 py-1.5 shadow-sm">
-                <div className="bg-[#f5b800] text-white px-3 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase">
+                <div className="bg-[#f5b800] text-white px-3 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase shrink-0">
                   CLARITY
                 </div>
-                <span className="text-[12px] font-semibold text-black/60 tracking-tight">Starts with the Right Experts!</span>
+                <span className="text-[12px] font-semibold text-black/60 tracking-tight whitespace-nowrap">Starts with the Right Experts!</span>
               </div>
 
               {/* Strategy Session Headline */}
