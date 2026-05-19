@@ -7,7 +7,7 @@ import { Toaster } from "@/components/ui/toaster"
 
 export default function Home() {
   const [settings] = useState({
-    gridSize: 64,
+    gridSize: 32,
     gridOpacity: 0.04,
     glowIntensity: 0.4,
     highlightOpacity: 0.3,
