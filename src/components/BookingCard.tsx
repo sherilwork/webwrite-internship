@@ -41,11 +41,19 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
   const days = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"]
   
   // State for interactive calendar
-  const [currentMonth, setCurrentMonth] = useState(new Date())
+  const [currentMonth, setCurrentMonth] = useState<Date | null>(null)
   const [selectedDate, setSelectedDate] = useState<Date | null>(null)
   const [selectedTime, setSelectedTime] = useState<string | null>(null)
   const [isDetailsStep, setIsDetailsStep] = useState(false)
-  const [today] = useState(startOfDay(new Date()))
+  const [today, setToday] = useState<Date | null>(null)
+  const [isMounted, setIsMounted] = useState(false)
+
+  useEffect(() => {
+    setIsMounted(true)
+    const now = new Date()
+    setCurrentMonth(now)
+    setToday(startOfDay(now))
+  }, [])
 
   // Form states
   const [formData, setFormData] = useState({
@@ -55,17 +63,19 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
   })
 
   // Calculate calendar grid
-  const monthStart = startOfMonth(currentMonth)
-  const daysInMonth = getDaysInMonth(currentMonth)
-  const firstDayOfMonth = getDay(monthStart)
+  const monthStart = useMemo(() => currentMonth ? startOfMonth(currentMonth) : null, [currentMonth])
+  const daysInMonth = useMemo(() => currentMonth ? getDaysInMonth(currentMonth) : 0, [currentMonth])
+  const firstDayOfMonth = useMemo(() => monthStart ? getDay(monthStart) : 0, [monthStart])
   
   const calendarDays = useMemo(() => {
+    if (!currentMonth) return []
     const blanks = Array.from({ length: firstDayOfMonth }, (_, i) => null)
     const monthDays = Array.from({ length: daysInMonth }, (_, i) => i + 1)
     return [...blanks, ...monthDays]
-  }, [firstDayOfMonth, daysInMonth])
+  }, [firstDayOfMonth, daysInMonth, currentMonth])
 
   const handlePrevMonth = () => {
+    if (!currentMonth || !today) return
     const prevMonth = subMonths(currentMonth, 1)
     if (!isBefore(prevMonth, startOfMonth(today))) {
       setCurrentMonth(prevMonth)
@@ -73,13 +83,25 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
   }
 
   const handleNextMonth = () => {
+    if (!currentMonth) return
     setCurrentMonth(addMonths(currentMonth, 1))
   }
 
   const illustration = PlaceHolderImages.find(img => img.id === 'consultation-illustration')
   const finalImageUrl = imageUrl || illustration?.imageUrl || "/hero-illustration.png"
 
-  const isPrevDisabled = isSameMonth(currentMonth, today)
+  const isPrevDisabled = !currentMonth || !today || isSameMonth(currentMonth, today)
+
+  if (!isMounted || !currentMonth || !today) {
+    return (
+      <div className="w-full max-w-xl ml-auto overflow-hidden rounded-[1.25rem] bg-white shadow-2xl border border-black/5 flex flex-col md:flex-row h-[420px] items-center justify-center">
+        <div className="animate-pulse flex flex-col items-center gap-4">
+          <div className="w-12 h-12 bg-black/5 rounded-full" />
+          <div className="h-4 w-32 bg-black/5 rounded" />
+        </div>
+      </div>
+    )
+  }
 
   return (
     <div className="w-full max-w-xl ml-auto overflow-hidden rounded-[1.25rem] bg-white shadow-2xl border border-black/5 flex flex-col md:flex-row transition-all duration-700 animate-in fade-in slide-in-from-bottom-8 h-[420px]">
@@ -207,7 +229,7 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
             <div className="mb-3">
               <p className="text-[9px] font-bold text-[#f5b800] uppercase tracking-widest mb-1 flex items-center gap-1.5">
                 <CalendarIcon className="w-2.5 h-2.5" />
-                {format(selectedDate, 'MMM d')} @ {selectedTime}
+                {selectedDate ? format(selectedDate, 'MMM d') : ''} @ {selectedTime}
               </p>
               <div className="h-px w-full bg-black/5" />
             </div>
@@ -281,7 +303,7 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
           <div className="flex items-center gap-3">
             <div className="text-left">
               <p className="text-[16px] font-black text-[#f5b800] uppercase tracking-wider leading-none">
-                {format(currentMonth, 'MMMM yyyy')}
+                {currentMonth ? format(currentMonth, 'MMMM yyyy') : ''}
               </p>
               <p className="text-[9px] font-bold text-black/20 leading-none mt-1 uppercase tracking-tight">
                 {format(new Date(), 'EEEE, d MMMM yyyy')}
@@ -317,7 +339,7 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
           ))}
           
           {calendarDays.map((date, index) => {
-            if (date === null) return <div key={`empty-${index}`} className="h-7" />
+            if (date === null || !currentMonth) return <div key={`empty-${index}`} className="h-7" />
 
             const currentDayDate = new Date(currentMonth.getFullYear(), currentMonth.getMonth(), date)
             const isPast = isBefore(currentDayDate, today)
