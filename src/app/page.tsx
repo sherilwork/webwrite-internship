@@ -49,8 +49,8 @@ export default function Home() {
             {/* Left Side: Hero Overlay Image */}
             <div className="relative w-full md:w-1/2 aspect-[16/10] max-w-[750px] md:-mr-48 md:mt-12 z-20 pointer-events-none animate-in fade-in slide-in-from-left-12 duration-1000 ease-out group">
               
-              {/* Vertically Aligned Background Shape - Increased Height */}
-              <div className="absolute inset-y-[5%] left-[25%] right-[25%] bg-blue-100 rounded-[5rem] -z-10 opacity-80" />
+              {/* Vertically Aligned Background Shape - Height increased from the top */}
+              <div className="absolute top-[0%] bottom-[5%] left-[25%] right-[25%] bg-blue-100 rounded-[5rem] -z-10 opacity-80" />
               
               {/* Vertically Aligned Dots Pattern */}
               <div className="absolute top-[10%] right-[20%] w-16 h-16 opacity-30 -z-10" 
