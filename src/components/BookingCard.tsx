@@ -70,9 +70,9 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
   const isPrevDisabled = isSameMonth(currentMonth, today)
 
   return (
-    <div className="w-full max-w-2xl ml-auto overflow-hidden rounded-[1.5rem] bg-[#121212] shadow-2xl border border-white/10 flex flex-col md:flex-row transition-all duration-700 animate-in fade-in slide-in-from-bottom-8">
+    <div className="w-full max-w-2xl ml-auto overflow-hidden rounded-[1.5rem] bg-[#121212] shadow-2xl border border-white/10 flex flex-col md:flex-row transition-all duration-700 animate-in fade-in slide-in-from-bottom-8 md:h-[540px]">
       {/* Left Panel: Brand & Info OR Select Time */}
-      <div className="w-full md:w-[40%] bg-white p-6 flex flex-col justify-between border-r border-black/5 min-h-[400px]">
+      <div className="w-full md:w-[42%] bg-white p-6 flex flex-col justify-between border-r border-black/5 h-full">
         {!selectedDate ? (
           <div className="flex flex-col items-center text-center justify-between h-full w-full">
             <div className="space-y-4 w-full">
@@ -86,7 +86,7 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
                 <div className="w-16 h-1 bg-[#f5b800] mx-auto mt-2" />
               </div>
 
-              <div className="relative w-full aspect-video rounded-lg overflow-hidden mt-6 bg-muted">
+              <div className="relative w-full aspect-square rounded-xl overflow-hidden mt-6 bg-muted/30">
                 <Image 
                   src={finalImageUrl}
                   alt="Consultation Illustration"
@@ -124,7 +124,7 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
               <div className="h-px w-full bg-black/5" />
             </div>
 
-            <ScrollArea className="flex-1 -mx-2 px-2 h-[280px]">
+            <ScrollArea className="flex-1 -mx-2 px-2 overflow-y-auto">
               <div className="space-y-2 py-2">
                 {TIME_SLOTS.map((time) => (
                   <button
@@ -163,7 +163,7 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
       </div>
 
       {/* Right Panel: Calendar */}
-      <div className="flex-1 p-6 text-white bg-gradient-to-br from-[#1c1c1c] via-[#121212] to-[#0a0a0a]">
+      <div className="flex-1 p-6 text-white bg-gradient-to-br from-[#1c1c1c] via-[#121212] to-[#0a0a0a] flex flex-col h-full">
         <div className="flex items-center justify-between mb-6">
           <h4 className="text-[10px] font-bold uppercase tracking-widest opacity-60">Select Date</h4>
           <div className="flex items-center gap-2">
@@ -223,7 +223,7 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
                   setSelectedTime(null) // Reset time when date changes
                 }}
                 className={cn(
-                  "h-7 w-7 mx-auto flex items-center justify-center rounded-full text-[10px] font-medium transition-all",
+                  "h-8 w-8 mx-auto flex items-center justify-center rounded-full text-[10px] font-medium transition-all",
                   isSelected 
                     ? "bg-[#f5b800] text-black shadow-[0_0_15px_rgba(245,184,0,0.3)] font-bold" 
                     : isPast
