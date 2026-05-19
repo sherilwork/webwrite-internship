@@ -12,6 +12,12 @@
       "description": "Professional Hero Portrait",
       "imageUrl": "/hero-section-overlay.png",
       "imageHint": "business woman"
+    },
+    {
+      "id": "logo",
+      "description": "Webwrite Services Logo",
+      "imageUrl": "/webwrite-logo.webp",
+      "imageHint": "company logo"
     }
   ]
 }

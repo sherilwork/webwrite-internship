@@ -1,9 +1,11 @@
+
 "use client"
 
 import * as React from "react"
 import Link from "next/link"
-import { ChevronRight } from "lucide-react"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
+import { PlaceHolderImages } from "@/lib/placeholder-images"
 
 export function Navigation() {
   const navItems = [
@@ -16,15 +18,23 @@ export function Navigation() {
     "Contact"
   ]
 
+  const logo = PlaceHolderImages.find(img => img.id === 'logo')
+
   return (
     <header className="fixed top-14 left-0 right-0 z-50 flex justify-center px-4">
       <nav className="flex items-center justify-between w-full max-w-6xl px-4 py-2 bg-white/90 backdrop-blur-md rounded-full border border-border shadow-sm">
-        <div className="flex items-center gap-2">
-          <div className="bg-black rounded-full p-1.5 flex items-center justify-center">
-            <ChevronRight className="w-4 h-4 text-white" />
+        <Link href="/" className="flex items-center gap-2">
+          <div className="relative h-8 w-40">
+            <Image 
+              src={logo?.imageUrl || "/webwrite-logo.webp"}
+              alt="Webwrite services logo"
+              fill
+              className="object-contain object-left"
+              priority
+              data-ai-hint="company logo"
+            />
           </div>
-          <span className="text-xl font-semibold tracking-tight text-foreground/80">Webwrite services</span>
-        </div>
+        </Link>
 
         <div className="hidden md:flex items-center gap-6">
           {navItems.map((item) => (
