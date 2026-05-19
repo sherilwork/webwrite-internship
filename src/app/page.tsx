@@ -1,3 +1,4 @@
+
 "use client"
 
 import React, { useState } from "react"
@@ -51,7 +52,7 @@ export default function Home() {
             <div className="flex-1 flex flex-col items-start text-left gap-3 animate-in fade-in slide-in-from-left-12 duration-1000 ease-out z-30 h-full py-12">
               
               {/* Clarity Badge */}
-              <div className="flex items-center gap-3 bg-white border border-black/5 rounded-full px-5 py-2 shadow-md -mt-2">
+              <div className="flex items-center gap-2.5 bg-white border border-black/5 rounded-full px-4 py-1.5 shadow-sm -mt-4">
                 <div className="bg-[#f5b800] text-white px-4 py-1.5 rounded-full text-[11px] font-black tracking-widest uppercase shrink-0">
                   CLARITY
                 </div>
@@ -105,7 +106,7 @@ export default function Home() {
               </div>
 
               {/* Trusted Brands Pill */}
-              <div className="w-full max-w-xs bg-white/40 backdrop-blur-sm border border-black/5 rounded-full p-1.5 flex items-center gap-2 shadow-sm">
+              <div className="w-full max-w-xs bg-white/40 backdrop-blur-sm border border-black/5 rounded-full p-1.5 flex items-center gap-2 shadow-sm mt-auto">
                 <span className="text-[6px] font-bold text-black/40 uppercase tracking-[0.2em] pl-2 shrink-0">Trusted by</span>
                 <div className="h-2 w-px bg-black/10" />
                 <div className="flex items-center justify-between flex-1 pr-3 opacity-40 grayscale pointer-events-none select-none">
@@ -120,8 +121,8 @@ export default function Home() {
 
             {/* Right Group: Existing Image Overlay + Booking Card */}
             <div className="flex flex-col md:flex-row items-center justify-end gap-0">
-              {/* Hero Overlay Image */}
-              <div className="relative w-full md:w-[600px] aspect-[16/10] md:-mr-48 md:mt-12 z-20 pointer-events-none animate-in fade-in slide-in-from-right-12 duration-1000 ease-out group">
+              {/* Hero Overlay Image - Shifted slightly left by decreasing the negative right margin */}
+              <div className="relative w-full md:w-[600px] aspect-[16/10] md:-mr-40 md:mt-12 z-20 pointer-events-none animate-in fade-in slide-in-from-right-12 duration-1000 ease-out group">
                 {/* Vertically Aligned Background Shape */}
                 <div className="absolute top-[0%] bottom-[5%] left-[25%] right-[25%] bg-blue-100 rounded-[5rem] -z-10 opacity-80" />
                 
