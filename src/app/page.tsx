@@ -48,74 +48,73 @@ export default function Home() {
         >
           <div className="w-full flex flex-col md:flex-row items-center justify-between gap-12 md:gap-4">
             
-            {/* Left Content Area: New Strategic Branding - Optimized Size */}
-            <div className="flex-1 flex flex-col items-start text-left gap-6 animate-in fade-in slide-in-from-left-12 duration-1000 ease-out z-30">
+            {/* Left Content Area: New Strategic Branding - Size Reduced by Half */}
+            <div className="flex-1 flex flex-col items-start text-left gap-3 animate-in fade-in slide-in-from-left-12 duration-1000 ease-out z-30">
               
               {/* Clarity Badge */}
-              <div className="flex items-center gap-3 bg-white border border-black/5 rounded-full px-3 py-1 shadow-sm">
-                <div className="bg-[#f5b800] text-white px-2.5 py-0.5 rounded-full text-[9px] font-bold tracking-widest uppercase">
+              <div className="flex items-center gap-1.5 bg-white border border-black/5 rounded-full px-2 py-0.5 shadow-sm">
+                <div className="bg-[#f5b800] text-white px-1.5 py-0.25 rounded-full text-[7px] font-bold tracking-widest uppercase">
                   CLARITY
                 </div>
-                <span className="text-[10px] font-semibold text-black/60 tracking-tight">Starts with the Right Experts!</span>
+                <span className="text-[8px] font-semibold text-black/60 tracking-tight">Starts with the Right Experts!</span>
               </div>
 
               {/* Strategy Session Headline */}
               <div className="space-y-1">
-                <h1 className="text-4xl md:text-6xl font-black text-black leading-[0.85] tracking-tighter">
+                <h1 className="text-xl md:text-3xl font-black text-black leading-[0.85] tracking-tighter">
                   Digital Marketing <br />
                   <span className="font-light text-black/80">Strategy Session</span>
                 </h1>
-                <div className="w-16 h-1 bg-[#f5b800] mt-3" />
+                <div className="w-8 h-0.5 bg-[#f5b800] mt-1.5" />
               </div>
 
               {/* Sub-headline / Offer */}
-              <p className="text-xs md:text-sm font-medium text-black/40 max-w-sm leading-relaxed">
+              <p className="text-[10px] md:text-xs font-medium text-black/40 max-w-xs leading-relaxed">
                 Book a <span className="text-[#f5b800] font-bold">FREE Consultation</span> with <br />
-                <span className="text-black font-bold border-b-2 border-black/10 pb-0.5">NextSaaS AI Strategy Experts</span>
+                <span className="text-black font-bold border-b border-black/10 pb-0.5">NextSaaS AI Strategy Experts</span>
               </p>
 
               {/* Features Grid */}
-              <div className="grid grid-cols-3 gap-4 w-full max-w-lg py-2">
-                <div className="flex flex-col items-center text-center gap-2 group">
-                  <div className="w-11 h-11 rounded-full border border-black/5 flex items-center justify-center bg-white shadow-sm transition-transform group-hover:scale-110 duration-300">
-                    <Users className="w-5 h-5 text-black" />
+              <div className="grid grid-cols-3 gap-2 w-full max-w-sm py-1">
+                <div className="flex flex-col items-center text-center gap-1.5 group">
+                  <div className="w-8 h-8 rounded-full border border-black/5 flex items-center justify-center bg-white shadow-sm transition-transform group-hover:scale-110 duration-300">
+                    <Users className="w-3.5 h-3.5 text-black" />
                   </div>
                   <div>
-                    <h4 className="text-[10px] font-bold text-black uppercase tracking-wider">Expert Guidance</h4>
-                    <p className="text-[8px] text-black/40 mt-0.5 font-medium">Top industry strategists</p>
+                    <h4 className="text-[8px] font-bold text-black uppercase tracking-wider">Expert Guidance</h4>
+                    <p className="text-[7px] text-black/40 mt-0.5 font-medium">Top industry strategists</p>
                   </div>
                 </div>
-                <div className="flex flex-col items-center text-center gap-2 group">
-                  <div className="w-11 h-11 rounded-full border border-black/5 flex items-center justify-center bg-white shadow-sm transition-transform group-hover:scale-110 duration-300">
-                    <Target className="w-5 h-5 text-black" />
+                <div className="flex flex-col items-center text-center gap-1.5 group">
+                  <div className="w-8 h-8 rounded-full border border-black/5 flex items-center justify-center bg-white shadow-sm transition-transform group-hover:scale-110 duration-300">
+                    <Target className="w-3.5 h-3.5 text-black" />
                   </div>
                   <div>
-                    <h4 className="text-[10px] font-bold text-black uppercase tracking-wider">Strategic Plan</h4>
-                    <p className="text-[8px] text-black/40 mt-0.5 font-medium">Custom-built roadmaps</p>
+                    <h4 className="text-[8px] font-bold text-black uppercase tracking-wider">Strategic Plan</h4>
+                    <p className="text-[7px] text-black/40 mt-0.5 font-medium">Custom-built roadmaps</p>
                   </div>
                 </div>
-                <div className="flex flex-col items-center text-center gap-2 group">
-                  <div className="w-11 h-11 rounded-full border border-black/5 flex items-center justify-center bg-white shadow-sm transition-transform group-hover:scale-110 duration-300">
-                    <TrendingUp className="w-5 h-5 text-black" />
+                <div className="flex flex-col items-center text-center gap-1.5 group">
+                  <div className="w-8 h-8 rounded-full border border-black/5 flex items-center justify-center bg-white shadow-sm transition-transform group-hover:scale-110 duration-300">
+                    <TrendingUp className="w-3.5 h-3.5 text-black" />
                   </div>
                   <div>
-                    <h4 className="text-[10px] font-bold text-black uppercase tracking-wider">Growth Focus</h4>
-                    <p className="text-[8px] text-black/40 mt-0.5 font-medium">Measurable ROI & scale</p>
+                    <h4 className="text-[8px] font-bold text-black uppercase tracking-wider">Growth Focus</h4>
+                    <p className="text-[7px] text-black/40 mt-0.5 font-medium">Measurable ROI & scale</p>
                   </div>
                 </div>
               </div>
 
               {/* Trusted Brands Pill */}
-              <div className="w-full max-w-md bg-white/40 backdrop-blur-sm border border-black/5 rounded-full p-2.5 flex items-center gap-4 shadow-sm mt-2">
-                <span className="text-[7px] font-bold text-black/40 uppercase tracking-[0.2em] pl-3 shrink-0">Trusted by</span>
-                <div className="h-3 w-px bg-black/10" />
-                <div className="flex items-center justify-between flex-1 pr-4 opacity-40 grayscale pointer-events-none select-none">
-                  <span className="text-[9px] font-black tracking-tighter">TATA</span>
-                  <span className="text-[9px] font-bold tracking-tighter italic">Coca-Cola</span>
-                  <span className="text-[9px] font-black tracking-tighter">SBI</span>
-                  <span className="text-[9px] font-black tracking-tighter italic">BAJAJ</span>
-                  <span className="text-[9px] font-black tracking-tighter">Apollo</span>
-                  <span className="text-[7px] font-medium text-black/40">& more</span>
+              <div className="w-full max-w-xs bg-white/40 backdrop-blur-sm border border-black/5 rounded-full p-1.5 flex items-center gap-2 shadow-sm mt-1">
+                <span className="text-[6px] font-bold text-black/40 uppercase tracking-[0.2em] pl-2 shrink-0">Trusted by</span>
+                <div className="h-2 w-px bg-black/10" />
+                <div className="flex items-center justify-between flex-1 pr-3 opacity-40 grayscale pointer-events-none select-none">
+                  <span className="text-[7px] font-black tracking-tighter">TATA</span>
+                  <span className="text-[7px] font-bold tracking-tighter italic">Coca-Cola</span>
+                  <span className="text-[7px] font-black tracking-tighter">SBI</span>
+                  <span className="text-[7px] font-black tracking-tighter italic">BAJAJ</span>
+                  <span className="text-[7px] font-black tracking-tighter">Apollo</span>
                 </div>
               </div>
             </div>
