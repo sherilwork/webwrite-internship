@@ -154,19 +154,6 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-
-              {/* Trusted Brands Pill */}
-              <div className="w-full max-w-xs bg-white/40 backdrop-blur-sm border border-black/5 rounded-full p-1.5 flex items-center gap-2 shadow-sm mt-auto mb-2">
-                <span className="text-[6px] font-bold text-black/40 uppercase tracking-[0.2em] pl-2 shrink-0">Trusted by</span>
-                <div className="h-2 w-px bg-black/10" />
-                <div className="flex items-center justify-between flex-1 pr-3 opacity-40 grayscale pointer-events-none select-none">
-                  <span className="text-[7px] font-black tracking-tighter">TATA</span>
-                  <span className="text-[7px] font-bold tracking-tighter italic">Coca-Cola</span>
-                  <span className="text-[7px] font-black tracking-tighter">SBI</span>
-                  <span className="text-[7px] font-black tracking-tighter italic">BAJAJ</span>
-                  <span className="text-[7px] font-black tracking-tighter">Apollo</span>
-                </div>
-              </div>
             </div>
 
             {/* Right Group: Existing Image Overlay + Booking Card */}
