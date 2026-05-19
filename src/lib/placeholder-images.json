@@ -5,6 +5,12 @@
       "description": "Digital Consultation Illustration",
       "imageUrl": "/hero-illustration.png",
       "imageHint": "medical consultation"
+    },
+    {
+      "id": "hero-overlay",
+      "description": "Hero Background Overlay",
+      "imageUrl": "/hero-overlay.png",
+      "imageHint": "abstract overlay"
     }
   ]
 }

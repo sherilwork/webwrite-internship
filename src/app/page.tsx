@@ -2,11 +2,13 @@
 "use client"
 
 import React, { useState } from "react"
+import Image from "next/image"
 import { GridBackground } from "@/components/GridBackground"
 import { HeroPreview } from "@/components/HeroPreview"
 import { Navigation } from "@/components/Navigation"
 import { Toaster } from "@/components/ui/toaster"
 import { BookingCard } from "@/components/BookingCard"
+import { PlaceHolderImages } from "@/lib/placeholder-images"
 
 export default function Home() {
   const [settings] = useState({
@@ -18,6 +20,8 @@ export default function Home() {
     highlights: true,
     alignment: "right" as "center" | "left" | "right",
   })
+
+  const heroOverlay = PlaceHolderImages.find(img => img.id === 'hero-overlay')
 
   return (
     <main className="relative min-h-screen bg-background text-foreground selection:bg-primary selection:text-primary-foreground">
@@ -38,8 +42,24 @@ export default function Home() {
           bodyText="" 
           alignment={settings.alignment}
         >
-          {/* Explicitly using the requested illustration path */}
-          <BookingCard imageUrl="/hero-illustration.png" />
+          <div className="w-full flex flex-col md:flex-row items-center justify-between gap-12">
+            {/* Left Side: Hero Overlay Image */}
+            <div className="relative w-full md:w-1/2 aspect-square max-w-[500px] animate-in fade-in slide-in-from-left-12 duration-1000 ease-out">
+              <Image 
+                src={heroOverlay?.imageUrl || "/hero-overlay.png"}
+                alt="Hero Visual Overlay"
+                fill
+                className="object-contain"
+                priority
+                data-ai-hint="abstract overlay"
+              />
+            </div>
+
+            {/* Right Side: Booking Card */}
+            <div className="w-full md:w-auto flex justify-end">
+              <BookingCard imageUrl="/hero-illustration.png" />
+            </div>
+          </div>
         </HeroPreview>
       </GridBackground>
       
