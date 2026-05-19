@@ -1,4 +1,3 @@
-
 "use client"
 
 import * as React from "react"
@@ -83,7 +82,7 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
   const isPrevDisabled = isSameMonth(currentMonth, today)
 
   return (
-    <div className="w-full max-w-xl ml-auto overflow-hidden rounded-[1.25rem] bg-[#121212] shadow-2xl border border-white/10 flex flex-col md:flex-row transition-all duration-700 animate-in fade-in slide-in-from-bottom-8 h-[420px]">
+    <div className="w-full max-w-xl ml-auto overflow-hidden rounded-[1.25rem] bg-white shadow-2xl border border-black/5 flex flex-col md:flex-row transition-all duration-700 animate-in fade-in slide-in-from-bottom-8 h-[420px]">
       {/* Left Panel: Branding -> Time Selection -> Details Form */}
       <div className="w-full md:w-[44%] bg-white p-5 flex flex-col justify-between border-r border-black/5 h-full relative overflow-hidden">
         {!selectedDate ? (
@@ -275,20 +274,20 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
         )}
       </div>
 
-      {/* Right Panel: Calendar */}
-      <div className="flex-1 p-5 text-white bg-gradient-to-br from-[#1c1c1c] via-[#121212] to-[#0a0a0a] flex flex-col h-full">
+      {/* Right Panel: Calendar (Minimalist White Theme) */}
+      <div className="flex-1 p-5 text-black bg-white flex flex-col h-full">
         <div className="flex items-center justify-between mb-3">
-          <h4 className="text-[9px] font-bold uppercase tracking-widest opacity-60">Select Date</h4>
+          <h4 className="text-[9px] font-bold uppercase tracking-widest text-black/40">Select Date</h4>
           <div className="flex items-center gap-2">
             <div className="flex items-center gap-1.5">
-              <div className="p-1 bg-white/5 rounded-md border border-white/10">
+              <div className="p-1 bg-black/5 rounded-md border border-black/5">
                 <CalendarIcon className="w-2.5 h-2.5 text-[#f5b800]" />
               </div>
               <div className="text-left">
                 <p className="text-[8px] font-bold text-[#f5b800] uppercase leading-none">
                   {format(currentMonth, 'MMM yyyy')}
                 </p>
-                <p className="text-[7px] font-normal opacity-40 leading-none mt-0.5">Available slots</p>
+                <p className="text-[7px] font-normal text-black/30 leading-none mt-0.5">Available slots</p>
               </div>
             </div>
             <div className="flex gap-0.5">
@@ -297,14 +296,14 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
                 disabled={isPrevDisabled}
                 className={cn(
                   "p-0.5 rounded-full transition-colors",
-                  isPrevDisabled ? "opacity-10 cursor-not-allowed" : "hover:bg-white/5 opacity-40"
+                  isPrevDisabled ? "opacity-10 cursor-not-allowed" : "hover:bg-black/5 text-black/40"
                 )}
               >
                 <ChevronLeft className="w-3.5 h-3.5" />
               </button>
               <button 
                 onClick={handleNextMonth}
-                className="p-0.5 hover:bg-white/5 rounded-full transition-colors opacity-40"
+                className="p-0.5 hover:bg-black/5 rounded-full transition-colors text-black/40"
               >
                 <ChevronRight className="w-3.5 h-3.5" />
               </button>
@@ -315,7 +314,7 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
         {/* Calendar Grid */}
         <div className="grid grid-cols-7 gap-y-1 mb-3">
           {days.map((day) => (
-            <div key={day} className="text-center text-[7px] font-bold text-white tracking-widest pb-1">
+            <div key={day} className="text-center text-[7px] font-bold text-black/60 tracking-widest pb-1">
               {day}
             </div>
           ))}
@@ -342,7 +341,7 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
                     ? "bg-[#f5b800] text-black shadow-[0_0_12px_rgba(245,184,0,0.3)] font-bold" 
                     : isPast
                       ? "opacity-20 cursor-not-allowed"
-                      : "bg-white/[0.03] hover:bg-white/10 text-white/60"
+                      : "bg-black/[0.03] hover:bg-black/5 text-black/60"
                 )}
               >
                 {date}
@@ -352,14 +351,14 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
         </div>
 
         {/* Footer: Time Zone */}
-        <div className="flex items-center justify-between mt-auto pt-3 border-t border-white/5">
+        <div className="flex items-center justify-between mt-auto pt-3 border-t border-black/5">
           <div className="flex items-center gap-1.5">
             <Globe className="w-2.5 h-2.5 text-[#f5b800]" />
             <span className="text-[8px] font-bold text-[#f5b800] uppercase tracking-wide">Time Zone</span>
           </div>
-          <div className="bg-white/5 px-2.5 py-1 rounded-full border border-white/10 flex items-center gap-1.5">
-            <span className="text-[8px] font-medium opacity-60">Asia/Kolkata</span>
-            <div className="w-3.5 h-2.5 bg-white/10 rounded-sm flex flex-col overflow-hidden">
+          <div className="bg-black/5 px-2.5 py-1 rounded-full border border-black/10 flex items-center gap-1.5">
+            <span className="text-[8px] font-medium text-black/50">Asia/Kolkata</span>
+            <div className="w-3.5 h-2.5 bg-black/10 rounded-sm flex flex-col overflow-hidden">
               <div className="flex-1 bg-[#FF9933]" />
               <div className="flex-1 bg-white" />
               <div className="flex-1 bg-[#138808]" />
