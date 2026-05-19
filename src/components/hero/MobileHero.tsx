@@ -1,7 +1,6 @@
 "use client"
 
 import React, { useState, useEffect } from "react"
-import { Users, Target, TrendingUp } from "lucide-react"
 import { GridBackground } from "@/components/GridBackground"
 import { Navigation } from "@/components/Navigation"
 import { SubHeader } from "@/components/SubHeader"
@@ -104,37 +103,6 @@ export function MobileHero() {
           <div className="flex flex-col items-center gap-6">
             <div className="w-full max-w-sm z-30">
               <BookingCard imageUrl="/hero-illustration.png" />
-            </div>
-          </div>
-
-          {/* Features Grid */}
-          <div className="grid grid-cols-1 gap-4 w-full max-w-xs mx-auto pt-6 pb-8">
-            <div className="flex items-center gap-4 text-left">
-              <div className="w-10 h-10 rounded-full border border-black/5 flex items-center justify-center bg-white shadow-sm shrink-0">
-                <Users className="w-4 h-4 text-black" />
-              </div>
-              <div>
-                <h4 className="text-[10px] font-bold text-black uppercase tracking-wider">Expert Guidance</h4>
-                <p className="text-[9px] text-black/40 mt-0.5 font-medium leading-tight">Top industry strategists</p>
-              </div>
-            </div>
-            <div className="flex items-center gap-4 text-left">
-              <div className="w-10 h-10 rounded-full border border-black/5 flex items-center justify-center bg-white shadow-sm shrink-0">
-                <Target className="w-4 h-4 text-black" />
-              </div>
-              <div>
-                <h4 className="text-[10px] font-bold text-black uppercase tracking-wider">Strategic Plan</h4>
-                <p className="text-[9px] text-black/40 mt-0.5 font-medium leading-tight">Custom-built roadmaps</p>
-              </div>
-            </div>
-            <div className="flex items-center gap-4 text-left">
-              <div className="w-10 h-10 rounded-full border border-black/5 flex items-center justify-center bg-white shadow-sm shrink-0">
-                <TrendingUp className="w-4 h-4 text-black" />
-              </div>
-              <div>
-                <h4 className="text-[10px] font-bold text-black uppercase tracking-wider">Growth Focus</h4>
-                <p className="text-[9px] text-black/40 mt-0.5 font-medium leading-tight">Measurable ROI & scale</p>
-              </div>
             </div>
           </div>
         </div>
