@@ -3,7 +3,7 @@
 
 import * as React from "react"
 import { useState, useEffect, useMemo } from "react"
-import { ChevronLeft, ChevronRight, Globe, Calendar as CalendarIcon } from "lucide-react"
+import { ChevronLeft, ChevronRight, Globe, Calendar as CalendarIcon, Clock, ArrowLeft } from "lucide-react"
 import { 
   format, 
   addMonths, 
@@ -19,17 +19,27 @@ import {
 import { cn } from "@/lib/utils"
 import Image from "next/image"
 import { PlaceHolderImages } from "@/lib/placeholder-images"
+import { ScrollArea } from "@/components/ui/scroll-area"
 
 interface BookingCardProps {
   imageUrl?: string
 }
+
+const TIME_SLOTS = [
+  "09:00 AM", "09:30 AM", "10:00 AM", "10:30 AM", 
+  "11:00 AM", "11:30 AM", "12:00 PM", "12:30 PM",
+  "01:00 PM", "01:30 PM", "02:00 PM", "02:30 PM",
+  "03:00 PM", "03:30 PM", "04:00 PM", "04:30 PM",
+  "05:00 PM", "05:30 PM"
+]
 
 export function BookingCard({ imageUrl }: BookingCardProps) {
   const days = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"]
   
   // State for interactive calendar
   const [currentMonth, setCurrentMonth] = useState(new Date())
-  const [selectedDate, setSelectedDate] = useState<Date | null>(new Date())
+  const [selectedDate, setSelectedDate] = useState<Date | null>(null)
+  const [selectedTime, setSelectedTime] = useState<string | null>(null)
   const [today] = useState(startOfDay(new Date()))
 
   // Calculate calendar grid
@@ -61,42 +71,101 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
 
   return (
     <div className="w-full max-w-2xl ml-auto overflow-hidden rounded-[1.5rem] bg-[#121212] shadow-2xl border border-white/10 flex flex-col md:flex-row transition-all duration-700 animate-in fade-in slide-in-from-bottom-8">
-      {/* Left Panel: Brand & Info */}
-      <div className="w-full md:w-[40%] bg-white p-6 flex flex-col items-center justify-between text-center border-r border-black/5">
-        <div className="space-y-4 w-full">
-          {/* Text Content */}
-          <div className="space-y-3 pt-2">
-            <h3 className="text-black text-xl font-bold uppercase tracking-tight leading-none">
-              BOOK A FREE CONSULTATION
-            </h3>
-            <p className="text-black/50 text-[10px] font-semibold uppercase tracking-wider leading-tight px-4">
-              with India&apos;s leading digital marketing agency
-            </p>
-            <div className="w-16 h-1 bg-[#f5b800] mx-auto mt-2" />
-          </div>
+      {/* Left Panel: Brand & Info OR Select Time */}
+      <div className="w-full md:w-[40%] bg-white p-6 flex flex-col justify-between border-r border-black/5 min-h-[400px]">
+        {!selectedDate ? (
+          <div className="flex flex-col items-center text-center justify-between h-full w-full">
+            <div className="space-y-4 w-full">
+              <div className="space-y-3 pt-2">
+                <h3 className="text-black text-xl font-bold uppercase tracking-tight leading-none">
+                  BOOK A FREE CONSULTATION
+                </h3>
+                <p className="text-black/50 text-[10px] font-semibold uppercase tracking-wider leading-tight px-4">
+                  with India's leading digital marketing agency
+                </p>
+                <div className="w-16 h-1 bg-[#f5b800] mx-auto mt-2" />
+              </div>
 
-          {/* Illustration section */}
-          <div className="relative w-full aspect-video rounded-lg overflow-hidden mt-6 bg-muted">
-            <Image 
-              src={finalImageUrl}
-              alt="Consultation Illustration"
-              fill
-              className="object-cover"
-              data-ai-hint="medical consultation"
-            />
-          </div>
-        </div>
+              <div className="relative w-full aspect-video rounded-lg overflow-hidden mt-6 bg-muted">
+                <Image 
+                  src={finalImageUrl}
+                  alt="Consultation Illustration"
+                  fill
+                  className="object-cover"
+                  data-ai-hint="medical consultation"
+                />
+              </div>
+            </div>
 
-        <div className="mt-4 flex items-center gap-2">
-           <div className="w-1.5 h-1.5 rounded-full bg-[#f5b800]" />
-           <span className="text-[8px] font-semibold text-black/30 uppercase tracking-widest">Online consultation</span>
-        </div>
+            <div className="mt-4 flex items-center gap-2">
+               <div className="w-1.5 h-1.5 rounded-full bg-[#f5b800]" />
+               <span className="text-[8px] font-semibold text-black/30 uppercase tracking-widest">Online consultation</span>
+            </div>
+          </div>
+        ) : (
+          <div className="flex flex-col h-full animate-in fade-in slide-in-from-left-4 duration-500">
+            <div className="flex items-center gap-2 mb-6">
+              <button 
+                onClick={() => {
+                  setSelectedDate(null)
+                  setSelectedTime(null)
+                }}
+                className="p-1.5 hover:bg-black/5 rounded-full transition-colors text-black/40 hover:text-black"
+              >
+                <ArrowLeft className="w-4 h-4" />
+              </button>
+              <h3 className="text-black text-sm font-bold uppercase tracking-wider">Select Time</h3>
+            </div>
+
+            <div className="mb-4">
+              <p className="text-[10px] font-bold text-[#f5b800] uppercase tracking-widest mb-1">
+                {format(selectedDate, 'EEEE, MMMM d')}
+              </p>
+              <div className="h-px w-full bg-black/5" />
+            </div>
+
+            <ScrollArea className="flex-1 -mx-2 px-2 h-[280px]">
+              <div className="space-y-2 py-2">
+                {TIME_SLOTS.map((time) => (
+                  <button
+                    key={time}
+                    onClick={() => setSelectedTime(time)}
+                    className={cn(
+                      "w-full py-3 px-4 rounded-xl text-xs font-semibold transition-all border flex items-center justify-between group",
+                      selectedTime === time
+                        ? "bg-[#f5b800] border-[#f5b800] text-black shadow-md"
+                        : "bg-white border-black/5 text-black/60 hover:border-[#f5b800] hover:text-black"
+                    )}
+                  >
+                    <span>{time}</span>
+                    <Clock className={cn(
+                      "w-3.5 h-3.5 opacity-40 group-hover:opacity-100 transition-opacity",
+                      selectedTime === time && "opacity-100"
+                    )} />
+                  </button>
+                ))}
+              </div>
+            </ScrollArea>
+
+            <button
+              disabled={!selectedTime}
+              className={cn(
+                "mt-6 w-full py-3 rounded-full text-xs font-bold uppercase tracking-widest transition-all",
+                selectedTime
+                  ? "bg-black text-white hover:bg-black/80"
+                  : "bg-black/5 text-black/20 cursor-not-allowed"
+              )}
+            >
+              Confirm Appointment
+            </button>
+          </div>
+        )}
       </div>
 
       {/* Right Panel: Calendar */}
       <div className="flex-1 p-6 text-white bg-gradient-to-br from-[#1c1c1c] via-[#121212] to-[#0a0a0a]">
         <div className="flex items-center justify-between mb-6">
-          <h4 className="text-[10px] font-bold uppercase tracking-widest opacity-60">Select Date & Time</h4>
+          <h4 className="text-[10px] font-bold uppercase tracking-widest opacity-60">Select Date</h4>
           <div className="flex items-center gap-2">
             <div className="flex items-center gap-1.5">
               <div className="p-1 bg-white/5 rounded-md border border-white/10">
@@ -104,9 +173,9 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
               </div>
               <div className="text-left">
                 <p className="text-[8px] font-bold text-[#f5b800] uppercase">
-                  {selectedDate ? format(selectedDate, 'eeee, d') : 'Select Date'}
+                  {format(currentMonth, 'MMMM yyyy')}
                 </p>
-                <p className="text-[10px] font-normal opacity-40">{format(currentMonth, 'MMMM yyyy')}</p>
+                <p className="text-[10px] font-normal opacity-40">Available slots</p>
               </div>
             </div>
             <div className="flex gap-0.5">
@@ -149,7 +218,10 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
               <button
                 key={`date-${date}`}
                 disabled={isPast}
-                onClick={() => setSelectedDate(currentDayDate)}
+                onClick={() => {
+                  setSelectedDate(currentDayDate)
+                  setSelectedTime(null) // Reset time when date changes
+                }}
                 className={cn(
                   "h-7 w-7 mx-auto flex items-center justify-center rounded-full text-[10px] font-medium transition-all",
                   isSelected 
