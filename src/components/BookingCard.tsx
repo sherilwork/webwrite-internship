@@ -1,3 +1,4 @@
+
 "use client"
 
 import * as React from "react"
@@ -284,7 +285,7 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
                 <CalendarIcon className="w-3.5 h-3.5 text-[#f5b800]" />
               </div>
               <div className="text-left">
-                <p className="text-[11px] font-black text-[#f5b800] uppercase tracking-wider leading-none">
+                <p className="text-[14px] font-black text-[#f5b800] uppercase tracking-wider leading-none">
                   {format(currentMonth, 'MMMM yyyy')}
                 </p>
                 <p className="text-[8px] font-bold text-black/20 leading-none mt-1 uppercase tracking-tighter">Available slots</p>
@@ -312,7 +313,7 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
         </div>
 
         {/* Calendar Grid */}
-        <div className="grid grid-cols-7 gap-y-1 mb-3">
+        <div className="grid grid-cols-7 gap-y-1 mb-3 mt-6">
           {days.map((day) => (
             <div key={day} className="text-center text-[7px] font-bold text-black/60 tracking-widest pb-1">
               {day}
