@@ -74,8 +74,8 @@ export default function Home() {
                 <span className="text-black font-bold border-b border-black/10 pb-0.5">NextSaaS AI Strategy Experts</span>
               </p>
 
-              {/* Features Grid */}
-              <div className="grid grid-cols-3 gap-2 w-full max-w-sm py-4">
+              {/* Features Grid - Moved to bottom area */}
+              <div className="grid grid-cols-3 gap-2 w-full max-w-sm py-4 mt-auto">
                 <div className="flex flex-col items-center text-center gap-1.5 group">
                   <div className="w-8 h-8 rounded-full border border-black/5 flex items-center justify-center bg-white shadow-sm transition-transform group-hover:scale-110 duration-300">
                     <Users className="w-3.5 h-3.5 text-black" />
@@ -105,8 +105,8 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* Trusted Brands Pill - Shifted to bottom */}
-              <div className="w-full max-w-xs bg-white/40 backdrop-blur-sm border border-black/5 rounded-full p-1.5 flex items-center gap-2 shadow-sm mt-auto">
+              {/* Trusted Brands Pill */}
+              <div className="w-full max-w-xs bg-white/40 backdrop-blur-sm border border-black/5 rounded-full p-1.5 flex items-center gap-2 shadow-sm">
                 <span className="text-[6px] font-bold text-black/40 uppercase tracking-[0.2em] pl-2 shrink-0">Trusted by</span>
                 <div className="h-2 w-px bg-black/10" />
                 <div className="flex items-center justify-between flex-1 pr-3 opacity-40 grayscale pointer-events-none select-none">
