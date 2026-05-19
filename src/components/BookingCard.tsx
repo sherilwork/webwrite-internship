@@ -1,3 +1,4 @@
+
 "use client"
 
 import * as React from "react"
@@ -22,6 +23,7 @@ import { ScrollArea } from "@/components/ui/scroll-area"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
+import { useIsMobile } from "@/hooks/use-mobile"
 
 interface BookingCardProps {
   imageUrl?: string
@@ -38,6 +40,7 @@ const TIME_SLOTS = [
 ]
 
 export function BookingCard({ imageUrl }: BookingCardProps) {
+  const isMobile = useIsMobile()
   const days = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"]
   
   // State for interactive calendar
@@ -103,288 +106,309 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
     )
   }
 
-  return (
-    <div className="w-full max-w-xl ml-auto overflow-hidden rounded-[1.25rem] bg-white shadow-2xl border border-black/5 flex flex-col md:flex-row transition-all duration-700 animate-in fade-in slide-in-from-bottom-8 md:h-[420px]">
-      {/* Left Panel: Branding -> Time Selection -> Details Form */}
-      <div className="w-full md:w-[44%] bg-white p-5 flex flex-col justify-between border-b md:border-b-0 md:border-r border-black/5 min-h-[380px] md:h-full relative overflow-hidden">
-        {!selectedDate ? (
-          // STEP 1: Branding / Illustration
-          <div className="flex flex-col items-center text-center justify-between h-full w-full animate-in fade-in duration-500 pt-2 pb-1">
-            <div className="flex flex-col items-center w-full">
-              <div className="space-y-1 w-full mb-3">
-                <h3 className="text-black text-xl font-bold uppercase tracking-tight leading-none">
-                  FREE CONSULTATION
-                </h3>
-                <p className="text-black/50 text-[11px] font-semibold uppercase tracking-wider leading-tight px-2">
-                  with our expert digital marketing team
-                </p>
-                <div className="w-14 h-0.5 bg-[#f5b800] mx-auto mt-2" />
+  const renderSections = () => (
+    <div className={cn(
+      "bg-white p-5 flex flex-col justify-between border-b md:border-b-0 md:border-r border-black/5 min-h-[380px] md:h-full relative overflow-hidden",
+      isMobile ? "w-full" : "w-full md:w-[44%]"
+    )}>
+      {!selectedDate ? (
+        // STEP 1: Branding / Illustration
+        <div className="flex flex-col items-center text-center justify-between h-full w-full animate-in fade-in duration-500 pt-2 pb-1">
+          <div className="flex flex-col items-center w-full">
+            <div className="space-y-1 w-full mb-3">
+              <h3 className="text-black text-xl font-bold uppercase tracking-tight leading-none">
+                FREE CONSULTATION
+              </h3>
+              <p className="text-black/50 text-[11px] font-semibold uppercase tracking-wider leading-tight px-2">
+                with our expert digital marketing team
+              </p>
+              <div className="w-14 h-0.5 bg-[#f5b800] mx-auto mt-2" />
+            </div>
+
+            <div className="flex items-center justify-center gap-1.5 mb-6">
+              <div className="w-1.5 h-1.5 rounded-full bg-[#f5b800]" />
+              <span className="text-[8px] font-semibold text-black/40 uppercase tracking-widest">Online consultation</span>
+            </div>
+
+            <div className="relative w-full aspect-[4/3] mt-auto">
+              <div className="absolute top-[10%] left-[15%] right-[5%] bottom-[5%] bg-blue-50 rounded-[2rem] -z-10" />
+              <div className="relative w-full h-full rounded-lg overflow-hidden bg-transparent">
+                <Image 
+                  src={finalImageUrl}
+                  alt="Consultation Illustration"
+                  fill
+                  className="object-contain"
+                  data-ai-hint="professional consultant"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div className="flex flex-col items-center justify-center gap-2 w-full pt-4 border-t border-black/5">
+            <div className="flex items-center gap-1.5 text-black/60">
+              <Phone className="w-2.5 h-2.5 text-[#f5b800]" />
+              <span className="text-[8px] font-bold uppercase tracking-wider leading-none">+1 (555) 000-1234</span>
+            </div>
+            <div className="flex items-center gap-1.5 text-black/60">
+              <Mail className="w-2.5 h-2.5 text-[#f5b800]" />
+              <span className="text-[8px] font-bold uppercase tracking-wider leading-none">contact@webwrite.services</span>
+            </div>
+          </div>
+        </div>
+      ) : !isDetailsStep ? (
+        // STEP 2: Time Selection
+        <div className="flex flex-col h-full animate-in fade-in slide-in-from-left-4 duration-500">
+          <div className="flex items-center gap-2 mb-3">
+            <button 
+              onClick={() => {
+                setSelectedDate(null)
+                setSelectedTime(null)
+              }}
+              className="p-1.5 hover:bg-black/[0.03] rounded-full transition-colors text-black/40 hover:text-black"
+            >
+              <ArrowLeft className="w-3.5 h-3.5" />
+            </button>
+            <h3 className="text-black text-xs font-bold uppercase tracking-wider">Select Time</h3>
+          </div>
+
+          <div className="mb-2">
+            <p className="text-[9px] font-bold text-[#f5b800] uppercase tracking-widest mb-1">
+              {format(selectedDate, 'EEEE, MMMM d')}
+            </p>
+            <div className="h-px w-full bg-black/5" />
+          </div>
+
+          <ScrollArea className="flex-1 -mx-2 px-2">
+            <div className="space-y-1.5 py-1">
+              {TIME_SLOTS.map((time) => (
+                <button
+                  key={time}
+                  onClick={() => setSelectedTime(time)}
+                  className={cn(
+                    "w-full py-2 px-3 rounded-lg text-[11px] font-semibold transition-all border flex items-center justify-between group",
+                    selectedTime === time
+                      ? "bg-[#f5b800] border-[#f5b800] text-black shadow-sm"
+                      : "bg-white border-black/5 text-black/60 hover:border-[#f5b800] hover:text-black"
+                  )}
+                >
+                  <span>{time}</span>
+                  <Clock className={cn(
+                    "w-3 h-3 opacity-20 group-hover:opacity-100 transition-opacity",
+                    selectedTime === time && "opacity-100"
+                  )} />
+                </button>
+              ))}
+            </div>
+          </ScrollArea>
+
+          <button
+            disabled={!selectedTime}
+            onClick={() => setIsDetailsStep(true)}
+            className={cn(
+              "mt-3 w-full py-2.5 rounded-full text-[10px] font-bold uppercase tracking-widest transition-all",
+              selectedTime
+                ? "bg-black text-white hover:bg-black/90"
+                : "bg-black/5 text-black/20 cursor-not-allowed"
+            )}
+          >
+            Next Step
+          </button>
+        </div>
+      ) : (
+        // STEP 3: Details Form
+        <div className="flex flex-col h-full animate-in fade-in slide-in-from-left-4 duration-500">
+          <div className="flex items-center gap-2 mb-3">
+            <button 
+              onClick={() => setIsDetailsStep(false)}
+              className="p-1.5 hover:bg-black/[0.03] rounded-full transition-colors text-black/40 hover:text-black"
+            >
+              <ArrowLeft className="w-3.5 h-3.5" />
+            </button>
+            <h3 className="text-black text-xs font-bold uppercase tracking-wider">Your Details</h3>
+          </div>
+
+          <div className="mb-3">
+            <p className="text-[9px] font-bold text-[#f5b800] uppercase tracking-widest mb-1 flex items-center gap-1.5">
+              <CalendarIcon className="w-2.5 h-2.5" />
+              {selectedDate ? format(selectedDate, 'MMM d') : ''} @ {selectedTime}
+            </p>
+            <div className="h-px w-full bg-black/5" />
+          </div>
+
+          <ScrollArea className="flex-1 -mx-2 px-2">
+            <div className="space-y-3 py-1">
+              <div className="space-y-1">
+                <Label htmlFor="name" className="text-[9px] font-bold uppercase tracking-widest text-black/40">Full Name</Label>
+                <div className="relative">
+                  <User className="absolute left-2.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-black/20" />
+                  <Input 
+                    id="name"
+                    placeholder="John Doe" 
+                    className="pl-8 h-9 bg-black/5 border-none focus-visible:ring-1 focus-visible:ring-[#f5b800] text-[11px] font-medium"
+                    value={formData.name}
+                    onChange={(e) => setFormData({...formData, name: e.target.value})}
+                  />
+                </div>
               </div>
 
-              {/* Online consultation badge */}
-              <div className="flex items-center justify-center gap-1.5 mb-6">
-                <div className="w-1.5 h-1.5 rounded-full bg-[#f5b800]" />
-                <span className="text-[8px] font-semibold text-black/40 uppercase tracking-widest">Online consultation</span>
+              <div className="space-y-1">
+                <Label htmlFor="email" className="text-[9px] font-bold uppercase tracking-widest text-black/40">Email Address</Label>
+                <div className="relative">
+                  <Mail className="absolute left-2.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-black/20" />
+                  <Input 
+                    id="email"
+                    type="email"
+                    placeholder="john@example.com" 
+                    className="pl-8 h-9 bg-black/5 border-none focus-visible:ring-1 focus-visible:ring-[#f5b800] text-[11px] font-medium"
+                    value={formData.email}
+                    onChange={(e) => setFormData({...formData, email: e.target.value})}
+                  />
+                </div>
               </div>
 
-              {/* Illustration with background shape like reference */}
-              <div className="relative w-full aspect-[4/3] mt-auto">
-                <div className="absolute top-[10%] left-[15%] right-[5%] bottom-[5%] bg-blue-50 rounded-[2rem] -z-10" />
-                <div className="relative w-full h-full rounded-lg overflow-hidden bg-transparent">
-                  <Image 
-                    src={finalImageUrl}
-                    alt="Consultation Illustration"
-                    fill
-                    className="object-contain"
-                    data-ai-hint="professional consultant"
+              <div className="space-y-1">
+                <Label htmlFor="notes" className="text-[9px] font-bold uppercase tracking-widest text-black/40">Notes</Label>
+                <div className="relative">
+                  <MessageSquare className="absolute left-2.5 top-2.5 w-3.5 h-3.5 text-black/20" />
+                  <Textarea 
+                    id="notes"
+                    placeholder="Project details..." 
+                    className="pl-8 min-h-[60px] bg-black/5 border-none focus-visible:ring-1 focus-visible:ring-[#f5b800] text-[11px] font-medium resize-none"
+                    value={formData.notes}
+                    onChange={(e) => setFormData({...formData, notes: e.target.value})}
                   />
                 </div>
               </div>
             </div>
+          </ScrollArea>
 
-            {/* Contact Information at the bottom, stacked vertically */}
-            <div className="flex flex-col items-center justify-center gap-2 w-full pt-4 border-t border-black/5">
-              <div className="flex items-center gap-1.5 text-black/60">
-                <Phone className="w-2.5 h-2.5 text-[#f5b800]" />
-                <span className="text-[8px] font-bold uppercase tracking-wider leading-none">+1 (555) 000-1234</span>
-              </div>
-              <div className="flex items-center gap-1.5 text-black/60">
-                <Mail className="w-2.5 h-2.5 text-[#f5b800]" />
-                <span className="text-[8px] font-bold uppercase tracking-wider leading-none">contact@webwrite.services</span>
-              </div>
-            </div>
+          <button
+            disabled={!formData.name || !formData.email}
+            className={cn(
+              "mt-3 w-full py-2.5 rounded-full text-[10px] font-bold uppercase tracking-widest transition-all",
+              formData.name && formData.email
+                ? "bg-[#f5b800] text-black hover:opacity-90 shadow-sm"
+                : "bg-black/5 text-black/20 cursor-not-allowed"
+            )}
+          >
+            Confirm Appointment
+          </button>
+        </div>
+      )}
+    </div>
+  )
+
+  const renderCalendar = () => (
+    <div className="flex-1 p-5 text-black bg-white flex flex-col min-h-[400px] md:h-full">
+      <div className="flex items-center justify-between mb-3">
+        <h4 className="text-[10px] font-bold uppercase tracking-[0.15em] text-black/30 text-left">Select Date</h4>
+        <div className="flex items-center gap-3">
+          <div className="text-left">
+            <p className="text-[16px] font-black text-[#f5b800] uppercase tracking-wider leading-none">
+              {currentMonth ? format(currentMonth, 'MMMM yyyy') : ''}
+            </p>
+            <p className="text-[9px] font-bold text-black/20 leading-none mt-1 uppercase tracking-tight">
+              {format(new Date(), 'EEEE, d MMMM yyyy')}
+            </p>
           </div>
-        ) : !isDetailsStep ? (
-          // STEP 2: Time Selection
-          <div className="flex flex-col h-full animate-in fade-in slide-in-from-left-4 duration-500">
-            <div className="flex items-center gap-2 mb-3">
-              <button 
-                onClick={() => {
-                  setSelectedDate(null)
-                  setSelectedTime(null)
-                }}
-                className="p-1.5 hover:bg-black/[0.03] rounded-full transition-colors text-black/40 hover:text-black"
-              >
-                <ArrowLeft className="w-3.5 h-3.5" />
-              </button>
-              <h3 className="text-black text-xs font-bold uppercase tracking-wider">Select Time</h3>
-            </div>
-
-            <div className="mb-2">
-              <p className="text-[9px] font-bold text-[#f5b800] uppercase tracking-widest mb-1">
-                {format(selectedDate, 'EEEE, MMMM d')}
-              </p>
-              <div className="h-px w-full bg-black/5" />
-            </div>
-
-            <ScrollArea className="flex-1 -mx-2 px-2">
-              <div className="space-y-1.5 py-1">
-                {TIME_SLOTS.map((time) => (
-                  <button
-                    key={time}
-                    onClick={() => setSelectedTime(time)}
-                    className={cn(
-                      "w-full py-2 px-3 rounded-lg text-[11px] font-semibold transition-all border flex items-center justify-between group",
-                      selectedTime === time
-                        ? "bg-[#f5b800] border-[#f5b800] text-black shadow-sm"
-                        : "bg-white border-black/5 text-black/60 hover:border-[#f5b800] hover:text-black"
-                    )}
-                  >
-                    <span>{time}</span>
-                    <Clock className={cn(
-                      "w-3 h-3 opacity-20 group-hover:opacity-100 transition-opacity",
-                      selectedTime === time && "opacity-100"
-                    )} />
-                  </button>
-                ))}
-              </div>
-            </ScrollArea>
-
-            <button
-              disabled={!selectedTime}
-              onClick={() => setIsDetailsStep(true)}
+          <div className="flex gap-1">
+            <button 
+              onClick={handlePrevMonth}
+              disabled={isPrevDisabled}
               className={cn(
-                "mt-3 w-full py-2.5 rounded-full text-[10px] font-bold uppercase tracking-widest transition-all",
-                selectedTime
-                  ? "bg-black text-white hover:bg-black/90"
-                  : "bg-black/5 text-black/20 cursor-not-allowed"
+                "p-1.5 rounded-full transition-colors",
+                isPrevDisabled ? "opacity-10 cursor-not-allowed" : "hover:bg-black/[0.03] text-black/30 hover:text-black"
               )}
             >
-              Next Step
+              <ChevronLeft className="w-4 h-4" />
             </button>
-          </div>
-        ) : (
-          // STEP 3: Details Form
-          <div className="flex flex-col h-full animate-in fade-in slide-in-from-left-4 duration-500">
-            <div className="flex items-center gap-2 mb-3">
-              <button 
-                onClick={() => setIsDetailsStep(false)}
-                className="p-1.5 hover:bg-black/[0.03] rounded-full transition-colors text-black/40 hover:text-black"
-              >
-                <ArrowLeft className="w-3.5 h-3.5" />
-              </button>
-              <h3 className="text-black text-xs font-bold uppercase tracking-wider">Your Details</h3>
-            </div>
-
-            <div className="mb-3">
-              <p className="text-[9px] font-bold text-[#f5b800] uppercase tracking-widest mb-1 flex items-center gap-1.5">
-                <CalendarIcon className="w-2.5 h-2.5" />
-                {selectedDate ? format(selectedDate, 'MMM d') : ''} @ {selectedTime}
-              </p>
-              <div className="h-px w-full bg-black/5" />
-            </div>
-
-            <ScrollArea className="flex-1 -mx-2 px-2">
-              <div className="space-y-3 py-1">
-                <div className="space-y-1">
-                  <Label htmlFor="name" className="text-[9px] font-bold uppercase tracking-widest text-black/40">Full Name</Label>
-                  <div className="relative">
-                    <User className="absolute left-2.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-black/20" />
-                    <Input 
-                      id="name"
-                      placeholder="John Doe" 
-                      className="pl-8 h-9 bg-black/5 border-none focus-visible:ring-1 focus-visible:ring-[#f5b800] text-[11px] font-medium"
-                      value={formData.name}
-                      onChange={(e) => setFormData({...formData, name: e.target.value})}
-                    />
-                  </div>
-                </div>
-
-                <div className="space-y-1">
-                  <Label htmlFor="email" className="text-[9px] font-bold uppercase tracking-widest text-black/40">Email Address</Label>
-                  <div className="relative">
-                    <Mail className="absolute left-2.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-black/20" />
-                    <Input 
-                      id="email"
-                      type="email"
-                      placeholder="john@example.com" 
-                      className="pl-8 h-9 bg-black/5 border-none focus-visible:ring-1 focus-visible:ring-[#f5b800] text-[11px] font-medium"
-                      value={formData.email}
-                      onChange={(e) => setFormData({...formData, email: e.target.value})}
-                    />
-                  </div>
-                </div>
-
-                <div className="space-y-1">
-                  <Label htmlFor="notes" className="text-[9px] font-bold uppercase tracking-widest text-black/40">Notes</Label>
-                  <div className="relative">
-                    <MessageSquare className="absolute left-2.5 top-2.5 w-3.5 h-3.5 text-black/20" />
-                    <Textarea 
-                      id="notes"
-                      placeholder="Project details..." 
-                      className="pl-8 min-h-[60px] bg-black/5 border-none focus-visible:ring-1 focus-visible:ring-[#f5b800] text-[11px] font-medium resize-none"
-                      value={formData.notes}
-                      onChange={(e) => setFormData({...formData, notes: e.target.value})}
-                    />
-                  </div>
-                </div>
-              </div>
-            </ScrollArea>
-
-            <button
-              disabled={!formData.name || !formData.email}
-              className={cn(
-                "mt-3 w-full py-2.5 rounded-full text-[10px] font-bold uppercase tracking-widest transition-all",
-                formData.name && formData.email
-                  ? "bg-[#f5b800] text-black hover:opacity-90 shadow-sm"
-                  : "bg-black/5 text-black/20 cursor-not-allowed"
-              )}
+            <button 
+              onClick={handleNextMonth}
+              className="p-1.5 hover:bg-black/[0.03] rounded-full transition-colors text-black/30 hover:text-black"
             >
-              Confirm Appointment
+              <ChevronRight className="w-4 h-4" />
             </button>
-          </div>
-        )}
-      </div>
-
-      {/* Right Panel: Calendar (Minimalist White Theme) */}
-      <div className="flex-1 p-5 text-black bg-white flex flex-col min-h-[400px] md:h-full">
-        <div className="flex items-center justify-between mb-3">
-          <h4 className="text-[10px] font-bold uppercase tracking-[0.15em] text-black/30 text-left">Select Date</h4>
-          <div className="flex items-center gap-3">
-            <div className="text-left">
-              <p className="text-[16px] font-black text-[#f5b800] uppercase tracking-wider leading-none">
-                {currentMonth ? format(currentMonth, 'MMMM yyyy') : ''}
-              </p>
-              <p className="text-[9px] font-bold text-black/20 leading-none mt-1 uppercase tracking-tight">
-                {format(new Date(), 'EEEE, d MMMM yyyy')}
-              </p>
-            </div>
-            <div className="flex gap-1">
-              <button 
-                onClick={handlePrevMonth}
-                disabled={isPrevDisabled}
-                className={cn(
-                  "p-1.5 rounded-full transition-colors",
-                  isPrevDisabled ? "opacity-10 cursor-not-allowed" : "hover:bg-black/[0.03] text-black/30 hover:text-black"
-                )}
-              >
-                <ChevronLeft className="w-4 h-4" />
-              </button>
-              <button 
-                onClick={handleNextMonth}
-                className="p-1.5 hover:bg-black/[0.03] rounded-full transition-colors text-black/30 hover:text-black"
-              >
-                <ChevronRight className="w-4 h-4" />
-              </button>
-            </div>
-          </div>
-        </div>
-
-        {/* Calendar Grid */}
-        <div className="grid grid-cols-7 gap-y-1 mb-3 mt-6">
-          {days.map((day) => (
-            <div key={day} className="text-center text-[7px] font-bold text-black/60 tracking-widest pb-1">
-              {day}
-            </div>
-          ))}
-          
-          {calendarDays.map((date, index) => {
-            if (date === null || !currentMonth) return <div key={`empty-${index}`} className="h-7" />
-
-            const currentDayDate = new Date(currentMonth.getFullYear(), currentMonth.getMonth(), date)
-            const isPast = isBefore(currentDayDate, today)
-            const isSelected = selectedDate ? isSameDay(currentDayDate, selectedDate) : false
-
-            return (
-              <button
-                key={`date-${date}`}
-                disabled={isPast}
-                onClick={() => {
-                  setSelectedDate(currentDayDate)
-                  setSelectedTime(null)
-                  setIsDetailsStep(false)
-                }}
-                className={cn(
-                  "h-7 w-7 mx-auto flex items-center justify-center rounded-full text-[10px] font-medium transition-all",
-                  isSelected 
-                    ? "bg-[#f5b800] text-black shadow-sm font-bold" 
-                    : isPast
-                      ? "opacity-20 cursor-not-allowed"
-                      : "bg-black/[0.01] hover:bg-black/[0.04] text-black/60"
-                )}
-              >
-                {date}
-              </button>
-            )
-          })}
-        </div>
-
-        {/* Footer: Time Zone */}
-        <div className="flex items-center justify-between mt-auto pt-3 border-t border-black/5">
-          <div className="flex items-center gap-1.5">
-            <Globe className="w-2.5 h-2.5 text-[#f5b800]" />
-            <span className="text-[8px] font-bold text-[#f5b800] uppercase tracking-wide">Time Zone</span>
-          </div>
-          <div className="bg-black/5 px-2.5 py-1 rounded-full border border-black/10 flex items-center gap-1.5">
-            <span className="text-[8px] font-medium text-black/50">Asia/Kolkata</span>
-            <div className="w-3.5 h-2.5 bg-black/10 rounded-sm flex flex-col overflow-hidden">
-              <div className="flex-1 bg-[#FF9933]" />
-              <div className="flex-1 bg-white" />
-              <div className="flex-1 bg-[#138808]" />
-            </div>
           </div>
         </div>
       </div>
+
+      <div className="grid grid-cols-7 gap-y-1 mb-3 mt-6">
+        {days.map((day) => (
+          <div key={day} className="text-center text-[7px] font-bold text-black/60 tracking-widest pb-1">
+            {day}
+          </div>
+        ))}
+        
+        {calendarDays.map((date, index) => {
+          if (date === null || !currentMonth) return <div key={`empty-${index}`} className="h-7" />
+
+          const currentDayDate = new Date(currentMonth.getFullYear(), currentMonth.getMonth(), date)
+          const isPast = isBefore(currentDayDate, today)
+          const isSelected = selectedDate ? isSameDay(currentDayDate, selectedDate) : false
+
+          return (
+            <button
+              key={`date-${date}`}
+              disabled={isPast}
+              onClick={() => {
+                setSelectedDate(currentDayDate)
+                setSelectedTime(null)
+                setIsDetailsStep(false)
+              }}
+              className={cn(
+                "h-7 w-7 mx-auto flex items-center justify-center rounded-full text-[10px] font-medium transition-all",
+                isSelected 
+                  ? "bg-[#f5b800] text-black shadow-sm font-bold" 
+                  : isPast
+                    ? "opacity-20 cursor-not-allowed"
+                    : "bg-black/[0.01] hover:bg-black/[0.04] text-black/60"
+              )}
+            >
+              {date}
+            </button>
+          )
+        })}
+      </div>
+
+      <div className="flex items-center justify-between mt-auto pt-3 border-t border-black/5">
+        <div className="flex items-center gap-1.5">
+          <Globe className="w-2.5 h-2.5 text-[#f5b800]" />
+          <span className="text-[8px] font-bold text-[#f5b800] uppercase tracking-wide">Time Zone</span>
+        </div>
+        <div className="bg-black/5 px-2.5 py-1 rounded-full border border-black/10 flex items-center gap-1.5">
+          <span className="text-[8px] font-medium text-black/50">Asia/Kolkata</span>
+          <div className="w-3.5 h-2.5 bg-black/10 rounded-sm flex flex-col overflow-hidden">
+            <div className="flex-1 bg-[#FF9933]" />
+            <div className="flex-1 bg-white" />
+            <div className="flex-1 bg-[#138808]" />
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+
+  return (
+    <div className={cn(
+      "w-full max-w-xl ml-auto overflow-hidden rounded-[1.25rem] bg-white shadow-2xl border border-black/5 relative transition-all duration-700 animate-in fade-in slide-in-from-bottom-8",
+      isMobile ? "h-[450px]" : "flex flex-col md:flex-row md:h-[420px]"
+    )}>
+      {isMobile ? (
+        // MOBILE VERSION: Calendar first, then overlay sections
+        <div className="w-full h-full relative">
+          {renderCalendar()}
+          {selectedDate && (
+            <div className="absolute inset-0 z-20 bg-white">
+              {renderSections()}
+            </div>
+          )}
+        </div>
+      ) : (
+        // DESKTOP VERSION: Side by side
+        <>
+          {renderSections()}
+          {renderCalendar()}
+        </>
+      )}
     </div>
   )
 }
