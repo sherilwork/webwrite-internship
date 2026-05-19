@@ -280,16 +280,13 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
         <div className="flex items-center justify-between mb-3">
           <h4 className="text-[10px] font-bold uppercase tracking-[0.15em] text-black/30">Select Date</h4>
           <div className="flex items-center gap-3">
-            <div className="flex items-center gap-2">
-              <div className="p-1.5 bg-black/5 rounded-md border border-black/5">
-                <CalendarIcon className="w-3.5 h-3.5 text-[#f5b800]" />
-              </div>
-              <div className="text-left">
-                <p className="text-[14px] font-black text-[#f5b800] uppercase tracking-wider leading-none">
-                  {format(currentMonth, 'MMMM yyyy')}
-                </p>
-                <p className="text-[8px] font-bold text-black/20 leading-none mt-1 uppercase tracking-tighter">Available slots</p>
-              </div>
+            <div className="text-left">
+              <p className="text-[16px] font-black text-[#f5b800] uppercase tracking-wider leading-none">
+                {format(currentMonth, 'MMMM yyyy')}
+              </p>
+              <p className="text-[9px] font-bold text-black/20 leading-none mt-1 uppercase tracking-tight">
+                {format(new Date(), 'EEEE, d MMMM yyyy')}
+              </p>
             </div>
             <div className="flex gap-1">
               <button 
