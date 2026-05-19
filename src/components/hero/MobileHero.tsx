@@ -1,13 +1,11 @@
 "use client"
 
 import React, { useState, useEffect } from "react"
-import Image from "next/image"
 import { Users, Target, TrendingUp } from "lucide-react"
 import { GridBackground } from "@/components/GridBackground"
 import { Navigation } from "@/components/Navigation"
 import { SubHeader } from "@/components/SubHeader"
 import { BookingCard } from "@/components/BookingCard"
-import { PlaceHolderImages } from "@/lib/placeholder-images"
 
 export function MobileHero() {
   const [settings] = useState({
@@ -58,8 +56,6 @@ export function MobileHero() {
     return () => clearTimeout(timer)
   }, [currentText, isDeleting, phraseIndex, typingSpeed, isMounted])
 
-  const heroOverlay = PlaceHolderImages.find(img => img.id === 'hero-overlay')
-
   return (
     <div className="relative min-h-screen bg-background text-foreground overflow-x-hidden">
       <SubHeader />
@@ -104,20 +100,8 @@ export function MobileHero() {
             </p>
           </div>
 
-          {/* Visuals */}
+          {/* Booking Section */}
           <div className="flex flex-col items-center gap-8">
-            <div className="relative w-full max-w-[320px] aspect-[1/1] z-20 pointer-events-none animate-in fade-in duration-1000">
-              <div className="absolute inset-[10%] bg-blue-100 rounded-[3rem] -z-10 opacity-60" />
-              <Image 
-                src={heroOverlay?.imageUrl || "/hero-section-overlay.png"}
-                alt="Hero Visual Overlay"
-                fill
-                className="object-contain z-10 scale-110"
-                priority
-                data-ai-hint="business woman"
-              />
-            </div>
-
             <div className="w-full max-w-sm z-30">
               <BookingCard imageUrl="/hero-illustration.png" />
             </div>
