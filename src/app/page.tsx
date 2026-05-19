@@ -46,10 +46,10 @@ export default function Home() {
           bodyText="" 
           alignment={settings.alignment}
         >
-          <div className="w-full flex flex-col md:flex-row items-center justify-between gap-12 md:gap-4">
+          <div className="w-full flex flex-col md:flex-row items-center justify-between gap-12 md:gap-4 h-full">
             
             {/* Left Content Area: New Strategic Branding - Size Reduced by Half */}
-            <div className="flex-1 flex flex-col items-start text-left gap-3 animate-in fade-in slide-in-from-left-12 duration-1000 ease-out z-30">
+            <div className="flex-1 flex flex-col items-start text-left gap-3 animate-in fade-in slide-in-from-left-12 duration-1000 ease-out z-30 h-full py-12">
               
               {/* Clarity Badge - Enlarged and moved up */}
               <div className="flex items-center gap-3 bg-white border border-black/5 rounded-full px-5 py-2 shadow-md -mt-2">
@@ -60,7 +60,7 @@ export default function Home() {
               </div>
 
               {/* Strategy Session Headline */}
-              <div className="space-y-1">
+              <div className="space-y-1 mt-2">
                 <h1 className="text-xl md:text-3xl font-black text-black leading-[0.85] tracking-tighter">
                   Digital Marketing <br />
                   <span className="font-light text-black/80">Strategy Session</span>
@@ -69,13 +69,13 @@ export default function Home() {
               </div>
 
               {/* Sub-headline / Offer */}
-              <p className="text-[10px] md:text-xs font-medium text-black/40 max-w-xs leading-relaxed">
+              <p className="text-[10px] md:text-xs font-medium text-black/40 max-w-xs leading-relaxed mt-1">
                 Book a <span className="text-[#f5b800] font-bold">FREE Consultation</span> with <br />
                 <span className="text-black font-bold border-b border-black/10 pb-0.5">NextSaaS AI Strategy Experts</span>
               </p>
 
               {/* Features Grid */}
-              <div className="grid grid-cols-3 gap-2 w-full max-w-sm py-1">
+              <div className="grid grid-cols-3 gap-2 w-full max-w-sm py-4">
                 <div className="flex flex-col items-center text-center gap-1.5 group">
                   <div className="w-8 h-8 rounded-full border border-black/5 flex items-center justify-center bg-white shadow-sm transition-transform group-hover:scale-110 duration-300">
                     <Users className="w-3.5 h-3.5 text-black" />
@@ -105,8 +105,8 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* Trusted Brands Pill */}
-              <div className="w-full max-w-xs bg-white/40 backdrop-blur-sm border border-black/5 rounded-full p-1.5 flex items-center gap-2 shadow-sm mt-1">
+              {/* Trusted Brands Pill - Shifted to bottom */}
+              <div className="w-full max-w-xs bg-white/40 backdrop-blur-sm border border-black/5 rounded-full p-1.5 flex items-center gap-2 shadow-sm mt-auto">
                 <span className="text-[6px] font-bold text-black/40 uppercase tracking-[0.2em] pl-2 shrink-0">Trusted by</span>
                 <div className="h-2 w-px bg-black/10" />
                 <div className="flex items-center justify-between flex-1 pr-3 opacity-40 grayscale pointer-events-none select-none">
