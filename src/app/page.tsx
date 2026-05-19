@@ -3,6 +3,7 @@
 import React, { useState } from "react"
 import { GridBackground } from "@/components/GridBackground"
 import { HeroPreview } from "@/components/HeroPreview"
+import { Navigation } from "@/components/Navigation"
 import { Toaster } from "@/components/ui/toaster"
 
 export default function Home() {
@@ -23,6 +24,8 @@ export default function Home() {
 
   return (
     <main className="relative min-h-screen bg-background text-foreground selection:bg-primary selection:text-primary-foreground">
+      <Navigation />
+      
       {/* Background Layer */}
       <GridBackground
         gridSize={settings.gridSize}
