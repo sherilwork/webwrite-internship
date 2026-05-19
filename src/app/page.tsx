@@ -124,8 +124,8 @@ export default function Home() {
                 <span className="text-black font-bold border-b border-black/10 pb-0.5">Webwrite services Strategy Experts</span>
               </p>
 
-              {/* Features Grid - Positioned above trusted brands */}
-              <div className="grid grid-cols-3 gap-2 w-full max-w-sm py-4 mt-4">
+              {/* Features Grid - Positioned lower above trusted brands */}
+              <div className="grid grid-cols-3 gap-2 w-full max-w-sm py-4 mt-8">
                 <div className="flex flex-col items-center text-center gap-1.5 group">
                   <div className="w-8 h-8 rounded-full border border-black/5 flex items-center justify-center bg-white shadow-sm transition-transform group-hover:scale-110 duration-300">
                     <Users className="w-3.5 h-3.5 text-black" />
