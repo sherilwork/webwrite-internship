@@ -51,12 +51,12 @@ export default function Home() {
             {/* Left Content Area: New Strategic Branding - Size Reduced by Half */}
             <div className="flex-1 flex flex-col items-start text-left gap-3 animate-in fade-in slide-in-from-left-12 duration-1000 ease-out z-30">
               
-              {/* Clarity Badge */}
-              <div className="flex items-center gap-2.5 bg-white border border-black/5 rounded-full px-4 py-1.5 shadow-sm">
-                <div className="bg-[#f5b800] text-white px-3 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase shrink-0">
+              {/* Clarity Badge - Enlarged and moved up */}
+              <div className="flex items-center gap-3 bg-white border border-black/5 rounded-full px-5 py-2 shadow-md -mt-2">
+                <div className="bg-[#f5b800] text-white px-4 py-1.5 rounded-full text-[11px] font-black tracking-widest uppercase shrink-0">
                   CLARITY
                 </div>
-                <span className="text-[12px] font-semibold text-black/60 tracking-tight whitespace-nowrap">Starts with the Right Experts!</span>
+                <span className="text-[14px] font-bold text-black/70 tracking-tight whitespace-nowrap">Starts with the Right Experts!</span>
               </div>
 
               {/* Strategy Session Headline */}
