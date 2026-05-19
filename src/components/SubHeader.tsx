@@ -29,7 +29,7 @@ export function SubHeader() {
         <div className="flex items-center gap-2 group cursor-pointer">
           <Mail className="w-4 h-4 text-[#f5b800]" />
           <span className="text-[11px] font-bold text-white/80 uppercase tracking-wider group-hover:text-white transition-colors">
-            info@nextsaas.ai
+            info@webwrite.services
           </span>
         </div>
         <div className="h-4 w-px bg-white/10" />

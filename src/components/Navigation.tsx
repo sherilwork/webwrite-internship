@@ -23,7 +23,7 @@ export function Navigation() {
           <div className="bg-black rounded-full p-1.5 flex items-center justify-center">
             <ChevronRight className="w-4 h-4 text-white" />
           </div>
-          <span className="text-xl font-semibold tracking-tight text-foreground/80">NextSaaS</span>
+          <span className="text-xl font-semibold tracking-tight text-foreground/80">Webwrite services</span>
         </div>
 
         <div className="hidden md:flex items-center gap-6">

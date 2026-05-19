@@ -70,7 +70,7 @@ export default function Home() {
               {/* Sub-headline / Offer */}
               <p className="text-[10px] md:text-xs font-medium text-black/40 max-w-xs leading-relaxed mt-1">
                 Book a <span className="text-[#f5b800] font-bold">FREE Consultation</span> with <br />
-                <span className="text-black font-bold border-b border-black/10 pb-0.5">NextSaaS AI Strategy Experts</span>
+                <span className="text-black font-bold border-b border-black/10 pb-0.5">Webwrite services Strategy Experts</span>
               </p>
 
               {/* Features Grid - Positioned above trusted brands */}

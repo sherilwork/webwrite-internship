@@ -128,7 +128,7 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
               </div>
               <div className="flex items-center gap-1.5 text-black/60">
                 <Mail className="w-2.5 h-2.5 text-[#f5b800]" />
-                <span className="text-[8px] font-bold uppercase tracking-wider leading-none">contact@nextsaas.ai</span>
+                <span className="text-[8px] font-bold uppercase tracking-wider leading-none">contact@webwrite.services</span>
               </div>
             </div>
           </div>
