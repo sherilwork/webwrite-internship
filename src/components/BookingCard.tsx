@@ -3,7 +3,7 @@
 
 import * as React from "react"
 import { useState, useEffect, useMemo } from "react"
-import { ChevronLeft, ChevronRight, Globe, Calendar as CalendarIcon, Clock, ArrowLeft, User, Mail, MessageSquare } from "lucide-react"
+import { ChevronLeft, ChevronRight, Globe, Calendar as CalendarIcon, Clock, ArrowLeft, User, Mail, MessageSquare, Phone } from "lucide-react"
 import { 
   format, 
   addMonths, 
@@ -101,13 +101,27 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
               </div>
 
               {/* Online consultation badge moved up */}
-              <div className="mt-1 flex items-center justify-center gap-1.5">
-                <div className="w-1.5 h-1.5 rounded-full bg-[#f5b800]" />
-                <span className="text-[8px] font-semibold text-black/40 uppercase tracking-widest">Online consultation</span>
+              <div className="mt-1 flex flex-col items-center gap-2">
+                <div className="flex items-center justify-center gap-1.5">
+                  <div className="w-1.5 h-1.5 rounded-full bg-[#f5b800]" />
+                  <span className="text-[8px] font-semibold text-black/40 uppercase tracking-widest">Online consultation</span>
+                </div>
+                
+                {/* Contact Information */}
+                <div className="flex flex-col items-center gap-1 mt-1">
+                  <div className="flex items-center gap-2 text-black/60">
+                    <Phone className="w-2.5 h-2.5 text-[#f5b800]" />
+                    <span className="text-[9px] font-bold uppercase tracking-wider">+1 (555) 000-1234</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-black/60">
+                    <Mail className="w-2.5 h-2.5 text-[#f5b800]" />
+                    <span className="text-[9px] font-bold uppercase tracking-wider">contact@nextsaas.ai</span>
+                  </div>
+                </div>
               </div>
 
-              {/* Illustration pushed further down */}
-              <div className="relative w-full aspect-[4/3] rounded-lg overflow-hidden mt-12 bg-muted/20">
+              {/* Illustration pushed down */}
+              <div className="relative w-full aspect-[4/3] rounded-lg overflow-hidden mt-6 bg-muted/20">
                 <Image 
                   src={finalImageUrl}
                   alt="Consultation Illustration"
