@@ -97,12 +97,12 @@ export default function Home() {
             {/* Left Content Area: Strategic Branding */}
             <div className="flex-1 flex flex-col items-start text-left gap-3 animate-in fade-in slide-in-from-left-12 duration-1000 ease-out z-30 h-full py-12">
               
-              {/* Clarity Badge */}
-              <div className="flex items-center gap-2.5 bg-white border border-black/5 rounded-full px-4 py-1.5 shadow-sm -mt-4">
-                <div className="bg-[#f5b800] text-white px-4 py-1.5 rounded-full text-[11px] font-black tracking-widest uppercase shrink-0">
+              {/* Clarity Badge - Optimized Size */}
+              <div className="flex items-center gap-2 bg-white border border-black/5 rounded-full px-2.5 py-1 shadow-sm -mt-4">
+                <div className="bg-[#f5b800] text-white px-3 py-1 rounded-full text-[9px] font-black tracking-widest uppercase shrink-0">
                   CLARITY
                 </div>
-                <span className="text-[14px] font-bold text-black/70 tracking-tight whitespace-nowrap">Starts with the Right Experts!</span>
+                <span className="text-[12px] font-bold text-black/70 tracking-tight whitespace-nowrap">Starts with the Right Experts!</span>
               </div>
 
               {/* Strategy Session Headline - Dynamic Typewriter */}
