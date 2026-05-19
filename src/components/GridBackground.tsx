@@ -1,3 +1,4 @@
+
 "use client"
 
 import React from "react"
@@ -27,7 +28,7 @@ export const GridBackground = ({
   return (
     <div
       className={cn(
-        "relative min-h-screen w-full overflow-hidden bg-background transition-all duration-500",
+        "relative h-screen w-full overflow-hidden bg-background transition-all duration-500",
         className
       )}
       style={

@@ -24,7 +24,7 @@ export default function Home() {
   const heroOverlay = PlaceHolderImages.find(img => img.id === 'hero-overlay')
 
   return (
-    <main className="relative min-h-screen bg-background text-foreground selection:bg-primary selection:text-primary-foreground">
+    <main className="relative h-screen bg-background text-foreground selection:bg-primary selection:text-primary-foreground overflow-hidden">
       <Navigation />
       
       {/* Background Layer */}
@@ -35,6 +35,7 @@ export default function Home() {
         highlightOpacity={settings.highlightOpacity}
         showEdgeFade={settings.edgeFade}
         showHighlights={settings.highlights}
+        className="h-full"
       >
         {/* Hero Content Container */}
         <HeroPreview 
