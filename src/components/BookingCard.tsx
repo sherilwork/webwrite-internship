@@ -83,24 +83,24 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
   const isPrevDisabled = isSameMonth(currentMonth, today)
 
   return (
-    <div className="w-full max-w-2xl ml-auto overflow-hidden rounded-[1.5rem] bg-[#121212] shadow-2xl border border-white/10 flex flex-col md:flex-row transition-all duration-700 animate-in fade-in slide-in-from-bottom-8 md:h-[420px]">
+    <div className="w-full max-w-xl ml-auto overflow-hidden rounded-[1.25rem] bg-[#121212] shadow-2xl border border-white/10 flex flex-col md:flex-row transition-all duration-700 animate-in fade-in slide-in-from-bottom-8 md:h-[400px]">
       {/* Left Panel: Branding -> Time Selection -> Details Form */}
-      <div className="w-full md:w-[42%] bg-white p-6 flex flex-col justify-between border-r border-black/5 h-full relative overflow-hidden">
+      <div className="w-full md:w-[44%] bg-white p-5 flex flex-col justify-between border-r border-black/5 h-full relative overflow-hidden">
         {!selectedDate ? (
           // STEP 1: Branding / Illustration
           <div className="flex flex-col items-center text-center justify-between h-full w-full animate-in fade-in duration-500">
-            <div className="space-y-4 w-full">
-              <div className="space-y-3 pt-2">
-                <h3 className="text-black text-xl font-bold uppercase tracking-tight leading-none">
-                  BOOK A FREE CONSULTATION
+            <div className="space-y-3 w-full">
+              <div className="space-y-2 pt-1">
+                <h3 className="text-black text-lg font-bold uppercase tracking-tight leading-none">
+                  FREE CONSULTATION
                 </h3>
-                <p className="text-black/50 text-[10px] font-semibold uppercase tracking-wider leading-tight px-4">
-                  with India's leading digital marketing agency
+                <p className="text-black/50 text-[9px] font-semibold uppercase tracking-wider leading-tight px-2">
+                  with our expert digital marketing team
                 </p>
-                <div className="w-16 h-1 bg-[#f5b800] mx-auto mt-2" />
+                <div className="w-12 h-0.5 bg-[#f5b800] mx-auto mt-2" />
               </div>
 
-              <div className="relative w-full aspect-square rounded-xl overflow-hidden mt-6 bg-muted/30">
+              <div className="relative w-full aspect-[4/3] rounded-lg overflow-hidden mt-4 bg-muted/20">
                 <Image 
                   src={finalImageUrl}
                   alt="Consultation Illustration"
@@ -111,7 +111,7 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
               </div>
             </div>
 
-            <div className="mt-4 flex items-center gap-2">
+            <div className="mt-3 flex items-center gap-1.5">
                <div className="w-1.5 h-1.5 rounded-full bg-[#f5b800]" />
                <span className="text-[8px] font-semibold text-black/30 uppercase tracking-widest">Online consultation</span>
             </div>
@@ -119,42 +119,42 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
         ) : !isDetailsStep ? (
           // STEP 2: Time Selection
           <div className="flex flex-col h-full animate-in fade-in slide-in-from-left-4 duration-500">
-            <div className="flex items-center gap-2 mb-4">
+            <div className="flex items-center gap-2 mb-3">
               <button 
                 onClick={() => {
                   setSelectedDate(null)
                   setSelectedTime(null)
                 }}
-                className="p-1.5 hover:bg-black/5 rounded-full transition-colors text-black/40 hover:text-black"
+                className="p-1 hover:bg-black/5 rounded-full transition-colors text-black/40 hover:text-black"
               >
-                <ArrowLeft className="w-4 h-4" />
+                <ArrowLeft className="w-3.5 h-3.5" />
               </button>
-              <h3 className="text-black text-sm font-bold uppercase tracking-wider">Select Time</h3>
+              <h3 className="text-black text-xs font-bold uppercase tracking-wider">Select Time</h3>
             </div>
 
-            <div className="mb-3">
-              <p className="text-[10px] font-bold text-[#f5b800] uppercase tracking-widest mb-1">
+            <div className="mb-2">
+              <p className="text-[9px] font-bold text-[#f5b800] uppercase tracking-widest mb-1">
                 {format(selectedDate, 'EEEE, MMMM d')}
               </p>
               <div className="h-px w-full bg-black/5" />
             </div>
 
             <ScrollArea className="flex-1 -mx-2 px-2">
-              <div className="space-y-2 py-1">
+              <div className="space-y-1.5 py-1">
                 {TIME_SLOTS.map((time) => (
                   <button
                     key={time}
                     onClick={() => setSelectedTime(time)}
                     className={cn(
-                      "w-full py-2.5 px-4 rounded-xl text-xs font-semibold transition-all border flex items-center justify-between group",
+                      "w-full py-2 px-3 rounded-lg text-[11px] font-semibold transition-all border flex items-center justify-between group",
                       selectedTime === time
-                        ? "bg-[#f5b800] border-[#f5b800] text-black shadow-md"
+                        ? "bg-[#f5b800] border-[#f5b800] text-black shadow-sm"
                         : "bg-white border-black/5 text-black/60 hover:border-[#f5b800] hover:text-black"
                     )}
                   >
                     <span>{time}</span>
                     <Clock className={cn(
-                      "w-3.5 h-3.5 opacity-40 group-hover:opacity-100 transition-opacity",
+                      "w-3 h-3 opacity-40 group-hover:opacity-100 transition-opacity",
                       selectedTime === time && "opacity-100"
                     )} />
                   </button>
@@ -166,7 +166,7 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
               disabled={!selectedTime}
               onClick={() => setIsDetailsStep(true)}
               className={cn(
-                "mt-4 w-full py-3 rounded-full text-xs font-bold uppercase tracking-widest transition-all",
+                "mt-3 w-full py-2.5 rounded-full text-[10px] font-bold uppercase tracking-widest transition-all",
                 selectedTime
                   ? "bg-black text-white hover:bg-black/80"
                   : "bg-black/5 text-black/20 cursor-not-allowed"
@@ -178,63 +178,63 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
         ) : (
           // STEP 3: Details Form
           <div className="flex flex-col h-full animate-in fade-in slide-in-from-left-4 duration-500">
-            <div className="flex items-center gap-2 mb-4">
+            <div className="flex items-center gap-2 mb-3">
               <button 
                 onClick={() => setIsDetailsStep(false)}
-                className="p-1.5 hover:bg-black/5 rounded-full transition-colors text-black/40 hover:text-black"
+                className="p-1 hover:bg-black/5 rounded-full transition-colors text-black/40 hover:text-black"
               >
-                <ArrowLeft className="w-4 h-4" />
+                <ArrowLeft className="w-3.5 h-3.5" />
               </button>
-              <h3 className="text-black text-sm font-bold uppercase tracking-wider">Enter Details</h3>
+              <h3 className="text-black text-xs font-bold uppercase tracking-wider">Your Details</h3>
             </div>
 
-            <div className="mb-4">
-              <p className="text-[10px] font-bold text-[#f5b800] uppercase tracking-widest mb-1 flex items-center gap-2">
-                <CalendarIcon className="w-3 h-3" />
+            <div className="mb-3">
+              <p className="text-[9px] font-bold text-[#f5b800] uppercase tracking-widest mb-1 flex items-center gap-1.5">
+                <CalendarIcon className="w-2.5 h-2.5" />
                 {format(selectedDate, 'MMM d')} @ {selectedTime}
               </p>
               <div className="h-px w-full bg-black/5" />
             </div>
 
             <ScrollArea className="flex-1 -mx-2 px-2">
-              <div className="space-y-4 py-1">
-                <div className="space-y-1.5">
-                  <Label htmlFor="name" className="text-[10px] font-bold uppercase tracking-widest text-black/40">Full Name</Label>
+              <div className="space-y-3 py-1">
+                <div className="space-y-1">
+                  <Label htmlFor="name" className="text-[9px] font-bold uppercase tracking-widest text-black/40">Full Name</Label>
                   <div className="relative">
-                    <User className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-black/20" />
+                    <User className="absolute left-2.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-black/20" />
                     <Input 
                       id="name"
                       placeholder="John Doe" 
-                      className="pl-10 h-10 bg-black/5 border-none focus-visible:ring-1 focus-visible:ring-[#f5b800] text-xs font-medium"
+                      className="pl-8 h-9 bg-black/5 border-none focus-visible:ring-1 focus-visible:ring-[#f5b800] text-[11px] font-medium"
                       value={formData.name}
                       onChange={(e) => setFormData({...formData, name: e.target.value})}
                     />
                   </div>
                 </div>
 
-                <div className="space-y-1.5">
-                  <Label htmlFor="email" className="text-[10px] font-bold uppercase tracking-widest text-black/40">Email Address</Label>
+                <div className="space-y-1">
+                  <Label htmlFor="email" className="text-[9px] font-bold uppercase tracking-widest text-black/40">Email Address</Label>
                   <div className="relative">
-                    <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-black/20" />
+                    <Mail className="absolute left-2.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-black/20" />
                     <Input 
                       id="email"
                       type="email"
                       placeholder="john@example.com" 
-                      className="pl-10 h-10 bg-black/5 border-none focus-visible:ring-1 focus-visible:ring-[#f5b800] text-xs font-medium"
+                      className="pl-8 h-9 bg-black/5 border-none focus-visible:ring-1 focus-visible:ring-[#f5b800] text-[11px] font-medium"
                       value={formData.email}
                       onChange={(e) => setFormData({...formData, email: e.target.value})}
                     />
                   </div>
                 </div>
 
-                <div className="space-y-1.5">
-                  <Label htmlFor="notes" className="text-[10px] font-bold uppercase tracking-widest text-black/40">Additional Notes</Label>
+                <div className="space-y-1">
+                  <Label htmlFor="notes" className="text-[9px] font-bold uppercase tracking-widest text-black/40">Notes</Label>
                   <div className="relative">
-                    <MessageSquare className="absolute left-3 top-3 w-4 h-4 text-black/20" />
+                    <MessageSquare className="absolute left-2.5 top-2.5 w-3.5 h-3.5 text-black/20" />
                     <Textarea 
                       id="notes"
-                      placeholder="Tell us about your project..." 
-                      className="pl-10 min-h-[80px] bg-black/5 border-none focus-visible:ring-1 focus-visible:ring-[#f5b800] text-xs font-medium resize-none"
+                      placeholder="Project details..." 
+                      className="pl-8 min-h-[60px] bg-black/5 border-none focus-visible:ring-1 focus-visible:ring-[#f5b800] text-[11px] font-medium resize-none"
                       value={formData.notes}
                       onChange={(e) => setFormData({...formData, notes: e.target.value})}
                     />
@@ -246,7 +246,7 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
             <button
               disabled={!formData.name || !formData.email}
               className={cn(
-                "mt-4 w-full py-3 rounded-full text-xs font-bold uppercase tracking-widest transition-all shadow-lg",
+                "mt-3 w-full py-2.5 rounded-full text-[10px] font-bold uppercase tracking-widest transition-all shadow-md",
                 formData.name && formData.email
                   ? "bg-[#f5b800] text-black hover:opacity-90"
                   : "bg-black/5 text-black/20 cursor-not-allowed shadow-none"
@@ -259,19 +259,19 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
       </div>
 
       {/* Right Panel: Calendar */}
-      <div className="flex-1 p-6 text-white bg-gradient-to-br from-[#1c1c1c] via-[#121212] to-[#0a0a0a] flex flex-col h-full">
-        <div className="flex items-center justify-between mb-4">
-          <h4 className="text-[10px] font-bold uppercase tracking-widest opacity-60">Select Date</h4>
+      <div className="flex-1 p-5 text-white bg-gradient-to-br from-[#1c1c1c] via-[#121212] to-[#0a0a0a] flex flex-col h-full">
+        <div className="flex items-center justify-between mb-3">
+          <h4 className="text-[9px] font-bold uppercase tracking-widest opacity-60">Select Date</h4>
           <div className="flex items-center gap-2">
             <div className="flex items-center gap-1.5">
               <div className="p-1 bg-white/5 rounded-md border border-white/10">
-                <CalendarIcon className="w-3 h-3 text-[#f5b800]" />
+                <CalendarIcon className="w-2.5 h-2.5 text-[#f5b800]" />
               </div>
               <div className="text-left">
-                <p className="text-[8px] font-bold text-[#f5b800] uppercase">
-                  {format(currentMonth, 'MMMM yyyy')}
+                <p className="text-[8px] font-bold text-[#f5b800] uppercase leading-none">
+                  {format(currentMonth, 'MMM yyyy')}
                 </p>
-                <p className="text-[10px] font-normal opacity-40 leading-none">Available slots</p>
+                <p className="text-[7px] font-normal opacity-40 leading-none mt-0.5">Available slots</p>
               </div>
             </div>
             <div className="flex gap-0.5">
@@ -279,26 +279,26 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
                 onClick={handlePrevMonth}
                 disabled={isPrevDisabled}
                 className={cn(
-                  "p-1 rounded-full transition-colors",
+                  "p-0.5 rounded-full transition-colors",
                   isPrevDisabled ? "opacity-10 cursor-not-allowed" : "hover:bg-white/5 opacity-40"
                 )}
               >
-                <ChevronLeft className="w-4 h-4" />
+                <ChevronLeft className="w-3.5 h-3.5" />
               </button>
               <button 
                 onClick={handleNextMonth}
-                className="p-1 hover:bg-white/5 rounded-full transition-colors opacity-40"
+                className="p-0.5 hover:bg-white/5 rounded-full transition-colors opacity-40"
               >
-                <ChevronRight className="w-4 h-4" />
+                <ChevronRight className="w-3.5 h-3.5" />
               </button>
             </div>
           </div>
         </div>
 
         {/* Calendar Grid */}
-        <div className="grid grid-cols-7 gap-y-1 mb-4">
+        <div className="grid grid-cols-7 gap-y-1 mb-3">
           {days.map((day) => (
-            <div key={day} className="text-center text-[7px] font-bold text-white tracking-widest">
+            <div key={day} className="text-center text-[7px] font-bold text-white tracking-widest pb-1">
               {day}
             </div>
           ))}
@@ -316,13 +316,13 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
                 disabled={isPast}
                 onClick={() => {
                   setSelectedDate(currentDayDate)
-                  setSelectedTime(null) // Reset time when date changes
-                  setIsDetailsStep(false) // Reset form step
+                  setSelectedTime(null)
+                  setIsDetailsStep(false)
                 }}
                 className={cn(
-                  "h-8 w-8 mx-auto flex items-center justify-center rounded-full text-[10px] font-medium transition-all",
+                  "h-7 w-7 mx-auto flex items-center justify-center rounded-full text-[10px] font-medium transition-all",
                   isSelected 
-                    ? "bg-[#f5b800] text-black shadow-[0_0_15px_rgba(245,184,0,0.3)] font-bold" 
+                    ? "bg-[#f5b800] text-black shadow-[0_0_12px_rgba(245,184,0,0.3)] font-bold" 
                     : isPast
                       ? "opacity-20 cursor-not-allowed"
                       : "bg-white/[0.03] hover:bg-white/10 text-white/60"
@@ -335,14 +335,14 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
         </div>
 
         {/* Footer: Time Zone */}
-        <div className="flex items-center justify-between mt-auto pt-4 border-t border-white/5">
+        <div className="flex items-center justify-between mt-auto pt-3 border-t border-white/5">
           <div className="flex items-center gap-1.5">
-            <Globe className="w-3 h-3 text-[#f5b800]" />
-            <span className="text-[9px] font-bold text-[#f5b800] uppercase tracking-wide">Time Zone</span>
+            <Globe className="w-2.5 h-2.5 text-[#f5b800]" />
+            <span className="text-[8px] font-bold text-[#f5b800] uppercase tracking-wide">Time Zone</span>
           </div>
-          <div className="bg-white/5 px-3 py-1.5 rounded-full border border-white/10 flex items-center gap-2">
-            <span className="text-[9px] font-medium opacity-60">Asia/Kolkata</span>
-            <div className="w-4 h-3 bg-white/10 rounded-sm flex flex-col overflow-hidden">
+          <div className="bg-white/5 px-2.5 py-1 rounded-full border border-white/10 flex items-center gap-1.5">
+            <span className="text-[8px] font-medium opacity-60">Asia/Kolkata</span>
+            <div className="w-3.5 h-2.5 bg-white/10 rounded-sm flex flex-col overflow-hidden">
               <div className="flex-1 bg-[#FF9933]" />
               <div className="flex-1 bg-white" />
               <div className="flex-1 bg-[#138808]" />
