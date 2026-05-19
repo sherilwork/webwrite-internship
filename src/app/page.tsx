@@ -46,15 +46,18 @@ export default function Home() {
           alignment={settings.alignment}
         >
           <div className="w-full flex flex-col md:flex-row items-center justify-center md:justify-end gap-0">
-            {/* Left Side: Hero Overlay Image (Positioned to sit behind the card) */}
+            {/* Left Side: Hero Overlay Image */}
             <div className="relative w-full md:w-1/2 aspect-[16/10] max-w-[750px] md:-mr-48 md:mt-12 z-20 pointer-events-none animate-in fade-in slide-in-from-left-12 duration-1000 ease-out group">
               
-              {/* Reference-style background: Blue rounded rectangle */}
-              <div className="absolute top-[15%] left-[10%] w-[65%] h-[75%] bg-blue-100 rounded-[3rem] -z-10 opacity-80" />
+              {/* Vertically Aligned Background Shape */}
+              <div className="absolute inset-y-[5%] left-[25%] right-[25%] bg-blue-100 rounded-[5rem] -z-10 opacity-80" />
               
-              {/* Reference-style dots pattern */}
-              <div className="absolute top-[20%] left-[65%] w-12 h-12 opacity-30 -z-10" 
-                   style={{ backgroundImage: 'radial-gradient(circle, #3b82f6 1.5px, transparent 1.5px)', backgroundSize: '6px 6px' }} />
+              {/* Vertically Aligned Dots Pattern */}
+              <div className="absolute top-[10%] right-[20%] w-16 h-16 opacity-30 -z-10" 
+                   style={{ backgroundImage: 'radial-gradient(circle, #3b82f6 1.5px, transparent 1.5px)', backgroundSize: '8px 8px' }} />
+              
+              <div className="absolute bottom-[10%] left-[20%] w-16 h-16 opacity-30 -z-10" 
+                   style={{ backgroundImage: 'radial-gradient(circle, #3b82f6 1.5px, transparent 1.5px)', backgroundSize: '8px 8px' }} />
               
               <Image 
                 src={heroOverlay?.imageUrl || "/hero-section-overlay.png"}
@@ -66,8 +69,8 @@ export default function Home() {
               />
             </div>
 
-            {/* Right Side: Booking Card (Z-index lower than image for overlap) */}
-            <div className="w-full md:w-auto flex justify-end relative z-10">
+            {/* Right Side: Booking Card */}
+            <div className="w-full md:w-auto flex justify-end relative z-30">
               <BookingCard imageUrl="/hero-illustration.png" />
             </div>
           </div>
