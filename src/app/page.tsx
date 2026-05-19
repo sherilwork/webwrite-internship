@@ -60,8 +60,8 @@ export default function Home() {
 
               {/* Strategy Session Headline - Size Increased */}
               <div className="space-y-1 mt-2">
-                <h1 className="text-3xl md:text-5xl font-black text-black leading-[0.85] tracking-tighter">
-                  Digital Marketing <br />
+                <h1 className="text-3xl md:text-5xl font-black text-black leading-[0.85] tracking-tighter flex flex-col">
+                  <span className="whitespace-nowrap">Digital Marketing</span>
                   <span className="font-light text-black/80">Strategy Session</span>
                 </h1>
                 <div className="w-12 h-1 bg-[#f5b800] mt-3" />
