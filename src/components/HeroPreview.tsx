@@ -1,4 +1,3 @@
-
 "use client"
 
 import React from "react"
@@ -18,7 +17,7 @@ export const HeroPreview = ({
   return (
     <div 
       className={cn(
-        "container mx-auto px-6 h-screen flex flex-col justify-center pt-32 pb-12 transition-all duration-700 ease-in-out",
+        "container mx-auto px-6 h-screen flex flex-col justify-center pt-32 pb-4 transition-all duration-700 ease-in-out",
         alignment === "center" && "items-center text-center",
         alignment === "left" && "items-start text-left",
         alignment === "right" && "items-end text-right"

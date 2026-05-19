@@ -1,4 +1,3 @@
-
 "use client"
 
 import React, { useState, useEffect } from "react"
@@ -95,7 +94,7 @@ export default function Home() {
           <div className="w-full flex flex-col md:flex-row items-center justify-between gap-12 md:gap-4 h-full">
             
             {/* Left Content Area: Strategic Branding */}
-            <div className="flex-1 flex flex-col items-start text-left gap-3 animate-in fade-in slide-in-from-left-12 duration-1000 ease-out z-30 h-full py-12">
+            <div className="flex-1 flex flex-col items-start text-left gap-3 animate-in fade-in slide-in-from-left-12 duration-1000 ease-out z-30 h-full pt-12 pb-4">
               
               {/* Clarity Badge - Optimized Size */}
               <div className="flex items-center gap-2 bg-white border border-black/5 rounded-full px-2.5 py-1 shadow-sm -mt-4">
@@ -126,7 +125,7 @@ export default function Home() {
               </p>
 
               {/* Features Grid - Positioned above trusted brands */}
-              <div className="grid grid-cols-3 gap-2 w-full max-w-sm py-4 mt-auto">
+              <div className="grid grid-cols-3 gap-2 w-full max-w-sm py-4 mt-4">
                 <div className="flex flex-col items-center text-center gap-1.5 group">
                   <div className="w-8 h-8 rounded-full border border-black/5 flex items-center justify-center bg-white shadow-sm transition-transform group-hover:scale-110 duration-300">
                     <Users className="w-3.5 h-3.5 text-black" />
@@ -157,7 +156,7 @@ export default function Home() {
               </div>
 
               {/* Trusted Brands Pill */}
-              <div className="w-full max-w-xs bg-white/40 backdrop-blur-sm border border-black/5 rounded-full p-1.5 flex items-center gap-2 shadow-sm mt-auto">
+              <div className="w-full max-w-xs bg-white/40 backdrop-blur-sm border border-black/5 rounded-full p-1.5 flex items-center gap-2 shadow-sm mt-auto mb-2">
                 <span className="text-[6px] font-bold text-black/40 uppercase tracking-[0.2em] pl-2 shrink-0">Trusted by</span>
                 <div className="h-2 w-px bg-black/10" />
                 <div className="flex items-center justify-between flex-1 pr-3 opacity-40 grayscale pointer-events-none select-none">
