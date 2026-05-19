@@ -1,7 +1,7 @@
 
 "use client"
 
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import Image from "next/image"
 import { Users, Target, TrendingUp } from "lucide-react"
 import { GridBackground } from "@/components/GridBackground"
@@ -22,6 +22,52 @@ export default function Home() {
     highlights: true,
     alignment: "right" as "center" | "left" | "right",
   })
+
+  // Typewriter effect state
+  const phrases = ["Digital Marketing", "Website development", "Meta ads", "Video editing"]
+  const [phraseIndex, setPhraseIndex] = useState(0)
+  const [currentText, setCurrentText] = useState("")
+  const [isDeleting, setIsDeleting] = useState(false)
+  const [typingSpeed, setTypingSpeed] = useState(150)
+  const [isMounted, setIsMounted] = useState(false)
+
+  useEffect(() => {
+    setIsMounted(true)
+  }, [])
+
+  useEffect(() => {
+    if (!isMounted) return
+
+    const handleTyping = () => {
+      const fullText = phrases[phraseIndex]
+      
+      if (!isDeleting) {
+        // Typing phase
+        setCurrentText(fullText.substring(0, currentText.length + 1))
+        setTypingSpeed(100)
+
+        if (currentText === fullText) {
+          // Pause at the end of the phrase
+          setIsDeleting(true)
+          setTypingSpeed(2000)
+        }
+      } else {
+        // Deleting phase
+        setCurrentText(fullText.substring(0, currentText.length - 1))
+        setTypingSpeed(50)
+
+        if (currentText === "") {
+          // Switch to next phrase
+          setIsDeleting(false)
+          setPhraseIndex((prev) => (prev + 1) % phrases.length)
+          setTypingSpeed(500)
+        }
+      }
+    }
+
+    const timer = setTimeout(handleTyping, typingSpeed)
+    return () => clearTimeout(timer)
+  }, [currentText, isDeleting, phraseIndex, typingSpeed, isMounted])
 
   const heroOverlay = PlaceHolderImages.find(img => img.id === 'hero-overlay')
 
@@ -59,10 +105,13 @@ export default function Home() {
                 <span className="text-[14px] font-bold text-black/70 tracking-tight whitespace-nowrap">Starts with the Right Experts!</span>
               </div>
 
-              {/* Strategy Session Headline - Size Increased */}
+              {/* Strategy Session Headline - Dynamic Typewriter */}
               <div className="space-y-1 mt-2">
-                <h1 className="text-3xl md:text-5xl font-black text-black leading-[0.85] tracking-tighter flex flex-col">
-                  <span className="whitespace-nowrap">Digital Marketing</span>
+                <h1 className="text-3xl md:text-5xl font-black text-black leading-[0.85] tracking-tighter flex flex-col min-h-[1.8em]">
+                  <span className="whitespace-nowrap relative">
+                    {isMounted ? currentText : "Digital Marketing"}
+                    <span className="inline-block w-[3px] h-[0.8em] bg-[#f5b800] ml-1 align-middle animate-pulse" />
+                  </span>
                   <span className="font-light text-black/80">Strategy Session</span>
                 </h1>
                 <div className="w-12 h-1 bg-[#f5b800] mt-3" />
@@ -121,15 +170,11 @@ export default function Home() {
 
             {/* Right Group: Existing Image Overlay + Booking Card */}
             <div className="flex flex-col md:flex-row items-center justify-end gap-0">
-              {/* Hero Overlay Image - Shifted slightly left by decreasing the negative right margin */}
+              {/* Hero Overlay Image - Shifted slightly left */}
               <div className="relative w-full md:w-[600px] aspect-[16/10] md:-mr-40 md:mt-12 z-20 pointer-events-none animate-in fade-in slide-in-from-right-12 duration-1000 ease-out group">
-                {/* Vertically Aligned Background Shape */}
                 <div className="absolute top-[0%] bottom-[5%] left-[25%] right-[25%] bg-blue-100 rounded-[5rem] -z-10 opacity-80" />
-                
-                {/* Vertically Aligned Dots Pattern */}
                 <div className="absolute top-[10%] right-[20%] w-16 h-16 opacity-30 -z-10" 
                      style={{ backgroundImage: 'radial-gradient(circle, #3b82f6 1.5px, transparent 1.5px)', backgroundSize: '8px 8px' }} />
-                
                 <div className="absolute bottom-[10%] left-[20%] w-16 h-16 opacity-30 -z-10" 
                      style={{ backgroundImage: 'radial-gradient(circle, #3b82f6 1.5px, transparent 1.5px)', backgroundSize: '8px 8px' }} />
                 
