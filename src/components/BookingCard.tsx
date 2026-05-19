@@ -3,7 +3,7 @@
 
 import * as React from "react"
 import { useState, useEffect, useMemo } from "react"
-import { ChevronLeft, ChevronRight, Globe, Calendar as CalendarIcon, Clock, ArrowLeft } from "lucide-react"
+import { ChevronLeft, ChevronRight, Globe, Calendar as CalendarIcon, Clock, ArrowLeft, User, Mail, MessageSquare } from "lucide-react"
 import { 
   format, 
   addMonths, 
@@ -20,6 +20,9 @@ import { cn } from "@/lib/utils"
 import Image from "next/image"
 import { PlaceHolderImages } from "@/lib/placeholder-images"
 import { ScrollArea } from "@/components/ui/scroll-area"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import { Textarea } from "@/components/ui/textarea"
 
 interface BookingCardProps {
   imageUrl?: string
@@ -42,7 +45,15 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
   const [currentMonth, setCurrentMonth] = useState(new Date())
   const [selectedDate, setSelectedDate] = useState<Date | null>(null)
   const [selectedTime, setSelectedTime] = useState<string | null>(null)
+  const [isDetailsStep, setIsDetailsStep] = useState(false)
   const [today] = useState(startOfDay(new Date()))
+
+  // Form states
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    notes: ""
+  })
 
   // Calculate calendar grid
   const monthStart = startOfMonth(currentMonth)
@@ -73,10 +84,11 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
 
   return (
     <div className="w-full max-w-2xl ml-auto overflow-hidden rounded-[1.5rem] bg-[#121212] shadow-2xl border border-white/10 flex flex-col md:flex-row transition-all duration-700 animate-in fade-in slide-in-from-bottom-8 md:h-[540px]">
-      {/* Left Panel: Brand & Info OR Select Time */}
-      <div className="w-full md:w-[42%] bg-white p-6 flex flex-col justify-between border-r border-black/5 h-full">
+      {/* Left Panel: Branding -> Time Selection -> Details Form */}
+      <div className="w-full md:w-[42%] bg-white p-6 flex flex-col justify-between border-r border-black/5 h-full relative overflow-hidden">
         {!selectedDate ? (
-          <div className="flex flex-col items-center text-center justify-between h-full w-full">
+          // STEP 1: Branding / Illustration
+          <div className="flex flex-col items-center text-center justify-between h-full w-full animate-in fade-in duration-500">
             <div className="space-y-4 w-full">
               <div className="space-y-3 pt-2">
                 <h3 className="text-black text-xl font-bold uppercase tracking-tight leading-none">
@@ -104,7 +116,8 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
                <span className="text-[8px] font-semibold text-black/30 uppercase tracking-widest">Online consultation</span>
             </div>
           </div>
-        ) : (
+        ) : !isDetailsStep ? (
+          // STEP 2: Time Selection
           <div className="flex flex-col h-full animate-in fade-in slide-in-from-left-4 duration-500">
             <div className="flex items-center gap-2 mb-6">
               <button 
@@ -126,7 +139,7 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
               <div className="h-px w-full bg-black/5" />
             </div>
 
-            <ScrollArea className="flex-1 -mx-2 px-2 overflow-y-auto">
+            <ScrollArea className="flex-1 -mx-2 px-2">
               <div className="space-y-2 py-2">
                 {TIME_SLOTS.map((time) => (
                   <button
@@ -151,11 +164,92 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
 
             <button
               disabled={!selectedTime}
+              onClick={() => setIsDetailsStep(true)}
               className={cn(
                 "mt-6 w-full py-3 rounded-full text-xs font-bold uppercase tracking-widest transition-all",
                 selectedTime
                   ? "bg-black text-white hover:bg-black/80"
                   : "bg-black/5 text-black/20 cursor-not-allowed"
+              )}
+            >
+              Next Step
+            </button>
+          </div>
+        ) : (
+          // STEP 3: Details Form
+          <div className="flex flex-col h-full animate-in fade-in slide-in-from-left-4 duration-500">
+            <div className="flex items-center gap-2 mb-6">
+              <button 
+                onClick={() => setIsDetailsStep(false)}
+                className="p-1.5 hover:bg-black/5 rounded-full transition-colors text-black/40 hover:text-black"
+              >
+                <ArrowLeft className="w-4 h-4" />
+              </button>
+              <h3 className="text-black text-sm font-bold uppercase tracking-wider">Enter Details</h3>
+            </div>
+
+            <div className="mb-6">
+              <p className="text-[10px] font-bold text-[#f5b800] uppercase tracking-widest mb-1 flex items-center gap-2">
+                <CalendarIcon className="w-3 h-3" />
+                {format(selectedDate, 'MMM d')} @ {selectedTime}
+              </p>
+              <div className="h-px w-full bg-black/5" />
+            </div>
+
+            <ScrollArea className="flex-1 -mx-2 px-2">
+              <div className="space-y-5 py-2">
+                <div className="space-y-2">
+                  <Label htmlFor="name" className="text-[10px] font-bold uppercase tracking-widest text-black/40">Full Name</Label>
+                  <div className="relative">
+                    <User className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-black/20" />
+                    <Input 
+                      id="name"
+                      placeholder="John Doe" 
+                      className="pl-10 h-11 bg-black/5 border-none focus-visible:ring-1 focus-visible:ring-[#f5b800] text-xs font-medium"
+                      value={formData.name}
+                      onChange={(e) => setFormData({...formData, name: e.target.value})}
+                    />
+                  </div>
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="email" className="text-[10px] font-bold uppercase tracking-widest text-black/40">Email Address</Label>
+                  <div className="relative">
+                    <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-black/20" />
+                    <Input 
+                      id="email"
+                      type="email"
+                      placeholder="john@example.com" 
+                      className="pl-10 h-11 bg-black/5 border-none focus-visible:ring-1 focus-visible:ring-[#f5b800] text-xs font-medium"
+                      value={formData.email}
+                      onChange={(e) => setFormData({...formData, email: e.target.value})}
+                    />
+                  </div>
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="notes" className="text-[10px] font-bold uppercase tracking-widest text-black/40">Additional Notes (Optional)</Label>
+                  <div className="relative">
+                    <MessageSquare className="absolute left-3 top-3 w-4 h-4 text-black/20" />
+                    <Textarea 
+                      id="notes"
+                      placeholder="Tell us about your project..." 
+                      className="pl-10 min-h-[100px] bg-black/5 border-none focus-visible:ring-1 focus-visible:ring-[#f5b800] text-xs font-medium resize-none"
+                      value={formData.notes}
+                      onChange={(e) => setFormData({...formData, notes: e.target.value})}
+                    />
+                  </div>
+                </div>
+              </div>
+            </ScrollArea>
+
+            <button
+              disabled={!formData.name || !formData.email}
+              className={cn(
+                "mt-6 w-full py-3 rounded-full text-xs font-bold uppercase tracking-widest transition-all shadow-lg",
+                formData.name && formData.email
+                  ? "bg-[#f5b800] text-black hover:opacity-90"
+                  : "bg-black/5 text-black/20 cursor-not-allowed shadow-none"
               )}
             >
               Confirm Appointment
@@ -223,6 +317,7 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
                 onClick={() => {
                   setSelectedDate(currentDayDate)
                   setSelectedTime(null) // Reset time when date changes
+                  setIsDetailsStep(false) // Reset form step
                 }}
                 className={cn(
                   "h-8 w-8 mx-auto flex items-center justify-center rounded-full text-[10px] font-medium transition-all",
