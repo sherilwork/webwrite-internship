@@ -23,7 +23,7 @@ export function MarqueeRibbon() {
           <span className="text-black text-[16px] md:text-[24px] font-black uppercase tracking-tight drop-shadow-sm">
             {word}
           </span>
-          <div className="w-3 h-3 md:w-4 md:h-4 bg-[#f5b800] rotate-45 shrink-0 drop-shadow-[0_0_10px_rgba(245,184,0,0.3)]" />
+          <div className="w-2.5 h-2.5 md:w-3.5 md:h-3.5 bg-[#f5b800] rounded-full shrink-0 shadow-[0_0_10px_rgba(245,184,0,0.3)]" />
         </React.Fragment>
       ))}
     </div>
