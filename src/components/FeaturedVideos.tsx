@@ -4,7 +4,7 @@
 import React, { useState, useMemo, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import Image from "next/image"
-import { Play, TrendingUp, ArrowLeft, ArrowRight, X } from "lucide-react"
+import { Play, ArrowLeft, ArrowRight, X } from "lucide-react"
 import { cn } from "@/lib/utils"
 import {
   Carousel,
@@ -247,14 +247,6 @@ export function FeaturedVideos() {
                               <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center text-black transform scale-90 group-hover:scale-100 transition-all duration-500 shadow-2xl">
                                 <Play className="w-7 h-7 fill-current ml-1" />
                               </div>
-                            </div>
-
-                            {/* Data Badge */}
-                            <div className="absolute top-6 left-6 flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-white/90 backdrop-blur-md border border-black/5 shadow-sm">
-                              <TrendingUp className="w-3.5 h-3.5 text-[#f5b800]" />
-                              <span className="text-[10px] font-black text-black uppercase tracking-wider">
-                                {project.metric}
-                              </span>
                             </div>
 
                             {/* Title Overlay (Visible on Hover/Active) */}
