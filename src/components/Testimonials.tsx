@@ -2,7 +2,7 @@
 "use client"
 
 import React, { useState, useEffect } from "react"
-import { motion, useMotionValue, useTransform, AnimatePresence } from "framer-motion"
+import { motion, useMotionValue, useTransform, AnimatePresence, PanInfo } from "framer-motion"
 import { Quote, Star, RotateCcw } from "lucide-react"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { cn } from "@/lib/utils"
@@ -76,7 +76,7 @@ const testimonials = [
 
 function TestimonialCard({ testimonial }: { testimonial: typeof testimonials[0] }) {
   return (
-    <div className="group relative bg-[#f7f7f5] rounded-[1.25rem] p-4 border border-black/[0.04] shadow-[0_4px_20px_rgba(0,0,0,0.01)] hover:shadow-[0_10px_30px_rgba(0,0,0,0.03)] transition-all duration-700 h-full flex flex-col justify-between">
+    <div className="group relative bg-[#f7f7f5] rounded-[1.25rem] p-4 border border-black/[0.04] shadow-[0_4px_20px_rgba(0,0,0,0.01)] hover:shadow-[0_10px_30px_rgba(0,0,0,0.03)] transition-all duration-700 h-full flex flex-col justify-between select-none">
       <div className="absolute top-4 right-4 text-black/[0.05] group-hover:text-[#f5b800]/20 transition-colors duration-700">
         <Quote size={18} strokeWidth={3} />
       </div>
@@ -112,23 +112,49 @@ function TinderCard({ testimonial, onRemove, index, total }: { testimonial: type
   const rotate = useTransform(x, [-200, 200], [-25, 25])
   const opacity = useTransform(x, [-200, -150, 0, 150, 200], [0, 1, 1, 1, 0])
 
-  function handleDragEnd() {
-    if (Math.abs(x.get()) > 100) {
+  // Improved physics-based swipe handling
+  function handleDragEnd(event: any, info: PanInfo) {
+    const swipeThreshold = 100
+    const velocityThreshold = 500
+    
+    if (Math.abs(info.offset.x) > swipeThreshold || Math.abs(info.velocity.x) > velocityThreshold) {
       onRemove()
     }
   }
 
   return (
     <motion.div
-      style={{ x, rotate, opacity, zIndex: total - index }}
+      style={{ 
+        x, 
+        rotate, 
+        opacity, 
+        zIndex: total - index,
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0
+      }}
       drag="x"
       dragConstraints={{ left: 0, right: 0 }}
+      dragElastic={0.8}
       onDragEnd={handleDragEnd}
+      whileDrag={{ scale: 1.05 }}
       animate={{ 
         scale: 1 - index * 0.05,
         y: index * 12,
       }}
-      className="absolute inset-0 w-full"
+      exit={{ 
+        x: x.get() < 0 ? -500 : 500, 
+        opacity: 0,
+        scale: 0.5,
+        transition: { duration: 0.3, ease: "easeIn" }
+      }}
+      transition={{
+        type: "spring",
+        stiffness: 400,
+        damping: 35
+      }}
+      className="w-full cursor-grab active:cursor-grabbing will-change-transform transform-gpu"
     >
       <TestimonialCard testimonial={testimonial} />
     </motion.div>
@@ -208,16 +234,16 @@ export function Testimonials() {
         </div>
 
         {isMobile ? (
-          <div className="relative h-[300px] flex flex-col items-center">
+          <div className="relative h-[320px] flex flex-col items-center">
             <div className="relative w-full max-w-[320px] h-[180px]">
-              <AnimatePresence>
+              <AnimatePresence initial={false}>
                 {mobileItems.length > 0 ? (
-                  mobileItems.slice(0, 3).map((t, idx) => (
+                  mobileItems.slice(0, 3).reverse().map((t, idx) => (
                     <TinderCard 
                       key={t.id} 
                       testimonial={t} 
                       onRemove={removeCard} 
-                      index={idx} 
+                      index={2 - idx} 
                       total={3} 
                     />
                   ))
@@ -230,17 +256,32 @@ export function Testimonials() {
                     <span className="text-[10px] font-black uppercase tracking-widest text-black/20">End of stack</span>
                     <button 
                       onClick={resetCards}
-                      className="p-2 rounded-full bg-black text-white hover:scale-110 active:scale-95 transition-all"
+                      className="p-3 rounded-full bg-black text-white hover:scale-110 active:scale-95 transition-all shadow-xl"
                     >
-                      <RotateCcw className="w-4 h-4" />
+                      <RotateCcw className="w-5 h-5" />
                     </button>
                   </motion.div>
                 )}
               </AnimatePresence>
             </div>
-            <p className="mt-8 text-[9px] font-black uppercase tracking-[0.2em] text-black/20 animate-pulse">
-              Swipe cards to discover
-            </p>
+            <div className="mt-12 flex flex-col items-center gap-2">
+               <p className="text-[9px] font-black uppercase tracking-[0.2em] text-black/20 animate-pulse">
+                Swipe cards to discover
+              </p>
+              {mobileItems.length > 0 && (
+                <div className="flex gap-1">
+                  {testimonials.map((_, i) => (
+                    <div 
+                      key={i} 
+                      className={cn(
+                        "w-1 h-1 rounded-full transition-all duration-300",
+                        i < (testimonials.length - mobileItems.length) ? "bg-[#f5b800] scale-125" : "bg-black/10"
+                      )} 
+                    />
+                  ))}
+                </div>
+              )}
+            </div>
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 h-[500px] relative overflow-hidden">
