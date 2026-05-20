@@ -72,7 +72,7 @@ export default function ServicesSection() {
         <div className="grid gap-16 lg:grid-cols-2 lg:gap-24 items-start">
           
           {/* Left Column: Sticky Header */}
-          <div className="lg:sticky lg:top-40 h-fit space-y-6 md:space-y-8 mb-12 lg:mb-0">
+          <div className="lg:sticky lg:top-48 h-fit space-y-6 md:space-y-8 mb-12 lg:mb-0">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -92,7 +92,7 @@ export default function ServicesSection() {
                 <div className="w-16 md:w-20 h-1.5 bg-black mt-2" />
               </div>
 
-              <p className="text-base md:text-lg text-black/50 font-medium leading-relaxed">
+              <p className="text-base md:text-lg text-black/50 font-medium leading-relaxed max-w-sm">
                 We simplify growth. Our expert teams build systems that help your brand reach more people and convert them into loyal customers.
               </p>
 
@@ -106,7 +106,7 @@ export default function ServicesSection() {
           </div>
 
           {/* Right Column: Stacked Cards */}
-          <div className="flex flex-col gap-5 relative lg:max-w-xl lg:ml-auto">
+          <div className="flex flex-col gap-10 relative lg:max-w-md lg:ml-auto">
             {services.map((service, index) => (
               <ServiceCard 
                 key={service.title} 
@@ -132,42 +132,42 @@ function ServiceCard({ service, index }: { service: typeof services[0], index: n
       transition={{ duration: 0.8, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
       className="w-full lg:sticky will-change-transform"
       style={{
-        top: `calc(160px + ${index * 24}px)`,
+        top: `calc(180px + ${index * 36}px)`,
         zIndex: 20 + index,
       }}
     >
-      <div className="group relative overflow-hidden rounded-[20px] border border-black/[0.04] bg-white p-6 md:p-8 shadow-[0_10px_40px_rgba(0,0,0,0.02)] transition-all duration-700 hover:shadow-[0_20px_60px_rgba(0,0,0,0.04)] transform-gpu">
+      <div className="group relative overflow-hidden rounded-[28px] border border-black/[0.04] bg-white p-10 md:p-12 shadow-[0_10px_40px_rgba(0,0,0,0.02)] transition-all duration-700 hover:shadow-[0_20px_60px_rgba(0,0,0,0.04)] transform-gpu min-h-[200px] md:min-h-[240px] flex items-center">
         
         <div className={cn(
           "absolute inset-0 opacity-0 transition-opacity duration-700 group-hover:opacity-[0.1]",
           service.accent
         )} />
 
-        <div className="relative flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-          <div className="flex flex-col md:flex-row items-start md:items-center gap-5">
+        <div className="relative flex flex-col gap-8 md:flex-row md:items-center md:justify-between w-full">
+          <div className="flex flex-col md:flex-row items-start md:items-center gap-8">
             <div className={cn(
-              "flex h-11 w-11 md:h-12 md:w-12 shrink-0 items-center justify-center rounded-[15px] border border-black/[0.03] transition-all duration-700 group-hover:scale-105 group-hover:rotate-3",
+              "flex h-14 w-14 md:h-16 md:w-16 shrink-0 items-center justify-center rounded-[24px] border border-black/[0.03] transition-all duration-700 group-hover:scale-105 group-hover:rotate-3",
               service.accent
             )}>
-              <Icon size={20} strokeWidth={1.5} className="text-black transition-transform duration-700 group-hover:scale-110" />
+              <Icon size={28} strokeWidth={1.5} className="text-black transition-transform duration-700 group-hover:scale-110" />
             </div>
 
-            <div className="space-y-1">
-              <h3 className="text-base md:text-lg font-bold tracking-tight text-[#111111]">
+            <div className="space-y-3">
+              <h3 className="text-xl md:text-2xl font-black tracking-tight text-[#111111] uppercase">
                 {service.title}
               </h3>
-              <p className="max-w-sm text-[11px] md:text-xs leading-relaxed text-black/40 font-medium">
+              <p className="max-w-xs text-xs md:text-sm leading-relaxed text-black/40 font-medium">
                 {service.description}
               </p>
             </div>
           </div>
 
-          <button className="flex h-9 w-9 md:h-10 md:w-10 items-center justify-center rounded-full bg-black text-white transition-all duration-500 hover:scale-110 active:scale-90 group/btn shrink-0">
-            <ArrowUpRight size={16} strokeWidth={2} className="transition-transform duration-500 group-hover:rotate-45" />
+          <button className="flex h-12 w-12 md:h-14 md:w-14 items-center justify-center rounded-full bg-black text-white transition-all duration-500 hover:scale-110 active:scale-90 group/btn shrink-0 shadow-lg shadow-black/10">
+            <ArrowUpRight size={24} strokeWidth={2} className="transition-transform duration-500 group-hover:rotate-45" />
           </button>
         </div>
 
-        <div className="absolute top-5 right-6 text-[32px] md:text-[40px] font-black text-black/[0.015] leading-none select-none tracking-tighter transition-all duration-700 group-hover:text-black/[0.03] group-hover:-translate-y-1 pointer-events-none">
+        <div className="absolute top-6 right-8 text-[50px] md:text-[64px] font-black text-black/[0.015] leading-none select-none tracking-tighter transition-all duration-700 group-hover:text-black/[0.03] group-hover:-translate-y-1 pointer-events-none">
           {index + 1}
         </div>
       </div>
