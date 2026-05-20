@@ -136,7 +136,7 @@ function ServiceCard({ service, index }: { service: typeof services[0], index: n
         zIndex: 20 + index,
       }}
     >
-      <div className="group relative overflow-hidden rounded-[20px] border border-black/[0.04] bg-white p-5 md:p-6 shadow-[0_10px_40px_rgba(0,0,0,0.02)] transition-all duration-700 hover:shadow-[0_20px_60px_rgba(0,0,0,0.04)] transform-gpu">
+      <div className="group relative overflow-hidden rounded-[20px] border border-black/[0.04] bg-white p-6 md:p-8 shadow-[0_10px_40px_rgba(0,0,0,0.02)] transition-all duration-700 hover:shadow-[0_20px_60px_rgba(0,0,0,0.04)] transform-gpu">
         
         <div className={cn(
           "absolute inset-0 opacity-0 transition-opacity duration-700 group-hover:opacity-[0.1]",
