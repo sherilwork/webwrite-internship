@@ -65,7 +65,7 @@ export default function TeamPage() {
                       src={placeholder?.imageUrl || "https://picsum.photos/seed/placeholder/600/800"}
                       alt={member.name}
                       fill
-                      className="object-cover transition-all duration-1000 grayscale group-hover:grayscale-0 group-hover:scale-110"
+                      className="object-cover transition-all duration-1000"
                     />
                   </div>
                   <div className="space-y-1">
