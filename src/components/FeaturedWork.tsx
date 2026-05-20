@@ -1,7 +1,7 @@
 
 "use client"
 
-import React, { useState, useMemo } from "react"
+import React, { useState, useMemo, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import Image from "next/image"
 import { Play, ExternalLink, TrendingUp, ArrowUpRight, Filter, ChevronLeft, ChevronRight } from "lucide-react"
@@ -14,6 +14,7 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
+  type CarouselApi
 } from "@/components/ui/carousel"
 
 const categories = ["All", "Videos", "Websites", "Ads Results"]
@@ -151,6 +152,25 @@ const projects = [
 export function FeaturedWork() {
   const [activeCategory, setActiveCategory] = useState("Videos")
   const [activeSubCategory, setActiveSubCategory] = useState("All")
+  const [api, setApi] = useState<CarouselApi>()
+  const [selectedIndex, setSelectedIndex] = useState(0)
+
+  useEffect(() => {
+    if (!api) return
+
+    const onSelect = () => {
+      setSelectedIndex(api.selectedScrollSnap())
+    }
+
+    onSelect()
+    api.on("select", onSelect)
+    api.on("reInit", onSelect)
+
+    return () => {
+      api.off("select", onSelect)
+      api.off("reInit", onSelect)
+    }
+  }, [api])
 
   const filteredProjects = useMemo(() => {
     return projects.filter((p) => {
@@ -163,28 +183,36 @@ export function FeaturedWork() {
   const handleCategoryChange = (cat: string) => {
     setActiveCategory(cat)
     setActiveSubCategory("All")
+    setSelectedIndex(0)
   }
 
-  const renderProjectCard = (project: typeof projects[0]) => {
+  const renderProjectCard = (project: typeof projects[0], isActive: boolean = true) => {
     const projectImage = PlaceHolderImages.find(img => img.id === project.image);
     return (
       <motion.div
         key={project.id}
         layout
-        initial={{ opacity: 0, scale: 0.95 }}
-        animate={{ opacity: 1, scale: 1 }}
-        exit={{ opacity: 0, scale: 0.95 }}
+        initial={false}
+        animate={{ 
+          opacity: isActive ? 1 : 0.4, 
+          scale: isActive ? 1.05 : 0.85,
+          filter: isActive ? "grayscale(0)" : "grayscale(0.5)"
+        }}
         transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-        className="group relative h-full pb-8"
+        className="group relative h-full pb-8 will-change-transform"
       >
         <div className="relative aspect-[3/4] rounded-[2rem] overflow-hidden bg-[#f7f7f5] border border-black/[0.05] shadow-[0_10px_40px_rgba(0,0,0,0.02)] transition-all duration-700 group-hover:shadow-[0_20px_60px_rgba(0,0,0,0.08)] transform-gpu">
-          {projectImage?.imageUrl && (
+          {projectImage?.imageUrl ? (
             <Image
               src={projectImage.imageUrl}
               alt={project.title}
               fill
               className="object-cover transition-transform duration-1000 group-hover:scale-105"
             />
+          ) : (
+            <div className="w-full h-full flex items-center justify-center bg-black/5">
+              <span className="text-[10px] text-black/20 font-bold">IMAGE NOT FOUND</span>
+            </div>
           )}
           
           <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center backdrop-blur-[2px]">
@@ -205,7 +233,10 @@ export function FeaturedWork() {
           </div>
         </div>
 
-        <div className="mt-6 space-y-2 px-2">
+        <div className={cn(
+          "mt-6 space-y-2 px-2 transition-opacity duration-500",
+          !isActive && "opacity-20"
+        )}>
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
               <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-[#f5b800]">
@@ -299,20 +330,24 @@ export function FeaturedWork() {
                 className="w-full"
               >
                 <Carousel
+                  setApi={setApi}
                   opts={{
-                    align: "start",
+                    align: "center",
                     loop: true,
                   }}
                   className="w-full"
                 >
-                  <CarouselContent className="-ml-4 md:-ml-8">
-                    {filteredProjects.map((project) => (
-                      <CarouselItem key={project.id} className="pl-4 md:pl-8 basis-full sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
-                        {renderProjectCard(project)}
+                  <CarouselContent className="-ml-4 md:-ml-8 items-center">
+                    {filteredProjects.map((project, index) => (
+                      <CarouselItem 
+                        key={project.id} 
+                        className="pl-4 md:pl-8 basis-[75%] sm:basis-1/2 md:basis-1/3"
+                      >
+                        {renderProjectCard(project, index === selectedIndex)}
                       </CarouselItem>
                     ))}
                   </CarouselContent>
-                  <div className="flex justify-end gap-3 mt-8">
+                  <div className="flex justify-center gap-3 mt-12">
                     <CarouselPrevious className="static translate-y-0 h-12 w-12 border-black/5 hover:bg-black hover:text-white transition-all" />
                     <CarouselNext className="static translate-y-0 h-12 w-12 border-black/5 hover:bg-black hover:text-white transition-all" />
                   </div>
@@ -326,7 +361,7 @@ export function FeaturedWork() {
                 exit={{ opacity: 0 }}
                 className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8"
               >
-                {filteredProjects.map((project) => renderProjectCard(project))}
+                {filteredProjects.map((project) => renderProjectCard(project, true))}
               </motion.div>
             )}
           </AnimatePresence>
