@@ -1,21 +1,29 @@
 
 "use client"
 
-import React, { useState } from "react"
+import React, { useState, useMemo } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import Image from "next/image"
-import { Play, ExternalLink, TrendingUp, ArrowUpRight } from "lucide-react"
+import { Play, ExternalLink, TrendingUp, ArrowUpRight, Filter } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 import { PlaceHolderImages } from "@/lib/placeholder-images"
 
 const categories = ["All", "Videos", "Websites", "Ads Results"]
 
+const subCategoriesMap: Record<string, string[]> = {
+  "All": [],
+  "Videos": ["All", "Brand Story", "Commercial", "Motion Graphics"],
+  "Websites": ["All", "SaaS", "E-commerce", "Corporate"],
+  "Ads Results": ["All", "Meta Ads", "Google Ads", "SEO"],
+}
+
 const projects = [
   {
     id: 1,
     title: "Cinematic Brand Story",
     category: "Videos",
+    subCategory: "Brand Story",
     image: "work-video-1",
     metric: "2.4M Views",
     description: "High-end brand storytelling for global tech leaders."
@@ -24,6 +32,7 @@ const projects = [
     id: 2,
     title: "EcoSphere SaaS Platform",
     category: "Websites",
+    subCategory: "SaaS",
     image: "work-website-1",
     metric: "99.9% Performance",
     description: "Cloud-native infrastructure visualization dashboard."
@@ -32,6 +41,7 @@ const projects = [
     id: 3,
     title: "Global Meta Campaign",
     category: "Ads Results",
+    subCategory: "Meta Ads",
     image: "work-ads-1",
     metric: "12.5x ROAS",
     description: "Data-driven scale for high-performance e-commerce."
@@ -40,6 +50,7 @@ const projects = [
     id: 4,
     title: "Commercial Motion Kit",
     category: "Videos",
+    subCategory: "Motion Graphics",
     image: "work-video-2",
     metric: "4k Resolution",
     description: "Custom motion graphics for broadcast television."
@@ -48,6 +59,7 @@ const projects = [
     id: 5,
     title: "Luxe Fashion Store",
     category: "Websites",
+    subCategory: "E-commerce",
     image: "work-website-2",
     metric: "300% Conversion",
     description: "High-converting headless commerce experience."
@@ -56,6 +68,7 @@ const projects = [
     id: 6,
     title: "Search Engine Domination",
     category: "Ads Results",
+    subCategory: "SEO",
     image: "work-ads-2",
     metric: "+450% Traffic",
     description: "Advanced SEO and SEM strategy for competitive niches."
@@ -64,15 +77,25 @@ const projects = [
 
 export function FeaturedWork() {
   const [activeCategory, setActiveCategory] = useState("All")
+  const [activeSubCategory, setActiveSubCategory] = useState("All")
 
-  const filteredProjects = projects.filter(
-    (p) => activeCategory === "All" || p.category === activeCategory
-  )
+  const filteredProjects = useMemo(() => {
+    return projects.filter((p) => {
+      const categoryMatch = activeCategory === "All" || p.category === activeCategory
+      const subCategoryMatch = activeSubCategory === "All" || p.subCategory === activeSubCategory
+      return categoryMatch && subCategoryMatch
+    })
+  }, [activeCategory, activeSubCategory])
+
+  const handleCategoryChange = (cat: string) => {
+    setActiveCategory(cat)
+    setActiveSubCategory("All") // Reset sub-category when primary changes
+  }
 
   return (
     <section className="bg-white py-24 lg:py-32 overflow-hidden">
       <div className="container mx-auto px-6">
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-16">
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-12">
           <div className="space-y-6 max-w-2xl">
             <div className="space-y-4">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/[0.03] border border-black/[0.05]">
@@ -94,7 +117,7 @@ export function FeaturedWork() {
             {categories.map((cat) => (
               <button
                 key={cat}
-                onClick={() => setActiveCategory(cat)}
+                onClick={() => handleCategoryChange(cat)}
                 className={cn(
                   "px-6 py-2 rounded-full text-[10px] font-black uppercase tracking-widest transition-all border",
                   activeCategory === cat
@@ -107,6 +130,37 @@ export function FeaturedWork() {
             ))}
           </div>
         </div>
+
+        {/* Sub-Category Filter */}
+        <AnimatePresence mode="wait">
+          {activeCategory !== "All" && subCategoriesMap[activeCategory] && (
+            <motion.div 
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              className="flex flex-wrap items-center gap-4 mb-16 pb-4 border-b border-black/[0.03]"
+            >
+              <div className="flex items-center gap-2 text-[9px] font-black text-black/30 uppercase tracking-widest mr-2">
+                <Filter className="w-3 h-3" />
+                Refine by:
+              </div>
+              {subCategoriesMap[activeCategory].map((sub) => (
+                <button
+                  key={sub}
+                  onClick={() => setActiveSubCategory(sub)}
+                  className={cn(
+                    "text-[10px] font-bold uppercase tracking-widest transition-colors",
+                    activeSubCategory === sub
+                      ? "text-[#f5b800]"
+                      : "text-black/40 hover:text-black"
+                  )}
+                >
+                  {sub}
+                </button>
+              ))}
+            </motion.div>
+          )}
+        </AnimatePresence>
 
         <motion.div 
           layout
@@ -160,9 +214,15 @@ export function FeaturedWork() {
 
                   <div className="mt-6 space-y-2 px-2">
                     <div className="flex items-center justify-between">
-                      <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-[#f5b800]">
-                        {project.category}
-                      </span>
+                      <div className="flex items-center gap-2">
+                        <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-[#f5b800]">
+                          {project.category}
+                        </span>
+                        <span className="w-1 h-1 rounded-full bg-black/10" />
+                        <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-black/30">
+                          {project.subCategory}
+                        </span>
+                      </div>
                       <ArrowUpRight className="w-4 h-4 text-black/20 group-hover:text-black transition-colors" />
                     </div>
                     <h3 className="text-xl font-black text-black uppercase tracking-tight group-hover:text-[#f5b800] transition-colors">
