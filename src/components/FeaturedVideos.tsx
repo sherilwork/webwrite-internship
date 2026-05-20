@@ -280,7 +280,7 @@ export function FeaturedVideos() {
       </div>
 
       <Dialog open={!!selectedVideo} onOpenChange={() => setSelectedVideo(null)}>
-        <DialogContent className="max-w-[95vw] md:max-w-[85vw] lg:max-w-6xl p-0 bg-black border-none overflow-hidden aspect-video rounded-2xl md:rounded-[2rem] shadow-[0_0_100px_rgba(0,0,0,0.5)]">
+        <DialogContent className="max-w-[90vw] md:max-w-[85vw] lg:max-w-6xl p-0 bg-black border-none overflow-hidden aspect-[9/16] md:aspect-video rounded-[2.5rem] md:rounded-[2rem] shadow-[0_0_100px_rgba(0,0,0,0.5)]">
           <DialogTitle className="sr-only">Video Player</DialogTitle>
           {selectedVideo && (
             <iframe
