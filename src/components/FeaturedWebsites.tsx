@@ -54,7 +54,8 @@ const FEATURED_CARDS = [
     imageUrl: "https://picsum.photos/seed/ws4/800/500"
   },
   {
-    id: 5,    title: "Sagar Disposal",
+    id: 5,
+    title: "Sagar Disposal",
     description: "A specialized digital platform for industrial disposal solutions, featuring a structured product catalog and optimized for professional B2B interactions.",
     icon: <Package className="w-5 h-5" />,
     stats: "B2B Catalog",
@@ -234,19 +235,17 @@ export function FeaturedWebsites() {
           )}
 
           {filteredCards.length > 1 && (
-            <div className="absolute bottom-0 md:bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-3 md:gap-4 z-50 w-full px-6 md:w-auto">
+            <div className="absolute bottom-4 md:bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-3 z-50 w-[calc(100%-3rem)] md:w-auto">
               <button 
                 onClick={() => handleWebsiteNav('prev')} 
-                className="group flex-1 md:flex-none flex items-center justify-center gap-2 md:gap-3 px-4 md:px-8 py-3 md:py-4 bg-black/[0.03] border border-black/[0.05] text-black text-[8px] md:text-[10px] uppercase tracking-[0.2em] md:tracking-[0.4em] font-black hover:bg-black hover:border-black hover:text-white transition-all duration-300"
-                style={{ clipPath: isMobile ? 'none' : 'polygon(10% 0%, 100% 0%, 90% 100%, 0% 100%)' }}
+                className="group flex-1 md:flex-none flex items-center justify-center gap-2 md:gap-3 px-6 md:px-10 py-3 md:py-4 bg-black/[0.03] border border-black/[0.08] text-black text-[9px] md:text-[11px] uppercase tracking-[0.2em] font-black rounded-full hover:bg-black hover:border-black hover:text-white transition-all duration-300 shadow-lg shadow-black/5"
               >
                 <ArrowLeft className="w-4 h-4 md:w-5 md:h-5 text-[#f5b800] group-hover:-translate-x-1 transition-transform" />
                 Prev
               </button>
               <button 
                 onClick={() => handleWebsiteNav('next')} 
-                className="group flex-1 md:flex-none flex items-center justify-center gap-2 md:gap-3 px-4 md:px-8 py-3 md:py-4 bg-black/[0.03] border border-black/[0.05] text-black text-[8px] md:text-[10px] uppercase tracking-[0.2em] md:tracking-[0.4em] font-black hover:bg-black hover:border-black hover:text-white transition-all duration-300"
-                style={{ clipPath: isMobile ? 'none' : 'polygon(10% 0%, 100% 0%, 90% 100%, 0% 100%)' }}
+                className="group flex-1 md:flex-none flex items-center justify-center gap-2 md:gap-3 px-6 md:px-10 py-3 md:py-4 bg-black/[0.03] border border-black/[0.08] text-black text-[9px] md:text-[11px] uppercase tracking-[0.2em] font-black rounded-full hover:bg-black hover:border-black hover:text-white transition-all duration-300 shadow-lg shadow-black/5"
               >
                 Next
                 <ArrowRight className="w-4 h-4 md:w-5 md:h-5 text-[#f5b800] group-hover:translate-x-1 transition-transform" />
