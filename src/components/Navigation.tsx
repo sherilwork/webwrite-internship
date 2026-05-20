@@ -30,7 +30,7 @@ export function Navigation() {
   const navItems = [
     { label: 'Home', href: '/', icon: Home },
     { label: 'About', href: '/about', icon: Star },
-    { label: 'Team', href: '/founder', icon: Building2 },
+    { label: 'Team', href: '/team', icon: Building2 },
     { label: 'Services', href: '/#services', icon: Zap },
     { label: 'Portfolio', href: '/#portfolio', icon: Layout },
     { label: 'Career', href: '#', icon: Briefcase },

@@ -80,10 +80,46 @@
       "imageHint": "corporate office"
     },
     {
-      "id": "founder-portrait",
-      "description": "Founder of Webwrite Services",
-      "imageUrl": "https://picsum.photos/seed/founder/800/1000",
-      "imageHint": "visionary leader"
+      "id": "team-1",
+      "description": "Team Member 1",
+      "imageUrl": "https://picsum.photos/seed/team1/600/800",
+      "imageHint": "professional portrait"
+    },
+    {
+      "id": "team-2",
+      "description": "Team Member 2",
+      "imageUrl": "https://picsum.photos/seed/team2/600/800",
+      "imageHint": "professional portrait"
+    },
+    {
+      "id": "team-3",
+      "description": "Team Member 3",
+      "imageUrl": "https://picsum.photos/seed/team3/600/800",
+      "imageHint": "professional portrait"
+    },
+    {
+      "id": "team-4",
+      "description": "Team Member 4",
+      "imageUrl": "https://picsum.photos/seed/team4/600/800",
+      "imageHint": "professional portrait"
+    },
+    {
+      "id": "team-5",
+      "description": "Team Member 5",
+      "imageUrl": "https://picsum.photos/seed/team5/600/800",
+      "imageHint": "professional portrait"
+    },
+    {
+      "id": "team-6",
+      "description": "Team Member 6",
+      "imageUrl": "https://picsum.photos/seed/team6/600/800",
+      "imageHint": "professional portrait"
+    },
+    {
+      "id": "team-7",
+      "description": "Team Member 7",
+      "imageUrl": "https://picsum.photos/seed/team7/600/800",
+      "imageHint": "professional portrait"
     }
   ]
 }
