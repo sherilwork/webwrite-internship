@@ -14,7 +14,8 @@ import {
   Database,
   Layers,
   CheckCircle2,
-  ChevronRight
+  ChevronRight,
+  X
 } from "lucide-react"
 import { Navigation } from "@/components/Navigation"
 import { SubHeader } from "@/components/SubHeader"
@@ -27,6 +28,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
+  DialogClose,
 } from "@/components/ui/dialog"
 import { ScrollArea } from "@/components/ui/scroll-area"
 
@@ -175,56 +177,59 @@ export default function CareerPage() {
                             VIEW DETAILS
                           </Button>
                         </DialogTrigger>
-                        <DialogContent className="max-w-2xl p-0 bg-white border-none rounded-[2.5rem] overflow-hidden">
-                          <div className="bg-[#f5b800] p-8 md:p-12 text-black">
+                        <DialogContent className="max-w-lg p-0 bg-white border-none rounded-[1.5rem] md:rounded-[2rem] overflow-hidden shadow-2xl">
+                          <div className="bg-[#f5b800] p-6 md:p-8 text-black relative">
                             <DialogHeader>
-                              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/10 border border-black/5 mb-4 w-fit">
-                                <span className="text-[10px] font-black uppercase tracking-[0.2em]">Job Opening</span>
+                              <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-black/10 border border-black/5 mb-3 w-fit">
+                                <span className="text-[9px] font-black uppercase tracking-[0.2em]">Job Opening</span>
                               </div>
-                              <DialogTitle className="text-3xl md:text-5xl font-black uppercase tracking-tighter leading-none mb-4">
+                              <DialogTitle className="text-2xl md:text-3xl font-black uppercase tracking-tighter leading-tight mb-3">
                                 {selectedJob?.title}
                               </DialogTitle>
-                              <div className="flex flex-wrap gap-4 opacity-60">
+                              <div className="flex flex-wrap gap-3 opacity-70">
                                 <div className="flex items-center gap-1.5">
-                                  <MapPin className="w-4 h-4" />
-                                  <span className="text-xs font-black uppercase tracking-widest">{selectedJob?.location}</span>
+                                  <MapPin className="w-3.5 h-3.5" />
+                                  <span className="text-[10px] font-black uppercase tracking-widest">{selectedJob?.location}</span>
                                 </div>
                                 <div className="flex items-center gap-1.5">
-                                  <Clock className="w-4 h-4" />
-                                  <span className="text-xs font-black uppercase tracking-widest">{selectedJob?.type}</span>
+                                  <Clock className="w-3.5 h-3.5" />
+                                  <span className="text-[10px] font-black uppercase tracking-widest">{selectedJob?.type}</span>
                                 </div>
                                 <div className="flex items-center gap-1.5">
-                                  <Briefcase className="w-4 h-4" />
-                                  <span className="text-xs font-black uppercase tracking-widest">{selectedJob?.experience}</span>
+                                  <Briefcase className="w-3.5 h-3.5" />
+                                  <span className="text-[10px] font-black uppercase tracking-widest">{selectedJob?.experience}</span>
                                 </div>
                               </div>
                             </DialogHeader>
+                            <DialogClose className="absolute right-4 top-4 p-2 rounded-full hover:bg-black/10 transition-colors">
+                              <X className="w-4 h-4" />
+                            </DialogClose>
                           </div>
                           
-                          <ScrollArea className="max-h-[60vh]">
-                            <div className="p-8 md:p-12 space-y-10">
-                              <section className="space-y-4">
-                                <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-black/30">Job Description</h4>
-                                <p className="text-sm md:text-base text-black/60 font-medium leading-relaxed">
+                          <ScrollArea className="max-h-[50vh]">
+                            <div className="p-6 md:p-8 space-y-8">
+                              <section className="space-y-3">
+                                <h4 className="text-[9px] font-black uppercase tracking-[0.3em] text-black/30">Job Description</h4>
+                                <p className="text-xs md:text-sm text-black/60 font-medium leading-relaxed">
                                   {selectedJob?.description}
                                 </p>
                               </section>
 
-                              <section className="space-y-4">
-                                <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-black/30">Key Responsibilities</h4>
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                              <section className="space-y-3">
+                                <h4 className="text-[9px] font-black uppercase tracking-[0.3em] text-black/30">Key Responsibilities</h4>
+                                <div className="grid grid-cols-1 gap-3">
                                   {responsibilities.map((resp, i) => (
-                                    <div key={i} className="flex items-center gap-3 p-4 rounded-2xl bg-black/[0.02] border border-black/[0.05] group hover:bg-black transition-all">
-                                      <CheckCircle2 className="w-5 h-5 text-[#f5b800]" />
-                                      <span className="text-[10px] font-black uppercase tracking-widest text-black/80 group-hover:text-white transition-colors">{resp}</span>
+                                    <div key={i} className="flex items-center gap-3 p-3.5 rounded-xl bg-black/[0.02] border border-black/[0.04] group hover:bg-black transition-all">
+                                      <CheckCircle2 className="w-4 h-4 text-[#f5b800]" />
+                                      <span className="text-[9px] font-black uppercase tracking-widest text-black/80 group-hover:text-white transition-colors">{resp}</span>
                                     </div>
                                   ))}
                                 </div>
                               </section>
 
-                              <Button className="w-full rounded-full bg-black text-white text-[12px] font-black uppercase tracking-[0.2em] py-8 h-auto hover:bg-[#f5b800] hover:text-black transition-all group">
+                              <Button className="w-full rounded-full bg-black text-white text-[11px] font-black uppercase tracking-[0.2em] py-6 h-auto hover:bg-[#f5b800] hover:text-black transition-all group">
                                 APPLY FOR THIS PROFILE
-                                <ArrowRight className="w-4 h-4 ml-3 group-hover:translate-x-1 transition-transform" />
+                                <ArrowRight className="w-3.5 h-3.5 ml-2.5 group-hover:translate-x-1 transition-transform" />
                               </Button>
                             </div>
                           </ScrollArea>
