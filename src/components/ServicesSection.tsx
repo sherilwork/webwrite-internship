@@ -92,7 +92,7 @@ export default function ServicesSection() {
               </div>
 
               <p className="mt-8 text-base md:text-lg text-black/50 font-medium leading-relaxed max-w-sm">
-                We build high-velocity growth systems that bridge the gap between creative vision and technical excellence.
+                We create simple, powerful growth plans that help your business grow online and reach the right people.
               </p>
 
               <div className="pt-12">
