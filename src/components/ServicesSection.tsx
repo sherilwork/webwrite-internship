@@ -86,7 +86,7 @@ export default function ServicesSection() {
               <div className="space-y-4">
                 <h2 className="text-3xl md:text-5xl lg:text-6xl font-black text-black leading-[1.05] tracking-tighter">
                   OUR PERFORMANCE <br />
-                  <span className="text-black/20">DRIVEN STACK</span>
+                  <span className="text-[#f5b800]">DRIVEN STACK</span>
                 </h2>
                 <div className="w-16 md:w-20 h-1.5 bg-black mt-2" />
               </div>
