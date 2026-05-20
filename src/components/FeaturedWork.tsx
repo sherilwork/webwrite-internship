@@ -194,6 +194,23 @@ export function FeaturedWork() {
             <span className="w-1.5 h-1.5 rounded-full bg-[#f5b800]" />
             <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-black/60">Portfolio Showcase</span>
           </div>
+        </div>
+
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-12 border-b border-black/[0.05] pb-6">
+          <AnimatePresence mode="wait">
+            <motion.div 
+              key={activeCategory}
+              initial={{ opacity: 0, x: -10 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -10 }}
+              className="relative"
+            >
+              <h2 className="text-xl md:text-3xl font-black text-black leading-none tracking-tighter uppercase">
+                {activeCategory}
+              </h2>
+              <div className="w-8 md:w-12 h-1 bg-black mt-1" />
+            </motion.div>
+          </AnimatePresence>
 
           <div className="flex flex-wrap gap-1.5">
             {categories.map((cat) => (
@@ -212,21 +229,6 @@ export function FeaturedWork() {
             ))}
           </div>
         </div>
-
-        <AnimatePresence mode="wait">
-          <motion.div 
-            key={activeCategory}
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            className="mb-8"
-          >
-            <h2 className="text-xl md:text-3xl font-black text-black leading-none tracking-tighter uppercase">
-              {activeCategory}
-            </h2>
-            <div className="w-8 md:w-12 h-1 bg-black mt-1" />
-          </motion.div>
-        </AnimatePresence>
 
         <div className="relative min-h-[400px]">
           <AnimatePresence mode="wait">
