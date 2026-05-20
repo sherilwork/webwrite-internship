@@ -14,25 +14,25 @@ export function AboutSection() {
             <div className="space-y-4">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/[0.03] border border-black/[0.05]">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#f5b800]" />
-                <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-black/60">About Webwrite</span>
+                <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-black/60">Our Journey</span>
               </div>
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-black leading-[1.05] tracking-tighter">
-                ELEVATING BRANDS <br />
-                <span className="text-[#f5b800]">THROUGH PRECISION</span>
+                FROM SMALL STEPS <br />
+                <span className="text-[#f5b800]">TO BIG IMPACT</span>
               </h2>
               <div className="w-20 h-1.5 bg-black mt-2" />
             </div>
             
             <p className="text-lg text-black/50 font-medium leading-relaxed">
-              At Webwrite, we don't just build websites; we engineer digital ecosystems that drive growth. Our approach combines data-driven strategy with world-class design to ensure your brand stands out in an increasingly crowded digital landscape.
+              We started with a simple belief: that big dreams deserve digital spaces that work. At Webwrite, we help brands succeed by turning simple ideas into real opportunities. We build websites that work and content that connects, helping our partners leave a lasting mark in the digital world.
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-y-4 gap-x-8">
               {[
-                "Data-Driven Strategy",
-                "Conversion Optimized Design",
-                "Advanced Meta Advertising",
-                "High-Performance Development"
+                "Personalized Solutions",
+                "Simple, Effective Designs",
+                "Content That Connects",
+                "Practical Innovation"
               ].map((feature, idx) => (
                 <div key={idx} className="flex items-center gap-3 group">
                   <div className="w-6 h-6 rounded-full bg-black/5 flex items-center justify-center shrink-0 group-hover:bg-[#f5b800]/20 transition-colors">
@@ -45,7 +45,7 @@ export function AboutSection() {
 
             <div className="pt-6">
               <Button className="rounded-full bg-black text-white px-10 py-7 text-xs font-bold uppercase tracking-widest hover:bg-black/90 transition-all hover:translate-x-1 active:scale-95 shadow-2xl shadow-black/20 group">
-                Learn our process
+                Discover our story
                 <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
               </Button>
             </div>
