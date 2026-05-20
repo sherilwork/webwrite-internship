@@ -18,7 +18,8 @@ import {
   Mail,
   Phone,
   Upload,
-  FileText
+  FileText,
+  X
 } from "lucide-react"
 import { Navigation } from "@/components/Navigation"
 import { SubHeader } from "@/components/SubHeader"
@@ -30,7 +31,6 @@ import {
   DialogContent,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from "@/components/ui/dialog"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { Input } from "@/components/ui/input"
@@ -93,7 +93,10 @@ const responsibilities = [
 ]
 
 export default function CareerPage() {
-  const [selectedJob, setSelectedJob] = useState<typeof jobs[0] | null>(null)
+  const [activeJob, setActiveJob] = useState<typeof jobs[0] | null>(null)
+  const [isApplyOpen, setIsApplyOpen] = useState(false)
+  const [isDetailsOpen, setIsDetailsOpen] = useState(false)
+  
   const [fileName, setFileName] = useState<string>("No file chosen")
   const fileInputRef = useRef<HTMLInputElement>(null)
   const { toast } = useToast()
@@ -111,8 +114,21 @@ export default function CareerPage() {
     e.preventDefault()
     toast({
       title: "Application Received",
-      description: `Your application for the ${selectedJob?.title} position has been sent successfully.`,
+      description: `Your application for the ${activeJob?.title} position has been sent successfully.`,
     })
+    setIsApplyOpen(false)
+  }
+
+  const openApply = (job: typeof jobs[0]) => {
+    setActiveJob(job)
+    setIsDetailsOpen(false)
+    setIsApplyOpen(true)
+  }
+
+  const openDetails = (job: typeof jobs[0]) => {
+    setActiveJob(job)
+    setIsApplyOpen(false)
+    setIsDetailsOpen(true)
   }
 
   return (
@@ -188,175 +204,19 @@ export default function CareerPage() {
                     </div>
 
                     <div className="flex flex-col gap-3 pt-4">
-                      {/* Independent Apply Dialog */}
-                      <Dialog>
-                        <DialogTrigger asChild>
-                          <Button 
-                            onClick={() => setSelectedJob(job)}
-                            className="w-full rounded-full bg-[#f5b800] text-black text-[10px] font-black uppercase tracking-widest hover:bg-white transition-all py-6 h-auto"
-                          >
-                            APPLY NOW
-                          </Button>
-                        </DialogTrigger>
-                        <DialogContent className="w-[92%] md:max-w-3xl p-0 bg-white border-none rounded-[1.5rem] md:rounded-[2rem] overflow-hidden shadow-2xl mt-12 md:mt-20 mb-12 md:mb-20 max-h-[90vh] md:max-h-[85vh] md:top-[46%]">
-                          <div className="bg-[#f5b800] p-6 md:p-8 text-black relative">
-                            <DialogHeader>
-                              <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-black/10 border border-black/5 mb-3 w-fit">
-                                <span className="text-[9px] font-black uppercase tracking-[0.2em]">Application Form</span>
-                              </div>
-                              <DialogTitle className="text-xl md:text-3xl font-black uppercase tracking-tighter leading-tight mb-3">
-                                APPLY FOR {selectedJob?.title}
-                              </DialogTitle>
-                              <p className="text-[10px] md:text-[12px] font-bold uppercase tracking-widest opacity-80 leading-relaxed max-w-xl">
-                                FILL OUT THE FORM BELOW AND ATTACH YOUR RESUME TO APPLY FOR THIS POSITION.
-                              </p>
-                            </DialogHeader>
-                          </div>
-                          
-                          <ScrollArea className="max-h-[60vh]">
-                            <div className="p-6 md:p-10">
-                              <form onSubmit={handleApplySubmit} className="space-y-6">
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                  <div className="space-y-2">
-                                    <Label className="text-[10px] font-black uppercase tracking-widest text-black/40">FULL NAME *</Label>
-                                    <div className="relative">
-                                      <User className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-black/20" />
-                                      <Input required placeholder="John Doe" className="pl-10 h-14 bg-black/[0.02] border-black/5 rounded-xl text-[13px] font-bold focus-visible:ring-[#f5b800]" />
-                                    </div>
-                                  </div>
-                                  <div className="space-y-2">
-                                    <Label className="text-[10px] font-black uppercase tracking-widest text-black/40">EMAIL ADDRESS *</Label>
-                                    <div className="relative">
-                                      <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-black/20" />
-                                      <Input required type="email" placeholder="john@example.com" className="pl-10 h-14 bg-black/[0.02] border-black/5 rounded-xl text-[13px] font-bold focus-visible:ring-[#f5b800]" />
-                                    </div>
-                                  </div>
-                                  <div className="space-y-2">
-                                    <Label className="text-[10px] font-black uppercase tracking-widest text-black/40">MOBILE NUMBER *</Label>
-                                    <div className="relative">
-                                      <Phone className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-black/20" />
-                                      <Input required placeholder="+91 9876543210" className="pl-10 h-14 bg-black/[0.02] border-black/5 rounded-xl text-[13px] font-bold focus-visible:ring-[#f5b800]" />
-                                    </div>
-                                  </div>
-                                  <div className="space-y-2">
-                                    <Label className="text-[10px] font-black uppercase tracking-widest text-black/40">CURRENT ADDRESS / LOCATION *</Label>
-                                    <div className="relative">
-                                      <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-black/20" />
-                                      <Input required placeholder="City, Country" className="pl-10 h-14 bg-black/[0.02] border-black/5 rounded-xl text-[13px] font-bold focus-visible:ring-[#f5b800]" />
-                                    </div>
-                                  </div>
-                                </div>
-
-                                <div className="space-y-4 pt-4">
-                                  <Label className="text-[10px] font-black uppercase tracking-widest text-black/40">RESUME / CV (PDF, DOCX MAX 5MB) *</Label>
-                                  <div className="flex flex-col md:flex-row items-center gap-4 p-6 rounded-2xl border-2 border-dashed border-black/10 bg-black/[0.01]">
-                                    <div className="flex items-center gap-3 flex-1 overflow-hidden">
-                                      <div className="w-10 h-10 rounded-xl bg-black/5 flex items-center justify-center shrink-0">
-                                        <FileText className="w-5 h-5 text-black/40" />
-                                      </div>
-                                      <span className="text-[11px] font-bold text-black/60 truncate uppercase tracking-widest">
-                                        {fileName}
-                                      </span>
-                                    </div>
-                                    <input 
-                                      type="file" 
-                                      ref={fileInputRef}
-                                      onChange={handleFileChange}
-                                      className="hidden" 
-                                      accept=".pdf,.docx"
-                                      required
-                                    />
-                                    <Button 
-                                      type="button"
-                                      onClick={() => fileInputRef.current?.click()}
-                                      className="rounded-full bg-black text-white text-[10px] font-black uppercase tracking-widest px-8 hover:bg-[#f5b800] hover:text-black transition-all"
-                                    >
-                                      SELECT FILE
-                                    </Button>
-                                  </div>
-                                </div>
-
-                                <Button type="submit" className="w-full h-16 rounded-full bg-black text-white text-[12px] font-black uppercase tracking-[0.2em] hover:bg-[#f5b800] hover:text-black shadow-2xl transition-all active:scale-95 group">
-                                  SUBMIT APPLICATION
-                                  <ArrowRight className="w-4 h-4 ml-3 group-hover:translate-x-1 transition-transform" />
-                                </Button>
-                              </form>
-                            </div>
-                          </ScrollArea>
-                        </DialogContent>
-                      </Dialog>
-                      
-                      {/* Independent View Details Dialog */}
-                      <Dialog>
-                        <DialogTrigger asChild>
-                          <Button 
-                            variant="outline" 
-                            onClick={() => setSelectedJob(job)}
-                            className="w-full rounded-full border-black/10 bg-white group-hover:bg-white text-black group-hover:text-black text-[10px] font-black uppercase tracking-widest py-6 h-auto transition-colors"
-                          >
-                            VIEW DETAILS
-                          </Button>
-                        </DialogTrigger>
-                        <DialogContent className="w-[92%] md:max-w-3xl p-0 bg-white border-none rounded-[1.5rem] md:rounded-[2rem] overflow-hidden shadow-2xl mt-12 md:mt-20 mb-12 md:mb-20 max-h-[90vh] md:max-h-[85vh] md:top-[46%]">
-                          <div className="bg-[#f5b800] p-6 md:p-8 text-black relative">
-                            <DialogHeader>
-                              <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-black/10 border border-black/5 mb-3 w-fit">
-                                <span className="text-[9px] font-black uppercase tracking-[0.2em]">Job Opening</span>
-                              </div>
-                              <DialogTitle className="text-xl md:text-3xl font-black uppercase tracking-tighter leading-tight mb-3">
-                                {selectedJob?.title}
-                              </DialogTitle>
-                              <div className="flex flex-wrap gap-3 opacity-70">
-                                <div className="flex items-center gap-1.5">
-                                  <MapPin className="w-3.5 h-3.5" />
-                                  <span className="text-[10px] font-black uppercase tracking-widest">{selectedJob?.location}</span>
-                                </div>
-                                <div className="flex items-center gap-1.5">
-                                  <Clock className="w-3.5 h-3.5" />
-                                  <span className="text-[10px] font-black uppercase tracking-widest">{selectedJob?.type}</span>
-                                </div>
-                                <div className="flex items-center gap-1.5">
-                                  <Briefcase className="w-3.5 h-3.5" />
-                                  <span className="text-[10px] font-black uppercase tracking-widest">{selectedJob?.experience}</span>
-                                </div>
-                              </div>
-                            </DialogHeader>
-                          </div>
-                          
-                          <ScrollArea className="max-h-[60vh]">
-                            <div className="p-6 md:p-10 space-y-10">
-                              <section className="space-y-4">
-                                <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-black/30">Job Description</h4>
-                                <p className="text-sm md:text-base text-black/60 font-medium leading-relaxed max-w-2xl">
-                                  {selectedJob?.description}
-                                </p>
-                              </section>
-
-                              <section className="space-y-4">
-                                <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-black/30">Key Responsibilities</h4>
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                  {responsibilities.map((resp, i) => (
-                                    <div key={i} className="flex items-center gap-4 p-5 rounded-2xl bg-black/[0.02] border border-black/[0.04] group hover:bg-black transition-all duration-300">
-                                      <div className="w-10 h-10 rounded-xl bg-white shadow-sm flex items-center justify-center shrink-0 group-hover:bg-[#f5b800] transition-colors">
-                                        <CheckCircle2 className="w-5 h-5 text-black" />
-                                      </div>
-                                      <span className="text-[10px] font-black uppercase tracking-[0.15em] text-black/80 group-hover:text-white transition-colors">{resp}</span>
-                                    </div>
-                                  ))}
-                                </div>
-                              </section>
-
-                              <div className="pt-4 border-t border-black/5">
-                                <p className="text-[10px] font-black text-black/30 uppercase tracking-widest mb-6">Found everything you need?</p>
-                                <Button className="w-full rounded-full bg-black text-white text-[11px] font-black uppercase tracking-[0.2em] py-8 h-auto hover:bg-[#f5b800] hover:text-black transition-all group shadow-xl">
-                                  APPLY FOR THIS PROFILE
-                                  <ArrowRight className="w-4 h-4 ml-3 group-hover:translate-x-1 transition-transform" />
-                                </Button>
-                              </div>
-                            </div>
-                          </ScrollArea>
-                        </DialogContent>
-                      </Dialog>
+                      <Button 
+                        onClick={() => openApply(job)}
+                        className="w-full rounded-full bg-[#f5b800] text-black text-[10px] font-black uppercase tracking-widest hover:bg-white transition-all py-6 h-auto"
+                      >
+                        APPLY NOW
+                      </Button>
+                      <Button 
+                        variant="outline" 
+                        onClick={() => openDetails(job)}
+                        className="w-full rounded-full border-black/10 bg-white group-hover:bg-white text-black group-hover:text-black text-[10px] font-black uppercase tracking-widest py-6 h-auto transition-colors"
+                      >
+                        VIEW DETAILS
+                      </Button>
                     </div>
                   </div>
 
@@ -369,6 +229,162 @@ export default function CareerPage() {
           </div>
         </div>
       </section>
+
+      {/* Application Dialog */}
+      <Dialog open={isApplyOpen} onOpenChange={setIsApplyOpen}>
+        <DialogContent className="w-[92%] md:max-w-3xl p-0 bg-white border-none rounded-[1.5rem] md:rounded-[2rem] overflow-hidden shadow-2xl mt-12 md:mt-20 mb-12 md:mb-20 max-h-[90vh] md:max-h-[85vh] md:top-[46%]">
+          <div className="bg-[#f5b800] p-6 md:p-8 text-black relative">
+            <DialogHeader>
+              <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-black/10 border border-black/5 mb-3 w-fit">
+                <span className="text-[9px] font-black uppercase tracking-[0.2em]">Application Form</span>
+              </div>
+              <DialogTitle className="text-xl md:text-3xl font-black uppercase tracking-tighter leading-tight mb-3">
+                APPLY FOR {activeJob?.title}
+              </DialogTitle>
+              <p className="text-[10px] md:text-[12px] font-bold uppercase tracking-widest opacity-80 leading-relaxed max-w-xl">
+                FILL OUT THE FORM BELOW AND ATTACH YOUR RESUME TO APPLY FOR THIS POSITION.
+              </p>
+            </DialogHeader>
+          </div>
+          
+          <ScrollArea className="max-h-[60vh]">
+            <div className="p-6 md:p-10">
+              <form onSubmit={handleApplySubmit} className="space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="space-y-2">
+                    <Label className="text-[10px] font-black uppercase tracking-widest text-black/40">FULL NAME *</Label>
+                    <div className="relative">
+                      <User className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-black/20" />
+                      <Input required placeholder="John Doe" className="pl-10 h-14 bg-black/[0.02] border-black/5 rounded-xl text-[13px] font-bold focus-visible:ring-[#f5b800]" />
+                    </div>
+                  </div>
+                  <div className="space-y-2">
+                    <Label className="text-[10px] font-black uppercase tracking-widest text-black/40">EMAIL ADDRESS *</Label>
+                    <div className="relative">
+                      <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-black/20" />
+                      <Input required type="email" placeholder="john@example.com" className="pl-10 h-14 bg-black/[0.02] border-black/5 rounded-xl text-[13px] font-bold focus-visible:ring-[#f5b800]" />
+                    </div>
+                  </div>
+                  <div className="space-y-2">
+                    <Label className="text-[10px] font-black uppercase tracking-widest text-black/40">MOBILE NUMBER *</Label>
+                    <div className="relative">
+                      <Phone className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-black/20" />
+                      <Input required placeholder="+91 9876543210" className="pl-10 h-14 bg-black/[0.02] border-black/5 rounded-xl text-[13px] font-bold focus-visible:ring-[#f5b800]" />
+                    </div>
+                  </div>
+                  <div className="space-y-2">
+                    <Label className="text-[10px] font-black uppercase tracking-widest text-black/40">CURRENT ADDRESS / LOCATION *</Label>
+                    <div className="relative">
+                      <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-black/20" />
+                      <Input required placeholder="City, Country" className="pl-10 h-14 bg-black/[0.02] border-black/5 rounded-xl text-[13px] font-bold focus-visible:ring-[#f5b800]" />
+                    </div>
+                  </div>
+                </div>
+
+                <div className="space-y-4 pt-4">
+                  <Label className="text-[10px] font-black uppercase tracking-widest text-black/40">RESUME / CV (PDF, DOCX MAX 5MB) *</Label>
+                  <div className="flex flex-col md:flex-row items-center gap-4 p-6 rounded-2xl border-2 border-dashed border-black/10 bg-black/[0.01]">
+                    <div className="flex items-center gap-3 flex-1 overflow-hidden">
+                      <div className="w-10 h-10 rounded-xl bg-black/5 flex items-center justify-center shrink-0">
+                        <FileText className="w-5 h-5 text-black/40" />
+                      </div>
+                      <span className="text-[11px] font-bold text-black/60 truncate uppercase tracking-widest">
+                        {fileName}
+                      </span>
+                    </div>
+                    <input 
+                      type="file" 
+                      ref={fileInputRef}
+                      onChange={handleFileChange}
+                      className="hidden" 
+                      accept=".pdf,.docx"
+                      required
+                    />
+                    <Button 
+                      type="button"
+                      onClick={() => fileInputRef.current?.click()}
+                      className="rounded-full bg-black text-white text-[10px] font-black uppercase tracking-widest px-8 hover:bg-[#f5b800] hover:text-black transition-all"
+                    >
+                      SELECT FILE
+                    </Button>
+                  </div>
+                </div>
+
+                <Button type="submit" className="w-full h-16 rounded-full bg-black text-white text-[12px] font-black uppercase tracking-[0.2em] hover:bg-[#f5b800] hover:text-black shadow-2xl transition-all active:scale-95 group">
+                  SUBMIT APPLICATION
+                  <ArrowRight className="w-4 h-4 ml-3 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </form>
+            </div>
+          </ScrollArea>
+        </DialogContent>
+      </Dialog>
+
+      {/* Details Dialog */}
+      <Dialog open={isDetailsOpen} onOpenChange={setIsDetailsOpen}>
+        <DialogContent className="w-[92%] md:max-w-3xl p-0 bg-white border-none rounded-[1.5rem] md:rounded-[2rem] overflow-hidden shadow-2xl mt-12 md:mt-20 mb-12 md:mb-20 max-h-[90vh] md:max-h-[85vh] md:top-[46%]">
+          <div className="bg-[#f5b800] p-6 md:p-8 text-black relative">
+            <DialogHeader>
+              <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-black/10 border border-black/5 mb-3 w-fit">
+                <span className="text-[9px] font-black uppercase tracking-[0.2em]">Job Opening</span>
+              </div>
+              <DialogTitle className="text-xl md:text-3xl font-black uppercase tracking-tighter leading-tight mb-3">
+                {activeJob?.title}
+              </DialogTitle>
+              <div className="flex flex-wrap gap-3 opacity-70">
+                <div className="flex items-center gap-1.5">
+                  <MapPin className="w-3.5 h-3.5" />
+                  <span className="text-[10px] font-black uppercase tracking-widest">{activeJob?.location}</span>
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <Clock className="w-3.5 h-3.5" />
+                  <span className="text-[10px] font-black uppercase tracking-widest">{activeJob?.type}</span>
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <Briefcase className="w-3.5 h-3.5" />
+                  <span className="text-[10px] font-black uppercase tracking-widest">{activeJob?.experience}</span>
+                </div>
+              </div>
+            </DialogHeader>
+          </div>
+          
+          <ScrollArea className="max-h-[60vh]">
+            <div className="p-6 md:p-10 space-y-10">
+              <section className="space-y-4">
+                <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-black/30">Job Description</h4>
+                <p className="text-sm md:text-base text-black/60 font-medium leading-relaxed max-w-2xl">
+                  {activeJob?.description}
+                </p>
+              </section>
+
+              <section className="space-y-4">
+                <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-black/30">Key Responsibilities</h4>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {responsibilities.map((resp, i) => (
+                    <div key={i} className="flex items-center gap-3 md:gap-4 p-3 md:p-5 rounded-2xl bg-black/[0.02] border border-black/[0.04] group hover:bg-black transition-all duration-300">
+                      <div className="w-8 h-8 md:w-10 md:h-10 rounded-xl bg-white shadow-sm flex items-center justify-center shrink-0 group-hover:bg-[#f5b800] transition-colors">
+                        <CheckCircle2 className="w-4 h-4 md:w-5 md:h-5 text-black" />
+                      </div>
+                      <span className="text-[9px] md:text-[10px] font-black uppercase tracking-[0.15em] text-black/80 group-hover:text-white transition-colors">{resp}</span>
+                    </div>
+                  ))}
+                </div>
+              </section>
+
+              <div className="pt-4 border-t border-black/5">
+                <p className="text-[10px] font-black text-black/30 uppercase tracking-widest mb-6">Found everything you need?</p>
+                <Button 
+                  onClick={() => activeJob && openApply(activeJob)}
+                  className="w-full rounded-full bg-black text-white text-[11px] font-black uppercase tracking-[0.2em] py-8 h-auto hover:bg-[#f5b800] hover:text-black transition-all group shadow-xl"
+                >
+                  APPLY FOR THIS PROFILE
+                  <ArrowRight className="w-4 h-4 ml-3 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </div>
+            </div>
+          </ScrollArea>
+        </DialogContent>
+      </Dialog>
 
       {/* Culture Section */}
       <section className="pb-24 bg-white">
