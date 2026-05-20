@@ -141,7 +141,7 @@ export function FeaturedWebsites() {
   }, [websiteIndex, isMounted, filteredCards, isMobile])
 
   return (
-    <section className="bg-white py-12 md:py-24 overflow-hidden min-h-[700px] md:min-h-[800px] relative border-t border-black/[0.03] mt-4">
+    <section className="bg-white py-12 md:py-24 overflow-hidden min-h-[750px] md:min-h-[850px] relative border-t border-black/[0.03] mt-4">
       <div className="container mx-auto px-6">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-12 border-b border-black/[0.05] pb-6">
           <div className="relative">
@@ -230,7 +230,7 @@ export function FeaturedWebsites() {
           )}
 
           {filteredCards.length > 1 && (
-            <div className="absolute bottom-2 md:bottom-2 left-1/2 -translate-x-1/2 flex items-center gap-3 z-50 w-[calc(100%-3rem)] md:w-auto">
+            <div className="absolute -bottom-12 md:-bottom-20 left-1/2 -translate-x-1/2 flex items-center gap-3 z-50 w-[calc(100%-3rem)] md:w-auto">
               <button 
                 onClick={() => handleWebsiteNav('prev')} 
                 className="group flex-1 md:flex-none flex items-center justify-center gap-2 md:gap-3 px-6 md:px-10 py-3 md:py-4 bg-black/[0.03] border border-black/[0.08] text-black text-[9px] md:text-[11px] uppercase tracking-[0.2em] font-black rounded-full hover:bg-black hover:border-black hover:text-white transition-all duration-300 shadow-lg shadow-black/5"
