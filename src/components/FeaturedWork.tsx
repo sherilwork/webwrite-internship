@@ -83,7 +83,7 @@ const projects = [
 ]
 
 export function FeaturedWork() {
-  const [activeCategory, setActiveCategory] = useState("Videos") // Default to Videos to show off the slider
+  const [activeCategory, setActiveCategory] = useState("Videos")
   const [activeSubCategory, setActiveSubCategory] = useState("All")
 
   const filteredProjects = useMemo(() => {
@@ -109,9 +109,10 @@ export function FeaturedWork() {
         animate={{ opacity: 1, scale: 1 }}
         exit={{ opacity: 0, scale: 0.95 }}
         transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-        className="group relative h-full"
+        className="group relative h-full pb-8"
       >
-        <div className="relative aspect-[16/10] md:aspect-[16/9] rounded-[2rem] overflow-hidden bg-[#f7f7f5] border border-black/[0.05] shadow-[0_10px_40px_rgba(0,0,0,0.02)] transition-all duration-700 group-hover:shadow-[0_20px_60px_rgba(0,0,0,0.08)] transform-gpu">
+        {/* Changed to Portrait Aspect Ratio (Vertical Cards) */}
+        <div className="relative aspect-[3/4] rounded-[2rem] overflow-hidden bg-[#f7f7f5] border border-black/[0.05] shadow-[0_10px_40px_rgba(0,0,0,0.02)] transition-all duration-700 group-hover:shadow-[0_20px_60px_rgba(0,0,0,0.08)] transform-gpu">
           {projectImage?.imageUrl && (
             <Image
               src={projectImage.imageUrl}
@@ -155,7 +156,7 @@ export function FeaturedWork() {
           <h3 className="text-xl font-black text-black uppercase tracking-tight group-hover:text-[#f5b800] transition-colors">
             {project.title}
           </h3>
-          <p className="text-sm text-black/40 font-medium leading-relaxed">
+          <p className="text-sm text-black/40 font-medium leading-relaxed line-clamp-2">
             {project.description}
           </p>
         </div>
@@ -221,7 +222,7 @@ export function FeaturedWork() {
           )}
         </AnimatePresence>
 
-        <div className="relative min-h-[400px]">
+        <div className="relative min-h-[500px]">
           <AnimatePresence mode="wait">
             {activeCategory === "Videos" ? (
               <motion.div
@@ -241,12 +242,12 @@ export function FeaturedWork() {
                 >
                   <CarouselContent className="-ml-4 md:-ml-8">
                     {filteredProjects.map((project) => (
-                      <CarouselItem key={project.id} className="pl-4 md:pl-8 basis-full md:basis-1/2 lg:basis-[45%]">
+                      <CarouselItem key={project.id} className="pl-4 md:pl-8 basis-full sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
                         {renderProjectCard(project)}
                       </CarouselItem>
                     ))}
                   </CarouselContent>
-                  <div className="flex justify-end gap-3 mt-12">
+                  <div className="flex justify-end gap-3 mt-8">
                     <CarouselPrevious className="static translate-y-0 h-12 w-12 border-black/5 hover:bg-black hover:text-white transition-all" />
                     <CarouselNext className="static translate-y-0 h-12 w-12 border-black/5 hover:bg-black hover:text-white transition-all" />
                   </div>
@@ -258,7 +259,7 @@ export function FeaturedWork() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+                className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8"
               >
                 {filteredProjects.map((project) => renderProjectCard(project))}
               </motion.div>
