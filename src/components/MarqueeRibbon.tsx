@@ -20,29 +20,29 @@ export function MarqueeRibbon() {
     <div className="flex items-center gap-12 md:gap-24 px-6 md:px-12 whitespace-nowrap">
       {words.map((word, i) => (
         <React.Fragment key={i}>
-          <span className="text-white text-[16px] md:text-[24px] font-extrabold uppercase tracking-tight drop-shadow-[0_0_15px_rgba(255,255,255,0.1)]">
+          <span className="text-black text-[16px] md:text-[24px] font-black uppercase tracking-tight drop-shadow-sm">
             {word}
           </span>
-          <div className="w-3 h-3 md:w-4 md:h-4 bg-[#ff6b1a] rotate-45 shrink-0 drop-shadow-[0_0_10px_rgba(255,107,26,0.5)]" />
+          <div className="w-3 h-3 md:w-4 md:h-4 bg-[#f5b800] rotate-45 shrink-0 drop-shadow-[0_0_10px_rgba(245,184,0,0.3)]" />
         </React.Fragment>
       ))}
     </div>
   )
 
   return (
-    <section className="bg-[#050505] py-1 overflow-hidden relative w-full select-none">
+    <section className="bg-white py-2 overflow-hidden relative w-full select-none border-y border-black/[0.03]">
       {/* Background Ambient Effects */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-[80px] bg-gradient-to-r from-transparent via-[#ff6b1a]/5 to-transparent blur-[50px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-[80px] bg-gradient-to-r from-transparent via-[#f5b800]/5 to-transparent blur-[50px] pointer-events-none" />
       
       {/* Mask for smooth edges */}
-      <div className="absolute inset-y-0 left-0 w-24 md:w-64 bg-gradient-to-r from-[#050505] to-transparent z-10 pointer-events-none" />
-      <div className="absolute inset-y-0 right-0 w-24 md:w-64 bg-gradient-to-l from-[#050505] to-transparent z-10 pointer-events-none" />
+      <div className="absolute inset-y-0 left-0 w-24 md:w-64 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
+      <div className="absolute inset-y-0 right-0 w-24 md:w-64 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
 
       <div className="flex flex-col gap-0 relative z-20">
         {/* Ribbon 1: Moving Left */}
         <div className="group flex overflow-hidden">
           <div 
-            className="flex py-3 md:py-5 bg-white/[0.02] border-y border-white/[0.05] backdrop-blur-sm animate-marquee-left hover:[animation-play-state:paused] transition-all duration-700 hover:scale-[1.01] hover:bg-white/[0.04]"
+            className="flex py-3 md:py-6 bg-black/[0.01] border-y border-black/[0.02] backdrop-blur-sm animate-marquee-left hover:[animation-play-state:paused] transition-all duration-700 hover:scale-[1.01] hover:bg-black/[0.02]"
             style={{ 
               willChange: 'transform',
               WebkitBackfaceVisibility: 'hidden',
@@ -58,7 +58,7 @@ export function MarqueeRibbon() {
         {/* Ribbon 2: Moving Right */}
         <div className="group flex overflow-hidden">
           <div 
-            className="flex py-3 md:py-5 bg-white/[0.02] border-y border-white/[0.05] backdrop-blur-sm animate-marquee-right hover:[animation-play-state:paused] transition-all duration-700 hover:scale-[1.01] hover:bg-white/[0.04]"
+            className="flex py-3 md:py-6 bg-black/[0.01] border-y border-black/[0.02] backdrop-blur-sm animate-marquee-right hover:[animation-play-state:paused] transition-all duration-700 hover:scale-[1.01] hover:bg-black/[0.02]"
             style={{ 
               willChange: 'transform',
               WebkitBackfaceVisibility: 'hidden',
@@ -71,6 +71,27 @@ export function MarqueeRibbon() {
           </div>
         </div>
       </div>
+
+      <style jsx global>{`
+        @keyframes marquee-left {
+          0% { transform: translate3d(0, 0, 0); }
+          100% { transform: translate3d(-50%, 0, 0); }
+        }
+        @keyframes marquee-right {
+          0% { transform: translate3d(-50%, 0, 0); }
+          100% { transform: translate3d(0, 0, 0); }
+        }
+        .animate-marquee-left {
+          animation: marquee-left 45s linear infinite;
+        }
+        .animate-marquee-right {
+          animation: marquee-right 50s linear infinite;
+        }
+        @media (max-width: 768px) {
+          .animate-marquee-left { animation-duration: 30s; }
+          .animate-marquee-right { animation-duration: 35s; }
+        }
+      `}</style>
     </section>
   )
 }
