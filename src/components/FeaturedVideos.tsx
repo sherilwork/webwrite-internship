@@ -82,14 +82,6 @@ const featuredVideos = [
     videoUrl: "https://vimeo.com/1192553119",
     metric: "92% Retention",
     description: "Streamlined industrial inventory management systems."
-  },
-  {
-    id: "1192553116",
-    title: "Brand Story Film",
-    category: "Education",
-    videoUrl: "https://vimeo.com/1192553116",
-    metric: "Viral Reach",
-    description: "Capturing the future of digital connectivity through film."
   }
 ]
 
@@ -125,7 +117,7 @@ const VimeoThumbnail = ({ videoUrl, alt, isActive }: { videoUrl: string; alt: st
             "object-cover transition-all duration-1000",
             isActive ? "scale-105" : "scale-100"
           )}
-          unoptimized // Vimeo URLs are already optimized
+          unoptimized 
         />
       ) : (
         <div className="w-full h-full flex items-center justify-center">
