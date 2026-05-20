@@ -12,7 +12,7 @@ export function AboutSection() {
   const aboutImage = PlaceHolderImages.find(img => img.id === 'about-section')?.imageUrl || "/about-image.png"
 
   return (
-    <section className="min-h-screen flex items-center bg-white overflow-hidden py-20 lg:py-0">
+    <section className="min-h-screen flex items-center bg-white overflow-hidden py-20 lg:py-0 mt-12 md:mt-24">
       <div className="container mx-auto px-6">
         <div className="flex flex-col lg:flex-row gap-12 lg:gap-24 items-center">
           {/* Left Side: Text Content */}
