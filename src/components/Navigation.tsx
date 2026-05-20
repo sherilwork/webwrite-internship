@@ -1,3 +1,4 @@
+
 'use client';
 
 import * as React from 'react';
@@ -28,12 +29,12 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 export function Navigation() {
   const navItems = [
     { label: 'Home', href: '/', icon: Home },
-    { label: 'About', href: '#about', icon: Star },
+    { label: 'About', href: '/about', icon: Star },
     { label: 'Team', href: '/founder', icon: Building2 },
-    { label: 'Services', href: '#services', icon: Zap },
-    { label: 'Portfolio', href: '#portfolio', icon: Layout },
+    { label: 'Services', href: '/#services', icon: Zap },
+    { label: 'Portfolio', href: '/#portfolio', icon: Layout },
     { label: 'Career', href: '#', icon: Briefcase },
-    { label: 'Contact', href: '#contact', icon: Mail },
+    { label: 'Contact', href: '/#contact', icon: Mail },
   ];
 
   const logo = PlaceHolderImages.find((img) => img.id === 'logo');
@@ -66,8 +67,8 @@ export function Navigation() {
           ))}
         </div>
 
-        <Button className="hidden md:inline-flex rounded-full bg-black hover:bg-black/90 text-white px-6 font-medium transition-transform active:scale-95 shadow-lg shadow-black/10">
-          Get started
+        <Button asChild className="hidden md:inline-flex rounded-full bg-black hover:bg-black/90 text-white px-6 font-medium transition-transform active:scale-95 shadow-lg shadow-black/10">
+          <Link href="/#contact">Get started</Link>
         </Button>
 
         <Sheet>
@@ -100,7 +101,6 @@ export function Navigation() {
             </button>
           </SheetTrigger>
           <SheetContent side="left" className="w-[85%] p-0 flex flex-col bg-white border-r overflow-visible rounded-r-[32px] animate-in slide-in-from-left duration-500 ease-out">
-            {/* Minimalist Side-Tab Close Button */}
             <div className="absolute -right-5 top-1/2 -translate-y-1/2 z-50">
               <SheetClose asChild>
                 <button className="w-10 h-10 rounded-full bg-black border border-white/10 flex items-center justify-center shadow-2xl transition-all duration-300 hover:scale-110 active:scale-90 group">
@@ -149,8 +149,8 @@ export function Navigation() {
               </div>
               
               <div className="mt-8 px-8 mb-12">
-                <Button className="w-full rounded-full bg-black text-white text-[12px] font-black uppercase tracking-[0.2em] py-8 hover:bg-black/90 shadow-2xl shadow-black/20 transition-all active:scale-95 border border-white/5">
-                  Get Started Now
+                <Button asChild className="w-full rounded-full bg-black text-white text-[12px] font-black uppercase tracking-[0.2em] py-8 hover:bg-black/90 shadow-2xl shadow-black/20 transition-all active:scale-95 border border-white/5">
+                  <Link href="/#contact">Get Started Now</Link>
                 </Button>
               </div>
             </ScrollArea>

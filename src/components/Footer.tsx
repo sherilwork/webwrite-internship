@@ -30,22 +30,22 @@ export function Footer() {
 
   const footerLinks = {
     company: [
-      { label: "About Us", href: "#about" },
-      { label: "Our Services", href: "#services" },
-      { label: "Portfolio", href: "#portfolio" },
+      { label: "About Us", href: "/about" },
+      { label: "Our Services", href: "/#services" },
+      { label: "Portfolio", href: "/#portfolio" },
       { label: "Founder", href: "/founder" },
       { label: "Careers", href: "#" },
     ],
     services: [
-      { label: "Web Development", href: "#" },
-      { label: "App Development", href: "#" },
-      { label: "Digital Marketing", href: "#" },
-      { label: "SEO Optimization", href: "#" },
-      { label: "Content Creation", href: "#" },
+      { label: "Web Development", href: "/#services" },
+      { label: "App Development", href: "/#services" },
+      { label: "Digital Marketing", href: "/#services" },
+      { label: "SEO Optimization", href: "/#services" },
+      { label: "Content Creation", href: "/#services" },
     ],
     support: [
-      { label: "Contact Us", href: "#contact" },
-      { label: "FAQs", href: "#faq" },
+      { label: "Contact Us", href: "/#contact" },
+      { label: "FAQs", href: "/#faq" },
       { label: "Privacy Policy", href: "#" },
       { label: "Terms of Service", href: "#" },
     ]
