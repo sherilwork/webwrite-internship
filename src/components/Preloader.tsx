@@ -1,4 +1,3 @@
-
 "use client"
 
 import React, { useEffect, useState } from "react"
@@ -38,9 +37,9 @@ export function Preloader() {
           <div className="relative flex flex-col items-center max-w-sm w-full">
             {/* Logo Container with Spinner Effect */}
             <div className="relative w-24 h-24 mb-8">
-              {/* Spinner Arc */}
+              {/* Spinner Arc using Theme Color #f5b800 */}
               <motion.div
-                className="absolute inset-0 rounded-full border-4 border-transparent border-t-blue-500"
+                className="absolute inset-0 rounded-full border-4 border-transparent border-t-[#f5b800]"
                 animate={{ rotate: 360 }}
                 transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
               />
@@ -77,7 +76,7 @@ export function Preloader() {
               </motion.p>
             </div>
 
-            {/* Segmented Progress Bar */}
+            {/* Segmented Progress Bar using Theme Color #f5b800 */}
             <div className="flex gap-1.5 mb-6 w-40">
               {[0, 1, 2, 3].map((index) => (
                 <div 
@@ -85,7 +84,7 @@ export function Preloader() {
                   className="h-1 flex-1 bg-black/5 rounded-full overflow-hidden"
                 >
                   <motion.div
-                    className="h-full bg-blue-500"
+                    className="h-full bg-[#f5b800]"
                     initial={{ width: 0 }}
                     animate={{ 
                       width: progress >= (index + 1) * 25 ? "100%" : 
