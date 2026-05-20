@@ -11,85 +11,85 @@ const testimonials = [
   {
     name: "Sarah Jenkins",
     role: "CEO, EcoSphere",
-    content: "Webwrite didn't just build a website; they built a growth engine. Our conversions increased by 40% within the first month of launch.",
+    content: "Webwrite built a growth engine. Our conversions increased by 40% within the first month of launch.",
     avatar: "https://picsum.photos/seed/user1/100/100",
   },
   {
     name: "David Chen",
-    role: "Marketing Director, FinTech Solutions",
-    content: "The level of strategic thinking they bring to every project is unmatched. They understand the intersection of design and performance perfectly.",
+    role: "Director, FinTech",
+    content: "Their strategic thinking is unmatched. They perfectly understand design and performance intersection.",
     avatar: "https://picsum.photos/seed/user2/100/100",
   },
   {
     name: "Aisha Patel",
-    role: "Founder, Luxe Fashion Hub",
-    content: "Their video production team captured our brand's essence beautifully. The cinematic quality of our campaign has elevated our entire market presence.",
+    role: "Founder, Luxe Fashion",
+    content: "The cinematic quality of our campaign elevated our entire market presence. Beautiful work.",
     avatar: "https://picsum.photos/seed/user3/100/100",
   },
   {
     name: "Marcus Thorne",
-    role: "Product Lead, MedTech Innovations",
-    content: "A partner that actually listens. They simplified our complex product offering into a clear, compelling digital story that resonates with clinicians.",
+    role: "Lead, MedTech",
+    content: "They simplified our complex offering into a clear, compelling digital story that really resonates.",
     avatar: "https://picsum.photos/seed/user4/100/100",
   },
   {
     name: "Elena Rodriguez",
-    role: "Digital Manager, Global Learning LMS",
-    content: "Efficiency meets creativity. Webwrite delivered a high-performance platform that handles half a million students with zero friction.",
+    role: "Manager, LMS",
+    content: "Efficiency meets creativity. They delivered a platform that handles 500k students with zero friction.",
     avatar: "https://picsum.photos/seed/user5/100/100",
   },
   {
     name: "James Wilson",
-    role: "Co-Founder, Retail Logic",
-    content: "The SEO and Meta Ads strategy they implemented has cut our customer acquisition cost in half. Truly impressive results.",
+    role: "Co-Founder, Retail",
+    content: "The SEO and Meta Ads strategy cut our acquisition cost in half. Truly impressive results.",
     avatar: "https://picsum.photos/seed/user6/100/100",
   },
   {
     name: "Robert Fox",
-    role: "Head of Operations, Sagar Disposal",
-    content: "The B2B portal they developed for us has completely streamlined our inventory management. Their technical prowess is matched only by their professionalism.",
+    role: "Ops, Sagar Disposal",
+    content: "The B2B portal they developed completely streamlined our inventory management. Very professional.",
     avatar: "https://picsum.photos/seed/user7/100/100",
   },
   {
     name: "Emily Davis",
     role: "Founder, Sundar Vibes",
-    content: "Creative, responsive, and truly strategic. They've become an essential extension of our team, helping us navigate the competitive retail landscape with ease.",
+    content: "Creative, responsive, and strategic. They've become an essential extension of our core team.",
     avatar: "https://picsum.photos/seed/user8/100/100",
   },
   {
     name: "Michael Brown",
-    role: "Community Lead, AWS UG Pune",
-    content: "A partnership built on trust and results. Their community-first approach helped us grow our network significantly through targeted digital campaigns.",
+    role: "Lead, AWS UG Pune",
+    content: "A partnership built on trust. Their community-first approach helped us grow our network significantly.",
     avatar: "https://picsum.photos/seed/user9/100/100",
   }
 ]
 
 function TestimonialCard({ testimonial }: { testimonial: typeof testimonials[0] }) {
   return (
-    <div className="group relative bg-[#f7f7f5] rounded-[1.5rem] p-6 border border-black/[0.04] shadow-[0_8px_30px_rgba(0,0,0,0.02)] hover:shadow-[0_15px_45px_rgba(0,0,0,0.04)] transition-all duration-700">
-      <div className="absolute top-6 right-6 text-black/[0.05] group-hover:text-[#f5b800]/20 transition-colors duration-700">
-        <Quote size={32} strokeWidth={3} />
+    <div className="group relative bg-[#f7f7f5] rounded-[1.25rem] p-4 border border-black/[0.04] shadow-[0_4px_20px_rgba(0,0,0,0.01)] hover:shadow-[0_10px_30px_rgba(0,0,0,0.03)] transition-all duration-700">
+      <div className="absolute top-4 right-4 text-black/[0.05] group-hover:text-[#f5b800]/20 transition-colors duration-700">
+        <Quote size={18} strokeWidth={3} />
       </div>
       
-      <div className="space-y-4 relative z-10">
-        <div className="flex gap-1">
+      <div className="space-y-3 relative z-10">
+        <div className="flex gap-0.5">
           {[...Array(5)].map((_, i) => (
-            <Star key={i} size={10} className="fill-[#f5b800] text-[#f5b800]" />
+            <Star key={i} size={8} className="fill-[#f5b800] text-[#f5b800]" />
           ))}
         </div>
 
-        <p className="text-black/70 font-medium leading-relaxed text-[13px] md:text-sm italic">
+        <p className="text-black/70 font-medium leading-snug text-[11px] md:text-[12px] italic line-clamp-2 min-h-[2.5em]">
           "{testimonial.content}"
         </p>
 
-        <div className="flex items-center gap-3 pt-4 border-t border-black/[0.05]">
-          <Avatar className="h-10 w-10 border-2 border-white shadow-md">
+        <div className="flex items-center gap-2.5 pt-3 border-t border-black/[0.05]">
+          <Avatar className="h-8 w-8 border border-white shadow-sm">
             <AvatarImage src={testimonial.avatar} alt={testimonial.name} />
-            <AvatarFallback className="bg-black text-white text-[10px]">{testimonial.name[0]}</AvatarFallback>
+            <AvatarFallback className="bg-black text-white text-[8px]">{testimonial.name[0]}</AvatarFallback>
           </Avatar>
           <div className="flex flex-col">
-            <span className="text-xs font-black uppercase tracking-wider text-black">{testimonial.name}</span>
-            <span className="text-[9px] font-bold text-black/40 uppercase tracking-widest">{testimonial.role}</span>
+            <span className="text-[10px] font-black uppercase tracking-wider text-black">{testimonial.name}</span>
+            <span className="text-[8px] font-bold text-black/40 uppercase tracking-widest leading-none mt-0.5">{testimonial.role}</span>
           </div>
         </div>
       </div>
@@ -151,22 +151,22 @@ export function Testimonials() {
         </div>
 
         {/* Marquee Container */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 h-[600px] relative overflow-hidden">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 h-[500px] relative overflow-hidden">
           {/* Fading gradients for top and bottom */}
           <div className="absolute top-0 inset-x-0 h-24 bg-gradient-to-b from-white to-transparent z-20 pointer-events-none" />
           <div className="absolute bottom-0 inset-x-0 h-24 bg-gradient-to-t from-white to-transparent z-20 pointer-events-none" />
 
           {/* Column 1: Moves Up */}
-          <MarqueeColumn items={col1} direction="up" speed="35s" />
+          <MarqueeColumn items={col1} direction="up" speed="30s" />
 
           {/* Column 2: Moves Down */}
           <div className="hidden md:block">
-            <MarqueeColumn items={col2} direction="down" speed="45s" />
+            <MarqueeColumn items={col2} direction="down" speed="40s" />
           </div>
 
           {/* Column 3: Moves Up */}
           <div className="hidden lg:block">
-            <MarqueeColumn items={col3} direction="up" speed="40s" />
+            <MarqueeColumn items={col3} direction="up" speed="35s" />
           </div>
         </div>
       </div>
