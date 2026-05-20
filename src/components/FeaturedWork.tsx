@@ -4,7 +4,7 @@
 import React, { useState, useMemo, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import Image from "next/image"
-import { Play, ExternalLink, TrendingUp, ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react"
+import { Play, ExternalLink, TrendingUp, ArrowUpRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 import { PlaceHolderImages } from "@/lib/placeholder-images"
@@ -17,7 +17,7 @@ import {
   type CarouselApi
 } from "@/components/ui/carousel"
 
-const categories = ["Healthcare", "Education", "E-Commerce", "Fitness", "Finance"]
+const categories = ["All", "Healthcare", "Education", "E-Commerce", "Fitness", "Finance"]
 
 const projects = [
   {
@@ -104,7 +104,7 @@ const projects = [
 ]
 
 export function FeaturedWork() {
-  const [activeCategory, setActiveCategory] = useState("Healthcare")
+  const [activeCategory, setActiveCategory] = useState("All")
   const [api, setApi] = useState<CarouselApi>()
   const [selectedIndex, setSelectedIndex] = useState(0)
 
@@ -126,12 +126,14 @@ export function FeaturedWork() {
   }, [api])
 
   const filteredProjects = useMemo(() => {
+    if (activeCategory === "All") return projects
     return projects.filter((p) => p.category === activeCategory)
   }, [activeCategory])
 
   const handleCategoryChange = (cat: string) => {
     setActiveCategory(cat)
     setSelectedIndex(0)
+    if (api) api.scrollTo(0)
   }
 
   const renderProjectCard = (project: typeof projects[0], isActive: boolean = true) => {
@@ -252,50 +254,38 @@ export function FeaturedWork() {
 
         <div className="relative min-h-[500px]">
           <AnimatePresence mode="wait">
-            {activeCategory === "Healthcare" ? (
-              <motion.div
-                key="video-slider"
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -20 }}
-                transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            <motion.div
+              key={activeCategory}
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -20 }}
+              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+              className="w-full"
+            >
+              <Carousel
+                setApi={setApi}
+                opts={{
+                  align: "center",
+                  loop: filteredProjects.length > 3,
+                }}
                 className="w-full"
               >
-                <Carousel
-                  setApi={setApi}
-                  opts={{
-                    align: "center",
-                    loop: true,
-                  }}
-                  className="w-full"
-                >
-                  <CarouselContent className="-ml-4 md:-ml-8 items-center">
-                    {filteredProjects.map((project, index) => (
-                      <CarouselItem 
-                        key={project.id} 
-                        className="pl-4 md:pl-8 basis-[75%] sm:basis-1/2 md:basis-1/3"
-                      >
-                        {renderProjectCard(project, index === selectedIndex)}
-                      </CarouselItem>
-                    ))}
-                  </CarouselContent>
-                  <div className="flex justify-center gap-3 mt-12">
-                    <CarouselPrevious className="static translate-y-0 h-12 w-12 border-black/5 hover:bg-black hover:text-white transition-all" />
-                    <CarouselNext className="static translate-y-0 h-12 w-12 border-black/5 hover:bg-black hover:text-white transition-all" />
-                  </div>
-                </Carousel>
-              </motion.div>
-            ) : (
-              <motion.div 
-                key="grid-layout"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8"
-              >
-                {filteredProjects.map((project) => renderProjectCard(project, true))}
-              </motion.div>
-            )}
+                <CarouselContent className="-ml-4 md:-ml-8 items-center">
+                  {filteredProjects.map((project, index) => (
+                    <CarouselItem 
+                      key={project.id} 
+                      className="pl-4 md:pl-8 basis-[75%] sm:basis-1/2 md:basis-1/3"
+                    >
+                      {renderProjectCard(project, index === selectedIndex)}
+                    </CarouselItem>
+                  ))}
+                </CarouselContent>
+                <div className="flex justify-center gap-3 mt-12">
+                  <CarouselPrevious className="static translate-y-0 h-12 w-12 border-black/5 hover:bg-black hover:text-white transition-all" />
+                  <CarouselNext className="static translate-y-0 h-12 w-12 border-black/5 hover:bg-black hover:text-white transition-all" />
+                </div>
+              </Carousel>
+            </motion.div>
           </AnimatePresence>
         </div>
 
