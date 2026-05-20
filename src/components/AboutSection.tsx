@@ -8,7 +8,7 @@ import Image from "next/image"
 import { PlaceHolderImages } from "@/lib/placeholder-images"
 
 export function AboutSection() {
-  const aboutImage = PlaceHolderImages.find(img => img.id === 'about-section')?.imageUrl || "/about-section.png"
+  const aboutImage = PlaceHolderImages.find(img => img.id === 'about-section')?.imageUrl || "/about-image.png"
 
   return (
     <section className="py-24 md:py-32 bg-white overflow-hidden">
