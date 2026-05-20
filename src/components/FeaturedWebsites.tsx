@@ -8,9 +8,6 @@ import { cn } from '@/lib/utils'
 import { gsap } from 'gsap'
 import { useIsMobile } from '@/hooks/use-mobile'
 
-/**
- * DESKTOP CONFIGURATION - HIGH PERFORMANCE ISOLATED
- */
 const categories = ["All", "Real Estate", "Education", "Community", "E-Commerce", "Shops"]
 
 const FEATURED_CARDS = [
@@ -79,7 +76,7 @@ export function FeaturedWebsites() {
 
   const filteredCards = useMemo(() => {
     if (activeCategory === "All") return FEATURED_CARDS
-    return FEATURED_CARDS.filter((card) => card.tag.toLowerCase() === activeCategory.toLowerCase())
+    return FEATURED_CARDS.filter((card) => card.tag.toUpperCase() === activeCategory.toUpperCase())
   }, [activeCategory])
 
   const handleWebsiteNav = (direction: 'next' | 'prev') => {
@@ -96,13 +93,12 @@ export function FeaturedWebsites() {
   }
 
   useEffect(() => {
-    if (!isMounted) return
+    if (!isMounted || filteredCards.length === 0) return
 
     const cards = cardsRef.current.filter(Boolean) as HTMLDivElement[]
     const xOffset = isMobile ? 300 : 600
     const yOffset = isMobile ? 80 : 150
     
-    // Reset positions and animate
     cards.forEach((card, index) => {
       if (index === websiteIndex) {
         gsap.to(card, {
@@ -147,7 +143,6 @@ export function FeaturedWebsites() {
   return (
     <section className="bg-white py-12 md:py-24 overflow-hidden min-h-[700px] md:min-h-[800px] relative border-t border-black/[0.03] mt-4">
       <div className="container mx-auto px-6">
-        {/* Header Section */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-12 border-b border-black/[0.05] pb-6">
           <div className="relative">
             <h2 className="text-xl md:text-3xl font-black text-black leading-none tracking-tighter uppercase text-nowrap">
@@ -174,7 +169,6 @@ export function FeaturedWebsites() {
           </div>
         </div>
 
-        {/* Content Area */}
         <div className="relative h-[600px] md:h-[500px] flex items-center justify-center">
           {filteredCards.length > 0 ? (
             filteredCards.map((card, i) => (
