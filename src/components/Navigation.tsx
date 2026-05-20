@@ -28,12 +28,12 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 export function Navigation() {
   const navItems = [
     { label: 'Home', href: '/', icon: Home },
-    { label: 'Solutions', href: '#', icon: Zap },
-    { label: 'Expertise', href: '#', icon: Star },
-    { label: 'Portfolio', href: '#', icon: Layout },
-    { label: 'Company', href: '#', icon: Building2 },
-    { label: 'Careers', href: '#', icon: Briefcase },
-    { label: 'Contact', href: '#', icon: Mail },
+    { label: 'About', href: '#about', icon: Star },
+    { label: 'Team', href: '/founder', icon: Building2 },
+    { label: 'Services', href: '#services', icon: Zap },
+    { label: 'Portfolio', href: '#portfolio', icon: Layout },
+    { label: 'Career', href: '#', icon: Briefcase },
+    { label: 'Contact', href: '#contact', icon: Mail },
   ];
 
   const logo = PlaceHolderImages.find((img) => img.id === 'logo');
