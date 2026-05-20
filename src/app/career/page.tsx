@@ -175,7 +175,7 @@ export default function CareerPage() {
                             VIEW DETAILS
                           </Button>
                         </DialogTrigger>
-                        <DialogContent className="w-[88%] md:max-w-3xl p-0 bg-white border-none rounded-[1.5rem] md:rounded-[2rem] overflow-hidden shadow-2xl my-12 md:my-20 max-h-[90vh] md:max-h-[85vh]">
+                        <DialogContent className="w-[88%] md:max-w-3xl p-0 bg-white border-none rounded-[1.5rem] md:rounded-[2rem] overflow-hidden shadow-2xl my-12 md:my-20 max-h-[90vh] md:max-h-[85vh] md:top-[46%]">
                           <div className="bg-[#f5b800] p-6 md:p-8 text-black relative">
                             <DialogHeader>
                               <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-black/10 border border-black/5 mb-3 w-fit">
