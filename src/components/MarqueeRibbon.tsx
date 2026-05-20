@@ -30,7 +30,7 @@ export function MarqueeRibbon() {
   )
 
   return (
-    <section className="bg-white py-2 overflow-hidden relative w-full select-none border-y border-black/[0.03]">
+    <section className="bg-white py-0 overflow-hidden relative w-full select-none border-y border-black/[0.03]">
       {/* Background Ambient Effects */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-[80px] bg-gradient-to-r from-transparent via-[#f5b800]/5 to-transparent blur-[50px] pointer-events-none" />
       
