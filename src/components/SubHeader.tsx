@@ -58,12 +58,17 @@ export function SubHeader() {
       {/* Center Section: Animated Proposal - Always visible, slightly scaled for mobile */}
       <div className="absolute left-1/2 -translate-x-1/2 flex items-center gap-2 md:gap-4 scale-90 md:scale-100">
         <Cloud className="w-4 h-4 md:w-5 md:h-5 text-white/10 animate-cloud hidden sm:block" />
-        <div className="flex items-center gap-2 group cursor-pointer bg-white/5 px-3 md:px-4 py-1 rounded-full border border-white/10 hover:border-[#f5b800]/50 transition-all whitespace-nowrap">
+        <a 
+          href="https://wa.me/917906627288" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="flex items-center gap-2 group cursor-pointer bg-white/5 px-3 md:px-4 py-1 rounded-full border border-white/10 hover:border-[#f5b800]/50 transition-all whitespace-nowrap"
+        >
           <span className="text-[9px] font-black text-white uppercase tracking-[0.15em] md:tracking-[0.25em]">
             Get a Proposal
           </span>
           <Rocket className="w-3.5 h-3.5 md:w-4 md:h-4 text-[#f5b800] animate-rocket" />
-        </div>
+        </a>
         <Cloud className="w-4 h-4 md:w-5 md:h-5 text-white/10 animate-cloud hidden sm:block" style={{ animationDelay: '2s' }} />
       </div>
 
