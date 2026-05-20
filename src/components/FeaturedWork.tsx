@@ -19,13 +19,6 @@ import {
 
 const categories = ["All", "Videos", "Websites", "Ads Results"]
 
-const subCategoriesMap: Record<string, string[]> = {
-  "All": [],
-  "Videos": ["All", "Brand Story", "Commercial", "Motion Graphics"],
-  "Websites": ["All", "SaaS", "E-commerce", "Corporate"],
-  "Ads Results": ["All", "Meta Ads", "Google Ads", "SEO"],
-}
-
 const projects = [
   // 9 Video Projects
   {
@@ -151,7 +144,6 @@ const projects = [
 
 export function FeaturedWork() {
   const [activeCategory, setActiveCategory] = useState("Videos")
-  const [activeSubCategory, setActiveSubCategory] = useState("All")
   const [api, setApi] = useState<CarouselApi>()
   const [selectedIndex, setSelectedIndex] = useState(0)
 
@@ -174,15 +166,12 @@ export function FeaturedWork() {
 
   const filteredProjects = useMemo(() => {
     return projects.filter((p) => {
-      const categoryMatch = activeCategory === "All" || p.category === activeCategory
-      const subCategoryMatch = activeSubCategory === "All" || p.subCategory === activeSubCategory
-      return categoryMatch && subCategoryMatch
+      return activeCategory === "All" || p.category === activeCategory
     })
-  }, [activeCategory, activeSubCategory])
+  }, [activeCategory])
 
   const handleCategoryChange = (cat: string) => {
     setActiveCategory(cat)
-    setActiveSubCategory("All")
     setSelectedIndex(0)
   }
 
@@ -287,33 +276,20 @@ export function FeaturedWork() {
           </div>
         </div>
 
-        {/* Sub-Category Filter */}
+        {/* Category Title Heading */}
         <AnimatePresence mode="wait">
-          {activeCategory !== "All" && subCategoriesMap[activeCategory] && (
+          {activeCategory !== "All" && (
             <motion.div 
+              key={activeCategory}
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
-              className="flex flex-wrap items-center gap-4 mb-12 pb-4 border-b border-black/[0.03]"
+              className="mb-12"
             >
-              <div className="flex items-center gap-2 text-[9px] font-black text-black/30 uppercase tracking-widest mr-2">
-                <Filter className="w-3 h-3" />
-                Refine:
-              </div>
-              {subCategoriesMap[activeCategory].map((sub) => (
-                <button
-                  key={sub}
-                  onClick={() => setActiveSubCategory(sub)}
-                  className={cn(
-                    "text-[10px] font-bold uppercase tracking-widest transition-colors",
-                    activeSubCategory === sub
-                      ? "text-[#f5b800]"
-                      : "text-black/40 hover:text-black"
-                  )}
-                >
-                  {sub}
-                </button>
-              ))}
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-black leading-[1.05] tracking-tighter uppercase">
+                {activeCategory}
+              </h2>
+              <div className="w-12 md:w-20 h-1.5 bg-black mt-2" />
             </motion.div>
           )}
         </AnimatePresence>
