@@ -189,13 +189,6 @@ export function FeaturedWork() {
   return (
     <section className="bg-white py-12 md:py-20 overflow-hidden">
       <div className="container mx-auto px-6">
-        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 mb-12">
-          <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-black/[0.03] border border-black/[0.05] w-fit">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#f5b800]" />
-            <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-black/60">Portfolio Showcase</span>
-          </div>
-        </div>
-
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-12 border-b border-black/[0.05] pb-6">
           <div className="relative">
             <h2 className="text-xl md:text-3xl font-black text-black leading-none tracking-tighter uppercase text-nowrap">
