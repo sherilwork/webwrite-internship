@@ -30,8 +30,8 @@ export function FounderSection() {
                   <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-black/60">Meet the Founder</span>
                 </div>
                 <h2 className="text-2xl md:text-4xl lg:text-5xl font-black text-black leading-[1.05] tracking-tighter uppercase">
-                  DRIVEN BY <br />
-                  <span className="text-[#f5b800]">DIGITAL PURPOSE</span>
+                  CRAFTING THE <br />
+                  <span className="text-[#f5b800]">DIGITAL FUTURE</span>
                 </h2>
                 <div className="w-16 md:w-20 h-1.5 bg-black mt-2" />
               </div>
