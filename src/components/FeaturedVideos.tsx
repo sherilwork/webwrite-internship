@@ -20,10 +20,10 @@ const categories = ["All", "Healthcare", "Education", "E-Commerce", "Fitness", "
 
 const featuredVideos = [
   {
-    id: "1192868770",
+    id: "1192553118",
     title: "Campaign Strategy Insights",
     category: "Healthcare",
-    videoUrl: "https://vimeo.com/1192868770",
+    videoUrl: "https://vimeo.com/1192553118?fl=tl&fe=ec",
     metric: "98% Satisfaction",
     description: "High-impact digital strategy for modern healthcare portals."
   },
@@ -31,7 +31,7 @@ const featuredVideos = [
     id: "1192553462",
     title: "MedTech Innovation",
     category: "Healthcare",
-    videoUrl: "https://vimeo.com/1192553462",
+    videoUrl: "https://vimeo.com/1192553462?fl=tl&fe=ec",
     metric: "1.2M Views",
     description: "Cinematic storytelling for advanced medical robotics."
   },
@@ -39,7 +39,7 @@ const featuredVideos = [
     id: "1192553402",
     title: "Global Learning LMS",
     category: "Education",
-    videoUrl: "https://vimeo.com/1192553402",
+    videoUrl: "https://vimeo.com/1192553402?fl=tl&fe=ec",
     metric: "500k+ Students",
     description: "Next-gen educational platform branding and launch."
   },
@@ -47,7 +47,7 @@ const featuredVideos = [
     id: "1192553355",
     title: "Luxe Fashion Hub",
     category: "E-Commerce",
-    videoUrl: "https://vimeo.com/1192553355",
+    videoUrl: "https://vimeo.com/1192553355?fl=tl&fe=ec",
     metric: "300% ROAS",
     description: "High-converting headless commerce for premium brands."
   },
@@ -55,7 +55,7 @@ const featuredVideos = [
     id: "1192553359",
     title: "Eco-Retail Campaign",
     category: "E-Commerce",
-    videoUrl: "https://vimeo.com/1192553359",
+    videoUrl: "https://vimeo.com/1192553359?fl=tl&fe=ec",
     metric: "12x Conversion",
     description: "Scaling sustainable retail through data-driven visuals."
   },
@@ -63,7 +63,7 @@ const featuredVideos = [
     id: "1192553338",
     title: "Elite Fitness App",
     category: "Fitness",
-    videoUrl: "https://vimeo.com/1192553338",
+    videoUrl: "https://vimeo.com/1192553338?fl=tl&fe=ec",
     metric: "+450% Growth",
     description: "Personalized training experience with AI-driven insights."
   },
@@ -71,7 +71,7 @@ const featuredVideos = [
     id: "1192553117",
     title: "FinTech UI Reveal",
     category: "Shops",
-    videoUrl: "https://vimeo.com/1192553117",
+    videoUrl: "https://vimeo.com/1192553117?fl=tl&fe=ec",
     metric: "Zero Latency",
     description: "Complex financial data visualized through minimalist design."
   },
@@ -79,9 +79,17 @@ const featuredVideos = [
     id: "1192553119",
     title: "B2B Catalog Launch",
     category: "Shops",
-    videoUrl: "https://vimeo.com/1192553119",
+    videoUrl: "https://vimeo.com/1192553119?fl=tl&fe=ec",
     metric: "92% Retention",
     description: "Streamlined industrial inventory management systems."
+  },
+  {
+    id: "1192553116",
+    title: "Retail Logic 2.0",
+    category: "Shops",
+    videoUrl: "https://vimeo.com/1192553116?fl=tl&fe=ec",
+    metric: "99% Uptime",
+    description: "Advanced retail management and POS visualization."
   }
 ]
 
