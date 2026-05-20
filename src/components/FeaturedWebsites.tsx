@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState, useMemo } from 'react'
 import { ArrowLeft, ArrowRight, MousePointer2, Cpu, GraduationCap, ShoppingBag, Package } from 'lucide-react'
 import Image from 'next/image'
 import { cn } from '@/lib/utils'
@@ -9,6 +9,8 @@ import { gsap } from 'gsap'
 /**
  * DESKTOP CONFIGURATION - HIGH PERFORMANCE ISOLATED
  */
+const categories = ["All", "Real Estate", "Education", "Community", "E-Commerce", "Manufacturing"]
+
 const FEATURED_CARDS = [
   {
     id: 1,
@@ -65,24 +67,37 @@ const FEATURED_CARDS = [
 export function FeaturedWebsites() {
   const cardsRef = useRef<(HTMLDivElement | null)[]>([])
   const [websiteIndex, setWebsiteIndex] = useState(0)
+  const [activeCategory, setActiveCategory] = useState("All")
   const [isMounted, setIsMounted] = useState(false)
 
   useEffect(() => {
     setIsMounted(true)
   }, [])
 
+  const filteredCards = useMemo(() => {
+    if (activeCategory === "All") return FEATURED_CARDS
+    return FEATURED_CARDS.filter((card) => card.tag.toLowerCase() === activeCategory.toLowerCase())
+  }, [activeCategory])
+
   const handleWebsiteNav = (direction: 'next' | 'prev') => {
     if (direction === 'next') {
-      setWebsiteIndex((prev) => (prev + 1) % FEATURED_CARDS.length)
+      setWebsiteIndex((prev) => (prev + 1) % filteredCards.length)
     } else {
-      setWebsiteIndex((prev) => (prev - 1 + FEATURED_CARDS.length) % FEATURED_CARDS.length)
+      setWebsiteIndex((prev) => (prev - 1 + filteredCards.length) % filteredCards.length)
     }
+  }
+
+  const handleCategoryChange = (cat: string) => {
+    setActiveCategory(cat)
+    setWebsiteIndex(0)
   }
 
   useEffect(() => {
     if (!isMounted) return
 
     const cards = cardsRef.current.filter(Boolean) as HTMLDivElement[]
+    
+    // Reset positions and animate
     cards.forEach((card, index) => {
       if (index === websiteIndex) {
         gsap.to(card, {
@@ -93,7 +108,6 @@ export function FeaturedWebsites() {
           scale: 1,
           zIndex: 10,
           duration: 0.8,
-          reveal: true,
           ease: "expo.out",
           force3D: true
         })
@@ -123,82 +137,119 @@ export function FeaturedWebsites() {
         })
       }
     })
-  }, [websiteIndex, isMounted])
+  }, [websiteIndex, isMounted, filteredCards])
 
   return (
-    <section className="bg-white py-24 overflow-hidden min-h-[700px] flex items-center justify-center relative border-t border-black/[0.03]">
-      <div className="container mx-auto px-6 relative h-[500px] flex items-center justify-center">
-        {FEATURED_CARDS.map((card, i) => (
-          <div
-            key={`website-${card.id}`}
-            ref={el => { cardsRef.current[i] = el }}
-            className="absolute w-full max-w-[800px] bg-[#f7f7f5] backdrop-blur-2xl border border-black/[0.05] p-6 md:p-10 rounded-[32px] shadow-2xl shadow-black/5 opacity-0 transform-gpu will-change-transform overflow-hidden"
-            style={{
-              transform: i === websiteIndex ? 'none' : 'translateX(-600px) rotate(-15deg) scale(0.8)',
-              zIndex: i === websiteIndex ? 10 : 5
-            }}
-          >
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-              <div className="space-y-6">
-                <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 bg-[#ff6b1a]/10 border border-[#ff6b1a]/40 rounded-xl flex items-center justify-center text-[#ff6b1a]">
-                    {card.icon}
-                  </div>
-                  <div className="px-3 py-1 bg-black/[0.03] border border-black/[0.05] rounded-full">
-                    <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-black/40">{card.tag}</span>
-                  </div>
-                </div>
-                <div className="space-y-3">
-                  <h2 className="text-3xl md:text-4xl font-black text-black tracking-tighter leading-tight uppercase">
-                    {card.title}
-                  </h2>
-                  <p className="text-black/40 text-sm md:text-base font-medium leading-relaxed">
-                    {card.description}
-                  </p>
-                </div>
-                <div className="flex items-center gap-6 pt-4">
-                  <a 
-                    href={card.url} 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    className="group relative h-12 px-8 flex items-center gap-3 bg-[#ff6b1a] hover:bg-[#ff8038] rounded-full transition-all duration-300 shadow-xl shadow-[#ff6b1a]/20"
-                  >
-                    <span className="text-white text-[12px] font-black uppercase tracking-widest">Visit site</span>
-                    <ArrowRight className="w-4 h-4 text-white group-hover:translate-x-1 transition-transform" />
-                  </a>
-                </div>
-              </div>
-              <div className="relative aspect-[16/10] rounded-2xl overflow-hidden border border-black/[0.05] bg-black/[0.03] group shadow-2xl shadow-black/5">
-                <Image
-                  src={card.imageUrl}
-                  alt={card.title}
-                  fill
-                  className="object-cover transition-opacity duration-700"
-                  priority={i === 0}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none" />
-              </div>
-            </div>
+    <section className="bg-white py-12 md:py-24 overflow-hidden min-h-[800px] relative border-t border-black/[0.03]">
+      <div className="container mx-auto px-6">
+        {/* Header Section - Same as Featured Videos */}
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-12 border-b border-black/[0.05] pb-6">
+          <div className="relative">
+            <h2 className="text-xl md:text-3xl font-black text-black leading-none tracking-tighter uppercase text-nowrap">
+              Featured Websites
+            </h2>
+            <div className="w-8 md:w-12 h-1 bg-black mt-1" />
           </div>
-        ))}
 
-        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-4 z-50">
-          <button 
-            onClick={() => handleWebsiteNav('prev')} 
-            className="group flex items-center gap-3 px-8 py-4 bg-black/[0.03] border border-black/[0.05] text-black text-[10px] uppercase tracking-[0.4em] font-black hover:bg-[#ff6b1a] hover:border-[#ff6b1a] hover:text-white transition-all duration-300"
-            style={{ clipPath: 'polygon(10% 0%, 100% 0%, 90% 100%, 0% 100%)' }}
-          >
-            <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
-            Prev
-          </button>
-          <button 
-            onClick={() => handleWebsiteNav('next')} 
-            className="group flex items-center gap-3 px-8 py-4 bg-black/[0.03] border border-black/[0.05] text-black text-[10px] uppercase tracking-[0.4em] font-black hover:bg-[#ff6b1a] hover:border-[#ff6b1a] hover:text-white transition-all duration-300"
-            style={{ clipPath: 'polygon(10% 0%, 100% 0%, 90% 100%, 0% 100%)' }}
-          >
-            Next
-            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-          </button>
+          <div className="flex flex-wrap gap-1.5">
+            {categories.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => handleCategoryChange(cat)}
+                className={cn(
+                  "px-4 py-1.5 rounded-full text-[9px] font-black uppercase tracking-widest transition-all border",
+                  activeCategory === cat
+                    ? "bg-black text-white border-black"
+                    : "bg-transparent text-black/40 border-black/10 hover:border-black/30"
+                )}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Content Area */}
+        <div className="relative h-[500px] flex items-center justify-center">
+          {filteredCards.length > 0 ? (
+            filteredCards.map((card, i) => (
+              <div
+                key={`${activeCategory}-website-${card.id}`}
+                ref={el => { cardsRef.current[i] = el }}
+                className="absolute w-full max-w-[800px] bg-[#f7f7f5] backdrop-blur-2xl border border-black/[0.05] p-6 md:p-10 rounded-[32px] shadow-2xl shadow-black/5 opacity-0 transform-gpu will-change-transform overflow-hidden"
+                style={{
+                  zIndex: i === websiteIndex ? 10 : 5
+                }}
+              >
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                  <div className="space-y-6">
+                    <div className="flex items-center gap-4">
+                      <div className="w-10 h-10 bg-[#ff6b1a]/10 border border-[#ff6b1a]/40 rounded-xl flex items-center justify-center text-[#ff6b1a]">
+                        {card.icon}
+                      </div>
+                      <div className="px-3 py-1 bg-black/[0.03] border border-black/[0.05] rounded-full">
+                        <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-black/40">{card.tag}</span>
+                      </div>
+                    </div>
+                    <div className="space-y-3">
+                      <h2 className="text-3xl md:text-4xl font-black text-black tracking-tighter leading-tight uppercase">
+                        {card.title}
+                      </h2>
+                      <p className="text-black/40 text-sm md:text-base font-medium leading-relaxed">
+                        {card.description}
+                      </p>
+                    </div>
+                    <div className="flex items-center gap-6 pt-4">
+                      <a 
+                        href={card.url} 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="group relative h-12 px-8 flex items-center gap-3 bg-[#ff6b1a] hover:bg-[#ff8038] rounded-full transition-all duration-300 shadow-xl shadow-[#ff6b1a]/20"
+                      >
+                        <span className="text-white text-[12px] font-black uppercase tracking-widest">Visit site</span>
+                        <ArrowRight className="w-4 h-4 text-white group-hover:translate-x-1 transition-transform" />
+                      </a>
+                    </div>
+                  </div>
+                  <div className="relative aspect-[16/10] rounded-2xl overflow-hidden border border-black/[0.05] bg-black/[0.03] group shadow-2xl shadow-black/5">
+                    <Image
+                      src={card.imageUrl}
+                      alt={card.title}
+                      fill
+                      className="object-cover transition-opacity duration-700"
+                      priority={i === 0}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none" />
+                  </div>
+                </div>
+              </div>
+            ))
+          ) : (
+            <div className="text-center text-black/20 font-black uppercase tracking-[0.2em] pt-20">
+              No projects found in this category
+            </div>
+          )}
+
+          {filteredCards.length > 1 && (
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-4 z-50">
+              <button 
+                onClick={() => handleWebsiteNav('prev')} 
+                className="group flex items-center gap-3 px-8 py-4 bg-black/[0.03] border border-black/[0.05] text-black text-[10px] uppercase tracking-[0.4em] font-black hover:bg-[#ff6b1a] hover:border-[#ff6b1a] hover:text-white transition-all duration-300"
+                style={{ clipPath: 'polygon(10% 0%, 100% 0%, 90% 100%, 0% 100%)' }}
+              >
+                <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
+                Prev
+              </button>
+              <button 
+                onClick={() => handleWebsiteNav('next')} 
+                className="group flex items-center gap-3 px-8 py-4 bg-black/[0.03] border border-black/[0.05] text-black text-[10px] uppercase tracking-[0.4em] font-black hover:bg-[#ff6b1a] hover:border-[#ff6b1a] hover:text-white transition-all duration-300"
+                style={{ clipPath: 'polygon(10% 0%, 100% 0%, 90% 100%, 0% 100%)' }}
+              >
+                Next
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </section>
