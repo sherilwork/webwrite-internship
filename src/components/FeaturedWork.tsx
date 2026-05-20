@@ -1,4 +1,3 @@
-
 "use client"
 
 import React, { useState, useMemo } from "react"
@@ -102,15 +101,7 @@ export function FeaturedWork() {
                 <span className="w-1.5 h-1.5 rounded-full bg-[#f5b800]" />
                 <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-black/60">Portfolio</span>
               </div>
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-black leading-[1.05] tracking-tighter uppercase">
-                FEATURED <br />
-                <span className="text-[#f5b800]">WORK & RESULTS</span>
-              </h2>
-              <div className="w-12 md:w-20 h-1.5 bg-black mt-2" />
             </div>
-            <p className="text-base md:text-lg text-black/50 font-medium leading-relaxed max-w-md">
-              A curated selection of projects where creativity meets measurable digital performance.
-            </p>
           </div>
 
           <div className="flex flex-wrap gap-2">
