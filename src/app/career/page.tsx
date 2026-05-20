@@ -151,7 +151,7 @@ export default function CareerPage() {
                       <Button className="w-full sm:w-auto rounded-full bg-[#f5b800] text-black text-[10px] font-black uppercase tracking-widest hover:bg-white transition-all px-8 py-6 h-auto">
                         APPLY NOW
                       </Button>
-                      <Button variant="outline" className="w-full sm:w-auto rounded-full border-black/10 group-hover:border-white/20 text-[10px] font-black uppercase tracking-widest px-8 py-6 h-auto">
+                      <Button variant="outline" className="w-full sm:w-auto rounded-full border-black/10 bg-white group-hover:bg-white text-black group-hover:text-black text-[10px] font-black uppercase tracking-widest px-8 py-6 h-auto">
                         VIEW DETAILS
                       </Button>
                     </div>
