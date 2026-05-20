@@ -86,7 +86,7 @@ export function Navigation() {
         </div>
 
         <Button asChild className="hidden md:inline-flex rounded-full bg-black hover:bg-black/90 text-white px-6 font-medium transition-transform active:scale-95 shadow-lg shadow-black/10">
-          <Link href="/contact">Get started</Link>
+          <a href="https://wa.me/917906627288" target="_blank" rel="noopener noreferrer">Get started</a>
         </Button>
 
         <Sheet>
@@ -180,7 +180,7 @@ export function Navigation() {
               
               <div className="mt-8 px-8 mb-12">
                 <Button asChild className="w-full rounded-full bg-black text-white text-[12px] font-black uppercase tracking-[0.2em] py-8 hover:bg-black/90 shadow-2xl shadow-black/20 transition-all active:scale-95 border border-white/5">
-                  <Link href="/contact">Get Started Now</Link>
+                  <a href="https://wa.me/917906627288" target="_blank" rel="noopener noreferrer">Get Started Now</a>
                 </Button>
               </div>
             </ScrollArea>
