@@ -9,7 +9,7 @@ import { Footer } from "@/components/Footer"
 import { GridBackground } from "@/components/GridBackground"
 import { FeaturedVideos } from "@/components/FeaturedVideos"
 import { FeaturedWebsites } from "@/components/FeaturedWebsites"
-import { ArrowRight, Sparkles, TrendingUp, Users, Target, Zap } from "lucide-react"
+import { ArrowRight, Briefcase, TrendingUp, Users, Target, Zap } from "lucide-react"
 
 const stats = [
   { value: "100+", label: "Projects Delivered", icon: Zap },
@@ -35,12 +35,12 @@ export default function PortfolioPage() {
             className="space-y-6 max-w-3xl"
           >
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/[0.03] border border-black/[0.05]">
-              <Sparkles className="w-3.5 h-3.5 text-[#f5b800]" />
-              <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-black/60">Our Body of Work</span>
+              <Briefcase className="w-3.5 h-3.5 text-[#f5b800]" />
+              <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-black/60">Success Stories</span>
             </div>
             <h1 className="text-4xl md:text-6xl font-black text-black leading-[1.05] tracking-tighter uppercase">
-              CRAFTING DIGITAL <br />
-              <span className="text-[#f5b800]">EXCELLENCE</span>
+              TRANSFORMING BRANDS <br />
+              <span className="text-[#f5b800]">FOR THE DIGITAL AGE</span>
             </h1>
             <div className="w-20 h-2 bg-black mt-4" />
             <p className="text-lg md:text-xl text-black/50 font-medium leading-relaxed pt-4">
