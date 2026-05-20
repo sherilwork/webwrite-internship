@@ -64,7 +64,63 @@ const testimonials = [
   }
 ]
 
+function TestimonialCard({ testimonial }: { testimonial: typeof testimonials[0] }) {
+  return (
+    <div className="group relative bg-[#f7f7f5] rounded-[2rem] p-8 border border-black/[0.04] shadow-[0_10px_40px_rgba(0,0,0,0.02)] hover:shadow-[0_20px_60px_rgba(0,0,0,0.04)] transition-all duration-700">
+      <div className="absolute top-8 right-8 text-black/[0.05] group-hover:text-[#f5b800]/20 transition-colors duration-700">
+        <Quote size={40} strokeWidth={3} />
+      </div>
+      
+      <div className="space-y-6 relative z-10">
+        <div className="flex gap-1">
+          {[...Array(5)].map((_, i) => (
+            <Star key={i} size={12} className="fill-[#f5b800] text-[#f5b800]" />
+          ))}
+        </div>
+
+        <p className="text-black/70 font-medium leading-relaxed text-sm md:text-base italic">
+          "{testimonial.content}"
+        </p>
+
+        <div className="flex items-center gap-4 pt-4 border-t border-black/[0.05]">
+          <Avatar className="h-12 w-12 border-2 border-white shadow-md">
+            <AvatarImage src={testimonial.avatar} alt={testimonial.name} />
+            <AvatarFallback className="bg-black text-white text-xs">{testimonial.name[0]}</AvatarFallback>
+          </Avatar>
+          <div className="flex flex-col">
+            <span className="text-sm font-black uppercase tracking-wider text-black">{testimonial.name}</span>
+            <span className="text-[10px] font-bold text-black/40 uppercase tracking-widest">{testimonial.role}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function MarqueeColumn({ items, direction = 'up', speed = '40s' }: { items: typeof testimonials, direction?: 'up' | 'down', speed?: string }) {
+  return (
+    <div className="flex flex-col gap-8 h-full overflow-hidden relative group/column">
+      <div 
+        className={cn(
+          "flex flex-col gap-8 py-4",
+          direction === 'up' ? "animate-marquee-up" : "animate-marquee-down",
+          "group-hover/column:[animation-play-state:paused]"
+        )}
+        style={{ '--duration': speed } as React.CSSProperties}
+      >
+        {[...items, ...items].map((t, idx) => (
+          <TestimonialCard key={idx} testimonial={t} />
+        ))}
+      </div>
+    </div>
+  )
+}
+
 export function Testimonials() {
+  const col1 = [testimonials[0], testimonials[3], testimonials[6]]
+  const col2 = [testimonials[1], testimonials[4], testimonials[7]]
+  const col3 = [testimonials[2], testimonials[5], testimonials[8]]
+
   return (
     <section className="bg-white py-24 lg:py-32 relative overflow-hidden border-t border-black/[0.03]">
       <div className="container mx-auto px-6">
@@ -94,45 +150,24 @@ export function Testimonials() {
           </motion.div>
         </div>
 
-        {/* Testimonials Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {testimonials.map((testimonial, idx) => (
-            <motion.div
-              key={idx}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: idx * 0.1 }}
-              className="group relative bg-[#f7f7f5] rounded-[2rem] p-8 border border-black/[0.04] shadow-[0_10px_40px_rgba(0,0,0,0.02)] hover:shadow-[0_20px_60px_rgba(0,0,0,0.04)] transition-all duration-700"
-            >
-              <div className="absolute top-8 right-8 text-black/[0.05] group-hover:text-[#f5b800]/20 transition-colors duration-700">
-                <Quote size={40} strokeWidth={3} />
-              </div>
-              
-              <div className="space-y-6 relative z-10">
-                <div className="flex gap-1">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} size={12} className="fill-[#f5b800] text-[#f5b800]" />
-                  ))}
-                </div>
+        {/* Marquee Container */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 h-[700px] relative overflow-hidden">
+          {/* Fading gradients for top and bottom */}
+          <div className="absolute top-0 inset-x-0 h-32 bg-gradient-to-b from-white to-transparent z-20 pointer-events-none" />
+          <div className="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-t from-white to-transparent z-20 pointer-events-none" />
 
-                <p className="text-black/70 font-medium leading-relaxed text-sm md:text-base italic">
-                  "{testimonial.content}"
-                </p>
+          {/* Column 1: Moves Up */}
+          <MarqueeColumn items={col1} direction="up" speed="35s" />
 
-                <div className="flex items-center gap-4 pt-4 border-t border-black/[0.05]">
-                  <Avatar className="h-12 w-12 border-2 border-white shadow-md">
-                    <AvatarImage src={testimonial.avatar} alt={testimonial.name} />
-                    <AvatarFallback className="bg-black text-white text-xs">{testimonial.name[0]}</AvatarFallback>
-                  </Avatar>
-                  <div className="flex flex-col">
-                    <span className="text-sm font-black uppercase tracking-wider text-black">{testimonial.name}</span>
-                    <span className="text-[10px] font-bold text-black/40 uppercase tracking-widest">{testimonial.role}</span>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          ))}
+          {/* Column 2: Moves Down */}
+          <div className="hidden md:block">
+            <MarqueeColumn items={col2} direction="down" speed="45s" />
+          </div>
+
+          {/* Column 3: Moves Up */}
+          <div className="hidden lg:block">
+            <MarqueeColumn items={col3} direction="up" speed="40s" />
+          </div>
         </div>
       </div>
     </section>
