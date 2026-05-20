@@ -84,7 +84,7 @@ export default function ServicesSection() {
               </div>
 
               <div className="space-y-4">
-                <h2 className="text-3xl md:text-5xl lg:text-6xl font-black text-black leading-[1.05] tracking-tighter">
+                <h2 className="text-3xl md:text-5xl lg:text-6xl font-black text-black leading-[1.05] tracking-tighter uppercase">
                   SCALING YOUR <br />
                   <span className="text-[#f5b800]">DIGITAL IMPACT</span>
                 </h2>
