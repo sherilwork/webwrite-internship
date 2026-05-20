@@ -18,6 +18,7 @@ import {
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 const services = [
   {
@@ -119,10 +120,12 @@ export default function ServicesSection() {
               </p>
 
               <div className="pt-0">
-                <Button className="rounded-full bg-black text-white px-6 md:px-8 py-4 md:py-5 text-[10px] md:text-xs font-bold uppercase tracking-widest hover:bg-black/90 transition-all hover:translate-x-1 active:scale-95 shadow-2xl shadow-black/20 group h-auto">
-                  Full Service List
-                  <ArrowUpRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-                </Button>
+                <Link href="/services">
+                  <Button className="rounded-full bg-black text-white px-6 md:px-8 py-4 md:py-5 text-[10px] md:text-xs font-bold uppercase tracking-widest hover:bg-black/90 transition-all hover:translate-x-1 active:scale-95 shadow-2xl shadow-black/20 group h-auto">
+                    Full Service List
+                    <ArrowUpRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                  </Button>
+                </Link>
               </div>
             </motion.div>
           </div>
@@ -188,9 +191,11 @@ function ServiceCard({ service, index }: { service: typeof services[0], index: n
             </div>
           </div>
 
-          <button className="flex h-9 w-9 md:h-10 md:w-10 items-center justify-center rounded-full bg-black text-white transition-all duration-500 hover:scale-110 active:scale-90 group/btn shrink-0 shadow-lg shadow-black/10">
-            <ArrowUpRight size={18} strokeWidth={2} className="transition-transform duration-500 group-hover:rotate-45" />
-          </button>
+          <Link href="/services">
+            <button className="flex h-9 w-9 md:h-10 md:w-10 items-center justify-center rounded-full bg-black text-white transition-all duration-500 hover:scale-110 active:scale-90 group/btn shrink-0 shadow-lg shadow-black/10">
+              <ArrowUpRight size={18} strokeWidth={2} className="transition-transform duration-500 group-hover:rotate-45" />
+            </button>
+          </Link>
         </div>
 
         <div className="absolute top-2 right-4 text-[24px] md:text-[40px] font-black text-black/[0.01] leading-none select-none tracking-tighter transition-all duration-700 group-hover:text-black/[0.02] pointer-events-none">
