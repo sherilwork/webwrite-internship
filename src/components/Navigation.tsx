@@ -4,6 +4,8 @@
 import * as React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
+import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { 
@@ -25,8 +27,11 @@ import {
   SheetClose,
 } from "@/components/ui/sheet";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { cn } from '@/lib/utils';
 
 export function Navigation() {
+  const pathname = usePathname();
+  
   const navItems = [
     { label: 'Home', href: '/', icon: Home },
     { label: 'About', href: '/about', icon: Star },
@@ -56,15 +61,28 @@ export function Navigation() {
         </Link>
 
         <div className="hidden md:flex items-center gap-6">
-          {navItems.map((item) => (
-            <Link
-              key={item.label}
-              href={item.href}
-              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-all hover:-translate-y-0.5"
-            >
-              {item.label}
-            </Link>
-          ))}
+          {navItems.map((item) => {
+            const isActive = pathname === item.href;
+            return (
+              <Link
+                key={item.label}
+                href={item.href}
+                className={cn(
+                  "relative text-sm font-medium transition-all hover:text-foreground px-1 py-1 group",
+                  isActive ? "text-foreground" : "text-muted-foreground"
+                )}
+              >
+                {item.label}
+                {isActive && (
+                  <motion.div
+                    layoutId="activeNav"
+                    className="absolute -bottom-1 left-0 right-0 h-0.5 bg-[#f5b800] rounded-full"
+                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                  />
+                )}
+              </Link>
+            );
+          })}
         </div>
 
         <Button asChild className="hidden md:inline-flex rounded-full bg-black hover:bg-black/90 text-white px-6 font-medium transition-transform active:scale-95 shadow-lg shadow-black/10">
@@ -130,22 +148,34 @@ export function Navigation() {
             
             <ScrollArea className="flex-1 h-full scroll-smooth">
               <div className="flex flex-col">
-                {navItems.map((item, idx) => (
-                  <Link
-                    key={item.label}
-                    href={item.href}
-                    className="flex items-center justify-between px-8 py-6 text-[14px] font-black text-black/80 hover:text-[#f5b800] hover:bg-black/[0.01] transition-all border-b border-black/[0.04] uppercase tracking-[0.2em] group animate-in fade-in slide-in-from-left-4 fill-mode-both"
-                    style={{ animationDelay: `${idx * 50}ms` }}
-                  >
-                    <div className="flex items-center gap-5">
-                      <div className="w-10 h-10 rounded-full bg-black/[0.02] flex items-center justify-center group-hover:bg-[#f5b800]/20 transition-all">
-                        <item.icon className="w-5 h-5 text-black/30 group-hover:text-[#f5b800] transition-all" />
+                {navItems.map((item, idx) => {
+                  const isActive = pathname === item.href;
+                  return (
+                    <Link
+                      key={item.label}
+                      href={item.href}
+                      className={cn(
+                        "flex items-center justify-between px-8 py-6 text-[14px] font-black hover:bg-black/[0.01] transition-all border-b border-black/[0.04] uppercase tracking-[0.2em] group animate-in fade-in slide-in-from-left-4 fill-mode-both",
+                        isActive ? "text-[#f5b800]" : "text-black/80 hover:text-[#f5b800]"
+                      )}
+                      style={{ animationDelay: `${idx * 50}ms` }}
+                    >
+                      <div className="flex items-center gap-5">
+                        <div className={cn(
+                          "w-10 h-10 rounded-full flex items-center justify-center transition-all",
+                          isActive ? "bg-[#f5b800]/20" : "bg-black/[0.02] group-hover:bg-[#f5b800]/20"
+                        )}>
+                          <item.icon className={cn(
+                            "w-5 h-5 transition-all",
+                            isActive ? "text-[#f5b800]" : "text-black/30 group-hover:text-[#f5b800]"
+                          )} />
+                        </div>
+                        <span className="group-hover:translate-x-1 transition-transform">{item.label}</span>
                       </div>
-                      <span className="group-hover:translate-x-1 transition-transform">{item.label}</span>
-                    </div>
-                    <ChevronLeft className="w-4 h-4 rotate-180 opacity-0 group-hover:opacity-40 transition-all -translate-x-4 group-hover:translate-x-0" />
-                  </Link>
-                ))}
+                      <ChevronLeft className="w-4 h-4 rotate-180 opacity-0 group-hover:opacity-40 transition-all -translate-x-4 group-hover:translate-x-0" />
+                    </Link>
+                  );
+                })}
               </div>
               
               <div className="mt-8 px-8 mb-12">
