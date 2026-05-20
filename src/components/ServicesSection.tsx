@@ -84,17 +84,17 @@ const services = [
 
 export default function ServicesSection() {
   return (
-    <section className="relative bg-white py-24 lg:pt-48 lg:pb-[150vh] overflow-visible min-h-screen flex items-start">
+    <section className="relative bg-white pt-12 lg:pt-20 pb-[150vh] lg:pb-[200vh] overflow-visible min-h-screen flex items-start">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
         <div className="absolute left-0 top-0 h-full w-full bg-[radial-gradient(circle_at_top_left,black_1px,transparent_1px)] bg-[size:32px_32px]" />
       </div>
 
       <div className="relative mx-auto max-w-7xl px-6 lg:px-12 w-full">
-        <div className="grid gap-16 lg:grid-cols-2 lg:gap-24 items-start">
+        <div className="grid gap-12 lg:grid-cols-2 lg:gap-24 items-start">
           
           {/* Left Column: Sticky Header */}
-          <div className="lg:sticky lg:top-48 h-fit space-y-6 md:space-y-8 mb-12 lg:mb-0 z-10">
+          <div className="sticky top-24 lg:top-32 h-fit space-y-4 md:space-y-6 mb-12 lg:mb-0 z-10">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -111,15 +111,15 @@ export default function ServicesSection() {
                   SCALING YOUR <br />
                   <span className="text-[#f5b800]">DIGITAL IMPACT</span>
                 </h2>
-                <div className="w-16 md:w-20 h-1.5 bg-black mt-2" />
+                <div className="w-12 md:w-20 h-1.5 bg-black mt-2" />
               </div>
 
               <p className="text-base md:text-lg text-black/50 font-medium leading-relaxed max-w-sm">
                 We simplify growth. Our expert teams build systems that help your brand reach more people and convert them into loyal customers.
               </p>
 
-              <div className="pt-2 md:pt-4">
-                <Button className="rounded-full bg-black text-white px-6 md:px-8 py-4 md:py-5 text-[10px] md:text-xs font-bold uppercase tracking-widest hover:bg-black/90 transition-all hover:translate-x-1 active:scale-95 shadow-2xl shadow-black/20 group">
+              <div className="pt-0">
+                <Button className="rounded-full bg-black text-white px-6 md:px-8 py-4 md:py-5 text-[10px] md:text-xs font-bold uppercase tracking-widest hover:bg-black/90 transition-all hover:translate-x-1 active:scale-95 shadow-2xl shadow-black/20 group h-auto">
                   Full Service List
                   <ArrowUpRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                 </Button>
@@ -128,7 +128,7 @@ export default function ServicesSection() {
           </div>
 
           {/* Right Column: Stacked Cards */}
-          <div className="flex flex-col gap-12 relative lg:max-w-xl lg:ml-auto w-full">
+          <div className="flex flex-col gap-8 lg:gap-12 relative lg:max-w-xl lg:ml-auto w-full">
             {services.map((service, index) => (
               <ServiceCard 
                 key={service.title} 
@@ -156,44 +156,45 @@ function ServiceCard({ service, index }: { service: typeof services[0], index: n
         delay: index * 0.05, 
         ease: [0.22, 1, 0.36, 1] 
       }}
-      className="w-full lg:sticky will-change-transform"
+      className="w-full sticky will-change-transform"
       style={{
-        top: `calc(180px + ${index * 32}px)`,
+        // Tighter stack for mobile to prevent overflow, more spread for desktop
+        top: `calc(140px + ${index * 16}px)`,
         zIndex: 20 + index,
       }}
     >
-      <div className="group relative overflow-hidden rounded-[20px] border border-black/[0.04] bg-[#f7f7f5] p-5 md:p-7 shadow-[0_10px_40px_rgba(0,0,0,0.02)] transition-all duration-700 hover:shadow-[0_20px_60px_rgba(0,0,0,0.04)] transform-gpu min-h-[120px] flex items-center">
+      <div className="group relative overflow-hidden rounded-[20px] border border-black/[0.04] bg-[#f7f7f5] p-5 md:p-8 shadow-[0_10px_40px_rgba(0,0,0,0.02)] transition-all duration-700 hover:shadow-[0_20px_60px_rgba(0,0,0,0.04)] transform-gpu flex items-center min-h-[140px] md:min-h-[160px]">
         
         <div className={cn(
-          "absolute inset-0 opacity-0 transition-opacity duration-700 group-hover:opacity-[0.08]",
+          "absolute inset-0 opacity-0 transition-opacity duration-700 group-hover:opacity-[0.1]",
           service.accent
         )} />
 
         <div className="relative flex flex-col gap-4 md:flex-row md:items-center md:justify-between w-full">
           <div className="flex flex-col md:flex-row items-start md:items-center gap-5">
             <div className={cn(
-              "flex h-9 w-9 md:h-11 md:w-11 shrink-0 items-center justify-center rounded-[12px] border border-black/[0.03] transition-all duration-700 group-hover:scale-105",
+              "flex h-10 w-10 md:h-12 md:w-12 shrink-0 items-center justify-center rounded-[12px] border border-black/[0.03] transition-all duration-700 group-hover:scale-105 shadow-sm",
               service.accent
             )}>
-              <Icon size={18} strokeWidth={1.5} className="text-black transition-transform duration-700 group-hover:scale-110" />
+              <Icon size={20} strokeWidth={1.5} className="text-black transition-transform duration-700 group-hover:scale-110" />
             </div>
 
-            <div className="space-y-1">
-              <h3 className="text-[17px] md:text-[20px] font-black tracking-tight text-[#111111] uppercase">
+            <div className="space-y-1.5">
+              <h3 className="text-lg md:text-2xl font-black tracking-tight text-[#111111] uppercase">
                 {service.title}
               </h3>
-              <p className="max-w-[280px] md:max-w-md text-[13px] md:text-[14px] leading-relaxed text-black/40 font-medium">
+              <p className="max-w-[320px] md:max-w-md text-sm md:text-lg leading-relaxed text-black/40 font-medium">
                 {service.description}
               </p>
             </div>
           </div>
 
-          <button className="flex h-8 w-8 md:h-9 md:w-9 items-center justify-center rounded-full bg-black text-white transition-all duration-500 hover:scale-110 active:scale-90 group/btn shrink-0 shadow-lg shadow-black/10">
-            <ArrowUpRight size={16} strokeWidth={2} className="transition-transform duration-500 group-hover:rotate-45" />
+          <button className="flex h-9 w-9 md:h-10 md:w-10 items-center justify-center rounded-full bg-black text-white transition-all duration-500 hover:scale-110 active:scale-90 group/btn shrink-0 shadow-lg shadow-black/10">
+            <ArrowUpRight size={18} strokeWidth={2} className="transition-transform duration-500 group-hover:rotate-45" />
           </button>
         </div>
 
-        <div className="absolute top-2 right-4 text-[24px] md:text-[32px] font-black text-black/[0.01] leading-none select-none tracking-tighter transition-all duration-700 group-hover:text-black/[0.02] pointer-events-none">
+        <div className="absolute top-2 right-4 text-[24px] md:text-[40px] font-black text-black/[0.01] leading-none select-none tracking-tighter transition-all duration-700 group-hover:text-black/[0.02] pointer-events-none">
           {String(index + 1).padStart(2, '0')}
         </div>
       </div>
