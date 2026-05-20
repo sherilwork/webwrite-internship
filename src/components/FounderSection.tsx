@@ -5,10 +5,10 @@ import React from "react"
 import Image from "next/image"
 import { motion } from "framer-motion"
 import { ArrowUpRight, Linkedin, Twitter } from "lucide-react"
-import { PlaceHolderImages } from "@/lib/placeholder-images"
+import { founders } from "@/constants/founder"
 
 export function FounderSection() {
-  const founderImage = PlaceHolderImages.find(img => img.id === 'founder-portrait')?.imageUrl || "https://picsum.photos/seed/founder/800/1000"
+  const founder = founders[0]
 
   return (
     <section className="bg-white py-20 lg:py-32 relative overflow-hidden border-t border-black/[0.03]">
@@ -38,12 +38,12 @@ export function FounderSection() {
 
               <div className="space-y-4 max-w-xl">
                 <p className="text-sm md:text-lg text-black/50 font-medium leading-relaxed italic">
-                  "At Webwrite, we don't just build digital products; we build bridges between vision and reality. Our goal is to empower businesses with the tools they need to lead their industries with clarity and scale."
+                  "{founder.quote}"
                 </p>
                 
                 <div className="pt-4 flex flex-col">
-                  <span className="text-lg md:text-2xl font-black text-black tracking-tight uppercase">Alex Rivera</span>
-                  <span className="text-[10px] md:text-xs font-bold text-[#f5b800] uppercase tracking-[0.3em]">Chief Executive Officer</span>
+                  <span className="text-lg md:text-2xl font-black text-black tracking-tight uppercase">{founder.name}</span>
+                  <span className="text-[10px] md:text-xs font-bold text-[#f5b800] uppercase tracking-[0.3em]">{founder.role}</span>
                 </div>
               </div>
 
@@ -53,10 +53,10 @@ export function FounderSection() {
                   <ArrowUpRight className="w-3 h-3 group-hover:rotate-45 transition-transform" />
                 </button>
                 <div className="flex gap-2">
-                  <a href="#" className="p-2 rounded-full bg-black/[0.03] hover:bg-[#f5b800]/20 transition-colors">
+                  <a href={founder.linkedin} className="p-2 rounded-full bg-black/[0.03] hover:bg-[#f5b800]/20 transition-colors">
                     <Linkedin className="w-4 h-4 text-black" />
                   </a>
-                  <a href="#" className="p-2 rounded-full bg-black/[0.03] hover:bg-[#f5b800]/20 transition-colors">
+                  <a href={founder.twitter} className="p-2 rounded-full bg-black/[0.03] hover:bg-[#f5b800]/20 transition-colors">
                     <Twitter className="w-4 h-4 text-black" />
                   </a>
                 </div>
@@ -74,8 +74,8 @@ export function FounderSection() {
               className="relative aspect-[4/5] rounded-[2rem] md:rounded-[3rem] overflow-hidden group shadow-2xl shadow-black/5"
             >
               <Image 
-                src={founderImage}
-                alt="Alex Rivera - Founder"
+                src={founder.image || founder.fallbackImage}
+                alt={`${founder.name} - Founder`}
                 fill
                 className="object-cover transition-transform duration-1000 group-hover:scale-105"
                 data-ai-hint="visionary leader"
