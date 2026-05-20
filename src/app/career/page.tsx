@@ -80,68 +80,70 @@ const jobs = [
 function DetailPoint({ label }: { label: string }) {
   return (
     <div className="flex items-center gap-3">
-      <div className="w-1.5 h-1.5 bg-[#ff6b1a]/40 rotate-45" />
-      <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/40">{label}</span>
+      <div className="w-1.5 h-1.5 bg-[#f5b800] rounded-full" />
+      <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-black/50">{label}</span>
     </div>
   )
 }
 
-// JOB DETAILS POPUP MODULE
+// JOB DETAILS POPUP MODULE - Redesigned for Theme Consistency
 export function JobDetailsPopup({ viewingJob, setViewingJob, setSelectedJob }: { viewingJob: any, setViewingJob: any, setSelectedJob: any }) {
   return (
     <Dialog open={!!viewingJob} onOpenChange={(open) => !open && setViewingJob(null)}>
         <DialogContent 
           data-lenis-prevent
-          className="max-w-2xl bg-[#121212] border-white/10 text-white p-0 shadow-2xl overflow-y-auto max-h-[92vh] flex flex-col [&>button]:h-12 [&>button]:w-12 [&>button]:flex [&>button]:items-center [&>button]:justify-center [&>button]:rounded-full [&>button]:bg-white/5 [&>button]:hover:bg-white/10 [&>button]:transition-all [&>button]:border [&>button]:border-white/10 [&>button]:top-6 [&>button]:right-6 [&>button]:opacity-100 [&_svg]:size-6"
+          className="max-w-2xl bg-white border-black/5 text-black p-0 shadow-2xl overflow-y-auto max-h-[92vh] flex flex-col rounded-xl [&>button]:h-10 [&>button]:w-10 [&>button]:flex [&>button]:items-center [&>button]:justify-center [&>button]:rounded-full [&>button]:bg-black/5 [&>button]:hover:bg-black/10 [&>button]:transition-all [&>button]:top-6 [&>button]:right-6 [&>button]:opacity-100 [&_svg]:size-5"
         >
-          <div className="absolute top-0 left-0 w-full h-1 bg-[#ff6b1a] z-50 shrink-0" />
+          {/* Theme accent top bar */}
+          <div className="absolute top-0 left-0 w-full h-1.5 bg-[#f5b800] z-50 shrink-0" />
                      
-          <div className="p-8 md:p-12 space-y-8">
+          <div className="p-8 md:p-12 space-y-10">
             <div className="space-y-6">
-              <div className="flex items-center gap-3">
-                <div className="w-1.5 h-1.5 bg-[#ff6b1a] rotate-45 shadow-[0_0_10px_#ff6b1a]" />
-                <span className="text-[10px] uppercase tracking-[0.4em] font-bold text-white/40 font-orbitron">
-                  Job Opening
-                </span>
+              <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-black/[0.03] border border-black/[0.05] w-fit">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#f5b800]" />
+                <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-black/60">Career Opportunity</span>
               </div>
                              
-              <div className="space-y-2">
-                <DialogTitle className="text-3xl md:text-5xl font-bold font-orbitron uppercase tracking-tight leading-none text-white pr-8">
+              <div className="space-y-4">
+                <DialogTitle className="text-3xl md:text-5xl font-black text-black uppercase tracking-tighter leading-[1.1] pr-8">
                   {viewingJob?.role}
                 </DialogTitle>
-                <div className="flex flex-wrap gap-6 pt-4">
-                  <div className="flex items-center gap-2 text-[#ff6b1a]">
-                    <MapPin className="w-4 h-4" />
-                    <span className="text-[11px] font-bold uppercase tracking-widest">{viewingJob?.location}</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-[#ff6b1a]">
-                    <Calendar className="w-4 h-4" />
-                    <span className="text-[11px] font-bold uppercase tracking-widest">{viewingJob?.experience}</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-[#ff6b1a]">
-                    <Clock className="w-4 h-4" />
-                    <span className="text-[11px] font-bold uppercase tracking-widest">{viewingJob?.type}</span>
-                  </div>
+                
+                <div className="flex flex-wrap gap-4 pt-2">
+                  {[
+                    { icon: MapPin, text: viewingJob?.location },
+                    { icon: Calendar, text: viewingJob?.experience },
+                    { icon: Clock, text: viewingJob?.type }
+                  ].map((meta, i) => (
+                    <div key={i} className="flex items-center gap-2 px-4 py-2 rounded-full bg-black/[0.02] border border-black/[0.03]">
+                      <meta.icon className="w-3.5 h-3.5 text-[#f5b800]" />
+                      <span className="text-[10px] font-black uppercase tracking-widest text-black/60">{meta.text}</span>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
 
-            <div className="space-y-6 border-t border-white/10 pt-8">
+            <div className="space-y-6 border-t border-black/[0.05] pt-10">
               <div className="flex items-center gap-3">
-                 <Info className="w-4 h-4 text-[#ff6b1a]" />
-                 <h4 className="text-[12px] font-bold uppercase tracking-[0.3em] font-orbitron text-white">Job Description</h4>
+                 <div className="w-8 h-8 rounded-lg bg-[#f5b800]/10 flex items-center justify-center">
+                    <Info className="w-4 h-4 text-black" />
+                 </div>
+                 <h4 className="text-[11px] font-black uppercase tracking-[0.3em] text-black">Job Description</h4>
               </div>
-              <p className="text-white/60 text-base leading-relaxed font-light">
+              <p className="text-black/50 text-base md:text-lg leading-relaxed font-medium">
                 {viewingJob?.description}
               </p>
             </div>
 
-            <div className="space-y-6 border-t border-white/10 pt-8">
+            <div className="space-y-6 border-t border-black/[0.05] pt-10">
                <div className="flex items-center gap-3">
-                 <CheckCircle2 className="w-4 h-4 text-[#ff6b1a]" />
-                 <h4 className="text-[12px] font-bold uppercase tracking-[0.3em] font-orbitron text-white">Key Responsibilities</h4>
+                 <div className="w-8 h-8 rounded-lg bg-[#f5b800]/10 flex items-center justify-center">
+                    <CheckCircle2 className="w-4 h-4 text-black" />
+                 </div>
+                 <h4 className="text-[11px] font-black uppercase tracking-[0.3em] text-black">Key Responsibilities</h4>
                </div>
-               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+               <div className="grid grid-cols-1 md:grid-cols-2 gap-y-4 gap-x-12">
                   <DetailPoint label="High-Quality Code Delivery" />
                   <DetailPoint label="Scalable Design Sync" />
                   <DetailPoint label="Team Collaboration" />
@@ -149,14 +151,13 @@ export function JobDetailsPopup({ viewingJob, setViewingJob, setSelectedJob }: {
                </div>
             </div>
 
-            <div className="pt-4">
+            <div className="pt-6">
               <button 
                  onClick={() => {
                   setSelectedJob(viewingJob)
                   setViewingJob(null)
                 }}
-                className="w-full h-14 bg-[#ff6b1a] text-white text-[12px] font-bold uppercase tracking-[0.3em] flex items-center justify-center gap-4 hover:bg-white hover:text-black transition-all duration-500 group"
-                style={{ clipPath: 'polygon(5% 0%, 100% 0%, 95% 100%, 0% 100%)' }}
+                className="w-full h-16 rounded-full bg-black text-white text-[12px] font-black uppercase tracking-[0.2em] flex items-center justify-center gap-4 hover:bg-[#f5b800] hover:text-black transition-all duration-500 shadow-xl shadow-black/10 group active:scale-[0.98]"
               >
                 Apply for this profile
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
@@ -164,8 +165,8 @@ export function JobDetailsPopup({ viewingJob, setViewingJob, setSelectedJob }: {
             </div>
           </div>
                      
-          <div className="px-12 pb-8 flex items-center justify-center opacity-10 shrink-0">
-             <span className="text-[8px] font-mono tracking-[0.5em] uppercase">We Are Hiring</span>
+          <div className="px-12 pb-8 flex items-center justify-center opacity-20 shrink-0">
+             <span className="text-[9px] font-black tracking-[0.4em] uppercase text-black">Webwrite Services • We Are Hiring</span>
           </div>
         </DialogContent>
       </Dialog>
@@ -261,13 +262,16 @@ export default function CareerPage() {
                       >
                         VIEW DETAILS
                       </Button>
-                      <a href="mailto:careers@webwrite.services" className="flex-1">
+                      <button 
+                        onClick={() => handleApply(job)}
+                        className="flex-1"
+                      >
                         <Button 
                           className="w-full rounded-lg bg-[#f5b800] text-black text-[10px] font-black uppercase tracking-widest hover:bg-white transition-all py-6 h-auto"
                         >
                           APPLY NOW
                         </Button>
-                      </a>
+                      </button>
                     </div>
                   </div>
 
