@@ -14,7 +14,7 @@ import {
   type CarouselApi
 } from "@/components/ui/carousel"
 
-const categories = ["All", "Healthcare", "Education", "E-Commerce", "Fitness", "Finance"]
+const categories = ["All", "Healthcare", "Education", "E-Commerce", "Fitness", "Shops"]
 
 const projects = [
   {
@@ -92,7 +92,7 @@ const projects = [
   {
     id: 9,
     title: "FinTech Dashboard",
-    category: "Finance",
+    category: "Shops",
     subCategory: "UI/UX",
     image: "work-video-5",
     metric: "Zero Latency",
