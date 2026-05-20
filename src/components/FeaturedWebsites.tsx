@@ -19,47 +19,47 @@ const FEATURED_CARDS = [
     stats: "Luxury Listing",
     tag: "REAL ESTATE",
     url: "https://www.landmarklaneestates.co.in/",
-    imageUrl: "https://picsum.photos/seed/ws1/800/500"
+    imageUrl: "/features-websites/website-1.png"
   },
   {
     id: 2,
-    title: "Gyansthali Academy",
-    description: "A comprehensive educational platform designed to streamline academic management and enhance student-teacher engagement.",
-    icon: <GraduationCap className="w-5 h-5" />,
-    stats: "Academic Portal",
-    tag: "EDUCATION",
-    url: "https://www.gsavijaynagaretawah.com/",
-    imageUrl: "https://picsum.photos/seed/ws2/800/500"
-  },
-  {
-    id: 3,
-    title: "AWS UG Pune",
-    description: "A community-driven platform for cloud enthusiasts, featuring event updates, technical resources, and membership management.",
-    icon: <Cpu className="w-5 h-5" />,
-    stats: "Cloud Network",
-    tag: "COMMUNITY",
-    url: "https://www.awsugpune.in/",
-    imageUrl: "https://picsum.photos/seed/ws3/800/500"
-  },
-  {
-    id: 4,
     title: "Sundar Vibes Store",
     description: "A premium e-commerce experience designed for lifestyle and fashion, featuring a streamlined checkout process and responsive visual merchandising.",
     icon: <ShoppingBag className="w-5 h-5" />,
     stats: "Retail Logic",
     tag: "E-COMMERCE",
     url: "https://sundarvibesstore.com/",
-    imageUrl: "https://picsum.photos/seed/ws4/800/500"
+    imageUrl: "/features-websites/website-2.png"
   },
   {
-    id: 5,
+    id: 3,
     title: "Sagar Disposal",
     description: "A specialized digital platform for industrial disposal solutions, featuring a structured product catalog and optimized for professional B2B interactions.",
     icon: <Package className="w-5 h-5" />,
     stats: "B2B Catalog",
     tag: "SHOPS",
     url: "https://sagar-disposal.vercel.app/",
-    imageUrl: "https://picsum.photos/seed/ws5/800/500"
+    imageUrl: "/features-websites/website-3.png"
+  },
+  {
+    id: 4,
+    title: "Gyansthali Academy",
+    description: "A comprehensive educational platform designed to streamline academic management and enhance student-teacher engagement.",
+    icon: <GraduationCap className="w-5 h-5" />,
+    stats: "Academic Portal",
+    tag: "EDUCATION",
+    url: "https://www.gsavijaynagaretawah.com/",
+    imageUrl: "/features-websites/website-4.png"
+  },
+  {
+    id: 5,
+    title: "AWS UG Pune",
+    description: "A community-driven platform for cloud enthusiasts, featuring event updates, technical resources, and membership management.",
+    icon: <Cpu className="w-5 h-5" />,
+    stats: "Cloud Network",
+    tag: "COMMUNITY",
+    url: "https://www.awsugpune.in/",
+    imageUrl: "/features-websites/website-5.png"
   }
 ]
 
