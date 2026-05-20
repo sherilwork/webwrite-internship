@@ -4,7 +4,7 @@ import './globals.css';
 import { ScrollToTop } from '@/components/ScrollToTop';
 
 export const metadata: Metadata = {
-  title: 'WebWrite Services | Premium Digital Agency',
+  title: 'Webwrite Services',
   description: 'Expert digital solutions in web development, performance marketing, and cinematic video storytelling.',
 };
 
@@ -22,6 +22,9 @@ export default function RootLayout({
       </head>
       <body className="font-body antialiased" suppressHydrationWarning>
         {children}
+        <div id="root-scroll-container">
+          {children}
+        </div>
         <ScrollToTop />
       </body>
     </html>
