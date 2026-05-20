@@ -61,7 +61,7 @@ export function AboutSection() {
             </div>
 
             {/* Right Side: Visual Branding Area */}
-            <div className="flex-1 w-full lg:w-auto relative group animate-in fade-in slide-in-from-right-8 duration-1000 ease-out will-change-transform">
+            <div className="flex-1 w-full max-w-[280px] md:max-w-none mx-auto lg:w-auto relative group animate-in fade-in slide-in-from-right-8 duration-1000 ease-out will-change-transform">
               {/* Background Glow */}
               <div className="absolute inset-0 bg-gradient-to-tr from-[#f5b800]/10 to-transparent rounded-[2rem] md:rounded-[3rem] blur-3xl opacity-30 group-hover:opacity-60 transition-opacity duration-1000" />
               
