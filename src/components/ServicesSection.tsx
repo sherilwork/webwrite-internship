@@ -4,12 +4,16 @@
 import React from "react";
 import { motion } from "framer-motion";
 import {
+  Palette,
+  Code,
+  Smartphone,
+  Video,
+  Zap,
+  Share2,
   Search,
-  LineChart,
-  Mail,
-  Link2,
-  Globe,
-  BarChart3,
+  UserCheck,
+  PenTool,
+  Layers,
   ArrowUpRight,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -17,52 +21,70 @@ import { Button } from "@/components/ui/button";
 
 const services = [
   {
-    title: "SEO Strategy",
-    description:
-      "Dominate search rankings with our advanced, data-driven SEO methodologies tailored for competitive markets.",
-    icon: Search,
+    title: "Branding",
+    description: "Building distinctive brand identities that resonate and endure in a crowded market.",
+    icon: Palette,
     accent: "bg-[#c7fff1]",
   },
   {
-    title: "Paid Acquisition",
-    description:
-      "Scale your revenue with high-intent SEM and Meta advertising campaigns optimized for maximum ROI.",
-    icon: LineChart,
+    title: "Website Development",
+    description: "High-performance, responsive websites built with modern frameworks for speed and scale.",
+    icon: Code,
     accent: "bg-[#e2f5ff]",
   },
   {
-    title: "Lifecycle Marketing",
-    description:
-      "Automated conversion funnels and email sequences designed to nurture leads into lifelong brand advocates.",
-    icon: Mail,
+    title: "App Development",
+    description: "Intuitive mobile and web experiences designed to solve complex problems simply.",
+    icon: Smartphone,
     accent: "bg-[#f5f0ff]",
   },
   {
-    title: "Authority Building",
-    description:
-      "Secure top-tier backlinks and media placements to accelerate your domain authority and organic growth.",
-    icon: Link2,
+    title: "Video Editing",
+    description: "Professional cinematic editing that tells your story and captures your audience's focus.",
+    icon: Video,
     accent: "bg-[#fff0f0]",
   },
   {
-    title: "Global Search",
-    description:
-      "Expansion-focused SEO strategies designed to help your brand conquer international markets and local regions.",
-    icon: Globe,
+    title: "Digital Marketing",
+    description: "Data-driven performance marketing focused on high ROI and sustainable growth.",
+    icon: Zap,
     accent: "bg-[#f0fff4]",
   },
   {
-    title: "Conversion Engine",
-    description:
-      "Turn traffic into transactions with rigorous A/B testing, heatmapping, and behavioral analytics optimization.",
-    icon: BarChart3,
+    title: "Social Media Management",
+    description: "Strategic management and growth of your voice across all major social platforms.",
+    icon: Share2,
     accent: "bg-[#fffbe2]",
+  },
+  {
+    title: "SEO",
+    description: "Advanced optimization strategies to dominate search results and drive organic traffic.",
+    icon: Search,
+    accent: "bg-[#e8fff8]",
+  },
+  {
+    title: "UGC",
+    description: "Authentic user-generated content that builds community trust and drives conversions.",
+    icon: UserCheck,
+    accent: "bg-[#f0f4ff]",
+  },
+  {
+    title: "Content Creation",
+    description: "Creative storytelling through high-impact visuals and compelling written narrative.",
+    icon: PenTool,
+    accent: "bg-[#fff5e6]",
+  },
+  {
+    title: "Graphic Design",
+    description: "Stunning visual assets that elevate your brand communication across every touchpoint.",
+    icon: Layers,
+    accent: "bg-[#f7f7f5]",
   },
 ];
 
 export default function ServicesSection() {
   return (
-    <section className="relative bg-white py-24 lg:pt-48 lg:pb-72 overflow-visible min-h-screen flex items-start">
+    <section className="relative bg-white py-24 lg:pt-48 lg:pb-[120vh] overflow-visible min-h-screen flex items-start">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
         <div className="absolute left-0 top-0 h-full w-full bg-[radial-gradient(circle_at_top_left,black_1px,transparent_1px)] bg-[size:32px_32px]" />
@@ -93,7 +115,7 @@ export default function ServicesSection() {
               </div>
 
               <p className="text-base md:text-lg text-black/50 font-medium leading-relaxed max-w-sm">
-                We simplify growth. Our expert teams build systems that help your brand reach more people and convert them into loyal customers.
+                We build high-velocity growth systems that bridge the gap between creative vision and technical excellence. Simple solutions for complex growth.
               </p>
 
               <div className="pt-4 md:pt-6">
@@ -126,53 +148,53 @@ function ServiceCard({ service, index }: { service: typeof services[0], index: n
   
   return (
     <motion.div
-      initial={{ opacity: 0, y: 80 }}
+      initial={{ opacity: 0, y: 100 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "0px 0px -100px 0px" }}
+      viewport={{ once: true, margin: "0px 0px -150px 0px" }}
       transition={{ 
-        duration: 0.7, 
+        duration: 0.8, 
         delay: index * 0.05, 
         ease: [0.22, 1, 0.36, 1] 
       }}
       className="w-full lg:sticky will-change-transform"
       style={{
-        top: `calc(140px + ${index * 36}px)`,
+        top: `calc(160px + ${index * 24}px)`,
         zIndex: 20 + index,
       }}
     >
-      <div className="group relative overflow-hidden rounded-[24px] border border-black/[0.04] bg-[#f7f7f5] p-6 md:p-8 shadow-[0_10px_40px_rgba(0,0,0,0.02)] transition-all duration-700 hover:shadow-[0_20px_60px_rgba(0,0,0,0.04)] transform-gpu min-h-[140px] md:min-h-[160px] flex items-center">
+      <div className="group relative overflow-hidden rounded-[20px] border border-black/[0.04] bg-[#f7f7f5] p-5 md:p-6 shadow-[0_10px_40px_rgba(0,0,0,0.02)] transition-all duration-700 hover:shadow-[0_20px_60px_rgba(0,0,0,0.04)] transform-gpu min-h-[120px] md:min-h-[130px] flex items-center">
         
         <div className={cn(
-          "absolute inset-0 opacity-0 transition-opacity duration-700 group-hover:opacity-[0.1]",
+          "absolute inset-0 opacity-0 transition-opacity duration-700 group-hover:opacity-[0.08]",
           service.accent
         )} />
 
         <div className="relative flex flex-col gap-4 md:flex-row md:items-center md:justify-between w-full">
           <div className="flex flex-col md:flex-row items-start md:items-center gap-5">
             <div className={cn(
-              "flex h-10 w-10 md:h-12 md:w-12 shrink-0 items-center justify-center rounded-[18px] border border-black/[0.03] transition-all duration-700 group-hover:scale-105 group-hover:rotate-3",
+              "flex h-9 w-9 md:h-11 md:w-11 shrink-0 items-center justify-center rounded-[14px] border border-black/[0.03] transition-all duration-700 group-hover:scale-105",
               service.accent
             )}>
-              <Icon size={20} strokeWidth={1.5} className="text-black transition-transform duration-700 group-hover:scale-110" />
+              <Icon size={18} strokeWidth={1.5} className="text-black transition-transform duration-700 group-hover:scale-110" />
             </div>
 
-            <div className="space-y-1.5">
-              <h3 className="text-base md:text-lg font-black tracking-tight text-[#111111] uppercase">
+            <div className="space-y-1">
+              <h3 className="text-[15px] md:text-base font-black tracking-tight text-[#111111] uppercase">
                 {service.title}
               </h3>
-              <p className="max-w-[280px] md:max-w-xs text-[10px] md:text-[12px] leading-relaxed text-black/40 font-medium">
+              <p className="max-w-[260px] md:max-w-xs text-[10px] md:text-[11px] leading-relaxed text-black/40 font-medium">
                 {service.description}
               </p>
             </div>
           </div>
 
-          <button className="flex h-9 w-9 md:h-10 md:w-10 items-center justify-center rounded-full bg-black text-white transition-all duration-500 hover:scale-110 active:scale-90 group/btn shrink-0 shadow-lg shadow-black/10">
-            <ArrowUpRight size={18} strokeWidth={2} className="transition-transform duration-500 group-hover:rotate-45" />
+          <button className="flex h-8 w-8 md:h-9 md:w-9 items-center justify-center rounded-full bg-black text-white transition-all duration-500 hover:scale-110 active:scale-90 group/btn shrink-0 shadow-lg shadow-black/10">
+            <ArrowUpRight size={16} strokeWidth={2} className="transition-transform duration-500 group-hover:rotate-45" />
           </button>
         </div>
 
-        <div className="absolute top-4 right-6 text-[32px] md:text-[40px] font-black text-black/[0.015] leading-none select-none tracking-tighter transition-all duration-700 group-hover:text-black/[0.03] group-hover:-translate-y-1 pointer-events-none">
-          {index + 1}
+        <div className="absolute top-3 right-5 text-[24px] md:text-[32px] font-black text-black/[0.01] leading-none select-none tracking-tighter transition-all duration-700 group-hover:text-black/[0.02] pointer-events-none">
+          {String(index + 1).padStart(2, '0')}
         </div>
       </div>
     </motion.div>
