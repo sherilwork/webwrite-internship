@@ -71,7 +71,7 @@ export default function ServicesSection() {
         <div className="grid gap-16 lg:grid-cols-[0.7fr_1.3fr] lg:gap-32 items-start">
           
           {/* Left Column: Sticky Header */}
-          <div className="lg:sticky lg:top-32 h-fit space-y-10 mb-12 lg:mb-0">
+          <div className="lg:sticky lg:top-40 h-fit space-y-10 mb-12 lg:mb-0">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -105,7 +105,7 @@ export default function ServicesSection() {
           </div>
 
           {/* Right Column: Stacked Cards */}
-          <div className="flex flex-col gap-12 lg:gap-24 relative">
+          <div className="flex flex-col gap-8 lg:gap-12 relative">
             {services.map((service, index) => (
               <ServiceCard 
                 key={service.title} 
@@ -131,12 +131,12 @@ function ServiceCard({ service, index }: { service: typeof services[0], index: n
       transition={{ duration: 0.8, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
       className="w-full lg:sticky will-change-transform"
       style={{
-        // Stacking Logic: Fixed offset based on index for the folding effect
-        top: `calc(120px + ${index * 32}px)`,
+        // Increased top offset for "neeche karo" and tighter stacking
+        top: `calc(160px + ${index * 24}px)`,
         zIndex: 20 + index,
       }}
     >
-      <div className="group relative overflow-hidden rounded-[28px] border border-black/[0.04] bg-white p-10 md:p-14 shadow-[0_20px_100px_rgba(0,0,0,0.02)] transition-all duration-700 hover:shadow-[0_40px_120px_rgba(0,0,0,0.06)] transform-gpu">
+      <div className="group relative overflow-hidden rounded-[24px] border border-black/[0.04] bg-white p-8 md:p-10 shadow-[0_15px_60px_rgba(0,0,0,0.02)] transition-all duration-700 hover:shadow-[0_30px_80px_rgba(0,0,0,0.04)] transform-gpu">
         
         {/* Subtle Brand Hover Highlight */}
         <div className={cn(
@@ -144,34 +144,34 @@ function ServiceCard({ service, index }: { service: typeof services[0], index: n
           service.accent
         )} />
 
-        <div className="relative flex flex-col gap-12 md:flex-row md:items-center md:justify-between">
-          <div className="flex flex-col md:flex-row items-start md:items-center gap-10">
-            {/* Premium Icon Box */}
+        <div className="relative flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
+          <div className="flex flex-col md:flex-row items-start md:items-center gap-8">
+            {/* Reduced Icon Box Size */}
             <div className={cn(
-              "flex h-24 w-24 shrink-0 items-center justify-center rounded-[32px] border border-black/[0.03] transition-all duration-700 group-hover:scale-105 group-hover:rotate-3",
+              "flex h-16 w-16 md:h-20 md:w-20 shrink-0 items-center justify-center rounded-[24px] border border-black/[0.03] transition-all duration-700 group-hover:scale-105 group-hover:rotate-3",
               service.accent
             )}>
-              <Icon size={36} strokeWidth={1.2} className="text-black transition-transform duration-700 group-hover:scale-110" />
+              <Icon size={28} strokeWidth={1.2} className="text-black transition-transform duration-700 group-hover:scale-110" />
             </div>
 
-            <div className="space-y-4">
-              <h3 className="text-4xl font-medium tracking-[-0.03em] text-[#111111]">
+            <div className="space-y-3">
+              <h3 className="text-2xl md:text-3xl font-medium tracking-[-0.03em] text-[#111111]">
                 {service.title}
               </h3>
-              <p className="max-w-md text-lg leading-relaxed text-black/40 font-medium">
+              <p className="max-w-md text-sm md:text-base leading-relaxed text-black/40 font-medium">
                 {service.description}
               </p>
             </div>
           </div>
 
           {/* Action Trigger */}
-          <button className="flex h-16 w-16 items-center justify-center rounded-full bg-black text-white transition-all duration-500 hover:scale-110 active:scale-90 group/btn shrink-0">
-            <ArrowUpRight size={28} strokeWidth={2} className="transition-transform duration-500 group-hover:rotate-45" />
+          <button className="flex h-12 w-12 md:h-14 md:w-14 items-center justify-center rounded-full bg-black text-white transition-all duration-500 hover:scale-110 active:scale-90 group/btn shrink-0">
+            <ArrowUpRight size={24} strokeWidth={2} className="transition-transform duration-500 group-hover:rotate-45" />
           </button>
         </div>
 
-        {/* Index Number Indicator for Premium Feel */}
-        <div className="absolute top-10 right-14 text-[120px] font-black text-black/[0.015] leading-none select-none tracking-tighter transition-all duration-700 group-hover:text-black/[0.03] group-hover:-translate-y-2 pointer-events-none">
+        {/* Index Number Indicator - Smaller for minimalism */}
+        <div className="absolute top-8 right-10 text-[60px] md:text-[80px] font-black text-black/[0.015] leading-none select-none tracking-tighter transition-all duration-700 group-hover:text-black/[0.03] group-hover:-translate-y-1 pointer-events-none">
           {index + 1}
         </div>
       </div>
