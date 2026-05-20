@@ -99,20 +99,19 @@ export function Navigation() {
               </svg>
             </button>
           </SheetTrigger>
-          <SheetContent side="left" className="w-[85%] p-0 flex flex-col bg-white border-r overflow-visible rounded-r-[40px] animate-in slide-in-from-left duration-500 ease-out">
-            <div className="absolute -right-10 bottom-40 z-50">
+          <SheetContent side="left" className="w-[85%] p-0 flex flex-col bg-white border-r overflow-visible rounded-r-[32px] animate-in slide-in-from-left duration-500 ease-out">
+            {/* Minimalist Side-Tab Close Button */}
+            <div className="absolute -right-5 top-1/2 -translate-y-1/2 z-50">
               <SheetClose asChild>
-                <button className="w-10 h-24 bg-black border-l-0 border border-black rounded-r-[28px] shadow-xl flex items-center justify-center pr-2.5 pl-0.5 group hover:w-11 transition-all duration-300 ease-in-out active:scale-95">
-                  <div className="w-7 h-7 rounded-full bg-white/10 flex items-center justify-center">
-                    <ChevronLeft className="w-4.5 h-4.5 text-[#f5b800]" />
-                  </div>
+                <button className="w-10 h-10 rounded-full bg-black border border-white/10 flex items-center justify-center shadow-2xl transition-all duration-300 hover:scale-110 active:scale-90 group">
+                  <ChevronLeft className="w-5 h-5 text-[#f5b800] group-hover:-translate-x-0.5 transition-transform" />
                 </button>
               </SheetClose>
             </div>
 
-            <SheetHeader className="pt-16 pb-6 px-6 border-b flex flex-row items-center gap-4 space-y-0 text-left">
+            <SheetHeader className="pt-20 pb-8 px-8 border-b flex flex-row items-center gap-4 space-y-0 text-left">
               <SheetClose asChild>
-                <button className="w-9 h-9 rounded-xl border border-black bg-black/[0.01] flex items-center justify-center hover:bg-black transition-all hover:scale-105 active:scale-95 shrink-0 group">
+                <button className="w-9 h-9 rounded-full border border-black/10 bg-black/5 flex items-center justify-center hover:bg-black transition-all hover:scale-105 active:scale-95 shrink-0 group">
                    <ChevronLeft className="w-5 h-5 text-black group-hover:text-[#f5b800] transition-colors" />
                 </button>
               </SheetClose>
@@ -135,7 +134,7 @@ export function Navigation() {
                   <Link
                     key={item.label}
                     href={item.href}
-                    className="flex items-center justify-between px-7 py-6 text-[14px] font-black text-black/80 hover:text-[#f5b800] hover:bg-black/[0.01] transition-all border-b border-black/[0.04] uppercase tracking-[0.2em] group animate-in fade-in slide-in-from-left-4 fill-mode-both"
+                    className="flex items-center justify-between px-8 py-6 text-[14px] font-black text-black/80 hover:text-[#f5b800] hover:bg-black/[0.01] transition-all border-b border-black/[0.04] uppercase tracking-[0.2em] group animate-in fade-in slide-in-from-left-4 fill-mode-both"
                     style={{ animationDelay: `${idx * 50}ms` }}
                   >
                     <div className="flex items-center gap-5">
@@ -149,8 +148,8 @@ export function Navigation() {
                 ))}
               </div>
               
-              <div className="mt-8 px-7 mb-10">
-                <Button className="w-full rounded-full bg-black text-white text-[12px] font-black uppercase tracking-[0.2em] py-8 hover:bg-black/90 shadow-2xl shadow-black/20 transition-all active:scale-95">
+              <div className="mt-8 px-8 mb-12">
+                <Button className="w-full rounded-full bg-black text-white text-[12px] font-black uppercase tracking-[0.2em] py-8 hover:bg-black/90 shadow-2xl shadow-black/20 transition-all active:scale-95 border border-white/5">
                   Get Started Now
                 </Button>
               </div>
