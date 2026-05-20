@@ -78,29 +78,27 @@ export default function ServicesSection() {
               viewport={{ once: true }}
               transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
             >
-              <div className="mb-8 inline-flex items-center rounded-full border border-black/10 bg-white px-5 py-2.5 text-[11px] font-black uppercase tracking-[0.2em] text-black">
-                <span className="mr-3 inline-block h-2 w-2 rounded-full bg-[#c7fff1] animate-pulse" />
-                Expertise & Impact
+              <div className="mb-6 inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/[0.03] border border-black/[0.05]">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#c7fff1]" />
+                <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-black/60">Expertise & Impact</span>
               </div>
 
-              <h2 className="text-6xl md:text-7xl lg:text-8xl font-medium leading-[0.85] tracking-[-0.06em] text-[#111111]">
-                Our
-                <br />
-                Performance
-                <br />
-                Driven
-                <br />
-                Stack.
-              </h2>
+              <div className="space-y-4">
+                <h2 className="text-3xl md:text-5xl lg:text-6xl font-black text-black leading-[1.05] tracking-tighter">
+                  OUR PERFORMANCE <br />
+                  <span className="text-[#c7fff1]">DRIVEN STACK</span>
+                </h2>
+                <div className="w-16 md:w-20 h-1.5 bg-black mt-2" />
+              </div>
 
-              <p className="mt-10 max-w-sm text-[17px] leading-relaxed text-black/50 font-medium">
+              <p className="mt-8 text-base md:text-lg text-black/50 font-medium leading-relaxed max-w-sm">
                 We build proprietary growth systems that merge elite creative with engineering precision.
               </p>
 
               <div className="pt-12">
-                <button className="group relative overflow-hidden inline-flex items-center gap-4 rounded-full bg-black px-10 py-6 text-xs font-black uppercase tracking-[0.2em] text-white transition-all duration-500 hover:scale-[1.02] active:scale-95 shadow-2xl shadow-black/20">
+                <button className="rounded-full bg-black text-white px-8 md:px-10 py-6 md:py-7 text-[10px] md:text-xs font-bold uppercase tracking-widest hover:bg-black/90 transition-all hover:translate-x-1 active:scale-95 shadow-2xl shadow-black/20 group">
                   Full Service List
-                  <ArrowUpRight className="w-5 h-5 transition-transform duration-500 group-hover:rotate-45" />
+                  <ArrowUpRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                 </button>
               </div>
             </motion.div>
