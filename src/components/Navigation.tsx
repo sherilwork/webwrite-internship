@@ -1,3 +1,4 @@
+
 'use client';
 
 import * as React from 'react';
@@ -5,12 +6,14 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
+import { ChevronLeft } from 'lucide-react';
 import {
   Sheet,
   SheetContent,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
+  SheetClose,
 } from "@/components/ui/sheet";
 import { Separator } from '@/components/ui/separator';
 
@@ -76,23 +79,39 @@ export function Navigation() {
                 className="w-6 h-6"
               >
                 <path
-                  d="M4 9H20"
+                  d="M4 10H20"
                   stroke="currentColor"
-                  strokeWidth="1.5"
+                  strokeWidth="2.5"
                   strokeLinecap="round"
                 />
                 <path
-                  d="M4 15H20"
+                  d="M4 14H20"
                   stroke="currentColor"
-                  strokeWidth="1.5"
+                  strokeWidth="2.5"
                   strokeLinecap="round"
                 />
               </svg>
             </button>
           </SheetTrigger>
-          <SheetContent side="left" className="w-[80%] p-0 flex flex-col bg-white border-r">
-            <SheetHeader className="p-5 border-b text-left">
-              <SheetTitle className="text-[10px] font-black uppercase tracking-[0.2em] text-black/30">Main Menu</SheetTitle>
+          <SheetContent side="left" className="w-[80%] p-0 flex flex-col bg-white border-r overflow-visible">
+            {/* Custom Side Tab Close Button */}
+            <div className="absolute -right-10 bottom-32 z-50">
+              <SheetClose asChild>
+                <button className="w-10 h-16 bg-white border border-l-0 rounded-r-3xl shadow-[8px_0_15px_-5px_rgba(0,0,0,0.1)] flex items-center justify-center pl-1">
+                  <div className="w-7 h-7 rounded-full bg-black/5 flex items-center justify-center">
+                    <ChevronLeft className="w-4 h-4 text-black/60" />
+                  </div>
+                </button>
+              </SheetClose>
+            </div>
+
+            <SheetHeader className="p-5 border-b flex flex-row items-center gap-3 space-y-0 text-left">
+              <SheetClose asChild>
+                <button className="w-8 h-8 rounded-full border border-[#f5b800]/20 flex items-center justify-center hover:bg-black/5 transition-colors shrink-0">
+                   <ChevronLeft className="w-5 h-5 text-[#f5b800]" />
+                </button>
+              </SheetClose>
+              <SheetTitle className="text-xl font-bold text-black tracking-tight">Main Menu</SheetTitle>
             </SheetHeader>
             <div className="flex-1 overflow-y-auto py-2">
               <div className="flex flex-col">
