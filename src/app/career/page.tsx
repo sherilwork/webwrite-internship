@@ -96,7 +96,7 @@ export default function CareerPage() {
                       <Link href={`/career/${job.slug}`} className="flex-1">
                         <Button 
                           variant="outline"
-                          className="w-full rounded-lg border-black/10 text-black text-[10px] font-black uppercase tracking-widest group-hover:border-white/20 group-hover:text-white hover:bg-white hover:text-black transition-all py-6 h-auto"
+                          className="w-full rounded-lg border-black/10 text-black text-[10px] font-black uppercase tracking-widest group-hover:border-white/20 transition-all hover:bg-white py-6 h-auto"
                         >
                           VIEW DETAILS
                         </Button>
