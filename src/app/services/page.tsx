@@ -120,8 +120,8 @@ export default function ServicesPage() {
 
       {/* Services Grid */}
       <section className="py-24 bg-white">
-        <div className="container mx-auto px-6 max-w-6xl">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="container mx-auto px-6 max-w-7xl">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {services.map((service, idx) => (
               <motion.div
                 key={idx}
@@ -129,29 +129,29 @@ export default function ServicesPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.05 }}
-                className="group p-8 rounded-[2.5rem] bg-black/[0.01] border border-black/[0.05] hover:bg-black hover:text-white transition-all duration-500 flex flex-col justify-between"
+                className="group p-6 rounded-[1.5rem] bg-black/[0.01] border border-black/[0.05] hover:bg-black hover:text-white transition-all duration-500 flex flex-col justify-between"
               >
-                <div className="space-y-6">
+                <div className="space-y-4">
                   <div className={cn(
-                    "w-14 h-14 rounded-2xl flex items-center justify-center text-black shadow-sm transition-transform duration-500 group-hover:scale-110",
+                    "w-12 h-12 rounded-xl flex items-center justify-center text-black shadow-sm transition-transform duration-500 group-hover:scale-110",
                     service.accent
                   )}>
-                    <service.icon className="w-7 h-7" />
+                    <service.icon className="w-6 h-6" />
                   </div>
-                  <div className="space-y-3">
-                    <h3 className="text-2xl font-black uppercase tracking-tight">{service.title}</h3>
-                    <p className="text-sm md:text-base font-medium opacity-50 group-hover:opacity-80 leading-relaxed">
+                  <div className="space-y-2">
+                    <h3 className="text-xl font-black uppercase tracking-tight">{service.title}</h3>
+                    <p className="text-xs md:text-sm font-medium opacity-50 group-hover:opacity-80 leading-relaxed line-clamp-4">
                       {service.description}
                     </p>
                   </div>
                 </div>
                 
-                <div className="mt-8 pt-6 border-t border-black/[0.05] group-hover:border-white/10 flex items-center justify-between">
+                <div className="mt-6 pt-4 border-t border-black/[0.05] group-hover:border-white/10 flex items-center justify-between">
                   <div className="flex items-center gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-[#f5b800]" />
-                    <span className="text-[10px] font-bold uppercase tracking-widest">Premium Service</span>
+                    <CheckCircle2 className="w-3.5 h-3.5 text-[#f5b800]" />
+                    <span className="text-[9px] font-bold uppercase tracking-widest">Premium Service</span>
                   </div>
-                  <ArrowRight className="w-5 h-5 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
+                  <ArrowRight className="w-4 h-4 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
                 </div>
               </motion.div>
             ))}
