@@ -1,4 +1,3 @@
-
 "use client"
 
 import React from "react"
@@ -8,6 +7,7 @@ import { AboutSection } from "@/components/AboutSection"
 import ServicesSection from "@/components/ServicesSection"
 import { FeaturedVideos } from "@/components/FeaturedVideos"
 import { FeaturedWebsites } from "@/components/FeaturedWebsites"
+import { Tech } from "@/components/Tech"
 import { Toaster } from "@/components/ui/toaster"
 
 export default function Home() {
@@ -19,6 +19,7 @@ export default function Home() {
       <ServicesSection />
       <FeaturedVideos />
       <FeaturedWebsites />
+      <Tech />
       <Toaster />
     </main>
   )
