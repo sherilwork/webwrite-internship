@@ -68,28 +68,31 @@ export default function FounderPage() {
                   "Founder & CEO at WebWrite Services | Full Stack Web Developer | Entrepreneur ( Business Mindset Personality )"
                 </p>
 
-                <div className="space-y-3 pt-4 border-t border-black/5">
-                  <div className="flex items-center gap-3 text-black/60 group">
+                <div className="space-y-4 pt-4 border-t border-black/5">
+                  <a href="tel:+917906627288" className="flex items-center gap-3 text-black/60 group hover:text-black transition-colors">
                     <div className="w-8 h-8 rounded-full bg-black/5 flex items-center justify-center group-hover:bg-[#f5b800]/20 transition-colors">
                       <Phone className="w-3.5 h-3.5" />
                     </div>
-                    <span className="text-[13px] font-semibold text-black/80">+91-7906627288</span>
-                  </div>
-                  <a href="https://www.rishitiwari.netlify.app" target="_blank" className="flex items-center gap-3 text-black/60 group">
+                    <span className="text-[13px] font-semibold">+91-7906627288</span>
+                  </a>
+                  <a href="https://webwrite.co.in/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-black/60 group hover:text-black transition-colors">
                     <div className="w-8 h-8 rounded-full bg-black/5 flex items-center justify-center group-hover:bg-[#f5b800]/20 transition-colors">
                       <Globe className="w-3.5 h-3.5" />
                     </div>
-                    <span className="text-[13px] font-semibold text-black/80">www.rishitiwari.netlify.app</span>
+                    <span className="text-[13px] font-semibold">webwrite.co.in</span>
                   </a>
-                  <div className="flex items-center gap-3 text-black/60 group">
+                  <a href="mailto:therishitiwari@gmail.com" className="flex items-center gap-3 text-black/60 group hover:text-black transition-colors">
                     <div className="w-8 h-8 rounded-full bg-black/5 flex items-center justify-center group-hover:bg-[#f5b800]/20 transition-colors">
                       <Mail className="w-3.5 h-3.5" />
                     </div>
-                    <div className="flex flex-col">
-                      <span className="text-[13px] font-semibold text-black/80">therishitiwari@gmail.com</span>
-                      <span className="text-[13px] font-semibold text-black/80">rishi@webwrite.co.in</span>
+                    <span className="text-[13px] font-semibold text-black/80">therishitiwari@gmail.com</span>
+                  </a>
+                  <a href="mailto:rishi@webwrite.co.in" className="flex items-center gap-3 text-black/60 group hover:text-black transition-colors">
+                    <div className="w-8 h-8 rounded-full bg-black/5 flex items-center justify-center group-hover:bg-[#f5b800]/20 transition-colors">
+                      <Mail className="w-3.5 h-3.5" />
                     </div>
-                  </div>
+                    <span className="text-[13px] font-semibold text-black/80">rishi@webwrite.co.in</span>
+                  </a>
                 </div>
 
                 <div className="flex items-center gap-3 pt-6 border-t border-black/5">
