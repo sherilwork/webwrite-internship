@@ -15,7 +15,9 @@ import {
   Layers,
   Calendar,
   Info,
-  CheckCircle2
+  CheckCircle2,
+  Upload,
+  Send
 } from "lucide-react"
 import { Navigation } from "@/components/Navigation"
 import { SubHeader } from "@/components/SubHeader"
@@ -27,6 +29,8 @@ import {
   DialogContent, 
   DialogTitle 
 } from "@/components/ui/dialog"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
 
 const jobs = [
   {
@@ -86,7 +90,7 @@ function DetailPoint({ label }: { label: string }) {
   )
 }
 
-// JOB DETAILS POPUP MODULE - Redesigned for Theme Consistency
+// JOB DETAILS POPUP MODULE
 export function JobDetailsPopup({ viewingJob, setViewingJob, setSelectedJob }: { viewingJob: any, setViewingJob: any, setSelectedJob: any }) {
   return (
     <Dialog open={!!viewingJob} onOpenChange={(open) => !open && setViewingJob(null)}>
@@ -94,7 +98,6 @@ export function JobDetailsPopup({ viewingJob, setViewingJob, setSelectedJob }: {
           data-lenis-prevent
           className="max-w-2xl bg-white border-black/5 text-black p-0 shadow-2xl overflow-y-auto max-h-[92vh] flex flex-col rounded-xl [&>button]:h-10 [&>button]:w-10 [&>button]:flex [&>button]:items-center [&>button]:justify-center [&>button]:rounded-full [&>button]:bg-black/5 [&>button]:hover:bg-black/10 [&>button]:transition-all [&>button]:top-6 [&>button]:right-6 [&>button]:opacity-100 [&_svg]:size-5"
         >
-          {/* Theme accent top bar */}
           <div className="absolute top-0 left-0 w-full h-1.5 bg-[#f5b800] z-50 shrink-0" />
                      
           <div className="p-8 md:p-12 space-y-10">
@@ -173,11 +176,118 @@ export function JobDetailsPopup({ viewingJob, setViewingJob, setSelectedJob }: {
   )
 }
 
+// APPLICATION FORM POPUP MODULE
+export function JobApplicationPopup({ selectedJob, setSelectedJob }: { selectedJob: any, setSelectedJob: any }) {
+  const [fileName, setFileName] = useState<string>("No file chosen")
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files.length > 0) {
+      setFileName(e.target.files[0].name)
+    } else {
+      setFileName("No file chosen")
+    }
+  }
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    // handle submission logic here
+    alert(`Application for ${selectedJob?.role} submitted successfully! (Demo)`)
+    setSelectedJob(null)
+  }
+
+  return (
+    <Dialog open={!!selectedJob} onOpenChange={(open) => !open && setSelectedJob(null)}>
+        <DialogContent 
+          data-lenis-prevent
+          className="max-w-2xl bg-white border-black/5 text-black p-0 shadow-2xl overflow-y-auto max-h-[92vh] flex flex-col rounded-xl [&>button]:h-10 [&>button]:w-10 [&>button]:flex [&>button]:items-center [&>button]:justify-center [&>button]:rounded-full [&>button]:bg-black/5 [&>button]:hover:bg-black/10 [&>button]:transition-all [&>button]:top-6 [&>button]:right-6 [&>button]:opacity-100 [&_svg]:size-5"
+        >
+          <div className="absolute top-0 left-0 w-full h-1.5 bg-[#f5b800] z-50 shrink-0" />
+                     
+          <div className="p-8 md:p-12 space-y-10">
+            <div className="space-y-6">
+              <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-black/[0.03] border border-black/[0.05] w-fit">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#f5b800]" />
+                <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-black/60">Secure Application</span>
+              </div>
+                             
+              <div className="space-y-4">
+                <DialogTitle className="text-3xl md:text-5xl font-black text-black uppercase tracking-tighter leading-[1.1] pr-8">
+                  Apply for <span className="text-[#f5b800]">{selectedJob?.role}</span>
+                </DialogTitle>
+                <p className="text-black/40 text-sm font-medium leading-relaxed max-w-md">
+                   Fill out the form below and attach your resume to join our high-performance team.
+                </p>
+              </div>
+            </div>
+
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="space-y-2">
+                  <Label className="text-[10px] font-black uppercase tracking-widest text-black/40">Full Name *</Label>
+                  <Input placeholder="John Doe" required className="h-12 rounded-xl bg-black/[0.02] border-black/[0.05] focus-visible:ring-[#f5b800] text-sm font-medium" />
+                </div>
+                <div className="space-y-2">
+                  <Label className="text-[10px] font-black uppercase tracking-widest text-black/40">Email Address *</Label>
+                  <Input type="email" placeholder="john@example.com" required className="h-12 rounded-xl bg-black/[0.02] border-black/[0.05] focus-visible:ring-[#f5b800] text-sm font-medium" />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="space-y-2">
+                  <Label className="text-[10px] font-black uppercase tracking-widest text-black/40">Mobile Number *</Label>
+                  <Input placeholder="+91 98765 43210" required className="h-12 rounded-xl bg-black/[0.02] border-black/[0.05] focus-visible:ring-[#f5b800] text-sm font-medium" />
+                </div>
+                <div className="space-y-2">
+                  <Label className="text-[10px] font-black uppercase tracking-widest text-black/40">Current Location *</Label>
+                  <Input placeholder="City, Country" required className="h-12 rounded-xl bg-black/[0.02] border-black/[0.05] focus-visible:ring-[#f5b800] text-sm font-medium" />
+                </div>
+              </div>
+
+              <div className="space-y-2">
+                 <Label className="text-[10px] font-black uppercase tracking-widest text-black/40">Resume / CV (PDF, DOCX) *</Label>
+                 <div className="relative group/upload">
+                    <input type="file" id="resume-upload" className="sr-only" accept=".pdf,.docx" onChange={handleFileChange} required />
+                    <label 
+                      htmlFor="resume-upload" 
+                      className="flex items-center justify-between h-14 px-6 bg-black/[0.01] border border-dashed border-black/10 rounded-xl group-hover/upload:border-[#f5b800]/40 group-hover/upload:bg-black/[0.03] transition-all cursor-pointer"
+                    >
+                      <span className="text-xs font-medium text-black/40 truncate max-w-[70%]">
+                        {fileName}
+                      </span>
+                      <div className="flex items-center gap-2 text-black">
+                        <Upload className="w-3.5 h-3.5 text-[#f5b800]" />
+                        <span className="text-[9px] font-black uppercase tracking-widest">Select File</span>
+                      </div>
+                    </label>
+                 </div>
+              </div>
+
+              <div className="pt-6">
+                <button 
+                  type="submit"
+                  className="w-full h-16 rounded-full bg-black text-white text-[12px] font-black uppercase tracking-[0.2em] flex items-center justify-center gap-4 hover:bg-[#f5b800] hover:text-black transition-all duration-500 shadow-xl shadow-black/10 group active:scale-[0.98]"
+                >
+                  Submit Application
+                  <Send className="w-4 h-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-0.5" />
+                </button>
+              </div>
+            </form>
+          </div>
+                     
+          <div className="px-12 pb-8 flex items-center justify-center opacity-20 shrink-0">
+             <span className="text-[9px] font-black tracking-[0.4em] uppercase text-black">Webwrite Services • Secure Submission</span>
+          </div>
+        </DialogContent>
+      </Dialog>
+  )
+}
+
 export default function CareerPage() {
   const [viewingJob, setViewingJob] = useState<any>(null)
+  const [selectedJob, setSelectedJob] = useState<any>(null)
 
   const handleApply = (job: any) => {
-    window.location.href = `mailto:careers@webwrite.services?subject=Application for ${job.role}`;
+    setSelectedJob(job)
   }
 
   return (
@@ -307,7 +417,12 @@ export default function CareerPage() {
       <JobDetailsPopup 
         viewingJob={viewingJob} 
         setViewingJob={setViewingJob} 
-        setSelectedJob={handleApply} 
+        setSelectedJob={setSelectedJob} 
+      />
+
+      <JobApplicationPopup
+        selectedJob={selectedJob}
+        setSelectedJob={setSelectedJob}
       />
 
       <Footer />
