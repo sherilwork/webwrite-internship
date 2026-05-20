@@ -94,12 +94,12 @@ export function Navigation() {
             </button>
           </SheetTrigger>
           <SheetContent side="left" className="w-[80%] p-0 flex flex-col bg-white border-r overflow-visible">
-            {/* Custom Side Tab Close Button - Minimalist Shape */}
-            <div className="absolute -right-11 bottom-32 z-50">
+            {/* Custom Side Tab Close Button - Mountain Curve Shape */}
+            <div className="absolute -right-12 bottom-32 z-50">
               <SheetClose asChild>
-                <button className="w-11 h-20 bg-white border-l-0 border border-black/[0.03] rounded-r-[2.5rem] shadow-[15px_0_30px_-10px_rgba(0,0,0,0.08)] flex items-center justify-center pr-2 pl-1 group hover:w-13 transition-all duration-300">
-                  <div className="w-8 h-8 rounded-full bg-black/[0.03] group-hover:bg-[#f5b800]/10 flex items-center justify-center transition-colors">
-                    <ChevronLeft className="w-5 h-5 text-black/30 group-hover:text-[#f5b800] transition-colors" />
+                <button className="w-12 h-24 bg-white border-l-0 border border-black/[0.01] rounded-r-[4rem] shadow-[25px_0_50px_-15px_rgba(0,0,0,0.12)] flex items-center justify-center pr-3 pl-1 group hover:w-14 transition-all duration-500 ease-in-out">
+                  <div className="w-9 h-9 rounded-full bg-black/[0.02] group-hover:bg-[#f5b800]/5 flex items-center justify-center transition-all duration-300">
+                    <ChevronLeft className="w-5 h-5 text-black/20 group-hover:text-[#f5b800] transition-colors" />
                   </div>
                 </button>
               </SheetClose>
@@ -107,7 +107,7 @@ export function Navigation() {
 
             <SheetHeader className="p-5 border-b flex flex-row items-center gap-4 space-y-0 text-left">
               <SheetClose asChild>
-                <button className="w-10 h-10 rounded-2xl border border-black/[0.03] bg-black/[0.01] flex items-center justify-center hover:bg-black/[0.04] transition-all hover:scale-105 active:scale-95 shrink-0 group">
+                <button className="w-10 h-10 rounded-[1.25rem] border border-black/[0.03] bg-black/[0.01] flex items-center justify-center hover:bg-black/[0.04] transition-all hover:scale-105 active:scale-95 shrink-0 group">
                    <ChevronLeft className="w-5 h-5 text-black/60 group-hover:text-[#f5b800] transition-colors" />
                 </button>
               </SheetClose>
