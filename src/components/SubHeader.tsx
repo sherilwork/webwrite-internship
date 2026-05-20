@@ -2,11 +2,9 @@
 "use client"
 
 import React from "react"
-import Link from "next/link"
 import { 
   Phone, 
   Mail, 
-  Briefcase, 
   Rocket, 
   Cloud, 
   Facebook, 
@@ -15,7 +13,6 @@ import {
   Instagram,
   Youtube
 } from "lucide-react"
-import { cn } from "@/lib/utils"
 import { founders } from "@/constants/founder"
 
 export function SubHeader() {
@@ -38,13 +35,6 @@ export function SubHeader() {
             info@webwrite.services
           </span>
         </a>
-        <div className="h-4 w-px bg-white/10" />
-        <Link href="/career" className="flex items-center gap-2 group cursor-pointer">
-          <Briefcase className="w-4 h-4 text-[#f5b800]" />
-          <span className="text-[11px] font-bold text-white/80 uppercase tracking-wider group-hover:text-white transition-colors">
-            Career With Us
-          </span>
-        </Link>
       </div>
 
       {/* Mobile-only Phone Link (left) */}
@@ -70,14 +60,6 @@ export function SubHeader() {
           <Rocket className="w-3.5 h-3.5 md:w-4 md:h-4 text-[#f5b800] animate-rocket" />
         </a>
         <Cloud className="w-4 h-4 md:w-5 md:h-5 text-white/10 animate-cloud hidden sm:block" style={{ animationDelay: '2s' }} />
-      </div>
-
-      {/* Mobile-only Career Link (right) */}
-      <div className="flex lg:hidden items-center animate-in fade-in duration-1000">
-        <Link href="/career" className="flex items-center gap-1.5 group cursor-pointer">
-          <Briefcase className="w-3.5 h-3.5 text-[#f5b800]" />
-          <span className="text-[9px] font-black text-white/90 uppercase tracking-tighter">Career</span>
-        </Link>
       </div>
 
       {/* Right Section: Socials - Hidden on mobile, visible on desktop */}

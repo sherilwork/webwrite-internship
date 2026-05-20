@@ -5,7 +5,7 @@ import * as React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { 
@@ -14,7 +14,6 @@ import {
   Zap, 
   Layout, 
   Building2, 
-  Briefcase, 
   Mail, 
   Star 
 } from 'lucide-react';
@@ -38,7 +37,6 @@ export function Navigation() {
     { label: 'Team', href: '/team', icon: Building2 },
     { label: 'Services', href: '/services', icon: Zap },
     { label: 'Portfolio', href: '/portfolio', icon: Layout },
-    { label: 'Career', href: '/career', icon: Briefcase },
     { label: 'Contact', href: '/contact', icon: Mail },
   ];
 

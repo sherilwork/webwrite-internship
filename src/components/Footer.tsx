@@ -4,7 +4,6 @@
 import React from "react"
 import Link from "next/link"
 import Image from "next/image"
-import { motion } from "framer-motion"
 import { 
   ArrowUp, 
   Linkedin, 
@@ -14,8 +13,7 @@ import {
   Youtube, 
   Mail, 
   Phone, 
-  MapPin,
-  Heart
+  MapPin
 } from "lucide-react"
 import { PlaceHolderImages } from "@/lib/placeholder-images"
 
@@ -34,7 +32,6 @@ export function Footer() {
       { label: "Our Services", href: "/services" },
       { label: "Portfolio", href: "/portfolio" },
       { label: "Founder", href: "/founder" },
-      { label: "Careers", href: "/career" },
     ],
     services: [
       { label: "Web Development", href: "/services" },
