@@ -43,6 +43,24 @@ const testimonials = [
     role: "Co-Founder, Retail Logic",
     content: "The SEO and Meta Ads strategy they implemented has cut our customer acquisition cost in half. Truly impressive results.",
     avatar: "https://picsum.photos/seed/user6/100/100",
+  },
+  {
+    name: "Robert Fox",
+    role: "Head of Operations, Sagar Disposal",
+    content: "The B2B portal they developed for us has completely streamlined our inventory management. Their technical prowess is matched only by their professionalism.",
+    avatar: "https://picsum.photos/seed/user7/100/100",
+  },
+  {
+    name: "Emily Davis",
+    role: "Founder, Sundar Vibes",
+    content: "Creative, responsive, and truly strategic. They've become an essential extension of our team, helping us navigate the competitive retail landscape with ease.",
+    avatar: "https://picsum.photos/seed/user8/100/100",
+  },
+  {
+    name: "Michael Brown",
+    role: "Community Lead, AWS UG Pune",
+    content: "A partnership built on trust and results. Their community-first approach helped us grow our network significantly through targeted digital campaigns.",
+    avatar: "https://picsum.photos/seed/user9/100/100",
   }
 ]
 
