@@ -235,7 +235,7 @@ export function FeaturedWebsites() {
           )}
 
           {filteredCards.length > 1 && (
-            <div className="absolute bottom-4 md:bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-3 z-50 w-[calc(100%-3rem)] md:w-auto">
+            <div className="absolute bottom-2 md:bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-3 z-50 w-[calc(100%-3rem)] md:w-auto">
               <button 
                 onClick={() => handleWebsiteNav('prev')} 
                 className="group flex-1 md:flex-none flex items-center justify-center gap-2 md:gap-3 px-6 md:px-10 py-3 md:py-4 bg-black/[0.03] border border-black/[0.08] text-black text-[9px] md:text-[11px] uppercase tracking-[0.2em] font-black rounded-full hover:bg-black hover:border-black hover:text-white transition-all duration-300 shadow-lg shadow-black/5"
