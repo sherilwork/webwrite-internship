@@ -142,13 +142,13 @@ export function FeaturedWebsites() {
   return (
     <section className="bg-white py-12 md:py-24 overflow-hidden min-h-[800px] relative border-t border-black/[0.03]">
       <div className="container mx-auto px-6">
-        {/* Header Section - Same as Featured Videos */}
+        {/* Header Section */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-12 border-b border-black/[0.05] pb-6">
           <div className="relative">
             <h2 className="text-xl md:text-3xl font-black text-black leading-none tracking-tighter uppercase text-nowrap">
               Featured Websites
             </h2>
-            <div className="w-8 md:w-12 h-1 bg-black mt-1" />
+            <div className="w-8 md:w-12 h-1 bg-[#f5b800] mt-1" />
           </div>
 
           <div className="flex flex-wrap gap-1.5">
@@ -184,7 +184,7 @@ export function FeaturedWebsites() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                   <div className="space-y-6">
                     <div className="flex items-center gap-4">
-                      <div className="w-10 h-10 bg-[#ff6b1a]/10 border border-[#ff6b1a]/40 rounded-xl flex items-center justify-center text-[#ff6b1a]">
+                      <div className="w-10 h-10 bg-[#f5b800]/10 border border-[#f5b800]/40 rounded-xl flex items-center justify-center text-black">
                         {card.icon}
                       </div>
                       <div className="px-3 py-1 bg-black/[0.03] border border-black/[0.05] rounded-full">
@@ -204,10 +204,10 @@ export function FeaturedWebsites() {
                         href={card.url} 
                         target="_blank" 
                         rel="noopener noreferrer" 
-                        className="group relative h-12 px-8 flex items-center gap-3 bg-[#ff6b1a] hover:bg-[#ff8038] rounded-full transition-all duration-300 shadow-xl shadow-[#ff6b1a]/20"
+                        className="group relative h-12 px-8 flex items-center gap-3 bg-black hover:bg-black/90 rounded-full transition-all duration-300 shadow-xl shadow-black/10"
                       >
                         <span className="text-white text-[12px] font-black uppercase tracking-widest">Visit site</span>
-                        <ArrowRight className="w-4 h-4 text-white group-hover:translate-x-1 transition-transform" />
+                        <ArrowRight className="w-4 h-4 text-[#f5b800] group-hover:translate-x-1 transition-transform" />
                       </a>
                     </div>
                   </div>
@@ -234,19 +234,19 @@ export function FeaturedWebsites() {
             <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-4 z-50">
               <button 
                 onClick={() => handleWebsiteNav('prev')} 
-                className="group flex items-center gap-3 px-8 py-4 bg-black/[0.03] border border-black/[0.05] text-black text-[10px] uppercase tracking-[0.4em] font-black hover:bg-[#ff6b1a] hover:border-[#ff6b1a] hover:text-white transition-all duration-300"
+                className="group flex items-center gap-3 px-8 py-4 bg-black/[0.03] border border-black/[0.05] text-black text-[10px] uppercase tracking-[0.4em] font-black hover:bg-black hover:border-black hover:text-white transition-all duration-300"
                 style={{ clipPath: 'polygon(10% 0%, 100% 0%, 90% 100%, 0% 100%)' }}
               >
-                <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
+                <ArrowLeft className="w-5 h-5 text-[#f5b800] group-hover:-translate-x-1 transition-transform" />
                 Prev
               </button>
               <button 
                 onClick={() => handleWebsiteNav('next')} 
-                className="group flex items-center gap-3 px-8 py-4 bg-black/[0.03] border border-black/[0.05] text-black text-[10px] uppercase tracking-[0.4em] font-black hover:bg-[#ff6b1a] hover:border-[#ff6b1a] hover:text-white transition-all duration-300"
+                className="group flex items-center gap-3 px-8 py-4 bg-black/[0.03] border border-black/[0.05] text-black text-[10px] uppercase tracking-[0.4em] font-black hover:bg-black hover:border-black hover:text-white transition-all duration-300"
                 style={{ clipPath: 'polygon(10% 0%, 100% 0%, 90% 100%, 0% 100%)' }}
               >
                 Next
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="w-5 h-5 text-[#f5b800] group-hover:translate-x-1 transition-transform" />
               </button>
             </div>
           )}
