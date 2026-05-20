@@ -69,8 +69,8 @@ export default function ContactPage() {
 
       {/* Main Contact Section */}
       <section className="py-16 md:py-24 bg-white relative overflow-hidden border-t border-black/[0.03]">
-        <div className="container mx-auto px-6 max-w-7xl">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
+        <div className="container mx-auto px-6 max-w-6xl">
+          <div className="grid grid-cols-1 lg:grid-cols-11 gap-12 lg:gap-20 items-start">
             
             {/* Left Side: Contact Information */}
             <div className="lg:col-span-5 space-y-8 md:space-y-12">
@@ -87,7 +87,7 @@ export default function ContactPage() {
                     </div>
                     <div className="space-y-0.5">
                       <p className="text-[9px] md:text-[10px] font-black uppercase tracking-widest opacity-40">Email Us</p>
-                      <h3 className="text-base md:text-lg font-black tracking-tight group-hover:text-[#f5b800] transition-colors">info@webwrite.services</h3>
+                      <h3 className="text-base md:text-lg font-black tracking-tight group-hover:text-[#f5b800] transition-colors lowercase">info@webwrite.services</h3>
                     </div>
                   </div>
                 </motion.div>
@@ -123,7 +123,7 @@ export default function ContactPage() {
                     </div>
                     <div className="space-y-0.5">
                       <p className="text-[9px] md:text-[10px] font-black uppercase tracking-widest opacity-40">Our Base</p>
-                      <h3 className="text-base md:text-lg font-black uppercase tracking-tight">Etawah, UP 206001, IN</h3>
+                      <h3 className="text-base md:text-lg font-black uppercase tracking-tight leading-tight">Etawah, Uttar Pradesh <br /> 206001, UP, IN</h3>
                     </div>
                   </div>
                 </motion.div>
@@ -152,12 +152,12 @@ export default function ContactPage() {
             </div>
 
             {/* Right Side: Contact Form */}
-            <div className="lg:col-span-7">
+            <div className="lg:col-span-6">
               <motion.div 
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="p-6 md:p-10 rounded-[2rem] md:rounded-[3rem] bg-black text-white relative overflow-hidden shadow-2xl"
+                className="p-6 md:p-8 lg:p-10 rounded-[2rem] md:rounded-[3rem] bg-black text-white relative overflow-hidden shadow-2xl"
               >
                 <div className="absolute top-0 right-0 w-1/2 h-full bg-[#f5b800]/5 blur-[100px] rounded-full pointer-events-none" />
                 
@@ -166,8 +166,8 @@ export default function ContactPage() {
                   <p className="text-[10px] md:text-xs font-bold uppercase tracking-widest text-white/40">Fill out the form below and we'll reach out shortly.</p>
                 </div>
 
-                <form onSubmit={handleSubmit} className="space-y-6 md:space-y-8 relative z-10">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+                <form onSubmit={handleSubmit} className="space-y-5 md:space-y-6 relative z-10">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
                     <div className="space-y-2">
                       <Label className="text-[10px] font-black uppercase tracking-widest text-white/40">First Name *</Label>
                       <Input 
@@ -209,7 +209,7 @@ export default function ContactPage() {
                     <Textarea 
                       required 
                       placeholder="Tell us about your project or vision..." 
-                      className="bg-white/5 border-white/10 min-h-[120px] md:min-h-[160px] rounded-2xl text-white placeholder:text-white/10 focus-visible:ring-[#f5b800] border-none resize-none" 
+                      className="bg-white/5 border-white/10 min-h-[100px] md:min-h-[140px] rounded-2xl text-white placeholder:text-white/10 focus-visible:ring-[#f5b800] border-none resize-none" 
                     />
                   </div>
 
