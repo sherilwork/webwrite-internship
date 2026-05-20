@@ -80,7 +80,7 @@ export default function ServicesSection() {
             >
               <div className="mb-6 inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/[0.03] border border-black/[0.05]">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#f5b800]" />
-                <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-black/60">Expertise & Impact</span>
+                <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-black/60">Our services</span>
               </div>
 
               <div className="space-y-4">
