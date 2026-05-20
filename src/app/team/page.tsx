@@ -4,7 +4,7 @@
 import React from "react"
 import Image from "next/image"
 import { motion } from "framer-motion"
-import { Linkedin, Twitter, ArrowRight } from "lucide-react"
+import { ArrowRight } from "lucide-react"
 import { Navigation } from "@/components/Navigation"
 import { SubHeader } from "@/components/SubHeader"
 import { Footer } from "@/components/Footer"
@@ -67,16 +67,6 @@ export default function TeamPage() {
                       fill
                       className="object-cover transition-all duration-1000 grayscale group-hover:grayscale-0 group-hover:scale-110"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
-                      <div className="flex gap-3">
-                        <a href={member.linkedin} className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white hover:bg-[#f5b800] hover:text-black transition-all">
-                          <Linkedin className="w-4 h-4" />
-                        </a>
-                        <a href={member.twitter} className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white hover:bg-[#f5b800] hover:text-black transition-all">
-                          <Twitter className="w-4 h-4" />
-                        </a>
-                      </div>
-                    </div>
                   </div>
                   <div className="space-y-1">
                     <h3 className="text-xl font-black text-black uppercase tracking-tight">{member.name}</h3>
