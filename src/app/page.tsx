@@ -7,6 +7,7 @@ import { MarqueeRibbon } from "@/components/MarqueeRibbon"
 import { AboutSection } from "@/components/AboutSection"
 import ServicesSection from "@/components/ServicesSection"
 import { FeaturedVideos } from "@/components/FeaturedVideos"
+import { FeaturedWebsites } from "@/components/FeaturedWebsites"
 import { Toaster } from "@/components/ui/toaster"
 
 export default function Home() {
@@ -17,6 +18,7 @@ export default function Home() {
       <AboutSection />
       <ServicesSection />
       <FeaturedVideos />
+      <FeaturedWebsites />
       <Toaster />
     </main>
   )
