@@ -1,3 +1,4 @@
+
 "use client"
 
 import React from "react"
@@ -13,15 +14,16 @@ import {
   Instagram, 
   LogIn 
 } from "lucide-react"
+import { cn } from "@/lib/utils"
 
 export function SubHeader() {
   return (
-    <div className="fixed top-0 left-0 right-0 z-[60] h-10 bg-black flex items-center justify-between px-6 overflow-hidden">
-      {/* Left Section: Info */}
-      <div className="flex items-center gap-6 animate-in fade-in slide-in-from-left-4 duration-1000">
+    <div className="fixed top-0 left-0 right-0 z-[60] h-10 bg-black flex items-center justify-between px-4 md:px-6 overflow-hidden">
+      {/* Left Section: Info - Hidden on mobile, visible on desktop */}
+      <div className="hidden lg:flex items-center gap-6 animate-in fade-in slide-in-from-left-4 duration-1000">
         <div className="flex items-center gap-2 group cursor-pointer">
-          <Phone className="w-4 h-4 text-[#f5b800]" />
-          <span className="text-[11px] font-bold text-white/80 uppercase tracking-wider group-hover:text-white transition-colors">
+          <Phone className="w-3.5 h-3.5 text-[#f5b800]" />
+          <span className="text-[10px] md:text-[11px] font-bold text-white/80 uppercase tracking-wider group-hover:text-white transition-colors">
             +91 8000-334444
           </span>
         </div>
@@ -41,20 +43,28 @@ export function SubHeader() {
         </div>
       </div>
 
-      {/* Center Section: Animated Proposal */}
-      <div className="absolute left-1/2 -translate-x-1/2 flex items-center gap-4">
-        <Cloud className="w-5 h-5 text-white/10 animate-cloud" />
-        <div className="flex items-center gap-2.5 group cursor-pointer bg-white/5 px-4 py-1 rounded-full border border-white/10 hover:border-[#f5b800]/50 transition-all">
-          <span className="text-[10px] font-black text-white uppercase tracking-[0.25em]">
-            Get a Proposal
-          </span>
-          <Rocket className="w-4 h-4 text-[#f5b800] animate-rocket" />
-        </div>
-        <Cloud className="w-5 h-5 text-white/10 animate-cloud" style={{ animationDelay: '2s' }} />
+      {/* Mobile-only Phone Link (left) */}
+      <div className="flex lg:hidden items-center animate-in fade-in duration-1000">
+        <a href="tel:+918000334444" className="flex items-center gap-1.5 group">
+          <Phone className="w-3.5 h-3.5 text-[#f5b800]" />
+          <span className="text-[9px] font-black text-white/90 uppercase tracking-tighter">Call Now</span>
+        </a>
       </div>
 
-      {/* Right Section: Socials & Login */}
-      <div className="flex items-center gap-6 animate-in fade-in slide-in-from-right-4 duration-1000">
+      {/* Center Section: Animated Proposal - Always visible, slightly scaled for mobile */}
+      <div className="absolute left-1/2 -translate-x-1/2 flex items-center gap-2 md:gap-4 scale-90 md:scale-100">
+        <Cloud className="w-4 h-4 md:w-5 md:h-5 text-white/10 animate-cloud hidden sm:block" />
+        <div className="flex items-center gap-2 group cursor-pointer bg-white/5 px-3 md:px-4 py-1 rounded-full border border-white/10 hover:border-[#f5b800]/50 transition-all whitespace-nowrap">
+          <span className="text-[9px] md:text-[10px] font-black text-white uppercase tracking-[0.15em] md:tracking-[0.25em]">
+            Get a Proposal
+          </span>
+          <Rocket className="w-3.5 h-3.5 md:w-4 md:h-4 text-[#f5b800] animate-rocket" />
+        </div>
+        <Cloud className="w-4 h-4 md:w-5 md:h-5 text-white/10 animate-cloud hidden sm:block" style={{ animationDelay: '2s' }} />
+      </div>
+
+      {/* Right Section: Socials & Login - Hidden on mobile, visible on desktop */}
+      <div className="hidden lg:flex items-center gap-6 animate-in fade-in slide-in-from-right-4 duration-1000">
         <div className="flex items-center gap-4 opacity-60">
           <Facebook className="w-4 h-4 text-white hover:text-[#f5b800] transition-colors cursor-pointer" />
           <Twitter className="w-4 h-4 text-white hover:text-[#f5b800] transition-colors cursor-pointer" />
@@ -67,6 +77,13 @@ export function SubHeader() {
           <span className="text-[11px] font-black text-white uppercase tracking-widest group-hover:text-[#f5b800] transition-colors">
             LOGIN
           </span>
+        </button>
+      </div>
+
+      {/* Mobile Login Icon (right) */}
+      <div className="flex lg:hidden items-center animate-in fade-in duration-1000">
+        <button className="p-1">
+          <LogIn className="w-4 h-4 text-[#f5b800]" />
         </button>
       </div>
     </div>
