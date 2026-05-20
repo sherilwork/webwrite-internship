@@ -24,7 +24,7 @@ import { Button } from "@/components/ui/button"
 
 const jobs = [
   {
-    id: "JOB_01",
+    id: "01",
     title: "BACKEND DEVELOPER",
     location: "AGRA, IN",
     experience: "3-5 YEARS",
@@ -33,7 +33,7 @@ const jobs = [
     description: "We are looking for an experienced Backend Developer to join our core product team. You will be responsible for building robust PHP/MySQL APIs, optimizing database performance, and designing scalable server-side architectures. A deep understanding of modern PHP frameworks and RESTful design principles is essential."
   },
   {
-    id: "JOB_02",
+    id: "02",
     title: "FRONTEND DEVELOPER",
     location: "REMOTE / NOIDA",
     experience: "2-4 YEARS",
@@ -42,7 +42,7 @@ const jobs = [
     description: "Seeking a creative Frontend Developer with expertise in React, Next.js and Tailwind CSS to craft immersive and high-performance user interfaces."
   },
   {
-    id: "JOB_03",
+    id: "03",
     title: "DIGITAL MARKETING SPECIALIST",
     location: "ETAWAH, UP",
     experience: "1-3 YEARS",
@@ -51,7 +51,7 @@ const jobs = [
     description: "Join our growth team to drive strategic performance marketing, Meta ads management, and social media campaigns for global brands."
   },
   {
-    id: "JOB_04",
+    id: "04",
     title: "SENIOR VIDEO EDITOR",
     location: "MUMBAI / REMOTE",
     experience: "2-5 YEARS",
@@ -60,7 +60,7 @@ const jobs = [
     description: "Cinematic storyteller needed to create high-impact video content, motion graphics, and visual effects for premium client portfolios."
   },
   {
-    id: "JOB_05",
+    id: "05",
     title: "UI/UX DESIGNER",
     location: "REMOTE",
     experience: "3+ YEARS",
@@ -104,11 +104,11 @@ export default function CareerPage() {
 
       {/* Job Openings */}
       <section className="py-24 bg-white">
-        <div className="container mx-auto px-6 max-w-6xl">
+        <div className="container mx-auto px-6 max-w-7xl">
           <div className="space-y-8">
             <h2 className="text-[10px] font-black uppercase tracking-[0.3em] text-black/30 border-b border-black/[0.05] pb-6">Current Openings ({jobs.length})</h2>
             
-            <div className="space-y-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {jobs.map((job, idx) => (
                 <motion.div
                   key={job.id}
@@ -116,48 +116,47 @@ export default function CareerPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: idx * 0.1 }}
-                  className="group relative p-8 rounded-[2rem] bg-black/[0.01] border border-black/[0.05] hover:bg-black hover:text-white transition-all duration-500 overflow-hidden"
+                  className="group relative p-8 rounded-[2rem] bg-black/[0.01] border border-black/[0.05] hover:bg-black hover:text-white transition-all duration-500 overflow-hidden flex flex-col justify-between"
                 >
-                  <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-8 relative z-10">
-                    <div className="space-y-4 max-w-2xl">
-                      <div className="flex flex-wrap items-center gap-4">
-                        <div className="w-10 h-10 rounded-xl bg-black/[0.03] group-hover:bg-[#f5b800] flex items-center justify-center text-black transition-colors">
+                  <div className="space-y-6 relative z-10">
+                    <div className="space-y-4">
+                      <div className="flex items-center gap-4">
+                        <div className="w-10 h-10 rounded-xl bg-black/[0.03] group-hover:bg-[#f5b800] flex items-center justify-center text-black transition-colors shrink-0">
                           <job.icon className="w-5 h-5" />
                         </div>
-                        <h3 className="text-xl md:text-2xl font-black uppercase tracking-tight">{job.title}</h3>
+                        <h3 className="text-lg font-black uppercase tracking-tight leading-tight">{job.title}</h3>
                       </div>
                       
-                      <div className="flex flex-wrap gap-x-6 gap-y-2">
+                      <div className="flex flex-wrap gap-x-4 gap-y-2">
                         <div className="flex items-center gap-1.5 opacity-40 group-hover:opacity-70">
-                          <MapPin className="w-3.5 h-3.5" />
-                          <span className="text-[10px] font-bold uppercase tracking-widest">{job.location}</span>
+                          <MapPin className="w-3 h-3" />
+                          <span className="text-[9px] font-bold uppercase tracking-widest">{job.location}</span>
                         </div>
                         <div className="flex items-center gap-1.5 opacity-40 group-hover:opacity-70">
-                          <Calendar className="w-3.5 h-3.5" />
-                          <span className="text-[10px] font-bold uppercase tracking-widest">{job.experience}</span>
-                        </div>
-                        <div className="flex items-center gap-1.5 opacity-40 group-hover:opacity-70">
-                          <Clock className="w-3.5 h-3.5" />
-                          <span className="text-[10px] font-bold uppercase tracking-widest">{job.type}</span>
+                          <Clock className="w-3 h-3" />
+                          <span className="text-[9px] font-bold uppercase tracking-widest">{job.type}</span>
                         </div>
                       </div>
 
-                      <p className="text-sm md:text-base font-medium opacity-50 group-hover:opacity-80 leading-relaxed pt-2">
+                      <p className="text-sm font-medium opacity-50 group-hover:opacity-80 leading-relaxed pt-2 line-clamp-4">
                         {job.description}
                       </p>
                     </div>
 
-                    <div className="flex flex-col sm:flex-row items-center gap-3">
-                      <Button className="w-full sm:w-auto rounded-full bg-[#f5b800] text-black text-[10px] font-black uppercase tracking-widest hover:bg-white transition-all px-8 py-6 h-auto">
+                    <div className="flex flex-col gap-3 pt-4">
+                      <Button className="w-full rounded-full bg-[#f5b800] text-black text-[10px] font-black uppercase tracking-widest hover:bg-white transition-all py-6 h-auto">
                         APPLY NOW
                       </Button>
-                      <Button variant="outline" className="w-full sm:w-auto rounded-full border-black/10 bg-white group-hover:bg-white text-black group-hover:text-black text-[10px] font-black uppercase tracking-widest px-8 py-6 h-auto">
+                      <Button 
+                        variant="outline" 
+                        className="w-full rounded-full border-black/10 bg-white group-hover:bg-white text-black group-hover:text-black text-[10px] font-black uppercase tracking-widest py-6 h-auto"
+                      >
                         VIEW DETAILS
                       </Button>
                     </div>
                   </div>
 
-                  <div className="absolute top-4 right-8 text-[60px] font-black text-black/[0.02] group-hover:text-white/[0.02] pointer-events-none transition-colors">
+                  <div className="absolute top-4 right-8 text-[60px] font-black text-black/[0.02] group-hover:text-white/[0.01] pointer-events-none transition-colors">
                     {job.id}
                   </div>
                 </motion.div>
