@@ -245,7 +245,7 @@ export function FeaturedWork() {
             exit={{ opacity: 0, y: -10 }}
             className="mb-12"
           >
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-black leading-[1.05] tracking-tighter uppercase">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-black leading-[1.05] tracking-tighter uppercase">
               {activeCategory}
             </h2>
             <div className="w-12 md:w-20 h-1.5 bg-black mt-2" />
@@ -274,7 +274,7 @@ export function FeaturedWork() {
                   {filteredProjects.map((project, index) => (
                     <CarouselItem 
                       key={project.id} 
-                      className="pl-4 md:pl-8 basis-[75%] sm:basis-1/2 md:basis-1/3"
+                      className="pl-4 md:pl-8 basis-[70%] sm:basis-1/2 md:basis-[28%] lg:basis-[22%]"
                     >
                       {renderProjectCard(project, index === selectedIndex)}
                     </CarouselItem>
