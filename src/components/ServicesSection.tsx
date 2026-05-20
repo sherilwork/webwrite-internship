@@ -84,7 +84,7 @@ const services = [
 
 export default function ServicesSection() {
   return (
-    <section className="relative bg-white pt-12 lg:pt-20 pb-[100vh] overflow-visible min-h-screen flex items-start">
+    <section className="relative bg-white pt-12 lg:pt-20 pb-20 lg:pb-32 overflow-visible min-h-screen flex items-start">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
         <div className="absolute left-0 top-0 h-full w-full bg-[radial-gradient(circle_at_top_left,black_1px,transparent_1px)] bg-[size:32px_32px]" />
@@ -158,7 +158,6 @@ function ServiceCard({ service, index }: { service: typeof services[0], index: n
       }}
       className="w-full sticky will-change-transform"
       style={{
-        // Tighter stack for mobile to prevent overflow, more spread for desktop
         top: `calc(140px + ${index * 16}px)`,
         zIndex: 20 + index,
       }}
