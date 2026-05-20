@@ -3,6 +3,7 @@
 
 import React from "react"
 import Image from "next/image"
+import Link from "next/link"
 import { motion } from "framer-motion"
 import { ArrowRight } from "lucide-react"
 import { Navigation } from "@/components/Navigation"
@@ -98,9 +99,11 @@ export default function TeamPage() {
                     <p className="text-xs font-medium text-white/50 leading-relaxed uppercase tracking-widest px-2">
                       We're always looking for brilliant minds to join our mission.
                     </p>
-                    <button className="mt-6 px-8 py-4 rounded-full bg-[#f5b800] text-black text-[10px] font-black uppercase tracking-[0.2em] hover:bg-white transition-all active:scale-95">
-                      APPLY NOW
-                    </button>
+                    <Link href="/career">
+                      <button className="mt-6 px-8 py-4 rounded-full bg-[#f5b800] text-black text-[10px] font-black uppercase tracking-[0.2em] hover:bg-white transition-all active:scale-95">
+                        APPLY NOW
+                      </button>
+                    </Link>
                  </div>
               </div>
             </motion.div>
@@ -116,10 +119,12 @@ export default function TeamPage() {
               <h2 className="text-3xl font-black uppercase tracking-tighter">Ready to work with us?</h2>
               <p className="text-sm font-bold uppercase tracking-widest opacity-60">We're always looking for fresh talent.</p>
             </div>
-            <button className="px-10 py-5 rounded-full bg-[#f5b800] text-black text-xs font-black uppercase tracking-widest hover:translate-x-1 transition-all active:scale-95 flex items-center gap-3">
-              View Openings
-              <ArrowRight className="w-4 h-4" />
-            </button>
+            <Link href="/career">
+              <button className="px-10 py-5 rounded-full bg-[#f5b800] text-black text-xs font-black uppercase tracking-widest hover:translate-x-1 transition-all active:scale-95 flex items-center gap-3">
+                View Openings
+                <ArrowRight className="w-4 h-4" />
+              </button>
+            </Link>
           </div>
         </div>
       </section>
