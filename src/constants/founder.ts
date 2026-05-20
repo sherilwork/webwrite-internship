@@ -10,5 +10,8 @@ export const founders = [
       "Founder & CEO at WebWrite Services | Full Stack Web Developer | Entrepreneur with a Business Mindset Personality.",
     linkedin: "#",
     twitter: "#",
+    instagram: "#",
+    facebook: "#",
+    youtube: "#",
   },
 ];

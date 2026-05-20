@@ -4,7 +4,7 @@
 import React from "react"
 import Image from "next/image"
 import { motion } from "framer-motion"
-import { ArrowUpRight, Linkedin, Twitter } from "lucide-react"
+import { ArrowUpRight, Linkedin, Twitter, Instagram, Facebook, Youtube } from "lucide-react"
 import { founders } from "@/constants/founder"
 
 export function FounderSection() {
@@ -52,12 +52,21 @@ export function FounderSection() {
                   <span className="text-[10px] font-bold uppercase tracking-widest">Know more</span>
                   <ArrowUpRight className="w-3 h-3 group-hover:rotate-45 transition-transform" />
                 </button>
-                <div className="flex gap-2">
-                  <a href={founder.linkedin} className="p-2 rounded-full bg-black/[0.03] hover:bg-[#f5b800]/20 transition-colors">
+                <div className="flex flex-wrap gap-2">
+                  <a href={founder.linkedin} className="p-2 rounded-full bg-black/[0.03] hover:bg-[#f5b800]/20 transition-colors" title="LinkedIn">
                     <Linkedin className="w-4 h-4 text-black" />
                   </a>
-                  <a href={founder.twitter} className="p-2 rounded-full bg-black/[0.03] hover:bg-[#f5b800]/20 transition-colors">
+                  <a href={founder.instagram} className="p-2 rounded-full bg-black/[0.03] hover:bg-[#f5b800]/20 transition-colors" title="Instagram">
+                    <Instagram className="w-4 h-4 text-black" />
+                  </a>
+                  <a href={founder.facebook} className="p-2 rounded-full bg-black/[0.03] hover:bg-[#f5b800]/20 transition-colors" title="Facebook">
+                    <Facebook className="w-4 h-4 text-black" />
+                  </a>
+                  <a href={founder.twitter} className="p-2 rounded-full bg-black/[0.03] hover:bg-[#f5b800]/20 transition-colors" title="X (Twitter)">
                     <Twitter className="w-4 h-4 text-black" />
+                  </a>
+                  <a href={founder.youtube} className="p-2 rounded-full bg-black/[0.03] hover:bg-[#f5b800]/20 transition-colors" title="YouTube">
+                    <Youtube className="w-4 h-4 text-black" />
                   </a>
                 </div>
               </div>
