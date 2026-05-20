@@ -12,6 +12,7 @@ import { Tech } from "@/components/Tech"
 import { Testimonials } from "@/components/Testimonials"
 import { FounderSection } from "@/components/FounderSection"
 import { FAQSection } from "@/components/FAQSection"
+import { ContactSection } from "@/components/ContactSection"
 import { Toaster } from "@/components/ui/toaster"
 
 export default function Home() {
@@ -27,6 +28,7 @@ export default function Home() {
       <Testimonials />
       <FounderSection />
       <FAQSection />
+      <ContactSection />
       <Toaster />
     </main>
   )
