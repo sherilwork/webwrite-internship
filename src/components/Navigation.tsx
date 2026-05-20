@@ -5,7 +5,16 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
-import { ChevronLeft } from 'lucide-react';
+import { 
+  ChevronLeft, 
+  Home, 
+  Zap, 
+  Layout, 
+  Building2, 
+  Briefcase, 
+  Mail, 
+  Star 
+} from 'lucide-react';
 import {
   Sheet,
   SheetContent,
@@ -18,13 +27,13 @@ import { Separator } from '@/components/ui/separator';
 
 export function Navigation() {
   const navItems = [
-    'Home',
-    'About',
-    'Team',
-    'Services',
-    'Portfolio',
-    'Career',
-    'Contact',
+    { label: 'Home', href: '/', icon: Home },
+    { label: 'Solutions', href: '#', icon: Zap },
+    { label: 'Expertise', href: '#', icon: Star },
+    { label: 'Portfolio', href: '#', icon: Layout },
+    { label: 'Company', href: '#', icon: Building2 },
+    { label: 'Careers', href: '#', icon: Briefcase },
+    { label: 'Contact', href: '#', icon: Mail },
   ];
 
   const logo = PlaceHolderImages.find((img) => img.id === 'logo');
@@ -48,11 +57,11 @@ export function Navigation() {
         <div className="hidden md:flex items-center gap-6">
           {navItems.map((item) => (
             <Link
-              key={item}
-              href="#"
+              key={item.label}
+              href={item.href}
               className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
             >
-              {item}
+              {item.label}
             </Link>
           ))}
         </div>
@@ -121,21 +130,21 @@ export function Navigation() {
                 />
               </div>
             </SheetHeader>
-            <div className="flex-1 overflow-y-auto py-2">
+            <div className="flex-1 overflow-y-auto">
               <div className="flex flex-col">
                 {navItems.map((item) => (
                   <Link
-                    key={item}
-                    href="#"
-                    className="px-6 py-3.5 text-[11px] font-black text-black/60 hover:text-black hover:bg-black/[0.01] transition-colors border-l-4 border-transparent hover:border-[#f5b800] uppercase tracking-widest"
+                    key={item.label}
+                    href={item.href}
+                    className="flex items-center gap-4 px-6 py-4 text-[11px] font-bold text-black/70 hover:text-black hover:bg-black/[0.01] transition-colors border-b border-black/[0.03] uppercase tracking-widest group"
                   >
-                    {item}
+                    <item.icon className="w-4 h-4 text-black/20 group-hover:text-[#f5b800] transition-colors" />
+                    <span>{item.label}</span>
                   </Link>
                 ))}
               </div>
               
               <div className="mt-4 px-6">
-                <Separator className="bg-black/5" />
                 <div className="mt-8">
                   <Button className="w-full rounded-full bg-black text-white text-[10px] font-bold uppercase tracking-widest py-6 hover:bg-black/90 shadow-lg shadow-black/10">
                     Get Started
