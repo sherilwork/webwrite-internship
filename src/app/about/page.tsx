@@ -57,7 +57,7 @@ export default function AboutPage() {
       <Navigation />
 
       {/* Hero Section */}
-      <section className="relative pt-48 pb-20 overflow-hidden">
+      <section className="relative pt-60 pb-20 overflow-hidden">
         <GridBackground gridSize={40} gridOpacity={0.03} showEdgeFade={true} className="h-[600px] absolute inset-0 -z-10" />
         <div className="container mx-auto px-6 max-w-6xl">
           <motion.div 
@@ -158,7 +158,7 @@ export default function AboutPage() {
               <h2 className="text-3xl font-black uppercase tracking-tighter">Ready to write your story?</h2>
               <p className="text-sm font-bold uppercase tracking-widest opacity-60">Let's build something exceptional together.</p>
             </div>
-            <a href="/#contact">
+            <a href="https://wa.me/917906627288" target="_blank" rel="noopener noreferrer">
               <button className="px-10 py-5 rounded-full bg-black text-white text-xs font-black uppercase tracking-widest hover:translate-x-1 transition-all active:scale-95 flex items-center gap-3">
                 Start a project
                 <ArrowRight className="w-4 h-4" />
