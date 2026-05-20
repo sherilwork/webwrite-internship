@@ -11,8 +11,7 @@ import {
   Facebook, 
   Twitter, 
   Linkedin, 
-  Instagram, 
-  LogIn 
+  Instagram
 } from "lucide-react"
 import { cn } from "@/lib/utils"
 
@@ -63,7 +62,7 @@ export function SubHeader() {
         <Cloud className="w-4 h-4 md:w-5 md:h-5 text-white/10 animate-cloud hidden sm:block" style={{ animationDelay: '2s' }} />
       </div>
 
-      {/* Right Section: Socials & Login - Hidden on mobile, visible on desktop */}
+      {/* Right Section: Socials - Hidden on mobile, visible on desktop */}
       <div className="hidden lg:flex items-center gap-6 animate-in fade-in slide-in-from-right-4 duration-1000">
         <div className="flex items-center gap-4 opacity-60">
           <Facebook className="w-4 h-4 text-white hover:text-[#f5b800] transition-colors cursor-pointer" />
@@ -71,20 +70,6 @@ export function SubHeader() {
           <Linkedin className="w-4 h-4 text-white hover:text-[#f5b800] transition-colors cursor-pointer" />
           <Instagram className="w-4 h-4 text-white hover:text-[#f5b800] transition-colors cursor-pointer" />
         </div>
-        <div className="h-4 w-px bg-white/10" />
-        <button className="flex items-center gap-2 group">
-          <LogIn className="w-4 h-4 text-[#f5b800]" />
-          <span className="text-[11px] font-black text-white uppercase tracking-widest group-hover:text-[#f5b800] transition-colors">
-            LOGIN
-          </span>
-        </button>
-      </div>
-
-      {/* Mobile Login Icon (right) */}
-      <div className="flex lg:hidden items-center animate-in fade-in duration-1000">
-        <button className="p-1">
-          <LogIn className="w-4 h-4 text-[#f5b800]" />
-        </button>
       </div>
     </div>
   )
