@@ -20,7 +20,7 @@ const categories = ["All", "Healthcare", "Education", "E-Commerce", "Fitness", "
 
 const featuredVideos = [
   {
-    id: "1192553118",
+    id: "1",
     title: "Campaign Strategy Insights",
     category: "Healthcare",
     videoUrl: "https://vimeo.com/1192553118?fl=tl&fe=ec",
@@ -28,7 +28,7 @@ const featuredVideos = [
     description: "High-impact digital strategy for modern healthcare portals."
   },
   {
-    id: "1192553462",
+    id: "2",
     title: "MedTech Innovation",
     category: "Healthcare",
     videoUrl: "https://vimeo.com/1192553462?fl=tl&fe=ec",
@@ -36,7 +36,7 @@ const featuredVideos = [
     description: "Cinematic storytelling for advanced medical robotics."
   },
   {
-    id: "1192553402",
+    id: "3",
     title: "Global Learning LMS",
     category: "Education",
     videoUrl: "https://vimeo.com/1192553402?fl=tl&fe=ec",
@@ -44,7 +44,7 @@ const featuredVideos = [
     description: "Next-gen educational platform branding and launch."
   },
   {
-    id: "1192553355",
+    id: "4",
     title: "Luxe Fashion Hub",
     category: "E-Commerce",
     videoUrl: "https://vimeo.com/1192553355?fl=tl&fe=ec",
@@ -52,7 +52,7 @@ const featuredVideos = [
     description: "High-converting headless commerce for premium brands."
   },
   {
-    id: "1192553359",
+    id: "5",
     title: "Eco-Retail Campaign",
     category: "E-Commerce",
     videoUrl: "https://vimeo.com/1192553359?fl=tl&fe=ec",
@@ -60,7 +60,7 @@ const featuredVideos = [
     description: "Scaling sustainable retail through data-driven visuals."
   },
   {
-    id: "1192553338",
+    id: "6",
     title: "Elite Fitness App",
     category: "Fitness",
     videoUrl: "https://vimeo.com/1192553338?fl=tl&fe=ec",
@@ -68,7 +68,7 @@ const featuredVideos = [
     description: "Personalized training experience with AI-driven insights."
   },
   {
-    id: "1192553117",
+    id: "7",
     title: "FinTech UI Reveal",
     category: "Shops",
     videoUrl: "https://vimeo.com/1192553117?fl=tl&fe=ec",
@@ -76,7 +76,7 @@ const featuredVideos = [
     description: "Complex financial data visualized through minimalist design."
   },
   {
-    id: "1192553119",
+    id: "8",
     title: "B2B Catalog Launch",
     category: "Shops",
     videoUrl: "https://vimeo.com/1192553119?fl=tl&fe=ec",
@@ -84,7 +84,7 @@ const featuredVideos = [
     description: "Streamlined industrial inventory management systems."
   },
   {
-    id: "1192553116",
+    id: "9",
     title: "Retail Logic 2.0",
     category: "Shops",
     videoUrl: "https://vimeo.com/1192553116?fl=tl&fe=ec",
@@ -107,6 +107,7 @@ const VimeoThumbnail = ({ videoUrl, alt, isActive }: { videoUrl: string; alt: st
 
   useEffect(() => {
     if (!videoId) return
+    setThumbnail(null)
     // Fetch high-res thumbnail from Vimeo oEmbed API
     fetch(`https://vimeo.com/api/oembed.json?url=https://vimeo.com/${videoId}`)
       .then(res => res.json())
@@ -118,7 +119,7 @@ const VimeoThumbnail = ({ videoUrl, alt, isActive }: { videoUrl: string; alt: st
     <div className="relative w-full h-full bg-black/5 overflow-hidden">
       {thumbnail ? (
         <Image
-          src={`${thumbnail}?v=${videoId}`}
+          src={`${thumbnail}?v=${videoId}&t=1`}
           alt={alt}
           fill
           className={cn(
@@ -196,7 +197,7 @@ export function FeaturedVideos() {
         </div>
 
         {/* Carousel Content */}
-        <div className="relative min-h-[400px]">
+        <div className="relative min-h-[450px] flex items-center">
           <AnimatePresence mode="wait">
             <motion.div
               key={activeCategory}
@@ -214,46 +215,52 @@ export function FeaturedVideos() {
                 }}
                 className="w-full"
               >
-                <CarouselContent className="-ml-4 items-center">
+                <CarouselContent className="-ml-4 items-center h-[500px]">
                   {filteredProjects.map((project, index) => {
                     const isActive = index === selectedIndex
                     return (
                       <CarouselItem 
                         key={`${project.id}-${index}`} 
-                        className="pl-4 basis-[75%] sm:basis-1/3 md:basis-[28%] lg:basis-[22%]"
+                        className="pl-4 basis-[70%] sm:basis-1/3 md:basis-[28%] lg:basis-[22%]"
                       >
                         <motion.div
                           layout
                           initial={false}
                           animate={{ 
                             opacity: isActive ? 1 : 0.4, 
-                            scale: isActive ? 1.1 : 0.9,
-                            filter: isActive ? "grayscale(0)" : "grayscale(0.5)"
+                            scale: isActive ? 1.1 : 0.8,
+                            filter: isActive ? "grayscale(0)" : "grayscale(0.6)"
                           }}
                           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
                           className="group relative aspect-[3/4] cursor-pointer will-change-transform"
                           onClick={() => setSelectedVideo(project.videoUrl)}
                         >
-                          <div className="relative w-full h-full rounded-[1.5rem] overflow-hidden bg-[#f7f7f5] border border-black/[0.05] shadow-2xl transition-all duration-700 transform-gpu">
+                          <div className="relative w-full h-full rounded-[2rem] overflow-hidden bg-[#f7f7f5] border border-black/[0.05] shadow-2xl transition-all duration-700 transform-gpu">
                             <VimeoThumbnail 
                               videoUrl={project.videoUrl} 
                               alt={project.title} 
                               isActive={isActive} 
                             />
                             
-                            {/* Hover Overlay */}
-                            <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center backdrop-blur-[2px]">
-                              <div className="w-14 h-14 rounded-full bg-white flex items-center justify-center text-black transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 shadow-2xl">
-                                <Play className="w-6 h-6 fill-current" />
+                            {/* Premium Play Overlay */}
+                            <div className="absolute inset-0 bg-black/30 opacity-40 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center backdrop-blur-[1px] group-hover:backdrop-blur-[3px]">
+                              <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center text-black transform scale-90 group-hover:scale-100 transition-all duration-500 shadow-2xl">
+                                <Play className="w-7 h-7 fill-current ml-1" />
                               </div>
                             </div>
 
                             {/* Data Badge */}
-                            <div className="absolute top-4 left-4 flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/90 backdrop-blur-md border border-black/5 shadow-sm">
-                              <TrendingUp className="w-3 h-3 text-[#f5b800]" />
-                              <span className="text-[9px] font-black text-black uppercase tracking-wider">
+                            <div className="absolute top-6 left-6 flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-white/90 backdrop-blur-md border border-black/5 shadow-sm">
+                              <TrendingUp className="w-3.5 h-3.5 text-[#f5b800]" />
+                              <span className="text-[10px] font-black text-black uppercase tracking-wider">
                                 {project.metric}
                               </span>
+                            </div>
+
+                            {/* Title Overlay (Visible on Hover/Active) */}
+                            <div className="absolute inset-x-0 bottom-0 p-8 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                                <p className="text-[10px] font-bold text-[#f5b800] uppercase tracking-widest mb-1">{project.category}</p>
+                                <h4 className="text-white text-lg font-black leading-tight tracking-tight uppercase">{project.title}</h4>
                             </div>
                           </div>
                         </motion.div>
@@ -263,17 +270,17 @@ export function FeaturedVideos() {
                 </CarouselContent>
                 
                 {/* Navigation Controls */}
-                <div className="flex justify-center gap-3 mt-16">
+                <div className="flex justify-center gap-4 mt-8">
                   <button 
                     onClick={() => api?.scrollPrev()} 
-                    className="group flex items-center justify-center gap-3 px-8 py-3.5 bg-black/[0.03] border border-black/[0.08] text-black text-[10px] uppercase tracking-[0.2em] font-black rounded-full hover:bg-black hover:border-black hover:text-white transition-all duration-300 shadow-lg"
+                    className="group flex items-center justify-center gap-3 px-10 py-4 bg-black/[0.03] border border-black/[0.08] text-black text-[11px] uppercase tracking-[0.2em] font-black rounded-full hover:bg-black hover:border-black hover:text-white transition-all duration-300 shadow-lg"
                   >
                     <ArrowLeft className="w-4 h-4 text-[#f5b800] group-hover:-translate-x-1 transition-transform" />
                     Prev
                   </button>
                   <button 
                     onClick={() => api?.scrollNext()} 
-                    className="group flex items-center justify-center gap-3 px-8 py-3.5 bg-black/[0.03] border border-black/[0.08] text-black text-[10px] uppercase tracking-[0.2em] font-black rounded-full hover:bg-black hover:border-black hover:text-white transition-all duration-300 shadow-lg"
+                    className="group flex items-center justify-center gap-3 px-10 py-4 bg-black/[0.03] border border-black/[0.08] text-black text-[11px] uppercase tracking-[0.2em] font-black rounded-full hover:bg-black hover:border-black hover:text-white transition-all duration-300 shadow-lg"
                   >
                     Next
                     <ArrowRight className="w-4 h-4 text-[#f5b800] group-hover:translate-x-1 transition-transform" />
@@ -285,13 +292,13 @@ export function FeaturedVideos() {
         </div>
       </div>
 
-      {/* Video Modal Player */}
+      {/* Optimized Video Modal Player */}
       <Dialog open={!!selectedVideo} onOpenChange={() => setSelectedVideo(null)}>
-        <DialogContent className="max-w-6xl p-0 bg-black border-none overflow-hidden aspect-video">
+        <DialogContent className="max-w-[95vw] md:max-w-[85vw] lg:max-w-6xl p-0 bg-black border-none overflow-hidden aspect-video rounded-2xl md:rounded-[2rem] shadow-[0_0_100px_rgba(0,0,0,0.5)]">
           <DialogTitle className="sr-only">Video Player</DialogTitle>
           {selectedVideo && (
             <iframe
-              src={`https://player.vimeo.com/video/${extractVimeoId(selectedVideo)}?autoplay=1&color=f5b800`}
+              src={`https://player.vimeo.com/video/${extractVimeoId(selectedVideo)}?autoplay=1&color=f5b800&title=0&byline=0&portrait=0`}
               className="w-full h-full"
               allow="autoplay; fullscreen; picture-in-picture"
               allowFullScreen
@@ -299,7 +306,7 @@ export function FeaturedVideos() {
           )}
           <button 
             onClick={() => setSelectedVideo(null)}
-            className="absolute top-4 right-4 w-10 h-10 rounded-full bg-black/40 backdrop-blur-md text-white flex items-center justify-center hover:bg-black/60 transition-colors z-50"
+            className="absolute top-6 right-6 w-12 h-12 rounded-full bg-black/40 backdrop-blur-md text-white flex items-center justify-center hover:bg-black/60 transition-all z-50 hover:scale-110 active:scale-90"
           >
             <X className="w-6 h-6" />
           </button>
