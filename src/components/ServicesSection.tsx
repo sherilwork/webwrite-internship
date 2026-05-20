@@ -61,13 +61,13 @@ const services = [
 
 export default function ServicesSection() {
   return (
-    <section className="relative bg-[#f7f7f5] py-24 lg:py-48 overflow-visible">
+    <section className="relative bg-[#f7f7f5] py-24 lg:py-48 overflow-visible min-h-screen flex items-center">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
         <div className="absolute left-0 top-0 h-full w-full bg-[radial-gradient(circle_at_top_left,black_1px,transparent_1px)] bg-[size:32px_32px]" />
       </div>
 
-      <div className="relative mx-auto max-w-7xl px-6 lg:px-12">
+      <div className="relative mx-auto max-w-7xl px-6 lg:px-12 w-full">
         <div className="grid gap-16 lg:grid-cols-[0.7fr_1.3fr] lg:gap-32 items-start">
           
           {/* Left Column: Sticky Header */}
@@ -134,7 +134,7 @@ function ServiceCard({ service, index }: { service: typeof services[0], index: n
       className="w-full lg:sticky will-change-transform"
       style={{
         // Stacking Logic: Fixed offset based on index for the folding effect
-        top: `calc(80px + ${index * 32}px)`,
+        top: `calc(120px + ${index * 32}px)`,
         zIndex: 20 + index,
       }}
     >
