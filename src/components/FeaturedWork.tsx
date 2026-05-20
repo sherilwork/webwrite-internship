@@ -197,20 +197,12 @@ export function FeaturedWork() {
         </div>
 
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-12 border-b border-black/[0.05] pb-6">
-          <AnimatePresence mode="wait">
-            <motion.div 
-              key={activeCategory}
-              initial={{ opacity: 0, x: -10 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -10 }}
-              className="relative"
-            >
-              <h2 className="text-xl md:text-3xl font-black text-black leading-none tracking-tighter uppercase">
-                {activeCategory}
-              </h2>
-              <div className="w-8 md:w-12 h-1 bg-black mt-1" />
-            </motion.div>
-          </AnimatePresence>
+          <div className="relative">
+            <h2 className="text-xl md:text-3xl font-black text-black leading-none tracking-tighter uppercase">
+              Featured Videos
+            </h2>
+            <div className="w-8 md:w-12 h-1 bg-black mt-1" />
+          </div>
 
           <div className="flex flex-wrap gap-1.5">
             {categories.map((cat) => (
