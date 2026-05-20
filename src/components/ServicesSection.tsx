@@ -79,14 +79,14 @@ export default function ServicesSection() {
               transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
             >
               <div className="mb-6 inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/[0.03] border border-black/[0.05]">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#c7fff1]" />
+                <span className="w-1.5 h-1.5 rounded-full bg-[#f5b800]" />
                 <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-black/60">Expertise & Impact</span>
               </div>
 
               <div className="space-y-4">
                 <h2 className="text-3xl md:text-5xl lg:text-6xl font-black text-black leading-[1.05] tracking-tighter">
                   OUR PERFORMANCE <br />
-                  <span className="text-[#c7fff1]">DRIVEN STACK</span>
+                  <span className="text-black/20">DRIVEN STACK</span>
                 </h2>
                 <div className="w-16 md:w-20 h-1.5 bg-black mt-2" />
               </div>
