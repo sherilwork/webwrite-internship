@@ -5,13 +5,13 @@
       "id": "consultation-illustration",
       "description": "Digital Consultation Illustration",
       "imageUrl": "/hero-illustration.png",
-      "imageHint": "professional consultant"
+      "imageHint": "medical consultation"
     },
     {
       "id": "hero-overlay",
-      "description": "Professional Hero Portrait",
+      "description": "Hero Background Overlay",
       "imageUrl": "/hero-section-overlay.png",
-      "imageHint": "business woman"
+      "imageHint": "abstract overlay"
     },
     {
       "id": "logo",
@@ -23,7 +23,7 @@
       "id": "about-section",
       "description": "About Section Branding Image",
       "imageUrl": "/about-image.png",
-      "imageHint": "team collaboration"
+      "imageHint": "team success"
     },
     {
       "id": "work-video-1",
@@ -33,7 +33,7 @@
     },
     {
       "id": "work-website-1",
-      "description": "Modern SaaS Interface",
+      "description": "EcoSphere SaaS Platform",
       "imageUrl": "https://picsum.photos/seed/11/800/600",
       "imageHint": "clean website"
     },
@@ -60,6 +60,30 @@
       "description": "Social Media Campaign Results",
       "imageUrl": "https://picsum.photos/seed/15/800/500",
       "imageHint": "social marketing"
+    },
+    {
+      "id": "work-video-3",
+      "description": "Product Launch Teaser",
+      "imageUrl": "https://picsum.photos/seed/30/800/450",
+      "imageHint": "product reveal"
+    },
+    {
+      "id": "work-video-4",
+      "description": "Social First Campaign",
+      "imageUrl": "https://picsum.photos/seed/31/800/450",
+      "imageHint": "social media"
+    },
+    {
+      "id": "work-video-5",
+      "description": "Corporate Culture Film",
+      "imageUrl": "https://picsum.photos/seed/32/800/450",
+      "imageHint": "corporate office"
+    },
+    {
+      "id": "founder-portrait",
+      "description": "Founder of Webwrite Services",
+      "imageUrl": "https://picsum.photos/seed/founder/800/1000",
+      "imageHint": "visionary leader"
     }
   ]
 }

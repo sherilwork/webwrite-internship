@@ -10,6 +10,7 @@ import { FeaturedVideos } from "@/components/FeaturedVideos"
 import { FeaturedWebsites } from "@/components/FeaturedWebsites"
 import { Tech } from "@/components/Tech"
 import { Testimonials } from "@/components/Testimonials"
+import { FounderSection } from "@/components/FounderSection"
 import { Toaster } from "@/components/ui/toaster"
 
 export default function Home() {
@@ -23,6 +24,7 @@ export default function Home() {
       <FeaturedWebsites />
       <Tech />
       <Testimonials />
+      <FounderSection />
       <Toaster />
     </main>
   )
