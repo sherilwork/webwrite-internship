@@ -100,11 +100,11 @@ export function Navigation() {
             </button>
           </SheetTrigger>
           <SheetContent side="left" className="w-[85%] p-0 flex flex-col bg-white border-r overflow-visible rounded-r-[40px] animate-in slide-in-from-left duration-500 ease-out">
-            <div className="absolute -right-9 bottom-40 z-50">
+            <div className="absolute -right-10 bottom-40 z-50">
               <SheetClose asChild>
-                <button className="w-9 h-20 bg-black border-l-0 border border-black rounded-r-[24px] shadow-xl flex items-center justify-center pr-2.5 pl-0.5 group hover:w-10 transition-all duration-300 ease-in-out active:scale-95">
-                  <div className="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center">
-                    <ChevronLeft className="w-4 h-4 text-[#f5b800]" />
+                <button className="w-10 h-24 bg-black border-l-0 border border-black rounded-r-[28px] shadow-xl flex items-center justify-center pr-2.5 pl-0.5 group hover:w-11 transition-all duration-300 ease-in-out active:scale-95">
+                  <div className="w-7 h-7 rounded-full bg-white/10 flex items-center justify-center">
+                    <ChevronLeft className="w-4.5 h-4.5 text-[#f5b800]" />
                   </div>
                 </button>
               </SheetClose>
