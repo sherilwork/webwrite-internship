@@ -62,6 +62,14 @@ export function SubHeader() {
         <Cloud className="w-4 h-4 md:w-5 md:h-5 text-white/10 animate-cloud hidden sm:block" style={{ animationDelay: '2s' }} />
       </div>
 
+      {/* Mobile-only Career Link (right) */}
+      <div className="flex lg:hidden items-center animate-in fade-in duration-1000">
+        <div className="flex items-center gap-1.5 group cursor-pointer">
+          <Briefcase className="w-3.5 h-3.5 text-[#f5b800]" />
+          <span className="text-[9px] font-black text-white/90 uppercase tracking-tighter">Career</span>
+        </div>
+      </div>
+
       {/* Right Section: Socials - Hidden on mobile, visible on desktop */}
       <div className="hidden lg:flex items-center gap-6 animate-in fade-in slide-in-from-right-4 duration-1000">
         <div className="flex items-center gap-4 opacity-60">
