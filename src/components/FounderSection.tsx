@@ -3,6 +3,7 @@
 
 import React from "react"
 import Image from "next/image"
+import Link from "next/link"
 import { motion } from "framer-motion"
 import { ArrowUpRight, Linkedin, Twitter, Instagram, Facebook, Youtube } from "lucide-react"
 import { founders } from "@/constants/founder"
@@ -48,10 +49,12 @@ export function FounderSection() {
               </div>
 
               <div className="flex items-center gap-4 pt-4">
-                <button className="flex items-center gap-2 px-4 py-2 rounded-full border border-black/10 hover:bg-black hover:text-white transition-all group">
-                  <span className="text-[10px] font-bold uppercase tracking-widest">Know more</span>
-                  <ArrowUpRight className="w-3 h-3 group-hover:rotate-45 transition-transform" />
-                </button>
+                <Link href="/founder">
+                  <button className="flex items-center gap-2 px-4 py-2 rounded-full border border-black/10 hover:bg-black hover:text-white transition-all group">
+                    <span className="text-[10px] font-bold uppercase tracking-widest">Know more</span>
+                    <ArrowUpRight className="w-3 h-3 group-hover:rotate-45 transition-transform" />
+                  </button>
+                </Link>
                 <div className="flex flex-wrap gap-2">
                   <a href={founder.linkedin} target="_blank" rel="noopener noreferrer" className="p-2 rounded-full bg-black/[0.03] hover:bg-[#f5b800]/20 transition-colors" title="LinkedIn">
                     <Linkedin className="w-4 h-4 text-black" />
