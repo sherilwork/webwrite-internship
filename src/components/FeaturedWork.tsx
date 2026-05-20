@@ -149,9 +149,9 @@ export function FeaturedWork() {
           filter: isActive ? "grayscale(0)" : "grayscale(0.5)"
         }}
         transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-        className="group relative h-full pb-8 will-change-transform"
+        className="group relative h-full will-change-transform"
       >
-        <div className="relative aspect-[3/4] rounded-[2rem] overflow-hidden bg-[#f7f7f5] border border-black/[0.05] shadow-[0_10px_40px_rgba(0,0,0,0.02)] transition-all duration-700 group-hover:shadow-[0_20px_60px_rgba(0,0,0,0.08)] transform-gpu">
+        <div className="relative aspect-[3/4] rounded-[1.5rem] overflow-hidden bg-[#f7f7f5] border border-black/[0.05] shadow-[0_10px_40px_rgba(0,0,0,0.02)] transition-all duration-700 group-hover:shadow-[0_20px_60px_rgba(0,0,0,0.08)] transform-gpu">
           {projectImage?.imageUrl ? (
             <Image
               src={projectImage.imageUrl}
@@ -166,66 +166,42 @@ export function FeaturedWork() {
           )}
           
           <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center backdrop-blur-[2px]">
-            <div className="w-14 h-14 rounded-full bg-white flex items-center justify-center text-black transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+            <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center text-black transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
               {project.subCategory === "Video" ? (
-                <Play className="w-6 h-6 fill-current" />
+                <Play className="w-5 h-5 fill-current" />
               ) : (
-                <ExternalLink className="w-6 h-6" />
+                <ExternalLink className="w-5 h-5" />
               )}
             </div>
           </div>
 
-          <div className="absolute top-6 left-6 flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/90 backdrop-blur-md border border-black/5 shadow-sm">
-            <TrendingUp className="w-3.5 h-3.5 text-[#f5b800]" />
-            <span className="text-[10px] font-black text-black uppercase tracking-wider">
+          <div className="absolute top-4 left-4 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/90 backdrop-blur-md border border-black/5 shadow-sm">
+            <TrendingUp className="w-3 h-3 text-[#f5b800]" />
+            <span className="text-[8px] font-black text-black uppercase tracking-wider">
               {project.metric}
             </span>
           </div>
-        </div>
-
-        <div className={cn(
-          "mt-6 space-y-2 px-2 transition-opacity duration-500",
-          !isActive && "opacity-20"
-        )}>
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-[#f5b800]">
-                {project.category}
-              </span>
-              <span className="w-1 h-1 rounded-full bg-black/10" />
-              <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-black/30">
-                {project.subCategory}
-              </span>
-            </div>
-            <ArrowUpRight className="w-4 h-4 text-black/20 group-hover:text-black transition-colors" />
-          </div>
-          <h3 className="text-xl font-black text-black uppercase tracking-tight group-hover:text-[#f5b800] transition-colors">
-            {project.title}
-          </h3>
-          <p className="text-sm text-black/40 font-medium leading-relaxed line-clamp-2">
-            {project.description}
-          </p>
         </div>
       </motion.div>
     );
   }
 
   return (
-    <section className="bg-white py-12 md:py-24 overflow-hidden">
+    <section className="bg-white py-12 md:py-20 overflow-hidden">
       <div className="container mx-auto px-6">
-        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-8 mb-16">
+        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 mb-12">
           <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-black/[0.03] border border-black/[0.05] w-fit">
             <span className="w-1.5 h-1.5 rounded-full bg-[#f5b800]" />
             <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-black/60">Portfolio Showcase</span>
           </div>
 
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-1.5">
             {categories.map((cat) => (
               <button
                 key={cat}
                 onClick={() => handleCategoryChange(cat)}
                 className={cn(
-                  "px-6 py-2 rounded-full text-[10px] font-black uppercase tracking-widest transition-all border",
+                  "px-4 py-1.5 rounded-full text-[9px] font-black uppercase tracking-widest transition-all border",
                   activeCategory === cat
                     ? "bg-black text-white border-black"
                     : "bg-transparent text-black/40 border-black/10 hover:border-black/30"
@@ -243,56 +219,56 @@ export function FeaturedWork() {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            className="mb-12"
+            className="mb-8"
           >
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-black leading-[1.05] tracking-tighter uppercase">
+            <h2 className="text-xl md:text-3xl font-black text-black leading-none tracking-tighter uppercase">
               {activeCategory}
             </h2>
-            <div className="w-12 md:w-20 h-1.5 bg-black mt-2" />
+            <div className="w-8 md:w-12 h-1 bg-black mt-1" />
           </motion.div>
         </AnimatePresence>
 
-        <div className="relative min-h-[500px]">
+        <div className="relative min-h-[400px]">
           <AnimatePresence mode="wait">
             <motion.div
               key={activeCategory}
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -20 }}
-              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.5 }}
               className="w-full"
             >
               <Carousel
                 setApi={setApi}
                 opts={{
                   align: "center",
-                  loop: filteredProjects.length > 3,
+                  loop: filteredProjects.length > 2,
                 }}
                 className="w-full"
               >
-                <CarouselContent className="-ml-4 md:-ml-8 items-center">
+                <CarouselContent className="-ml-4 items-center">
                   {filteredProjects.map((project, index) => (
                     <CarouselItem 
                       key={project.id} 
-                      className="pl-4 md:pl-8 basis-[70%] sm:basis-1/2 md:basis-[28%] lg:basis-[22%]"
+                      className="pl-4 basis-[60%] sm:basis-1/3 md:basis-[22%] lg:basis-[18%]"
                     >
                       {renderProjectCard(project, index === selectedIndex)}
                     </CarouselItem>
                   ))}
                 </CarouselContent>
-                <div className="flex justify-center gap-3 mt-12">
-                  <CarouselPrevious className="static translate-y-0 h-12 w-12 border-black/5 hover:bg-black hover:text-white transition-all" />
-                  <CarouselNext className="static translate-y-0 h-12 w-12 border-black/5 hover:bg-black hover:text-white transition-all" />
+                <div className="flex justify-center gap-2 mt-8">
+                  <CarouselPrevious className="static translate-y-0 h-10 w-10 border-black/5 hover:bg-black hover:text-white transition-all" />
+                  <CarouselNext className="static translate-y-0 h-10 w-10 border-black/5 hover:bg-black hover:text-white transition-all" />
                 </div>
               </Carousel>
             </motion.div>
           </AnimatePresence>
         </div>
 
-        <div className="mt-20 flex justify-center">
-          <Button className="rounded-full bg-black text-white px-10 py-7 text-[10px] font-bold uppercase tracking-[0.2em] hover:bg-black/90 transition-all hover:translate-y-[-2px] active:scale-95 shadow-2xl shadow-black/20 group">
+        <div className="mt-12 flex justify-center">
+          <Button className="rounded-full bg-black text-white px-8 py-5 text-[9px] font-bold uppercase tracking-[0.2em] hover:bg-black/90 transition-all hover:translate-y-[-1px] active:scale-95 shadow-xl shadow-black/10 group h-auto">
             View Full Portfolio
-            <ArrowUpRight className="w-4 h-4 ml-2 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+            <ArrowUpRight className="w-3.5 h-3.5 ml-2 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
           </Button>
         </div>
       </div>
