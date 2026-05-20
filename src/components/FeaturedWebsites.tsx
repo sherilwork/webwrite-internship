@@ -1,4 +1,3 @@
-
 'use client'
 
 import React, { useEffect, useRef, useState } from 'react'
@@ -127,13 +126,13 @@ export function FeaturedWebsites() {
   }, [websiteIndex, isMounted])
 
   return (
-    <section className="bg-black py-24 overflow-hidden min-h-[700px] flex items-center justify-center relative">
+    <section className="bg-white py-24 overflow-hidden min-h-[700px] flex items-center justify-center relative border-t border-black/[0.03]">
       <div className="container mx-auto px-6 relative h-[500px] flex items-center justify-center">
         {FEATURED_CARDS.map((card, i) => (
           <div
             key={`website-${card.id}`}
             ref={el => { cardsRef.current[i] = el }}
-            className="absolute w-full max-w-[800px] bg-white/[0.02] backdrop-blur-2xl border border-white/10 p-6 md:p-10 rounded-[32px] shadow-2xl opacity-0 transform-gpu will-change-transform overflow-hidden"
+            className="absolute w-full max-w-[800px] bg-[#f7f7f5] backdrop-blur-2xl border border-black/[0.05] p-6 md:p-10 rounded-[32px] shadow-2xl shadow-black/5 opacity-0 transform-gpu will-change-transform overflow-hidden"
             style={{
               transform: i === websiteIndex ? 'none' : 'translateX(-600px) rotate(-15deg) scale(0.8)',
               zIndex: i === websiteIndex ? 10 : 5
@@ -145,15 +144,15 @@ export function FeaturedWebsites() {
                   <div className="w-10 h-10 bg-[#ff6b1a]/10 border border-[#ff6b1a]/40 rounded-xl flex items-center justify-center text-[#ff6b1a]">
                     {card.icon}
                   </div>
-                  <div className="px-3 py-1 bg-white/5 border border-white/10 rounded-full">
-                    <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-white/40">{card.tag}</span>
+                  <div className="px-3 py-1 bg-black/[0.03] border border-black/[0.05] rounded-full">
+                    <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-black/40">{card.tag}</span>
                   </div>
                 </div>
                 <div className="space-y-3">
-                  <h2 className="text-3xl md:text-4xl font-black text-white tracking-tighter leading-tight uppercase">
+                  <h2 className="text-3xl md:text-4xl font-black text-black tracking-tighter leading-tight uppercase">
                     {card.title}
                   </h2>
-                  <p className="text-white/40 text-sm md:text-base font-medium leading-relaxed">
+                  <p className="text-black/40 text-sm md:text-base font-medium leading-relaxed">
                     {card.description}
                   </p>
                 </div>
@@ -169,15 +168,15 @@ export function FeaturedWebsites() {
                   </a>
                 </div>
               </div>
-              <div className="relative aspect-[16/10] rounded-2xl overflow-hidden border border-white/10 bg-black/40 group shadow-2xl">
+              <div className="relative aspect-[16/10] rounded-2xl overflow-hidden border border-black/[0.05] bg-black/[0.03] group shadow-2xl shadow-black/5">
                 <Image
                   src={card.imageUrl}
                   alt={card.title}
                   fill
-                  className="object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-700"
+                  className="object-cover transition-opacity duration-700"
                   priority={i === 0}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none" />
               </div>
             </div>
           </div>
@@ -186,7 +185,7 @@ export function FeaturedWebsites() {
         <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-4 z-50">
           <button 
             onClick={() => handleWebsiteNav('prev')} 
-            className="group flex items-center gap-3 px-8 py-4 bg-white/5 border border-white/10 text-white text-[10px] uppercase tracking-[0.4em] font-black hover:bg-[#ff6b1a] hover:border-[#ff6b1a] transition-all duration-300"
+            className="group flex items-center gap-3 px-8 py-4 bg-black/[0.03] border border-black/[0.05] text-black text-[10px] uppercase tracking-[0.4em] font-black hover:bg-[#ff6b1a] hover:border-[#ff6b1a] hover:text-white transition-all duration-300"
             style={{ clipPath: 'polygon(10% 0%, 100% 0%, 90% 100%, 0% 100%)' }}
           >
             <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
@@ -194,7 +193,7 @@ export function FeaturedWebsites() {
           </button>
           <button 
             onClick={() => handleWebsiteNav('next')} 
-            className="group flex items-center gap-3 px-8 py-4 bg-white/5 border border-white/10 text-white text-[10px] uppercase tracking-[0.4em] font-black hover:bg-[#ff6b1a] hover:border-[#ff6b1a] transition-all duration-300"
+            className="group flex items-center gap-3 px-8 py-4 bg-black/[0.03] border border-black/[0.05] text-black text-[10px] uppercase tracking-[0.4em] font-black hover:bg-[#ff6b1a] hover:border-[#ff6b1a] hover:text-white transition-all duration-300"
             style={{ clipPath: 'polygon(10% 0%, 100% 0%, 90% 100%, 0% 100%)' }}
           >
             Next
