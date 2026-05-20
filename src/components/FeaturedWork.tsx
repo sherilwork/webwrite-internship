@@ -4,7 +4,7 @@
 import React, { useState, useMemo, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import Image from "next/image"
-import { Play, ExternalLink, TrendingUp, ArrowUpRight, Filter, ChevronLeft, ChevronRight } from "lucide-react"
+import { Play, ExternalLink, TrendingUp, ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 import { PlaceHolderImages } from "@/lib/placeholder-images"
@@ -17,133 +17,94 @@ import {
   type CarouselApi
 } from "@/components/ui/carousel"
 
-const categories = ["All", "Videos", "Websites", "Ads Results"]
+const categories = ["Healthcare", "Education", "E-Commerce", "Fitness", "Finance"]
 
 const projects = [
-  // 9 Video Projects
   {
     id: 1,
-    title: "Cinematic Brand Story",
-    category: "Videos",
-    subCategory: "Brand Story",
+    title: "Patient Care Portal",
+    category: "Healthcare",
+    subCategory: "Platform",
     image: "work-video-1",
-    metric: "2.4M Views",
-    description: "High-end brand storytelling for global tech leaders."
+    metric: "98% Satisfaction",
+    description: "Streamlined digital experience for patient management and telehealth."
+  },
+  {
+    id: 2,
+    title: "MedTech Innovations",
+    category: "Healthcare",
+    subCategory: "Video",
+    image: "work-video-2",
+    metric: "1.2M Views",
+    description: "High-end cinematic storytelling for surgical robotics."
+  },
+  {
+    id: 3,
+    title: "Wellness Tracker",
+    category: "Healthcare",
+    subCategory: "App",
+    image: "work-video-3",
+    metric: "4.8 Star Rating",
+    description: "Mobile-first health monitoring with real-time data sync."
   },
   {
     id: 4,
-    title: "Commercial Motion Kit",
-    category: "Videos",
-    subCategory: "Motion Graphics",
-    image: "work-video-2",
-    metric: "4k Resolution",
-    description: "Custom motion graphics for broadcast television."
-  },
-  {
-    id: 7,
-    title: "Product Launch Teaser",
-    category: "Videos",
-    subCategory: "Commercial",
-    image: "work-video-3",
-    metric: "1.2M Views",
-    description: "High-energy teaser for a major product unveiling."
-  },
-  {
-    id: 8,
-    title: "Social First Campaign",
-    category: "Videos",
-    subCategory: "Commercial",
-    image: "work-video-4",
-    metric: "500k Likes",
-    description: "Vertical video content optimized for social engagement."
-  },
-  {
-    id: 9,
-    title: "Corporate Culture Film",
-    category: "Videos",
-    subCategory: "Brand Story",
-    image: "work-video-5",
-    metric: "Premium Sound",
-    description: "Internal and external culture building through film."
-  },
-  {
-    id: 10,
-    title: "Animation Masterclass",
-    category: "Videos",
-    subCategory: "Motion Graphics",
-    image: "work-video-6",
-    metric: "60 FPS",
-    description: "Educational motion graphics for digital platforms."
-  },
-  {
-    id: 11,
-    title: "Global Event Reel",
-    category: "Videos",
-    subCategory: "Brand Story",
-    image: "work-video-7",
-    metric: "Live Audio",
-    description: "Capturing the energy of global summits and events."
-  },
-  {
-    id: 12,
-    title: "3D Product Render",
-    category: "Videos",
-    subCategory: "Motion Graphics",
-    image: "work-video-8",
-    metric: "8k Texture",
-    description: "Hyper-realistic 3D visualization for manufacturing."
-  },
-  {
-    id: 13,
-    title: "Short Film Series",
-    category: "Videos",
-    subCategory: "Brand Story",
-    image: "work-video-9",
-    metric: "Award Winning",
-    description: "Narrative storytelling that defines a brand's soul."
-  },
-  // Websites
-  {
-    id: 2,
-    title: "EcoSphere SaaS Platform",
-    category: "Websites",
+    title: "Global Learning LMS",
+    category: "Education",
     subCategory: "SaaS",
     image: "work-website-1",
-    metric: "99.9% Performance",
-    description: "Cloud-native infrastructure visualization dashboard."
+    metric: "500k+ Students",
+    description: "Next-generation learning management system for universities."
   },
   {
     id: 5,
-    title: "Luxe Fashion Store",
-    category: "Websites",
-    subCategory: "E-commerce",
-    image: "work-website-2",
-    metric: "300% Conversion",
-    description: "High-converting headless commerce experience."
-  },
-  // Ads Results
-  {
-    id: 3,
-    title: "Global Meta Campaign",
-    category: "Ads Results",
-    subCategory: "Meta Ads",
-    image: "work-ads-1",
-    metric: "12.5x ROAS",
-    description: "Data-driven scale for high-performance e-commerce."
+    title: "EdTech Brand Story",
+    category: "Education",
+    subCategory: "Video",
+    image: "work-video-4",
+    metric: "Viral Reach",
+    description: "Capturing the future of digital education through film."
   },
   {
     id: 6,
-    title: "Search Engine Domination",
-    category: "Ads Results",
-    subCategory: "SEO",
+    title: "Luxe Fashion Hub",
+    category: "E-Commerce",
+    subCategory: "Store",
+    image: "work-website-2",
+    metric: "300% ROAS",
+    description: "High-converting headless commerce for premium brands."
+  },
+  {
+    id: 7,
+    title: "Eco-Retail Platform",
+    category: "E-Commerce",
+    subCategory: "Ads",
+    image: "work-ads-1",
+    metric: "12x Conversion",
+    description: "Scaling sustainable retail through data-driven marketing."
+  },
+  {
+    id: 8,
+    title: "Elite Fitness App",
+    category: "Fitness",
+    subCategory: "Platform",
     image: "work-ads-2",
-    metric: "+450% Traffic",
-    description: "Advanced SEO and SEM strategy for competitive niches."
+    metric: "+450% Growth",
+    description: "Personalized training experience with AI-driven insights."
+  },
+  {
+    id: 9,
+    title: "FinTech Dashboard",
+    category: "Finance",
+    subCategory: "UI/UX",
+    image: "work-video-5",
+    metric: "Zero Latency",
+    description: "Complex financial data visualized through minimalist design."
   }
 ]
 
 export function FeaturedWork() {
-  const [activeCategory, setActiveCategory] = useState("Videos")
+  const [activeCategory, setActiveCategory] = useState("Healthcare")
   const [api, setApi] = useState<CarouselApi>()
   const [selectedIndex, setSelectedIndex] = useState(0)
 
@@ -165,9 +126,7 @@ export function FeaturedWork() {
   }, [api])
 
   const filteredProjects = useMemo(() => {
-    return projects.filter((p) => {
-      return activeCategory === "All" || p.category === activeCategory
-    })
+    return projects.filter((p) => p.category === activeCategory)
   }, [activeCategory])
 
   const handleCategoryChange = (cat: string) => {
@@ -206,7 +165,7 @@ export function FeaturedWork() {
           
           <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center backdrop-blur-[2px]">
             <div className="w-14 h-14 rounded-full bg-white flex items-center justify-center text-black transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-              {project.category === "Videos" ? (
+              {project.subCategory === "Video" ? (
                 <Play className="w-6 h-6 fill-current" />
               ) : (
                 <ExternalLink className="w-6 h-6" />
@@ -276,27 +235,24 @@ export function FeaturedWork() {
           </div>
         </div>
 
-        {/* Category Title Heading */}
         <AnimatePresence mode="wait">
-          {activeCategory !== "All" && (
-            <motion.div 
-              key={activeCategory}
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              className="mb-12"
-            >
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-black leading-[1.05] tracking-tighter uppercase">
-                {activeCategory}
-              </h2>
-              <div className="w-12 md:w-20 h-1.5 bg-black mt-2" />
-            </motion.div>
-          )}
+          <motion.div 
+            key={activeCategory}
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            className="mb-12"
+          >
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-black leading-[1.05] tracking-tighter uppercase">
+              {activeCategory}
+            </h2>
+            <div className="w-12 md:w-20 h-1.5 bg-black mt-2" />
+          </motion.div>
         </AnimatePresence>
 
         <div className="relative min-h-[500px]">
           <AnimatePresence mode="wait">
-            {activeCategory === "Videos" ? (
+            {activeCategory === "Healthcare" ? (
               <motion.div
                 key="video-slider"
                 initial={{ opacity: 0, x: 20 }}
