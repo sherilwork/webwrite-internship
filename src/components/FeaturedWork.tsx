@@ -113,60 +113,68 @@ export function FeaturedWork() {
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
         >
           <AnimatePresence mode="popLayout">
-            {filteredProjects.map((project) => (
-              <motion.div
-                key={project.id}
-                layout
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.9 }}
-                transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                className="group relative"
-              >
-                <div className="relative aspect-[4/3] rounded-[2rem] overflow-hidden bg-[#f7f7f5] border border-black/[0.05] shadow-[0_10px_40px_rgba(0,0,0,0.02)] transition-all duration-700 group-hover:shadow-[0_20px_60px_rgba(0,0,0,0.08)] transform-gpu">
-                  <Image
-                    src={PlaceHolderImages.find(img => img.id === project.image)?.imageUrl || ""}
-                    alt={project.title}
-                    fill
-                    className="object-cover transition-transform duration-1000 group-hover:scale-105"
-                  />
-                  
-                  {/* Overlay */}
-                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center backdrop-blur-[2px]">
-                    <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center text-black transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                      {project.category === "Videos" ? (
-                        <Play className="w-5 h-5 fill-current" />
-                      ) : (
-                        <ExternalLink className="w-5 h-5" />
-                      )}
+            {filteredProjects.map((project) => {
+              const projectImage = PlaceHolderImages.find(img => img.id === project.image);
+              
+              return (
+                <motion.div
+                  key={project.id}
+                  layout
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.9 }}
+                  transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                  className="group relative"
+                >
+                  <div className="relative aspect-[4/3] rounded-[2rem] overflow-hidden bg-[#f7f7f5] border border-black/[0.05] shadow-[0_10px_40px_rgba(0,0,0,0.02)] transition-all duration-700 group-hover:shadow-[0_20px_60px_rgba(0,0,0,0.08)] transform-gpu">
+                    {projectImage?.imageUrl ? (
+                      <Image
+                        src={projectImage.imageUrl}
+                        alt={project.title}
+                        fill
+                        className="object-cover transition-transform duration-1000 group-hover:scale-105"
+                      />
+                    ) : (
+                      <div className="absolute inset-0 bg-black/5 animate-pulse" />
+                    )}
+                    
+                    {/* Overlay */}
+                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center backdrop-blur-[2px]">
+                      <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center text-black transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                        {project.category === "Videos" ? (
+                          <Play className="w-5 h-5 fill-current" />
+                        ) : (
+                          <ExternalLink className="w-5 h-5" />
+                        )}
+                      </div>
+                    </div>
+
+                    {/* Badge */}
+                    <div className="absolute top-6 left-6 flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/90 backdrop-blur-md border border-black/5 shadow-sm">
+                      <TrendingUp className="w-3.5 h-3.5 text-[#f5b800]" />
+                      <span className="text-[10px] font-black text-black uppercase tracking-wider">
+                        {project.metric}
+                      </span>
                     </div>
                   </div>
 
-                  {/* Badge */}
-                  <div className="absolute top-6 left-6 flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/90 backdrop-blur-md border border-black/5 shadow-sm">
-                    <TrendingUp className="w-3.5 h-3.5 text-[#f5b800]" />
-                    <span className="text-[10px] font-black text-black uppercase tracking-wider">
-                      {project.metric}
-                    </span>
+                  <div className="mt-6 space-y-2 px-2">
+                    <div className="flex items-center justify-between">
+                      <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-[#f5b800]">
+                        {project.category}
+                      </span>
+                      <ArrowUpRight className="w-4 h-4 text-black/20 group-hover:text-black transition-colors" />
+                    </div>
+                    <h3 className="text-xl font-black text-black uppercase tracking-tight group-hover:text-[#f5b800] transition-colors">
+                      {project.title}
+                    </h3>
+                    <p className="text-sm text-black/40 font-medium leading-relaxed">
+                      {project.description}
+                    </p>
                   </div>
-                </div>
-
-                <div className="mt-6 space-y-2 px-2">
-                  <div className="flex items-center justify-between">
-                    <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-[#f5b800]">
-                      {project.category}
-                    </span>
-                    <ArrowUpRight className="w-4 h-4 text-black/20 group-hover:text-black transition-colors" />
-                  </div>
-                  <h3 className="text-xl font-black text-black uppercase tracking-tight group-hover:text-[#f5b800] transition-colors">
-                    {project.title}
-                  </h3>
-                  <p className="text-sm text-black/40 font-medium leading-relaxed">
-                    {project.description}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
+                </motion.div>
+              );
+            })}
           </AnimatePresence>
         </motion.div>
 

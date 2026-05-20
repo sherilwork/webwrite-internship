@@ -23,6 +23,42 @@
       "description": "About Section Branding Image",
       "imageUrl": "/about-image.png",
       "imageHint": "team success"
+    },
+    {
+      "id": "work-video-1",
+      "description": "Cinematic Brand Video",
+      "imageUrl": "https://picsum.photos/seed/10/800/450",
+      "imageHint": "cinematic landscape"
+    },
+    {
+      "id": "work-website-1",
+      "description": "EcoSphere SaaS Platform",
+      "imageUrl": "https://picsum.photos/seed/11/800/600",
+      "imageHint": "clean website"
+    },
+    {
+      "id": "work-ads-1",
+      "description": "Marketing Analytics Dashboard",
+      "imageUrl": "https://picsum.photos/seed/12/800/500",
+      "imageHint": "data chart"
+    },
+    {
+      "id": "work-video-2",
+      "description": "Commercial Motion Graphics",
+      "imageUrl": "https://picsum.photos/seed/13/800/450",
+      "imageHint": "motion design"
+    },
+    {
+      "id": "work-website-2",
+      "description": "E-commerce Platform",
+      "imageUrl": "https://picsum.photos/seed/14/800/600",
+      "imageHint": "shopping store"
+    },
+    {
+      "id": "work-ads-2",
+      "description": "Social Media Campaign Results",
+      "imageUrl": "https://picsum.photos/seed/15/800/500",
+      "imageHint": "social marketing"
     }
   ]
 }
