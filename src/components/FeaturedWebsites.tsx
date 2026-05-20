@@ -1,7 +1,7 @@
 
 'use client'
 
-import React, { useEffect, useRef, useState, useMemo } from 'react'
+import React, { useEffect, useRef, useState, useMemo, useCallback } from 'react'
 import { ArrowLeft, ArrowRight, MousePointer2, Cpu, GraduationCap, ShoppingBag, Package } from 'lucide-react'
 import Image from 'next/image'
 import { cn } from '@/lib/utils'
@@ -79,18 +79,18 @@ export function FeaturedWebsites() {
     return FEATURED_CARDS.filter((card) => card.tag.toUpperCase() === activeCategory.toUpperCase())
   }, [activeCategory])
 
-  const handleWebsiteNav = (direction: 'next' | 'prev') => {
+  const handleWebsiteNav = useCallback((direction: 'next' | 'prev') => {
     if (direction === 'next') {
       setWebsiteIndex((prev) => (prev + 1) % filteredCards.length)
     } else {
       setWebsiteIndex((prev) => (prev - 1 + filteredCards.length) % filteredCards.length)
     }
-  }
+  }, [filteredCards.length])
 
-  const handleCategoryChange = (cat: string) => {
+  const handleCategoryChange = useCallback((cat: string) => {
     setActiveCategory(cat)
     setWebsiteIndex(0)
-  }
+  }, [])
 
   useEffect(() => {
     if (!isMounted || filteredCards.length === 0) return
@@ -110,7 +110,8 @@ export function FeaturedWebsites() {
           zIndex: 10,
           duration: 0.8,
           ease: "expo.out",
-          force3D: true
+          force3D: true,
+          clearProps: "transform"
         })
       } else if (index < websiteIndex) {
         gsap.to(card, {
@@ -216,7 +217,8 @@ export function FeaturedWebsites() {
                       alt={card.title}
                       fill
                       className="object-cover transition-opacity duration-700"
-                      priority={i === 0}
+                      priority={i === websiteIndex}
+                      sizes="(max-width: 768px) 100vw, 50vw"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none" />
                   </div>

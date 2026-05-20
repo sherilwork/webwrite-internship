@@ -1,7 +1,7 @@
 
 "use client"
 
-import React, { useState, useMemo, useEffect } from "react"
+import React, { useState, useMemo, useEffect, useCallback } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import Image from "next/image"
 import { Play, ArrowLeft, ArrowRight, X } from "lucide-react"
@@ -24,7 +24,6 @@ const featuredVideos = [
     title: "Campaign Strategy Insights",
     category: "Healthcare",
     videoUrl: "https://vimeo.com/1192553118?fl=tl&fe=ec",
-    metric: "98% Satisfaction",
     description: "High-impact digital strategy for modern healthcare portals."
   },
   {
@@ -32,7 +31,6 @@ const featuredVideos = [
     title: "MedTech Innovation",
     category: "Healthcare",
     videoUrl: "https://vimeo.com/1192553462?fl=tl&fe=ec",
-    metric: "1.2M Views",
     description: "Cinematic storytelling for advanced medical robotics."
   },
   {
@@ -40,7 +38,6 @@ const featuredVideos = [
     title: "Global Learning LMS",
     category: "Education",
     videoUrl: "https://vimeo.com/1192553402?fl=tl&fe=ec",
-    metric: "500k+ Students",
     description: "Next-gen educational platform branding and launch."
   },
   {
@@ -48,7 +45,6 @@ const featuredVideos = [
     title: "Luxe Fashion Hub",
     category: "E-Commerce",
     videoUrl: "https://vimeo.com/1192553355?fl=tl&fe=ec",
-    metric: "300% ROAS",
     description: "High-converting headless commerce for premium brands."
   },
   {
@@ -56,7 +52,6 @@ const featuredVideos = [
     title: "Eco-Retail Campaign",
     category: "E-Commerce",
     videoUrl: "https://vimeo.com/1192553359?fl=tl&fe=ec",
-    metric: "12x Conversion",
     description: "Scaling sustainable retail through data-driven visuals."
   },
   {
@@ -64,7 +59,6 @@ const featuredVideos = [
     title: "Elite Fitness App",
     category: "Fitness",
     videoUrl: "https://vimeo.com/1192553338?fl=tl&fe=ec",
-    metric: "+450% Growth",
     description: "Personalized training experience with AI-driven insights."
   },
   {
@@ -72,7 +66,6 @@ const featuredVideos = [
     title: "FinTech UI Reveal",
     category: "Shops",
     videoUrl: "https://vimeo.com/1192553117?fl=tl&fe=ec",
-    metric: "Zero Latency",
     description: "Complex financial data visualized through minimalist design."
   },
   {
@@ -80,7 +73,6 @@ const featuredVideos = [
     title: "B2B Catalog Launch",
     category: "Shops",
     videoUrl: "https://vimeo.com/1192553119?fl=tl&fe=ec",
-    metric: "92% Retention",
     description: "Streamlined industrial inventory management systems."
   },
   {
@@ -88,12 +80,11 @@ const featuredVideos = [
     title: "Retail Logic 2.0",
     category: "Shops",
     videoUrl: "https://vimeo.com/1192553116?fl=tl&fe=ec",
-    metric: "99% Uptime",
     description: "Advanced retail management and POS visualization."
   }
 ]
 
-// --- Helper Components ---
+// --- Helper Utilities ---
 
 const extractVimeoId = (url: string) => {
   const cleanUrl = url.split("?")[0]
@@ -103,30 +94,37 @@ const extractVimeoId = (url: string) => {
 
 const VimeoThumbnail = ({ videoUrl, alt, isActive }: { videoUrl: string; alt: string; isActive: boolean }) => {
   const [thumbnail, setThumbnail] = useState<string | null>(null)
-  const videoId = extractVimeoId(videoUrl)
+  const videoId = useMemo(() => extractVimeoId(videoUrl), [videoUrl])
 
   useEffect(() => {
     if (!videoId) return
+    let isMounted = true
+    
     setThumbnail(null)
-    // Fetch high-res thumbnail from Vimeo oEmbed API
     fetch(`https://vimeo.com/api/oembed.json?url=https://vimeo.com/${videoId}`)
       .then(res => res.json())
-      .then(data => setThumbnail(data.thumbnail_url))
-      .catch(() => setThumbnail(null))
+      .then(data => {
+        if (isMounted) setThumbnail(data.thumbnail_url)
+      })
+      .catch(() => {
+        if (isMounted) setThumbnail(null)
+      })
+      
+    return () => { isMounted = false }
   }, [videoId])
 
   return (
     <div className="relative w-full h-full bg-black/5 overflow-hidden">
       {thumbnail ? (
         <Image
-          src={`${thumbnail}?v=${videoId}&t=1`}
+          src={thumbnail}
           alt={alt}
           fill
           className={cn(
-            "object-cover transition-all duration-1000",
+            "object-cover transition-all duration-1000 transform-gpu",
             isActive ? "scale-105" : "scale-100"
           )}
-          unoptimized 
+          sizes="(max-width: 768px) 100vw, 33vw"
         />
       ) : (
         <div className="w-full h-full flex items-center justify-center">
@@ -160,11 +158,11 @@ export function FeaturedVideos() {
     return featuredVideos.filter((p) => p.category === activeCategory)
   }, [activeCategory])
 
-  const handleCategoryChange = (cat: string) => {
+  const handleCategoryChange = useCallback((cat: string) => {
     setActiveCategory(cat)
     setSelectedIndex(0)
     if (api) api.scrollTo(0)
-  }
+  }, [api])
 
   return (
     <section className="bg-white py-12 md:py-20 overflow-hidden">
@@ -232,7 +230,7 @@ export function FeaturedVideos() {
                             filter: isActive ? "grayscale(0)" : "grayscale(0.6)"
                           }}
                           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                          className="group relative aspect-[3/4] cursor-pointer will-change-transform"
+                          className="group relative aspect-[3/4] cursor-pointer will-change-transform transform-gpu"
                           onClick={() => setSelectedVideo(project.videoUrl)}
                         >
                           <div className="relative w-full h-full rounded-[2rem] overflow-hidden bg-[#f7f7f5] border border-black/[0.05] shadow-2xl transition-all duration-700 transform-gpu">
@@ -242,14 +240,12 @@ export function FeaturedVideos() {
                               isActive={isActive} 
                             />
                             
-                            {/* Premium Play Overlay */}
                             <div className="absolute inset-0 bg-black/30 opacity-40 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center backdrop-blur-[1px] group-hover:backdrop-blur-[3px]">
                               <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center text-black transform scale-90 group-hover:scale-100 transition-all duration-500 shadow-2xl">
                                 <Play className="w-7 h-7 fill-current ml-1" />
                               </div>
                             </div>
 
-                            {/* Title Overlay (Visible on Hover/Active) */}
                             <div className="absolute inset-x-0 bottom-0 p-8 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                                 <p className="text-[10px] font-bold text-[#f5b800] uppercase tracking-widest mb-1">{project.category}</p>
                                 <h4 className="text-white text-lg font-black leading-tight tracking-tight uppercase">{project.title}</h4>
@@ -261,7 +257,6 @@ export function FeaturedVideos() {
                   })}
                 </CarouselContent>
                 
-                {/* Navigation Controls */}
                 <div className="flex justify-center gap-4 mt-8">
                   <button 
                     onClick={() => api?.scrollPrev()} 
@@ -284,7 +279,6 @@ export function FeaturedVideos() {
         </div>
       </div>
 
-      {/* Optimized Video Modal Player */}
       <Dialog open={!!selectedVideo} onOpenChange={() => setSelectedVideo(null)}>
         <DialogContent className="max-w-[95vw] md:max-w-[85vw] lg:max-w-6xl p-0 bg-black border-none overflow-hidden aspect-video rounded-2xl md:rounded-[2rem] shadow-[0_0_100px_rgba(0,0,0,0.5)]">
           <DialogTitle className="sr-only">Video Player</DialogTitle>
