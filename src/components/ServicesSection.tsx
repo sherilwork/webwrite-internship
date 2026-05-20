@@ -13,6 +13,7 @@ import {
   ArrowUpRight,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
 
 const services = [
   {
@@ -71,19 +72,19 @@ export default function ServicesSection() {
         <div className="grid gap-16 lg:grid-cols-2 lg:gap-24 items-start">
           
           {/* Left Column: Sticky Header */}
-          <div className="lg:sticky lg:top-40 h-fit space-y-8 mb-12 lg:mb-0">
+          <div className="lg:sticky lg:top-40 h-fit space-y-6 md:space-y-8 mb-12 lg:mb-0">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+              className="space-y-6 md:space-y-8 max-w-2xl"
             >
-              <div className="mb-6 inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/[0.03] border border-black/[0.05]">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#f5b800]" />
-                <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-black/60">Our services</span>
-              </div>
-
               <div className="space-y-4">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/[0.03] border border-black/[0.05]">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#f5b800]" />
+                  <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-black/60">Our services</span>
+                </div>
                 <h2 className="text-3xl md:text-5xl lg:text-6xl font-black text-black leading-[1.05] tracking-tighter uppercase">
                   SCALING YOUR <br />
                   <span className="text-[#f5b800]">DIGITAL IMPACT</span>
@@ -91,15 +92,15 @@ export default function ServicesSection() {
                 <div className="w-16 md:w-20 h-1.5 bg-black mt-2" />
               </div>
 
-              <p className="mt-8 text-base md:text-lg text-black/50 font-medium leading-relaxed max-w-sm">
+              <p className="text-base md:text-lg text-black/50 font-medium leading-relaxed">
                 We simplify growth. Our expert teams build systems that help your brand reach more people and convert them into loyal customers.
               </p>
 
-              <div className="pt-8">
-                <button className="rounded-full bg-black text-white px-8 md:px-10 py-6 md:py-7 text-[10px] md:text-xs font-bold uppercase tracking-widest hover:bg-black/90 transition-all hover:translate-x-1 active:scale-95 shadow-2xl shadow-black/20 group">
+              <div className="pt-4 md:pt-6">
+                <Button className="rounded-full bg-black text-white px-8 md:px-10 py-6 md:py-7 text-[10px] md:text-xs font-bold uppercase tracking-widest hover:bg-black/90 transition-all hover:translate-x-1 active:scale-95 shadow-2xl shadow-black/20 group">
                   Full Service List
                   <ArrowUpRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-                </button>
+                </Button>
               </div>
             </motion.div>
           </div>
