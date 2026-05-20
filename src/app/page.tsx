@@ -6,7 +6,7 @@ import Hero from "@/components/hero"
 import { MarqueeRibbon } from "@/components/MarqueeRibbon"
 import { AboutSection } from "@/components/AboutSection"
 import ServicesSection from "@/components/ServicesSection"
-import { FeaturedWork } from "@/components/FeaturedWork"
+import { FeaturedVideos } from "@/components/FeaturedVideos"
 import { Toaster } from "@/components/ui/toaster"
 
 export default function Home() {
@@ -16,7 +16,7 @@ export default function Home() {
       <MarqueeRibbon />
       <AboutSection />
       <ServicesSection />
-      <FeaturedWork />
+      <FeaturedVideos />
       <Toaster />
     </main>
   )
