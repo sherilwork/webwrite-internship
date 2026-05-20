@@ -32,7 +32,7 @@ export function Navigation() {
     { label: 'About', href: '/about', icon: Star },
     { label: 'Team', href: '/team', icon: Building2 },
     { label: 'Services', href: '/services', icon: Zap },
-    { label: 'Portfolio', href: '/#portfolio', icon: Layout },
+    { label: 'Portfolio', href: '/portfolio', icon: Layout },
     { label: 'Career', href: '#', icon: Briefcase },
     { label: 'Contact', href: '/#contact', icon: Mail },
   ];
