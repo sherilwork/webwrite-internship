@@ -1,26 +1,34 @@
 
 "use client"
 
-import React from "react"
+import React, { useState } from "react"
 import { motion } from "framer-motion"
 import { 
   Briefcase, 
   MapPin, 
   Clock, 
-  Calendar,
   ArrowRight,
-  ChevronRight,
-  Layers,
   Code,
   Zap,
   Video,
-  Database
+  Database,
+  Layers,
+  CheckCircle2,
+  ChevronRight
 } from "lucide-react"
 import { Navigation } from "@/components/Navigation"
 import { SubHeader } from "@/components/SubHeader"
 import { Footer } from "@/components/Footer"
 import { GridBackground } from "@/components/GridBackground"
 import { Button } from "@/components/ui/button"
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog"
+import { ScrollArea } from "@/components/ui/scroll-area"
 
 const jobs = [
   {
@@ -70,7 +78,16 @@ const jobs = [
   }
 ]
 
+const responsibilities = [
+  "HIGH-QUALITY CODE DELIVERY",
+  "SCALABLE DESIGN SYNC",
+  "TEAM COLLABORATION",
+  "PERFORMANCE OPTIMIZATION"
+]
+
 export default function CareerPage() {
+  const [selectedJob, setSelectedJob] = useState<typeof jobs[0] | null>(null)
+
   return (
     <main className="min-h-screen bg-white">
       <SubHeader />
@@ -147,12 +164,72 @@ export default function CareerPage() {
                       <Button className="w-full rounded-full bg-[#f5b800] text-black text-[10px] font-black uppercase tracking-widest hover:bg-white transition-all py-6 h-auto">
                         APPLY NOW
                       </Button>
-                      <Button 
-                        variant="outline" 
-                        className="w-full rounded-full border-black/10 bg-white group-hover:bg-white text-black group-hover:text-black text-[10px] font-black uppercase tracking-widest py-6 h-auto"
-                      >
-                        VIEW DETAILS
-                      </Button>
+                      
+                      <Dialog>
+                        <DialogTrigger asChild>
+                          <Button 
+                            variant="outline" 
+                            onClick={() => setSelectedJob(job)}
+                            className="w-full rounded-full border-black/10 bg-white group-hover:bg-white text-black group-hover:text-black text-[10px] font-black uppercase tracking-widest py-6 h-auto transition-colors"
+                          >
+                            VIEW DETAILS
+                          </Button>
+                        </DialogTrigger>
+                        <DialogContent className="max-w-2xl p-0 bg-white border-none rounded-[2.5rem] overflow-hidden">
+                          <div className="bg-[#f5b800] p-8 md:p-12 text-black">
+                            <DialogHeader>
+                              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/10 border border-black/5 mb-4 w-fit">
+                                <span className="text-[10px] font-black uppercase tracking-[0.2em]">Job Opening</span>
+                              </div>
+                              <DialogTitle className="text-3xl md:text-5xl font-black uppercase tracking-tighter leading-none mb-4">
+                                {selectedJob?.title}
+                              </DialogTitle>
+                              <div className="flex flex-wrap gap-4 opacity-60">
+                                <div className="flex items-center gap-1.5">
+                                  <MapPin className="w-4 h-4" />
+                                  <span className="text-xs font-black uppercase tracking-widest">{selectedJob?.location}</span>
+                                </div>
+                                <div className="flex items-center gap-1.5">
+                                  <Clock className="w-4 h-4" />
+                                  <span className="text-xs font-black uppercase tracking-widest">{selectedJob?.type}</span>
+                                </div>
+                                <div className="flex items-center gap-1.5">
+                                  <Briefcase className="w-4 h-4" />
+                                  <span className="text-xs font-black uppercase tracking-widest">{selectedJob?.experience}</span>
+                                </div>
+                              </div>
+                            </DialogHeader>
+                          </div>
+                          
+                          <ScrollArea className="max-h-[60vh]">
+                            <div className="p-8 md:p-12 space-y-10">
+                              <section className="space-y-4">
+                                <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-black/30">Job Description</h4>
+                                <p className="text-sm md:text-base text-black/60 font-medium leading-relaxed">
+                                  {selectedJob?.description}
+                                </p>
+                              </section>
+
+                              <section className="space-y-4">
+                                <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-black/30">Key Responsibilities</h4>
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                  {responsibilities.map((resp, i) => (
+                                    <div key={i} className="flex items-center gap-3 p-4 rounded-2xl bg-black/[0.02] border border-black/[0.05] group hover:bg-black transition-all">
+                                      <CheckCircle2 className="w-5 h-5 text-[#f5b800]" />
+                                      <span className="text-[10px] font-black uppercase tracking-widest text-black/80 group-hover:text-white transition-colors">{resp}</span>
+                                    </div>
+                                  ))}
+                                </div>
+                              </section>
+
+                              <Button className="w-full rounded-full bg-black text-white text-[12px] font-black uppercase tracking-[0.2em] py-8 h-auto hover:bg-[#f5b800] hover:text-black transition-all group">
+                                APPLY FOR THIS PROFILE
+                                <ArrowRight className="w-4 h-4 ml-3 group-hover:translate-x-1 transition-transform" />
+                              </Button>
+                            </div>
+                          </ScrollArea>
+                        </DialogContent>
+                      </Dialog>
                     </div>
                   </div>
 
