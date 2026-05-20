@@ -241,8 +241,8 @@ export default function CareerPage() {
 
       {/* Application Dialog */}
       <Dialog open={isApplyOpen} onOpenChange={setIsApplyOpen}>
-        <DialogContent className="w-[92%] md:max-w-3xl p-0 bg-white border-none rounded-[1.5rem] md:rounded-[2rem] overflow-hidden shadow-2xl mt-12 md:mt-20 mb-12 md:mb-20 max-h-[90vh] md:max-h-[85vh] md:top-[46%] font-body">
-          <div className="bg-[#f5b800] p-6 md:p-8 text-black relative">
+        <DialogContent className="w-[92%] md:max-w-3xl p-0 bg-white border-none rounded-[1.5rem] md:rounded-[2rem] overflow-hidden shadow-2xl max-h-[90vh] md:max-h-[85vh] font-body flex flex-col">
+          <div className="bg-[#f5b800] p-6 md:p-8 text-black shrink-0">
             <DialogHeader>
               <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-black/10 border border-black/5 mb-3 w-fit">
                 <span className="text-[9px] font-extrabold uppercase tracking-[0.2em]">Application Form</span>
@@ -256,7 +256,7 @@ export default function CareerPage() {
             </DialogHeader>
           </div>
           
-          <ScrollArea className="max-h-[60vh]">
+          <ScrollArea className="flex-1 max-h-[60vh] md:max-h-[70vh]">
             <div className="p-6 md:p-10">
               <form onSubmit={handleApplySubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -331,8 +331,8 @@ export default function CareerPage() {
 
       {/* Details Dialog */}
       <Dialog open={isDetailsOpen} onOpenChange={setIsDetailsOpen}>
-        <DialogContent className="w-[92%] md:max-w-3xl p-0 bg-white border-none rounded-[1.5rem] md:rounded-[2rem] overflow-hidden shadow-2xl mt-12 md:mt-20 mb-12 md:mb-20 max-h-[90vh] md:max-h-[85vh] md:top-[46%] font-body">
-          <div className="bg-[#f5b800] p-6 md:p-8 text-black relative">
+        <DialogContent className="w-[92%] md:max-w-3xl p-0 bg-white border-none rounded-[1.5rem] md:rounded-[2rem] overflow-hidden shadow-2xl max-h-[90vh] md:max-h-[85vh] font-body flex flex-col">
+          <div className="bg-[#f5b800] p-6 md:p-8 text-black shrink-0">
             <DialogHeader>
               <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-black/10 border border-black/5 mb-3 w-fit">
                 <span className="text-[9px] font-extrabold uppercase tracking-[0.2em]">Job Opening</span>
@@ -357,7 +357,7 @@ export default function CareerPage() {
             </DialogHeader>
           </div>
           
-          <ScrollArea className="max-h-[60vh]">
+          <ScrollArea className="flex-1 max-h-[60vh] md:max-h-[70vh]">
             <div className="p-6 md:p-10 space-y-10">
               <section className="space-y-4">
                 <h4 className="text-[10px] font-extrabold uppercase tracking-[0.3em] text-black/30">Job Description</h4>
