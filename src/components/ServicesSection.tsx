@@ -85,14 +85,14 @@ export default function ServicesSection() {
 
               <div className="space-y-4">
                 <h2 className="text-3xl md:text-5xl lg:text-6xl font-black text-black leading-[1.05] tracking-tighter">
-                  OUR PERFORMANCE <br />
-                  <span className="text-[#f5b800]">DRIVEN STACK</span>
+                  SCALING YOUR <br />
+                  <span className="text-[#f5b800]">DIGITAL IMPACT</span>
                 </h2>
                 <div className="w-16 md:w-20 h-1.5 bg-black mt-2" />
               </div>
 
               <p className="mt-8 text-base md:text-lg text-black/50 font-medium leading-relaxed max-w-sm">
-                We build proprietary growth systems that merge elite creative with engineering precision.
+                We build high-velocity growth systems that bridge the gap between creative vision and technical excellence.
               </p>
 
               <div className="pt-12">
