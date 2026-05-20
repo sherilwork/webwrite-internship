@@ -96,3 +96,27 @@
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
 }
+
+/* Marquee Animations */
+@keyframes marquee-left {
+  0% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-50%, 0, 0); }
+}
+
+@keyframes marquee-right {
+  0% { transform: translate3d(-50%, 0, 0); }
+  100% { transform: translate3d(0, 0, 0); }
+}
+
+.animate-marquee-left {
+  animation: marquee-left 35s linear infinite;
+}
+
+.animate-marquee-right {
+  animation: marquee-right 40s linear infinite;
+}
+
+@media (max-width: 768px) {
+  .animate-marquee-left { animation-duration: 25s; }
+  .animate-marquee-right { animation-duration: 28s; }
+}
