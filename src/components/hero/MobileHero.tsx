@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useCallback } from "react"
 import { GridBackground } from "@/components/GridBackground"
 import { Navigation } from "@/components/Navigation"
 import { SubHeader } from "@/components/SubHeader"
@@ -18,7 +18,7 @@ export function MobileHero() {
 
   const phrases = ["Digital Marketing", "Meta ads", "Video editing"]
   const [phraseIndex, setPhraseIndex] = useState(0)
-  const [currentText, setCurrentText] = useState("")
+  const [currentText, setCurrentText] = useState(phrases[0])
   const [isDeleting, setIsDeleting] = useState(false)
   const [typingSpeed, setTypingSpeed] = useState(150)
   const [isMounted, setIsMounted] = useState(false)
@@ -27,33 +27,32 @@ export function MobileHero() {
     setIsMounted(true)
   }, [])
 
-  useEffect(() => {
+  const handleTyping = useCallback(() => {
     if (!isMounted) return
-
-    const handleTyping = () => {
-      const fullText = phrases[phraseIndex]
-      
-      if (!isDeleting) {
-        setCurrentText(fullText.substring(0, currentText.length + 1))
-        setTypingSpeed(100)
-        if (currentText === fullText) {
-          setIsDeleting(true)
-          setTypingSpeed(2000)
-        }
-      } else {
-        setCurrentText(fullText.substring(0, currentText.length - 1))
-        setTypingSpeed(50)
-        if (currentText === "") {
-          setIsDeleting(false)
-          setPhraseIndex((prev) => (prev + 1) % phrases.length)
-          setTypingSpeed(500)
-        }
+    const fullText = phrases[phraseIndex]
+    
+    if (!isDeleting) {
+      setCurrentText(fullText.substring(0, currentText.length + 1))
+      setTypingSpeed(100)
+      if (currentText === fullText) {
+        setIsDeleting(true)
+        setTypingSpeed(2000)
+      }
+    } else {
+      setCurrentText(fullText.substring(0, currentText.length - 1))
+      setTypingSpeed(50)
+      if (currentText === "") {
+        setIsDeleting(false)
+        setPhraseIndex((prev) => (prev + 1) % phrases.length)
+        setTypingSpeed(500)
       }
     }
+  }, [currentText, isDeleting, phraseIndex, isMounted])
 
+  useEffect(() => {
     const timer = setTimeout(handleTyping, typingSpeed)
     return () => clearTimeout(timer)
-  }, [currentText, isDeleting, phraseIndex, typingSpeed, isMounted])
+  }, [handleTyping, typingSpeed])
 
   return (
     <div className="relative min-h-screen bg-background text-foreground overflow-x-hidden">
@@ -72,8 +71,8 @@ export function MobileHero() {
         <div className="container mx-auto px-4 flex flex-col gap-6">
           
           {/* Content Area */}
-          <div className="flex flex-col items-center text-center gap-4 animate-in fade-in slide-in-from-bottom-8 duration-1000 ease-out z-30">
-            <div className="flex items-center gap-2 bg-white border border-black/5 rounded-full px-4 py-1 shadow-sm">
+          <div className="flex flex-col items-center text-center gap-4 animate-in fade-in slide-in-from-bottom-8 duration-1000 ease-out z-30 will-change-transform">
+            <div className="flex items-center gap-2 bg-white border border-black/5 rounded-full px-4 py-1 shadow-sm active:scale-95 transition-transform">
               <div className="bg-[#f5b800] text-white px-3 py-0.5 rounded-full text-[8px] font-black tracking-widest uppercase shrink-0">
                 CLARITY
               </div>
@@ -83,8 +82,8 @@ export function MobileHero() {
             <div className="space-y-2 w-full">
               <h1 className="text-3xl font-black text-black leading-tight tracking-tighter flex flex-col items-center gap-1">
                 <div className="relative h-[1.2em] w-full flex justify-center overflow-visible">
-                  <span className="whitespace-nowrap">
-                    {isMounted ? currentText : phrases[0]}
+                  <span className="whitespace-nowrap transition-all duration-300">
+                    {currentText}
                     <span className="inline-block w-[3px] h-[0.8em] bg-[#f5b800] ml-1 align-middle animate-pulse" />
                   </span>
                 </div>
@@ -101,7 +100,7 @@ export function MobileHero() {
 
           {/* Booking Section */}
           <div className="flex flex-col items-center gap-6">
-            <div className="w-full max-w-sm z-30">
+            <div className="w-full max-w-sm z-30 transition-all duration-500 ease-out">
               <BookingCard imageUrl="/hero-illustration.png" />
             </div>
           </div>

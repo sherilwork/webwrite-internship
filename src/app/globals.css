@@ -32,7 +32,8 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground font-body antialiased selection:bg-primary selection:text-primary-foreground;
+    @apply bg-background text-foreground font-body antialiased selection:bg-primary selection:text-primary-foreground overflow-x-hidden;
+    scroll-behavior: smooth;
   }
 }
 
@@ -41,6 +42,7 @@
   background-image: 
     linear-gradient(to right, rgba(0, 0, 0, var(--grid-opacity)) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(0, 0, 0, var(--grid-opacity)) 1px, transparent 1px);
+  will-change: background-image;
 }
 
 .radial-glow {
@@ -49,6 +51,7 @@
     rgba(255, 255, 255, var(--glow-intensity)) 0%,
     transparent 70%
   );
+  pointer-events: none;
 }
 
 .edge-fade {
@@ -58,6 +61,7 @@
 .blurred-highlight {
   filter: blur(80px);
   opacity: var(--highlight-opacity);
+  will-change: filter, opacity;
 }
 
 @keyframes rocket-launch {
@@ -69,6 +73,7 @@
 
 .animate-rocket {
   animation: rocket-launch 4s ease-in-out infinite;
+  will-change: transform, opacity;
 }
 
 @keyframes cloud-drift {
@@ -79,4 +84,15 @@
 
 .animate-cloud {
   animation: cloud-drift 6s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+/* Hardware acceleration for smooth scrolling/animations */
+.will-change-transform {
+  will-change: transform;
+}
+
+.scroll-smooth {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
 }

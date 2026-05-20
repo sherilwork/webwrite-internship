@@ -42,29 +42,27 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
   const isMobile = useIsMobile()
   const days = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"]
   
-  // State for interactive calendar
+  const [isMounted, setIsMounted] = useState(false)
   const [currentMonth, setCurrentMonth] = useState<Date | null>(null)
   const [selectedDate, setSelectedDate] = useState<Date | null>(null)
   const [selectedTime, setSelectedTime] = useState<string | null>(null)
   const [isDetailsStep, setIsDetailsStep] = useState(false)
   const [today, setToday] = useState<Date | null>(null)
-  const [isMounted, setIsMounted] = useState(false)
 
+  // Initialize data immediately on mount to avoid perceived lag
   useEffect(() => {
-    setIsMounted(true)
     const now = new Date()
     setCurrentMonth(now)
     setToday(startOfDay(now))
+    setIsMounted(true)
   }, [])
 
-  // Form states
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     notes: ""
   })
 
-  // Calculate calendar grid
   const monthStart = useMemo(() => currentMonth ? startOfMonth(currentMonth) : null, [currentMonth])
   const daysInMonth = useMemo(() => currentMonth ? getDaysInMonth(currentMonth) : 0, [currentMonth])
   const firstDayOfMonth = useMemo(() => monthStart ? getDay(monthStart) : 0, [monthStart])
@@ -92,12 +90,10 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
   const illustration = PlaceHolderImages.find(img => img.id === 'consultation-illustration')
   const finalImageUrl = imageUrl || illustration?.imageUrl || "/hero-illustration.png"
 
-  const isPrevDisabled = !currentMonth || !today || isSameMonth(currentMonth, today)
-
   if (!isMounted || !currentMonth || !today) {
     return (
-      <div className="w-full max-w-xl ml-auto overflow-hidden rounded-[1.25rem] bg-white shadow-2xl border border-black/5 flex flex-col md:flex-row h-[420px] items-center justify-center">
-        <div className="animate-pulse flex flex-col items-center gap-4">
+      <div className="w-full max-w-xl ml-auto overflow-hidden rounded-[1.25rem] bg-white shadow-2xl border border-black/5 flex flex-col md:flex-row h-[420px] items-center justify-center animate-pulse">
+        <div className="flex flex-col items-center gap-4">
           <div className="w-12 h-12 bg-black/5 rounded-full" />
           <div className="h-4 w-32 bg-black/5 rounded" />
         </div>
@@ -105,14 +101,15 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
     )
   }
 
+  const isPrevDisabled = isSameMonth(currentMonth, today)
+
   const renderSections = () => (
     <div className={cn(
-      "bg-white p-5 flex flex-col justify-between border-b md:border-b-0 md:border-r border-black/5 min-h-[380px] md:h-full relative overflow-hidden",
+      "bg-white p-5 flex flex-col justify-between border-b md:border-b-0 md:border-r border-black/5 min-h-[380px] md:h-full relative overflow-hidden transition-all duration-300",
       isMobile ? "w-full h-full" : "w-full md:w-[44%]"
     )}>
       {!selectedDate ? (
-        // STEP 1: Branding / Illustration
-        <div className="flex flex-col items-center text-center justify-between h-full w-full animate-in fade-in duration-500 pt-2 pb-1">
+        <div className="flex flex-col items-center text-center justify-between h-full w-full animate-in fade-in zoom-in-95 duration-500 pt-2 pb-1">
           <div className="flex flex-col items-center w-full">
             <div className="space-y-1 w-full mb-3">
               <h3 className="text-black text-xl font-bold uppercase tracking-tight leading-none">
@@ -130,14 +127,15 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
             </div>
 
             <div className="relative w-full aspect-[4/3] mt-auto">
-              <div className="absolute top-[10%] left-[15%] right-[5%] bottom-[5%] bg-blue-50 rounded-[2rem] -z-10" />
-              <div className="relative w-full h-full rounded-lg overflow-hidden bg-transparent">
+              <div className="absolute top-[10%] left-[15%] right-[5%] bottom-[5%] bg-blue-50/50 rounded-[2rem] -z-10 blur-sm" />
+              <div className="relative w-full h-full rounded-lg overflow-hidden bg-transparent transform transition-transform duration-500 hover:scale-105">
                 <Image 
                   src={finalImageUrl}
                   alt="Consultation Illustration"
                   fill
                   className="object-contain"
                   data-ai-hint="professional consultant"
+                  priority
                 />
               </div>
             </div>
@@ -155,15 +153,14 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
           </div>
         </div>
       ) : !isDetailsStep ? (
-        // STEP 2: Time Selection
-        <div className="flex flex-col h-full animate-in fade-in slide-in-from-left-4 duration-500 overflow-hidden">
+        <div className="flex flex-col h-full animate-in fade-in slide-in-from-left-4 duration-400 overflow-hidden">
           <div className="flex items-center gap-2 mb-3 shrink-0">
             <button 
               onClick={() => {
                 setSelectedDate(null)
                 setSelectedTime(null)
               }}
-              className="p-1.5 hover:bg-black/[0.03] rounded-full transition-colors text-black/40 hover:text-black"
+              className="p-1.5 hover:bg-black/[0.03] rounded-full transition-colors text-black/40 hover:text-black active:scale-90"
             >
               <ArrowLeft className="w-3.5 h-3.5" />
             </button>
@@ -187,7 +184,7 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
                     "w-full py-2.5 px-3 rounded-lg text-[11px] font-semibold transition-all border flex items-center justify-between group",
                     selectedTime === time
                       ? "bg-[#f5b800] border-[#f5b800] text-black shadow-sm"
-                      : "bg-white border-black/5 text-black/60 hover:border-[#f5b800] hover:text-black"
+                      : "bg-white border-black/5 text-black/60 hover:border-[#f5b800] hover:text-black hover:translate-x-1"
                   )}
                 >
                   <span>{time}</span>
@@ -202,13 +199,13 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
 
           <div className={cn(
             "pt-3 mt-auto shrink-0 bg-white border-t border-black/5",
-            isMobile ? "pb-10 px-6" : ""
+            isMobile ? "pb-6 px-6" : ""
           )}>
             <button
               disabled={!selectedTime}
               onClick={() => setIsDetailsStep(true)}
               className={cn(
-                "w-full py-3 rounded-full text-[10px] font-bold uppercase tracking-widest transition-all shadow-sm",
+                "w-full py-3 rounded-full text-[10px] font-bold uppercase tracking-widest transition-all shadow-sm active:scale-95",
                 selectedTime
                   ? "bg-black text-white hover:bg-black/90"
                   : "bg-black/5 text-black/20 cursor-not-allowed"
@@ -219,12 +216,11 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
           </div>
         </div>
       ) : (
-        // STEP 3: Details Form
-        <div className="flex flex-col h-full animate-in fade-in slide-in-from-left-4 duration-500 overflow-hidden">
+        <div className="flex flex-col h-full animate-in fade-in slide-in-from-left-4 duration-400 overflow-hidden">
           <div className="flex items-center gap-2 mb-3 shrink-0">
             <button 
               onClick={() => setIsDetailsStep(false)}
-              className="p-1.5 hover:bg-black/[0.03] rounded-full transition-colors text-black/40 hover:text-black"
+              className="p-1.5 hover:bg-black/[0.03] rounded-full transition-colors text-black/40 hover:text-black active:scale-90"
             >
               <ArrowLeft className="w-3.5 h-3.5" />
             </button>
@@ -288,12 +284,12 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
 
           <div className={cn(
             "pt-3 mt-auto shrink-0 bg-white border-t border-black/5",
-            isMobile ? "pb-10 px-6" : ""
+            isMobile ? "pb-6 px-6" : ""
           )}>
             <button
               disabled={!formData.name || !formData.email}
               className={cn(
-                "w-full py-3 rounded-full text-[10px] font-bold uppercase tracking-widest transition-all shadow-sm",
+                "w-full py-3 rounded-full text-[10px] font-bold uppercase tracking-widest transition-all shadow-sm active:scale-95",
                 formData.name && formData.email
                   ? "bg-[#f5b800] text-black hover:opacity-90"
                   : "bg-black/5 text-black/20 cursor-not-allowed"
@@ -325,7 +321,7 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
               onClick={handlePrevMonth}
               disabled={isPrevDisabled}
               className={cn(
-                "p-1.5 rounded-full transition-colors",
+                "p-1.5 rounded-full transition-all active:scale-75",
                 isPrevDisabled ? "opacity-10 cursor-not-allowed" : "hover:bg-black/[0.03] text-black/30 hover:text-black"
               )}
             >
@@ -333,7 +329,7 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
             </button>
             <button 
               onClick={handleNextMonth}
-              className="p-1.5 hover:bg-black/[0.03] rounded-full transition-colors text-black/30 hover:text-black"
+              className="p-1.5 hover:bg-black/[0.03] rounded-full transition-all text-black/30 hover:text-black active:scale-75"
             >
               <ChevronRight className="w-4 h-4" />
             </button>
@@ -365,9 +361,9 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
                 setIsDetailsStep(false)
               }}
               className={cn(
-                "h-7 w-7 mx-auto flex items-center justify-center rounded-full text-[10px] font-medium transition-all",
+                "h-7 w-7 mx-auto flex items-center justify-center rounded-full text-[10px] font-medium transition-all duration-200 active:scale-75",
                 isSelected 
-                  ? "bg-[#f5b800] text-black shadow-sm font-bold" 
+                  ? "bg-[#f5b800] text-black shadow-sm font-bold scale-110" 
                   : isPast
                     ? "opacity-20 cursor-not-allowed"
                     : "bg-black/[0.01] hover:bg-black/[0.04] text-black/60"
@@ -384,7 +380,7 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
           <Globe className="w-2.5 h-2.5 text-[#f5b800]" />
           <span className="text-[8px] font-bold text-[#f5b800] uppercase tracking-wide">Time Zone</span>
         </div>
-        <div className="bg-black/5 px-2.5 py-1 rounded-full border border-black/10 flex items-center gap-1.5">
+        <div className="bg-black/5 px-2.5 py-1 rounded-full border border-black/10 flex items-center gap-1.5 hover:bg-black/10 transition-colors cursor-pointer">
           <span className="text-[8px] font-medium text-black/50">Asia/Kolkata</span>
           <div className="w-3.5 h-2.5 bg-black/10 rounded-sm flex flex-col overflow-hidden">
             <div className="flex-1 bg-[#FF9933]" />
@@ -398,21 +394,19 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
 
   return (
     <div className={cn(
-      "w-full max-w-xl ml-auto overflow-hidden rounded-[1.25rem] bg-white shadow-2xl border border-black/5 relative transition-all duration-700 animate-in fade-in slide-in-from-bottom-8",
+      "w-full max-w-xl ml-auto overflow-hidden rounded-[1.25rem] bg-white shadow-2xl border border-black/5 relative transition-all duration-700 animate-in fade-in slide-in-from-bottom-8 will-change-transform",
       isMobile ? "h-[480px]" : "flex flex-col md:flex-row md:h-[420px]"
     )}>
       {isMobile ? (
-        // MOBILE VERSION: Calendar first, then overlay sections
         <div className="w-full h-full relative">
           {renderCalendar()}
           {selectedDate && (
-            <div className="absolute inset-0 z-20 bg-white">
+            <div className="absolute inset-0 z-20 bg-white animate-in slide-in-from-right duration-400 ease-out">
               {renderSections()}
             </div>
           )}
         </div>
       ) : (
-        // DESKTOP VERSION: Side by side
         <>
           {renderSections()}
           {renderCalendar()}
