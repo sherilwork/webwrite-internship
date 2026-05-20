@@ -4,73 +4,82 @@
 import React, { useState, useEffect } from "react"
 import { motion, useMotionValue, useTransform, AnimatePresence, PanInfo } from "framer-motion"
 import { Quote, Star, RotateCcw } from "lucide-react"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import { cn } from "@/lib/utils"
 import { useIsMobile } from "@/hooks/use-mobile"
 
 const testimonials = [
   {
     id: "1",
-    name: "Sarah Jenkins",
-    role: "CEO, EcoSphere",
-    content: "Webwrite built a growth engine. Our conversions increased by 40% within the first month of launch.",
-    avatar: "https://picsum.photos/seed/user1/100/100",
+    name: "Aarav Sharma",
+    role: "CEO, TechPulse",
+    content: "Webwrite delivered a growth engine. Our conversions jumped 45% in weeks.",
   },
   {
     id: "2",
-    name: "David Chen",
-    role: "Director, FinTech",
-    content: "Their strategic thinking is unmatched. They perfectly understand design and performance intersection.",
-    avatar: "https://picsum.photos/seed/user2/100/100",
+    name: "Priya Malhotra",
+    role: "Founder, LuxeDecor",
+    content: "Strategic thinking is their forte. Design and performance are perfectly balanced.",
   },
   {
     id: "3",
-    name: "Aisha Patel",
-    role: "Founder, Luxe Fashion",
-    content: "The cinematic quality of our campaign elevated our entire market presence. Beautiful work.",
-    avatar: "https://picsum.photos/seed/user3/100/100",
+    name: "Rohan Gupta",
+    role: "Director, FinEdge",
+    content: "Streamlined our complex inventory management with a powerful B2B portal.",
   },
   {
     id: "4",
-    name: "Marcus Thorne",
-    role: "Lead, MedTech",
-    content: "They simplified our complex offering into a clear, compelling digital story that really resonates.",
-    avatar: "https://picsum.photos/seed/user4/100/100",
+    name: "Ishani Das",
+    role: "Manager, EduSmart",
+    content: "Efficiency meets creativity. Handled 100k students with zero friction.",
   },
   {
     id: "5",
-    name: "Elena Rodriguez",
-    role: "Manager, LMS",
-    content: "Efficiency meets creativity. They delivered a platform that handles 500k students with zero friction.",
-    avatar: "https://picsum.photos/seed/user5/100/100",
+    name: "Arjun Verma",
+    role: "Co-Founder, HealthHub",
+    content: "The SEO strategy cut our acquisition cost by half. Incredible results.",
   },
   {
     id: "6",
-    name: "James Wilson",
-    role: "Co-Founder, Retail",
-    content: "The SEO and Meta Ads strategy cut our acquisition cost in half. Truly impressive results.",
-    avatar: "https://picsum.photos/seed/user6/100/100",
+    name: "Sanjana Rao",
+    role: "Lead, CloudCompute",
+    content: "A partnership built on trust. Community-first approach that really works.",
   },
   {
     id: "7",
-    name: "Robert Fox",
-    role: "Ops, Sagar Disposal",
-    content: "The B2B portal they developed completely streamlined our inventory management. Very professional.",
-    avatar: "https://picsum.photos/seed/user7/100/100",
+    name: "Vikram Singh",
+    role: "CEO, AgroTrade",
+    content: "Simplified our supply chain digital story. Highly professional team.",
   },
   {
     id: "8",
-    name: "Emily Davis",
-    role: "Founder, Sundar Vibes",
-    content: "Creative, responsive, and strategic. They've become an essential extension of our core team.",
-    avatar: "https://picsum.photos/seed/user8/100/100",
+    name: "Meera Iyer",
+    role: "Founder, StyleHub",
+    content: "Cinematic quality campaign that elevated our brand presence significantly.",
   },
   {
     id: "9",
-    name: "Michael Brown",
-    role: "Lead, AWS UG Pune",
-    content: "A partnership built on trust. Their community-first approach helped us grow our network significantly.",
-    avatar: "https://picsum.photos/seed/user9/100/100",
+    name: "Kavya Nair",
+    role: "Director, BioMed",
+    content: "Empowered our business with tools to lead the industry with clarity.",
+  },
+  {
+    id: "10",
+    name: "Aditya Joshi",
+    role: "Product Lead, SmartHome",
+    content: "Creative and responsive. An essential extension of our core team.",
+  },
+  {
+    id: "11",
+    name: "Ananya Mittal",
+    role: "Manager, GreenEnergy",
+    content: "Delivered solutions that connect and content that resonates deeply.",
+  },
+  {
+    id: "12",
+    name: "Yash Kapoor",
+    role: "Founder, AdTech",
+    content: "High-impact digital strategy that really scales. Exceptional work.",
   }
 ]
 
@@ -94,8 +103,7 @@ function TestimonialCard({ testimonial }: { testimonial: typeof testimonials[0] 
 
         <div className="flex items-center gap-2.5 pt-3 border-t border-black/[0.05]">
           <Avatar className="h-8 w-8 border border-white shadow-sm">
-            <AvatarImage src={testimonial.avatar} alt={testimonial.name} />
-            <AvatarFallback className="bg-black text-white text-[8px]">{testimonial.name[0]}</AvatarFallback>
+            <AvatarFallback className="bg-black text-white text-[9px] font-black uppercase">{testimonial.name[0]}</AvatarFallback>
           </Avatar>
           <div className="flex flex-col">
             <span className="text-[10px] font-black uppercase tracking-wider text-black">{testimonial.name}</span>
@@ -112,7 +120,6 @@ function TinderCard({ testimonial, onRemove, index, total }: { testimonial: type
   const rotate = useTransform(x, [-200, 200], [-25, 25])
   const opacity = useTransform(x, [-200, -150, 0, 150, 200], [0, 1, 1, 1, 0])
 
-  // Improved physics-based swipe handling
   function handleDragEnd(event: any, info: PanInfo) {
     const swipeThreshold = 100
     const velocityThreshold = 500
@@ -191,9 +198,9 @@ export function Testimonials() {
     setIsMounted(true)
   }, [])
 
-  const col1 = [testimonials[0], testimonials[3], testimonials[6]]
-  const col2 = [testimonials[1], testimonials[4], testimonials[7]]
-  const col3 = [testimonials[2], testimonials[5], testimonials[8]]
+  const col1 = [testimonials[0], testimonials[3], testimonials[6], testimonials[9]]
+  const col2 = [testimonials[1], testimonials[4], testimonials[7], testimonials[10]]
+  const col3 = [testimonials[2], testimonials[5], testimonials[8], testimonials[11]]
 
   const removeCard = () => {
     setMobileItems((prev) => prev.slice(1))
@@ -234,8 +241,8 @@ export function Testimonials() {
         </div>
 
         {isMobile ? (
-          <div className="relative h-[320px] flex flex-col items-center">
-            <div className="relative w-full max-w-[320px] h-[180px]">
+          <div className="relative h-[360px] flex flex-col items-center">
+            <div className="relative w-full max-w-[320px] h-[200px]">
               <AnimatePresence initial={false}>
                 {mobileItems.length > 0 ? (
                   mobileItems.slice(0, 3).reverse().map((t, idx) => (
