@@ -1,3 +1,4 @@
+
 "use client"
 
 import React, { useEffect, useState } from 'react'
@@ -5,10 +6,10 @@ import Image from 'next/image'
 import { cn } from '@/lib/utils'
 
 /**
- * Tech Section - High Performance Optimized Version
- * - Icons displayed in full color for maximum brand recognition.
+ * Tech Section - High Performance Optimized Light Version
+ * - Matches the visual language of the About Section.
  * - Hardware accelerated animations for 60fps smoothness.
- * - Responsive layout: 6 Rows (Mobile) | 3 Rows (Desktop).
+ * - Optimized for light theme backgrounds.
  */
 const techStack = [
   { name: 'Next.js', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg' },
@@ -45,7 +46,7 @@ export function Tech() {
   }, []);
 
   if (!mounted) {
-    return <section className="bg-black py-32 w-full h-[600px]" />;
+    return <section className="bg-white py-32 w-full h-[600px]" />;
   }
 
   // Row distributions
@@ -83,8 +84,8 @@ export function Tech() {
         />
       </div>
       <span className={cn(
-        "font-medium text-white tracking-tight whitespace-nowrap transition-colors duration-300",
-        isMobile ? "text-lg" : "text-3xl"
+        "font-black text-black/80 tracking-tight whitespace-nowrap transition-colors duration-300 uppercase",
+        isMobile ? "text-sm" : "text-2xl"
       )}>
         {tech.name}
       </span>
@@ -103,7 +104,7 @@ export function Tech() {
       <div className="flex overflow-hidden relative group/row w-full select-none">
         <div 
           className={cn(
-            "flex items-center py-2 will-change-transform transform-gpu",
+            "flex items-center py-4 will-change-transform transform-gpu",
             direction === 'left' ? "animate-tech-marquee-left" : "animate-tech-marquee-right",
             "group-hover/row:[animation-play-state:paused]"
           )}
@@ -117,37 +118,36 @@ export function Tech() {
   };
 
   return (
-    <section className="bg-black py-24 lg:py-32 px-6 md:px-12 relative overflow-hidden select-none border-y border-white/5">
-      {/* Background Ambience */}
+    <section className="bg-white py-24 lg:py-32 px-6 md:px-12 relative overflow-hidden select-none border-t border-black/[0.03]">
+      {/* Background Ambient Effects */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-[300px] bg-[#f5b800]/5 blur-[120px] rounded-full pointer-events-none" />
       
-      <div className="max-w-[1440px] mx-auto space-y-16 lg:space-y-24 relative z-10">
+      <div className="max-w-[1440px] mx-auto space-y-16 lg:space-y-20 relative z-10">
         
-        {/* Header Label */}
-        <div className="flex justify-between items-center px-4">
-          <div className="flex items-center gap-3">
-            <div className="w-1.5 h-1.5 bg-[#f5b800] rotate-45 shadow-[0_0_10px_#f5b800]" />
-            <h2 className="text-[10px] uppercase tracking-[0.4em] font-bold text-white font-orbitron">
-              Technologies We Use
-            </h2>
-          </div>
-          <div className="hidden md:flex items-center gap-6 opacity-20">
-            <div className="flex gap-1.5 items-center">
-              <div className="w-10 h-[1px] bg-white" />
-              <div className="w-1.5 h-[1px] bg-white" />
+        {/* Header Section - Matches About Section Style */}
+        <div className="px-4 space-y-6">
+          <div className="space-y-4">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/[0.03] border border-black/[0.05]">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#f5b800]" />
+              <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-black/60">Our Toolkit</span>
             </div>
+            <h2 className="text-3xl md:text-5xl lg:text-6xl font-black text-black leading-[1.05] tracking-tighter uppercase">
+              POWERING YOUR <br />
+              <span className="text-[#f5b800]">DIGITAL VISION</span>
+            </h2>
+            <div className="w-16 md:w-20 h-1.5 bg-black mt-2" />
           </div>
         </div>
 
         {/* Desktop Layout - 3 Rows */}
-        <div className="hidden lg:flex flex-col gap-12 relative">
+        <div className="hidden lg:flex flex-col gap-10 relative">
           <MarqueeRow items={desktopRows[0]} direction="left" speed="normal" />
           <MarqueeRow items={desktopRows[1]} direction="right" speed="slow" />
           <MarqueeRow items={desktopRows[2]} direction="left" speed="fast" />
         </div>
 
         {/* Mobile Layout - 6 Rows */}
-        <div className="flex lg:hidden flex-col gap-8 relative">
+        <div className="flex lg:hidden flex-col gap-6 relative">
           <MarqueeRow items={mobileRows[0]} direction="left" speed="fast" isMobile />
           <MarqueeRow items={mobileRows[1]} direction="right" speed="normal" isMobile />
           <MarqueeRow items={mobileRows[2]} direction="left" speed="slow" isMobile />
