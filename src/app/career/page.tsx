@@ -241,7 +241,10 @@ export default function CareerPage() {
 
       {/* Application Dialog */}
       <Dialog open={isApplyOpen} onOpenChange={setIsApplyOpen}>
-        <DialogContent className="w-[92%] md:max-w-3xl p-0 bg-white border border-black/5 rounded-xl overflow-hidden shadow-2xl max-h-[90vh] md:max-h-[85vh] font-body flex flex-col">
+        <DialogContent 
+          className="w-[92%] md:max-w-3xl p-0 bg-white border border-black/5 rounded-xl overflow-hidden shadow-2xl max-h-[90vh] md:max-h-[85vh] font-body flex flex-col"
+          data-lenis-prevent
+        >
           <div className="bg-[#f5b800] p-6 md:p-8 text-black shrink-0">
             <DialogHeader>
               <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-black/10 border border-black/5 mb-3 w-fit">
@@ -331,7 +334,10 @@ export default function CareerPage() {
 
       {/* Details Dialog */}
       <Dialog open={isDetailsOpen} onOpenChange={setIsDetailsOpen}>
-        <DialogContent className="w-[92%] md:max-w-3xl p-0 bg-white border border-black/5 rounded-xl overflow-hidden shadow-2xl max-h-[90vh] md:max-h-[85vh] font-body flex flex-col">
+        <DialogContent 
+          className="w-[92%] md:max-w-3xl p-0 bg-white border border-black/5 rounded-xl overflow-hidden shadow-2xl max-h-[90vh] md:max-h-[85vh] font-body flex flex-col"
+          data-lenis-prevent
+        >
           <div className="bg-[#f5b800] p-6 md:p-8 text-black shrink-0">
             <DialogHeader>
               <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-black/10 border border-black/5 mb-3 w-fit">
@@ -398,7 +404,7 @@ export default function CareerPage() {
       {/* Culture Section */}
       <section className="pb-24 bg-white">
         <div className="container mx-auto px-6 max-w-6xl">
-          <div className="p-12 rounded-2xl bg-black text-white flex flex-col md:flex-row items-center justify-between gap-8 shadow-2xl overflow-hidden relative">
+          <div className="p-12 rounded-xl bg-black text-white flex flex-col md:flex-row items-center justify-between gap-8 shadow-2xl overflow-hidden relative">
             <div className="absolute top-0 right-0 w-1/3 h-full bg-[#f5b800]/10 blur-[100px] rounded-full" />
             <div className="space-y-4 text-center md:text-left relative z-10">
               <h2 className="text-3xl font-black uppercase tracking-tighter">Not seeing your role?</h2>
