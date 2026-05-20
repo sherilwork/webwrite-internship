@@ -266,13 +266,6 @@ export function FeaturedWork() {
             </motion.div>
           </AnimatePresence>
         </div>
-
-        <div className="mt-12 flex justify-center">
-          <Button className="rounded-full bg-black text-white px-8 py-5 text-[9px] font-bold uppercase tracking-[0.2em] hover:bg-black/90 transition-all hover:translate-y-[-1px] active:scale-95 shadow-xl shadow-black/10 group h-auto">
-            View Full Portfolio
-            <ArrowUpRight className="w-3.5 h-3.5 ml-2 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-          </Button>
-        </div>
       </div>
     </section>
   )
