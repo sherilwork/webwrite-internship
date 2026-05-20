@@ -13,6 +13,7 @@ import { Testimonials } from "@/components/Testimonials"
 import { FounderSection } from "@/components/FounderSection"
 import { FAQSection } from "@/components/FAQSection"
 import { ContactSection } from "@/components/ContactSection"
+import { Footer } from "@/components/Footer"
 import { Toaster } from "@/components/ui/toaster"
 
 export default function Home() {
@@ -29,6 +30,7 @@ export default function Home() {
       <FounderSection />
       <FAQSection />
       <ContactSection />
+      <Footer />
       <Toaster />
     </main>
   )
