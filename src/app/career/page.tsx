@@ -176,7 +176,7 @@ export default function CareerPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: idx * 0.1 }}
-                  className="group relative p-8 rounded-[2rem] bg-black/[0.01] border border-black/[0.05] hover:bg-black hover:text-white transition-all duration-500 overflow-hidden flex flex-col justify-between"
+                  className="group relative p-8 lg:pb-14 rounded-[2rem] bg-black/[0.01] border border-black/[0.05] hover:bg-black hover:text-white transition-all duration-500 overflow-hidden flex flex-col justify-between"
                 >
                   <div className="space-y-6 relative z-10">
                     <div className="space-y-4">
@@ -202,22 +202,22 @@ export default function CareerPage() {
                         {job.description}
                       </p>
                     </div>
+                  </div>
 
-                    <div className="flex flex-col gap-3 pt-4">
-                      <Button 
-                        onClick={() => openApply(job)}
-                        className="w-full rounded-full bg-[#f5b800] text-black text-[10px] font-black uppercase tracking-widest hover:bg-white transition-all py-6 h-auto"
-                      >
-                        APPLY NOW
-                      </Button>
-                      <Button 
-                        variant="outline" 
-                        onClick={() => openDetails(job)}
-                        className="w-full rounded-full border-black/10 bg-white group-hover:bg-white text-black group-hover:text-black text-[10px] font-black uppercase tracking-widest py-6 h-auto transition-colors"
-                      >
-                        VIEW DETAILS
-                      </Button>
-                    </div>
+                  <div className="flex flex-col gap-3 pt-6 relative z-10">
+                    <Button 
+                      onClick={() => openApply(job)}
+                      className="w-full rounded-full bg-[#f5b800] text-black text-[10px] font-black uppercase tracking-widest hover:bg-white transition-all py-6 h-auto"
+                    >
+                      APPLY NOW
+                    </Button>
+                    <Button 
+                      variant="outline" 
+                      onClick={() => openDetails(job)}
+                      className="w-full rounded-full border-black/10 bg-white group-hover:bg-white text-black group-hover:text-black text-[10px] font-black uppercase tracking-widest py-6 h-auto transition-colors"
+                    >
+                      VIEW DETAILS
+                    </Button>
                   </div>
 
                   <div className="absolute top-4 right-8 text-[60px] font-black text-black/[0.02] group-hover:text-white/[0.01] pointer-events-none transition-colors">
