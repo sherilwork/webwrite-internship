@@ -53,19 +53,19 @@ export function FounderSection() {
                   <ArrowUpRight className="w-3 h-3 group-hover:rotate-45 transition-transform" />
                 </button>
                 <div className="flex flex-wrap gap-2">
-                  <a href={founder.linkedin} className="p-2 rounded-full bg-black/[0.03] hover:bg-[#f5b800]/20 transition-colors" title="LinkedIn">
+                  <a href={founder.linkedin} target="_blank" rel="noopener noreferrer" className="p-2 rounded-full bg-black/[0.03] hover:bg-[#f5b800]/20 transition-colors" title="LinkedIn">
                     <Linkedin className="w-4 h-4 text-black" />
                   </a>
-                  <a href={founder.instagram} className="p-2 rounded-full bg-black/[0.03] hover:bg-[#f5b800]/20 transition-colors" title="Instagram">
+                  <a href={founder.instagram} target="_blank" rel="noopener noreferrer" className="p-2 rounded-full bg-black/[0.03] hover:bg-[#f5b800]/20 transition-colors" title="Instagram">
                     <Instagram className="w-4 h-4 text-black" />
                   </a>
-                  <a href={founder.facebook} className="p-2 rounded-full bg-black/[0.03] hover:bg-[#f5b800]/20 transition-colors" title="Facebook">
+                  <a href={founder.facebook} target="_blank" rel="noopener noreferrer" className="p-2 rounded-full bg-black/[0.03] hover:bg-[#f5b800]/20 transition-colors" title="Facebook">
                     <Facebook className="w-4 h-4 text-black" />
                   </a>
-                  <a href={founder.twitter} className="p-2 rounded-full bg-black/[0.03] hover:bg-[#f5b800]/20 transition-colors" title="X (Twitter)">
+                  <a href={founder.twitter} target="_blank" rel="noopener noreferrer" className="p-2 rounded-full bg-black/[0.03] hover:bg-[#f5b800]/20 transition-colors" title="X (Twitter)">
                     <Twitter className="w-4 h-4 text-black" />
                   </a>
-                  <a href={founder.youtube} className="p-2 rounded-full bg-black/[0.03] hover:bg-[#f5b800]/20 transition-colors" title="YouTube">
+                  <a href={founder.youtube} target="_blank" rel="noopener noreferrer" className="p-2 rounded-full bg-black/[0.03] hover:bg-[#f5b800]/20 transition-colors" title="YouTube">
                     <Youtube className="w-4 h-4 text-black" />
                   </a>
                 </div>
@@ -73,7 +73,7 @@ export function FounderSection() {
             </motion.div>
           </div>
 
-          {/* Right: Visual Image - Reduced size for more minimalist feel */}
+          {/* Right: Visual Image */}
           <div className="flex-1 order-1 lg:order-2 w-full max-w-[260px] md:max-w-[320px] lg:max-w-[380px]">
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
