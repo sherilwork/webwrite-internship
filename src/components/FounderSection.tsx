@@ -73,8 +73,8 @@ export function FounderSection() {
             </motion.div>
           </div>
 
-          {/* Right: Visual Image */}
-          <div className="flex-1 order-1 lg:order-2 w-full max-w-[320px] md:max-w-md lg:max-w-none">
+          {/* Right: Visual Image - Reduced size for more minimalist feel */}
+          <div className="flex-1 order-1 lg:order-2 w-full max-w-[260px] md:max-w-[320px] lg:max-w-[380px]">
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
