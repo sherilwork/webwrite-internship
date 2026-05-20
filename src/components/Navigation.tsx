@@ -4,6 +4,7 @@
 import * as React from "react"
 import Link from "next/link"
 import Image from "next/image"
+import { Menu } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { PlaceHolderImages } from "@/lib/placeholder-images"
 
@@ -48,9 +49,13 @@ export function Navigation() {
           ))}
         </div>
 
-        <Button className="rounded-full bg-black hover:bg-black/90 text-white px-6 font-medium">
+        <Button className="hidden md:inline-flex rounded-full bg-black hover:bg-black/90 text-white px-6 font-medium">
           Get started
         </Button>
+
+        <button className="md:hidden p-1.5 text-black/70 hover:bg-black/5 rounded-full transition-colors" aria-label="Toggle menu">
+          <Menu className="w-6 h-6" />
+        </button>
       </nav>
     </header>
   )
