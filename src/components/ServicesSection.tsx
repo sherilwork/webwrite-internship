@@ -62,7 +62,7 @@ const services = [
 
 export default function ServicesSection() {
   return (
-    <section className="relative bg-[#f7f7f5] py-24 lg:py-48 overflow-visible min-h-screen flex items-center">
+    <section className="relative bg-white py-24 lg:py-48 overflow-visible min-h-screen flex items-center">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
         <div className="absolute left-0 top-0 h-full w-full bg-[radial-gradient(circle_at_top_left,black_1px,transparent_1px)] bg-[size:32px_32px]" />
@@ -136,7 +136,7 @@ function ServiceCard({ service, index }: { service: typeof services[0], index: n
         zIndex: 20 + index,
       }}
     >
-      <div className="group relative overflow-hidden rounded-[28px] border border-black/[0.04] bg-white p-8 md:p-10 shadow-[0_10px_40px_rgba(0,0,0,0.02)] transition-all duration-700 hover:shadow-[0_20px_60px_rgba(0,0,0,0.04)] transform-gpu min-h-[160px] md:min-h-[180px] flex items-center">
+      <div className="group relative overflow-hidden rounded-[28px] border border-black/[0.04] bg-[#f7f7f5] p-8 md:p-10 shadow-[0_10px_40px_rgba(0,0,0,0.02)] transition-all duration-700 hover:shadow-[0_20px_60px_rgba(0,0,0,0.04)] transform-gpu min-h-[160px] md:min-h-[180px] flex items-center">
         
         <div className={cn(
           "absolute inset-0 opacity-0 transition-opacity duration-700 group-hover:opacity-[0.1]",
