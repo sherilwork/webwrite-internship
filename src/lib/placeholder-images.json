@@ -59,6 +59,48 @@
       "description": "Social Media Campaign Results",
       "imageUrl": "https://picsum.photos/seed/15/800/500",
       "imageHint": "social marketing"
+    },
+    {
+      "id": "work-video-3",
+      "description": "Product Launch Teaser",
+      "imageUrl": "https://picsum.photos/seed/30/800/450",
+      "imageHint": "product reveal"
+    },
+    {
+      "id": "work-video-4",
+      "description": "Social First Campaign",
+      "imageUrl": "https://picsum.photos/seed/31/800/450",
+      "imageHint": "social media"
+    },
+    {
+      "id": "work-video-5",
+      "description": "Corporate Culture Film",
+      "imageUrl": "https://picsum.photos/seed/32/800/450",
+      "imageHint": "corporate office"
+    },
+    {
+      "id": "work-video-6",
+      "description": "Animation Masterclass",
+      "imageUrl": "https://picsum.photos/seed/33/800/450",
+      "imageHint": "animation reel"
+    },
+    {
+      "id": "work-video-7",
+      "description": "Global Event Reel",
+      "imageUrl": "https://picsum.photos/seed/34/800/450",
+      "imageHint": "event production"
+    },
+    {
+      "id": "work-video-8",
+      "description": "3D Product Render",
+      "imageUrl": "https://picsum.photos/seed/35/800/450",
+      "imageHint": "3d visual"
+    },
+    {
+      "id": "work-video-9",
+      "description": "Short Film Series",
+      "imageUrl": "https://picsum.photos/seed/36/800/450",
+      "imageHint": "cinematic story"
     }
   ]
 }

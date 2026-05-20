@@ -26,6 +26,7 @@ const subCategoriesMap: Record<string, string[]> = {
 }
 
 const projects = [
+  // 9 Video Projects
   {
     id: 1,
     title: "Cinematic Brand Story",
@@ -34,24 +35,6 @@ const projects = [
     image: "work-video-1",
     metric: "2.4M Views",
     description: "High-end brand storytelling for global tech leaders."
-  },
-  {
-    id: 2,
-    title: "EcoSphere SaaS Platform",
-    category: "Websites",
-    subCategory: "SaaS",
-    image: "work-website-1",
-    metric: "99.9% Performance",
-    description: "Cloud-native infrastructure visualization dashboard."
-  },
-  {
-    id: 3,
-    title: "Global Meta Campaign",
-    category: "Ads Results",
-    subCategory: "Meta Ads",
-    image: "work-ads-1",
-    metric: "12.5x ROAS",
-    description: "Data-driven scale for high-performance e-commerce."
   },
   {
     id: 4,
@@ -63,6 +46,79 @@ const projects = [
     description: "Custom motion graphics for broadcast television."
   },
   {
+    id: 7,
+    title: "Product Launch Teaser",
+    category: "Videos",
+    subCategory: "Commercial",
+    image: "work-video-3",
+    metric: "1.2M Views",
+    description: "High-energy teaser for a major product unveiling."
+  },
+  {
+    id: 8,
+    title: "Social First Campaign",
+    category: "Videos",
+    subCategory: "Commercial",
+    image: "work-video-4",
+    metric: "500k Likes",
+    description: "Vertical video content optimized for social engagement."
+  },
+  {
+    id: 9,
+    title: "Corporate Culture Film",
+    category: "Videos",
+    subCategory: "Brand Story",
+    image: "work-video-5",
+    metric: "Premium Sound",
+    description: "Internal and external culture building through film."
+  },
+  {
+    id: 10,
+    title: "Animation Masterclass",
+    category: "Videos",
+    subCategory: "Motion Graphics",
+    image: "work-video-6",
+    metric: "60 FPS",
+    description: "Educational motion graphics for digital platforms."
+  },
+  {
+    id: 11,
+    title: "Global Event Reel",
+    category: "Videos",
+    subCategory: "Brand Story",
+    image: "work-video-7",
+    metric: "Live Audio",
+    description: "Capturing the energy of global summits and events."
+  },
+  {
+    id: 12,
+    title: "3D Product Render",
+    category: "Videos",
+    subCategory: "Motion Graphics",
+    image: "work-video-8",
+    metric: "8k Texture",
+    description: "Hyper-realistic 3D visualization for manufacturing."
+  },
+  {
+    id: 13,
+    title: "Short Film Series",
+    category: "Videos",
+    subCategory: "Brand Story",
+    image: "work-video-9",
+    metric: "Award Winning",
+    description: "Narrative storytelling that defines a brand's soul."
+  },
+  // Websites
+  {
+    id: 2,
+    title: "EcoSphere SaaS Platform",
+    category: "Websites",
+    subCategory: "SaaS",
+    image: "work-website-1",
+    metric: "99.9% Performance",
+    description: "Cloud-native infrastructure visualization dashboard."
+  },
+  {
     id: 5,
     title: "Luxe Fashion Store",
     category: "Websites",
@@ -70,6 +126,16 @@ const projects = [
     image: "work-website-2",
     metric: "300% Conversion",
     description: "High-converting headless commerce experience."
+  },
+  // Ads Results
+  {
+    id: 3,
+    title: "Global Meta Campaign",
+    category: "Ads Results",
+    subCategory: "Meta Ads",
+    image: "work-ads-1",
+    metric: "12.5x ROAS",
+    description: "Data-driven scale for high-performance e-commerce."
   },
   {
     id: 6,
@@ -111,7 +177,6 @@ export function FeaturedWork() {
         transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
         className="group relative h-full pb-8"
       >
-        {/* Changed to Portrait Aspect Ratio (Vertical Cards) */}
         <div className="relative aspect-[3/4] rounded-[2rem] overflow-hidden bg-[#f7f7f5] border border-black/[0.05] shadow-[0_10px_40px_rgba(0,0,0,0.02)] transition-all duration-700 group-hover:shadow-[0_20px_60px_rgba(0,0,0,0.08)] transform-gpu">
           {projectImage?.imageUrl && (
             <Image
