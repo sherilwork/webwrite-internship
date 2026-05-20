@@ -105,7 +105,7 @@ export default function ServicesSection() {
           </div>
 
           {/* Right Column: Stacked Cards */}
-          <div className="flex flex-col gap-8 lg:gap-12 relative">
+          <div className="flex flex-col gap-6 lg:gap-8 relative">
             {services.map((service, index) => (
               <ServiceCard 
                 key={service.title} 
@@ -131,12 +131,12 @@ function ServiceCard({ service, index }: { service: typeof services[0], index: n
       transition={{ duration: 0.8, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
       className="w-full lg:sticky will-change-transform"
       style={{
-        // Increased top offset for "neeche karo" and tighter stacking
+        // Sticky offset adjusted for the smaller card size
         top: `calc(160px + ${index * 24}px)`,
         zIndex: 20 + index,
       }}
     >
-      <div className="group relative overflow-hidden rounded-[24px] border border-black/[0.04] bg-white p-8 md:p-10 shadow-[0_15px_60px_rgba(0,0,0,0.02)] transition-all duration-700 hover:shadow-[0_30px_80px_rgba(0,0,0,0.04)] transform-gpu">
+      <div className="group relative overflow-hidden rounded-[20px] border border-black/[0.04] bg-white p-6 md:p-7 shadow-[0_10px_40px_rgba(0,0,0,0.02)] transition-all duration-700 hover:shadow-[0_20px_60px_rgba(0,0,0,0.04)] transform-gpu">
         
         {/* Subtle Brand Hover Highlight */}
         <div className={cn(
@@ -144,34 +144,34 @@ function ServiceCard({ service, index }: { service: typeof services[0], index: n
           service.accent
         )} />
 
-        <div className="relative flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
-          <div className="flex flex-col md:flex-row items-start md:items-center gap-8">
-            {/* Reduced Icon Box Size */}
+        <div className="relative flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+          <div className="flex flex-col md:flex-row items-start md:items-center gap-6">
+            {/* Standard Premium Icon Box Size */}
             <div className={cn(
-              "flex h-16 w-16 md:h-20 md:w-20 shrink-0 items-center justify-center rounded-[24px] border border-black/[0.03] transition-all duration-700 group-hover:scale-105 group-hover:rotate-3",
+              "flex h-12 w-12 md:h-14 md:w-14 shrink-0 items-center justify-center rounded-[18px] border border-black/[0.03] transition-all duration-700 group-hover:scale-105 group-hover:rotate-3",
               service.accent
             )}>
-              <Icon size={28} strokeWidth={1.2} className="text-black transition-transform duration-700 group-hover:scale-110" />
+              <Icon size={22} strokeWidth={1.5} className="text-black transition-transform duration-700 group-hover:scale-110" />
             </div>
 
-            <div className="space-y-3">
-              <h3 className="text-2xl md:text-3xl font-medium tracking-[-0.03em] text-[#111111]">
+            <div className="space-y-2">
+              <h3 className="text-lg md:text-xl font-bold tracking-tight text-[#111111]">
                 {service.title}
               </h3>
-              <p className="max-w-md text-sm md:text-base leading-relaxed text-black/40 font-medium">
+              <p className="max-w-sm text-xs md:text-sm leading-relaxed text-black/40 font-medium">
                 {service.description}
               </p>
             </div>
           </div>
 
-          {/* Action Trigger */}
-          <button className="flex h-12 w-12 md:h-14 md:w-14 items-center justify-center rounded-full bg-black text-white transition-all duration-500 hover:scale-110 active:scale-90 group/btn shrink-0">
-            <ArrowUpRight size={24} strokeWidth={2} className="transition-transform duration-500 group-hover:rotate-45" />
+          {/* Action Trigger Button */}
+          <button className="flex h-10 w-10 md:h-11 md:w-11 items-center justify-center rounded-full bg-black text-white transition-all duration-500 hover:scale-110 active:scale-90 group/btn shrink-0">
+            <ArrowUpRight size={18} strokeWidth={2} className="transition-transform duration-500 group-hover:rotate-45" />
           </button>
         </div>
 
-        {/* Index Number Indicator - Smaller for minimalism */}
-        <div className="absolute top-8 right-10 text-[60px] md:text-[80px] font-black text-black/[0.015] leading-none select-none tracking-tighter transition-all duration-700 group-hover:text-black/[0.03] group-hover:-translate-y-1 pointer-events-none">
+        {/* Index Number Indicator - Minimalist */}
+        <div className="absolute top-6 right-8 text-[40px] md:text-[50px] font-black text-black/[0.015] leading-none select-none tracking-tighter transition-all duration-700 group-hover:text-black/[0.03] group-hover:-translate-y-1 pointer-events-none">
           {index + 1}
         </div>
       </div>
