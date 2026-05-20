@@ -34,7 +34,7 @@ export function Footer() {
       { label: "Our Services", href: "/services" },
       { label: "Portfolio", href: "/portfolio" },
       { label: "Founder", href: "/founder" },
-      { label: "Careers", href: "#" },
+      { label: "Careers", href: "/career" },
     ],
     services: [
       { label: "Web Development", href: "/services" },

@@ -2,6 +2,7 @@
 "use client"
 
 import React from "react"
+import Link from "next/link"
 import { 
   Phone, 
   Mail, 
@@ -23,7 +24,7 @@ export function SubHeader() {
         <div className="flex items-center gap-2 group cursor-pointer">
           <Phone className="w-3.5 h-3.5 text-[#f5b800]" />
           <span className="text-[10px] md:text-[11px] font-bold text-white/80 uppercase tracking-wider group-hover:text-white transition-colors">
-            +91 8000-334444
+            +91 7906627288
           </span>
         </div>
         <div className="h-4 w-px bg-white/10" />
@@ -34,17 +35,17 @@ export function SubHeader() {
           </span>
         </div>
         <div className="h-4 w-px bg-white/10" />
-        <div className="flex items-center gap-2 group cursor-pointer">
+        <Link href="/career" className="flex items-center gap-2 group cursor-pointer">
           <Briefcase className="w-4 h-4 text-[#f5b800]" />
           <span className="text-[11px] font-bold text-white/80 uppercase tracking-wider group-hover:text-white transition-colors">
             Career With Us
           </span>
-        </div>
+        </Link>
       </div>
 
       {/* Mobile-only Phone Link (left) */}
       <div className="flex lg:hidden items-center animate-in fade-in duration-1000">
-        <a href="tel:+918000334444" className="flex items-center gap-1.5 group">
+        <a href="tel:+917906627288" className="flex items-center gap-1.5 group">
           <Phone className="w-3.5 h-3.5 text-[#f5b800]" />
           <span className="text-[9px] font-black text-white/90 uppercase tracking-tighter">Call Now</span>
         </a>
@@ -64,10 +65,10 @@ export function SubHeader() {
 
       {/* Mobile-only Career Link (right) */}
       <div className="flex lg:hidden items-center animate-in fade-in duration-1000">
-        <div className="flex items-center gap-1.5 group cursor-pointer">
+        <Link href="/career" className="flex items-center gap-1.5 group cursor-pointer">
           <Briefcase className="w-3.5 h-3.5 text-[#f5b800]" />
           <span className="text-[9px] font-black text-white/90 uppercase tracking-tighter">Career</span>
-        </div>
+        </Link>
       </div>
 
       {/* Right Section: Socials - Hidden on mobile, visible on desktop */}
