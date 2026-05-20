@@ -57,7 +57,7 @@ export default function AboutPage() {
       <Navigation />
 
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 overflow-hidden">
+      <section className="relative pt-48 pb-20 overflow-hidden">
         <GridBackground gridSize={40} gridOpacity={0.03} showEdgeFade={true} className="h-[600px] absolute inset-0 -z-10" />
         <div className="container mx-auto px-6 max-w-6xl">
           <motion.div 
