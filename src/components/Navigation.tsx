@@ -102,10 +102,10 @@ export function Navigation() {
             </button>
           </SheetTrigger>
           <SheetContent side="left" className="w-[85%] p-0 flex flex-col bg-white border-r overflow-visible">
-            {/* Custom Side Tab Close Button - Mountain Curve Shape with Brand Color */}
+            {/* Custom Side Tab Close Button - Mountain Curve Shape with defined border */}
             <div className="absolute -right-10 bottom-40 z-50">
               <SheetClose asChild>
-                <button className="w-10 h-24 bg-white border-l-0 border border-black/[0.02] rounded-r-[32px] shadow-[20px_0_40px_-10px_rgba(0,0,0,0.08)] flex items-center justify-center pr-3 pl-0.5 group hover:w-11 transition-all duration-300 ease-in-out">
+                <button className="w-10 h-24 bg-white border-l-0 border border-black/[0.15] rounded-r-[32px] shadow-[20px_0_40px_-10px_rgba(0,0,0,0.08)] flex items-center justify-center pr-3 pl-0.5 group hover:w-11 transition-all duration-300 ease-in-out">
                   <div className="w-7 h-7 rounded-full bg-[#f5b800]/5 group-hover:bg-[#f5b800]/10 flex items-center justify-center transition-all duration-300">
                     <ChevronLeft className="w-5 h-5 text-[#f5b800] transition-colors" />
                   </div>
@@ -115,7 +115,7 @@ export function Navigation() {
 
             <SheetHeader className="pt-16 pb-6 px-6 border-b flex flex-row items-center gap-4 space-y-0 text-left">
               <SheetClose asChild>
-                <button className="w-10 h-10 rounded-xl border border-black/[0.03] bg-black/[0.01] flex items-center justify-center hover:bg-[#f5b800]/5 transition-all hover:scale-105 active:scale-95 shrink-0 group">
+                <button className="w-10 h-10 rounded-xl border border-black/[0.15] bg-black/[0.01] flex items-center justify-center hover:bg-[#f5b800]/5 transition-all hover:scale-105 active:scale-95 shrink-0 group">
                    <ChevronLeft className="w-5 h-5 text-[#f5b800] transition-colors" />
                 </button>
               </SheetClose>
