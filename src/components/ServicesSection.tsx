@@ -62,21 +62,21 @@ const services = [
 
 export default function ServicesSection() {
   return (
-    <section className="relative bg-white py-24 lg:py-48 overflow-visible min-h-screen flex items-center">
+    <section className="relative bg-white py-24 lg:pt-48 lg:pb-72 overflow-visible min-h-screen flex items-start">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
         <div className="absolute left-0 top-0 h-full w-full bg-[radial-gradient(circle_at_top_left,black_1px,transparent_1px)] bg-[size:32px_32px]" />
       </div>
 
       <div className="relative mx-auto max-w-7xl px-6 lg:px-12 w-full">
-        <div className="grid gap-16 lg:grid-cols-2 lg:gap-12 items-start">
+        <div className="grid gap-16 lg:grid-cols-2 lg:gap-24 items-start">
           
           {/* Left Column: Sticky Header */}
-          <div className="lg:sticky lg:top-48 h-fit space-y-6 md:space-y-8 mb-12 lg:mb-0">
+          <div className="lg:sticky lg:top-48 h-fit space-y-6 md:space-y-8 mb-12 lg:mb-0 z-10">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: "-10% 0px" }}
               transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
               className="space-y-6 md:space-y-8 max-w-2xl"
             >
@@ -106,7 +106,7 @@ export default function ServicesSection() {
           </div>
 
           {/* Right Column: Stacked Cards */}
-          <div className="flex flex-col gap-8 relative lg:max-w-xl lg:ml-auto w-full">
+          <div className="flex flex-col gap-12 relative lg:max-w-xl lg:ml-auto w-full">
             {services.map((service, index) => (
               <ServiceCard 
                 key={service.title} 
@@ -126,48 +126,52 @@ function ServiceCard({ service, index }: { service: typeof services[0], index: n
   
   return (
     <motion.div
-      initial={{ opacity: 0, y: 100 }}
+      initial={{ opacity: 0, y: 80 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-5% 0px -5% 0px" }}
-      transition={{ duration: 0.8, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
+      viewport={{ once: true, margin: "0px 0px -100px 0px" }}
+      transition={{ 
+        duration: 0.7, 
+        delay: index * 0.05, 
+        ease: [0.22, 1, 0.36, 1] 
+      }}
       className="w-full lg:sticky will-change-transform"
       style={{
-        top: `calc(160px + ${index * 32}px)`,
+        top: `calc(140px + ${index * 36}px)`,
         zIndex: 20 + index,
       }}
     >
-      <div className="group relative overflow-hidden rounded-[28px] border border-black/[0.04] bg-[#f7f7f5] p-8 md:p-10 shadow-[0_10px_40px_rgba(0,0,0,0.02)] transition-all duration-700 hover:shadow-[0_20px_60px_rgba(0,0,0,0.04)] transform-gpu min-h-[160px] md:min-h-[180px] flex items-center">
+      <div className="group relative overflow-hidden rounded-[24px] border border-black/[0.04] bg-[#f7f7f5] p-6 md:p-8 shadow-[0_10px_40px_rgba(0,0,0,0.02)] transition-all duration-700 hover:shadow-[0_20px_60px_rgba(0,0,0,0.04)] transform-gpu min-h-[140px] md:min-h-[160px] flex items-center">
         
         <div className={cn(
           "absolute inset-0 opacity-0 transition-opacity duration-700 group-hover:opacity-[0.1]",
           service.accent
         )} />
 
-        <div className="relative flex flex-col gap-6 md:flex-row md:items-center md:justify-between w-full">
-          <div className="flex flex-col md:flex-row items-start md:items-center gap-6">
+        <div className="relative flex flex-col gap-4 md:flex-row md:items-center md:justify-between w-full">
+          <div className="flex flex-col md:flex-row items-start md:items-center gap-5">
             <div className={cn(
-              "flex h-12 w-12 md:h-14 md:w-14 shrink-0 items-center justify-center rounded-[20px] border border-black/[0.03] transition-all duration-700 group-hover:scale-105 group-hover:rotate-3",
+              "flex h-10 w-10 md:h-12 md:w-12 shrink-0 items-center justify-center rounded-[18px] border border-black/[0.03] transition-all duration-700 group-hover:scale-105 group-hover:rotate-3",
               service.accent
             )}>
-              <Icon size={24} strokeWidth={1.5} className="text-black transition-transform duration-700 group-hover:scale-110" />
+              <Icon size={20} strokeWidth={1.5} className="text-black transition-transform duration-700 group-hover:scale-110" />
             </div>
 
-            <div className="space-y-2">
-              <h3 className="text-lg md:text-xl font-black tracking-tight text-[#111111] uppercase">
+            <div className="space-y-1.5">
+              <h3 className="text-base md:text-lg font-black tracking-tight text-[#111111] uppercase">
                 {service.title}
               </h3>
-              <p className="max-w-sm text-[11px] md:text-[13px] leading-relaxed text-black/40 font-medium">
+              <p className="max-w-[280px] md:max-w-xs text-[10px] md:text-[12px] leading-relaxed text-black/40 font-medium">
                 {service.description}
               </p>
             </div>
           </div>
 
-          <button className="flex h-10 w-10 md:h-12 md:w-12 items-center justify-center rounded-full bg-black text-white transition-all duration-500 hover:scale-110 active:scale-90 group/btn shrink-0 shadow-lg shadow-black/10">
-            <ArrowUpRight size={20} strokeWidth={2} className="transition-transform duration-500 group-hover:rotate-45" />
+          <button className="flex h-9 w-9 md:h-10 md:w-10 items-center justify-center rounded-full bg-black text-white transition-all duration-500 hover:scale-110 active:scale-90 group/btn shrink-0 shadow-lg shadow-black/10">
+            <ArrowUpRight size={18} strokeWidth={2} className="transition-transform duration-500 group-hover:rotate-45" />
           </button>
         </div>
 
-        <div className="absolute top-4 right-6 text-[40px] md:text-[50px] font-black text-black/[0.015] leading-none select-none tracking-tighter transition-all duration-700 group-hover:text-black/[0.03] group-hover:-translate-y-1 pointer-events-none">
+        <div className="absolute top-4 right-6 text-[32px] md:text-[40px] font-black text-black/[0.015] leading-none select-none tracking-tighter transition-all duration-700 group-hover:text-black/[0.03] group-hover:-translate-y-1 pointer-events-none">
           {index + 1}
         </div>
       </div>
