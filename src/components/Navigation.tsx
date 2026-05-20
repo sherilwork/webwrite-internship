@@ -5,7 +5,7 @@ import * as React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { 
@@ -45,9 +45,9 @@ export function Navigation() {
   const logo = PlaceHolderImages.find((img) => img.id === 'logo');
 
   return (
-    <header className="fixed top-16 left-0 right-0 z-50 flex justify-center px-4">
-      <nav className="flex items-center justify-between w-full max-w-6xl px-4 py-2 bg-white/90 backdrop-blur-md rounded-full border border-border shadow-sm transition-all duration-300">
-        <Link href="/" className="flex items-center gap-2 transition-transform active:scale-95">
+    <header className="fixed top-16 left-0 right-0 z-50 flex justify-center px-4 will-change-transform transform-gpu">
+      <nav className="flex items-center justify-between w-full max-w-6xl px-4 py-2 bg-white/90 backdrop-blur-md rounded-full border border-border shadow-sm transition-all duration-300 hover:shadow-md">
+        <Link href="/" className="flex items-center gap-2 transition-transform active:scale-95 duration-200">
           <div className="relative h-7 w-32 md:h-8 md:w-40">
             <Image
               src={logo?.imageUrl || '/webwrite-logo.webp'}
@@ -68,7 +68,7 @@ export function Navigation() {
                 key={item.label}
                 href={item.href}
                 className={cn(
-                  "relative text-sm font-medium transition-all hover:text-foreground px-1 py-1 group",
+                  "relative text-sm font-medium transition-colors duration-200 hover:text-foreground px-1 py-1 group",
                   isActive ? "text-foreground" : "text-muted-foreground"
                 )}
               >
@@ -77,7 +77,7 @@ export function Navigation() {
                   <motion.div
                     layoutId="activeNav"
                     className="absolute -bottom-1 left-0 right-0 h-0.5 bg-[#f5b800] rounded-full"
-                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                    transition={{ type: "spring", stiffness: 400, damping: 30 }}
                   />
                 )}
               </Link>
@@ -85,14 +85,14 @@ export function Navigation() {
           })}
         </div>
 
-        <Button asChild className="hidden md:inline-flex rounded-full bg-black hover:bg-black/90 text-white px-6 font-medium transition-transform active:scale-95 shadow-lg shadow-black/10">
+        <Button asChild className="hidden md:inline-flex rounded-full bg-black hover:bg-black/90 text-white px-6 font-medium transition-transform active:scale-95 shadow-lg shadow-black/10 duration-200">
           <a href="https://wa.me/917906627288" target="_blank" rel="noopener noreferrer">Get started</a>
         </Button>
 
         <Sheet>
           <SheetTrigger asChild>
             <button
-              className="md:hidden p-1.5 text-black/70 hover:bg-black/5 rounded-full transition-all active:scale-90 flex items-center justify-center will-change-transform"
+              className="md:hidden p-2 text-black/70 hover:bg-black/5 rounded-full transition-all active:scale-90 flex items-center justify-center will-change-transform"
               aria-label="Toggle menu"
             >
               <svg
@@ -118,11 +118,11 @@ export function Navigation() {
               </svg>
             </button>
           </SheetTrigger>
-          <SheetContent side="left" className="w-[85%] p-0 flex flex-col bg-white border-r overflow-visible rounded-r-[32px] animate-in slide-in-from-left duration-500 ease-out">
+          <SheetContent side="left" className="w-[85%] p-0 flex flex-col bg-white border-r overflow-visible rounded-r-[32px] animate-in slide-in-from-left duration-300 ease-out will-change-transform">
             <div className="absolute -right-5 top-1/2 -translate-y-1/2 z-50">
               <SheetClose asChild>
                 <button className="w-10 h-10 rounded-full bg-black border border-white/10 flex items-center justify-center shadow-2xl transition-all duration-300 hover:scale-110 active:scale-90 group">
-                  <ChevronLeft className="w-5 h-5 text-[#f5b800] group-hover:-translate-x-0.5 transition-transform" />
+                  <ChevronLeft className="w-5 h-5 text-[#f5b800] group-hover:-translate-x-0.5 transition-transform duration-200" />
                 </button>
               </SheetClose>
             </div>
@@ -130,7 +130,7 @@ export function Navigation() {
             <SheetHeader className="pt-20 pb-8 px-8 border-b flex flex-row items-center gap-4 space-y-0 text-left">
               <SheetClose asChild>
                 <button className="w-9 h-9 rounded-full border border-black/10 bg-black/5 flex items-center justify-center hover:bg-black transition-all hover:scale-105 active:scale-95 shrink-0 group">
-                   <ChevronLeft className="w-5 h-5 text-black group-hover:text-[#f5b800] transition-colors" />
+                   <ChevronLeft className="w-5 h-5 text-black group-hover:text-[#f5b800] transition-colors duration-200" />
                 </button>
               </SheetClose>
               <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
@@ -147,39 +147,44 @@ export function Navigation() {
             </SheetHeader>
             
             <ScrollArea className="flex-1 h-full scroll-smooth">
-              <div className="flex flex-col">
+              <div className="flex flex-col py-4">
                 {navItems.map((item, idx) => {
                   const isActive = pathname === item.href;
                   return (
-                    <Link
+                    <motion.div
                       key={item.label}
-                      href={item.href}
-                      className={cn(
-                        "flex items-center justify-between px-8 py-6 text-[14px] font-black hover:bg-black/[0.01] transition-all border-b border-black/[0.04] uppercase tracking-[0.2em] group animate-in fade-in slide-in-from-left-4 fill-mode-both",
-                        isActive ? "text-[#f5b800]" : "text-black/80 hover:text-[#f5b800]"
-                      )}
-                      style={{ animationDelay: `${idx * 50}ms` }}
+                      initial={{ x: -10, opacity: 0 }}
+                      animate={{ x: 0, opacity: 1 }}
+                      transition={{ delay: idx * 0.04, duration: 0.3 }}
                     >
-                      <div className="flex items-center gap-5">
-                        <div className={cn(
-                          "w-10 h-10 rounded-full flex items-center justify-center transition-all",
-                          isActive ? "bg-[#f5b800]/20" : "bg-black/[0.02] group-hover:bg-[#f5b800]/20"
-                        )}>
-                          <item.icon className={cn(
-                            "w-5 h-5 transition-all",
-                            isActive ? "text-[#f5b800]" : "text-black/30 group-hover:text-[#f5b800]"
-                          )} />
+                      <Link
+                        href={item.href}
+                        className={cn(
+                          "flex items-center justify-between px-8 py-5 text-[14px] font-black hover:bg-black/[0.02] transition-all border-b border-black/[0.04] uppercase tracking-[0.2em] group",
+                          isActive ? "text-[#f5b800]" : "text-black/80 hover:text-[#f5b800]"
+                        )}
+                      >
+                        <div className="flex items-center gap-5">
+                          <div className={cn(
+                            "w-10 h-10 rounded-full flex items-center justify-center transition-all duration-200",
+                            isActive ? "bg-[#f5b800]/20" : "bg-black/[0.02] group-hover:bg-[#f5b800]/20"
+                          )}>
+                            <item.icon className={cn(
+                              "w-5 h-5 transition-all duration-200",
+                              isActive ? "text-[#f5b800]" : "text-black/30 group-hover:text-[#f5b800]"
+                            )} />
+                          </div>
+                          <span className="group-hover:translate-x-1 transition-transform duration-200">{item.label}</span>
                         </div>
-                        <span className="group-hover:translate-x-1 transition-transform">{item.label}</span>
-                      </div>
-                      <ChevronLeft className="w-4 h-4 rotate-180 opacity-0 group-hover:opacity-40 transition-all -translate-x-4 group-hover:translate-x-0" />
-                    </Link>
+                        <ChevronLeft className="w-4 h-4 rotate-180 opacity-0 group-hover:opacity-40 transition-all -translate-x-4 group-hover:translate-x-0 duration-200" />
+                      </Link>
+                    </motion.div>
                   );
                 })}
               </div>
               
-              <div className="mt-8 px-8 mb-12">
-                <Button asChild className="w-full rounded-full bg-black text-white text-[12px] font-black uppercase tracking-[0.2em] py-8 hover:bg-black/90 shadow-2xl shadow-black/20 transition-all active:scale-95 border border-white/5">
+              <div className="mt-4 px-8 mb-12">
+                <Button asChild className="w-full rounded-full bg-black text-white text-[12px] font-black uppercase tracking-[0.2em] py-7 hover:bg-black/90 shadow-2xl shadow-black/20 transition-all active:scale-95 border border-white/5 duration-200">
                   <a href="https://wa.me/917906627288" target="_blank" rel="noopener noreferrer">Get Started Now</a>
                 </Button>
               </div>
