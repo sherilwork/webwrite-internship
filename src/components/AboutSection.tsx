@@ -1,10 +1,15 @@
+
 "use client"
 
 import React from "react"
 import { ArrowRight, CheckCircle2 } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import Image from "next/image"
+import { PlaceHolderImages } from "@/lib/placeholder-images"
 
 export function AboutSection() {
+  const aboutImage = PlaceHolderImages.find(img => img.id === 'about-section')?.imageUrl || "/about-section.png"
+
   return (
     <section className="py-24 md:py-32 bg-white overflow-hidden">
       <div className="container mx-auto px-6">
@@ -14,17 +19,17 @@ export function AboutSection() {
             <div className="space-y-4">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/[0.03] border border-black/[0.05]">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#f5b800]" />
-                <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-black/60">Our Journey</span>
+                <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-black/60">Our Story</span>
               </div>
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-black leading-[1.05] tracking-tighter">
                 FROM SMALL STEPS <br />
-                <span className="text-[#f5b800]">TO BIG IMPACT</span>
+                <span className="text-[#f5b800]">TO BIG IDEAS</span>
               </h2>
               <div className="w-20 h-1.5 bg-black mt-2" />
             </div>
             
             <p className="text-lg text-black/50 font-medium leading-relaxed">
-              We started with a simple belief: that big dreams deserve digital spaces that work. At Webwrite, we help brands succeed by turning simple ideas into real opportunities. We build websites that work and content that connects, helping our partners leave a lasting mark in the digital world.
+              At Webwrite, we started with a simple belief: that big dreams deserve digital spaces that work. We've grown into a partner that builds websites that connect and content that resonates. Every project is an opportunity to turn a simple idea into a real success, helping you leave a lasting mark.
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-y-4 gap-x-8">
@@ -32,7 +37,9 @@ export function AboutSection() {
                 "Personalized Solutions",
                 "Simple, Effective Designs",
                 "Content That Connects",
-                "Practical Innovation"
+                "Practical Innovation",
+                "Long-Term Growth Focus",
+                "Clear Communication"
               ].map((feature, idx) => (
                 <div key={idx} className="flex items-center gap-3 group">
                   <div className="w-6 h-6 rounded-full bg-black/5 flex items-center justify-center shrink-0 group-hover:bg-[#f5b800]/20 transition-colors">
@@ -51,53 +58,20 @@ export function AboutSection() {
             </div>
           </div>
 
-          {/* Right Side: Visual Metrics Area */}
+          {/* Right Side: Visual Branding Area */}
           <div className="flex-1 w-full lg:w-auto relative group animate-in fade-in slide-in-from-right-8 duration-1000 ease-out">
             {/* Background Glow */}
             <div className="absolute inset-0 bg-gradient-to-tr from-[#f5b800]/20 to-transparent rounded-[3rem] blur-3xl opacity-30 group-hover:opacity-60 transition-opacity duration-1000" />
             
-            <div className="relative aspect-square md:aspect-[4/3] w-full bg-black/[0.01] border border-black/[0.05] rounded-[3rem] overflow-hidden backdrop-blur-sm p-4 md:p-8 flex items-center justify-center">
-              <div className="grid grid-cols-2 gap-4 md:gap-6 w-full h-full max-w-lg">
-                <div className="bg-white p-5 md:p-8 rounded-[2rem] shadow-2xl shadow-black/[0.04] flex flex-col justify-between border border-black/[0.03] hover:-translate-y-2 transition-transform duration-500">
-                  <div className="w-12 h-12 rounded-2xl bg-black flex items-center justify-center shadow-lg shadow-black/10">
-                    <span className="text-[#f5b800] text-xl font-black">15+</span>
-                  </div>
-                  <div className="space-y-1">
-                    <p className="text-[9px] font-black uppercase tracking-widest text-black/20">Global</p>
-                    <p className="text-[13px] font-bold text-black uppercase">Markets Served</p>
-                  </div>
-                </div>
-                
-                <div className="bg-white p-5 md:p-8 rounded-[2rem] shadow-2xl shadow-black/[0.04] flex flex-col justify-between border border-black/[0.03] translate-y-8 hover:translate-y-6 transition-transform duration-500">
-                  <div className="w-12 h-12 rounded-2xl bg-[#f5b800] flex items-center justify-center shadow-lg shadow-[#f5b800]/20">
-                    <span className="text-black text-xl font-black">98%</span>
-                  </div>
-                  <div className="space-y-1">
-                    <p className="text-[9px] font-black uppercase tracking-widest text-black/20">Client</p>
-                    <p className="text-[13px] font-bold text-black uppercase">Retention Rate</p>
-                  </div>
-                </div>
-                
-                <div className="bg-white p-5 md:p-8 rounded-[2rem] shadow-2xl shadow-black/[0.04] flex flex-col justify-between border border-black/[0.03] hover:-translate-y-2 transition-transform duration-500">
-                  <div className="w-12 h-12 rounded-2xl bg-black/[0.03] border border-black/5 flex items-center justify-center">
-                    <span className="text-black text-xl font-black">250</span>
-                  </div>
-                  <div className="space-y-1">
-                    <p className="text-[9px] font-black uppercase tracking-widest text-black/20">Projects</p>
-                    <p className="text-[13px] font-bold text-black uppercase">Successful Ops</p>
-                  </div>
-                </div>
-                
-                <div className="bg-white p-5 md:p-8 rounded-[2rem] shadow-2xl shadow-black/[0.04] flex flex-col justify-between border border-black/[0.03] translate-y-8 hover:translate-y-6 transition-transform duration-500">
-                  <div className="w-12 h-12 rounded-2xl bg-black flex items-center justify-center shadow-lg shadow-black/10">
-                    <span className="text-[#f5b800] text-xl font-black">5y+</span>
-                  </div>
-                  <div className="space-y-1">
-                    <p className="text-[9px] font-black uppercase tracking-widest text-black/20">Agency</p>
-                    <p className="text-[13px] font-bold text-black uppercase">Market Mastery</p>
-                  </div>
-                </div>
-              </div>
+            <div className="relative aspect-square md:aspect-[4/3] w-full bg-black/[0.01] border border-black/[0.05] rounded-[3rem] overflow-hidden backdrop-blur-sm flex items-center justify-center shadow-2xl shadow-black/5">
+              <Image 
+                src={aboutImage}
+                alt="Webwrite journey"
+                fill
+                className="object-cover transition-transform duration-1000 group-hover:scale-110"
+                data-ai-hint="team business"
+                priority
+              />
             </div>
           </div>
         </div>

@@ -18,6 +18,12 @@
       "description": "Webwrite Services Logo",
       "imageUrl": "/webwrite-logo.webp",
       "imageHint": "company logo"
+    },
+    {
+      "id": "about-section",
+      "description": "About Section Branding Image",
+      "imageUrl": "/about-section.png",
+      "imageHint": "team collaboration"
     }
   ]
 }
