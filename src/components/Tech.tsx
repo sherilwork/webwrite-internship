@@ -131,7 +131,7 @@ export function Tech() {
               <span className="w-1.5 h-1.5 rounded-full bg-[#f5b800]" />
               <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-black/60">Our Toolkit</span>
             </div>
-            <h2 className="text-3xl md:text-5xl lg:text-6xl font-black text-black leading-[1.05] tracking-tighter uppercase">
+            <h2 className="text-2xl md:text-4xl lg:text-5xl font-black text-black leading-[1.05] tracking-tighter uppercase">
               POWERING YOUR <br />
               <span className="text-[#f5b800]">DIGITAL VISION</span>
             </h2>
