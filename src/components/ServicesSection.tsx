@@ -1,6 +1,7 @@
 
 "use client";
 
+import React from "react";
 import { motion } from "framer-motion";
 import {
   Search,
@@ -11,164 +12,171 @@ import {
   BarChart3,
   ArrowUpRight,
 } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 const services = [
   {
-    title: "SEO",
+    title: "SEO Strategy",
     description:
-      "Enhance visibility, authority, and important keyword rankings.",
+      "Dominate search rankings with our advanced, data-driven SEO methodologies tailored for competitive markets.",
     icon: Search,
+    accent: "bg-[#c7fff1]",
   },
   {
-    title: "SEM",
+    title: "Paid Acquisition",
     description:
-      "Data-optimized campaigns designed to attract ready-to-buy audiences.",
+      "Scale your revenue with high-intent SEM and Meta advertising campaigns optimized for maximum ROI.",
     icon: LineChart,
+    accent: "bg-[#e2f5ff]",
   },
   {
-    title: "Email marketing & automation",
+    title: "Lifecycle Marketing",
     description:
-      "Nurture leads and convert subscribers with timely campaigns.",
+      "Automated conversion funnels and email sequences designed to nurture leads into lifelong brand advocates.",
     icon: Mail,
+    accent: "bg-[#f5f0ff]",
   },
   {
-    title: "Link building & authority outreach",
+    title: "Authority Building",
     description:
-      "Secure high-quality backlinks that enhance your SEO.",
+      "Secure top-tier backlinks and media placements to accelerate your domain authority and organic growth.",
     icon: Link2,
+    accent: "bg-[#fff0f0]",
   },
   {
-    title: "Local SEO & Google business optimization",
+    title: "Global Search",
     description:
-      "Help local customers discover your offers, fast and frequently.",
+      "Expansion-focused SEO strategies designed to help your brand conquer international markets and local regions.",
     icon: Globe,
+    accent: "bg-[#f0fff4]",
   },
   {
-    title: "Analytics & conversion optimization",
+    title: "Conversion Engine",
     description:
-      "Collect data to convert clicks into customers & optimize every dollar spent.",
+      "Turn traffic into transactions with rigorous A/B testing, heatmapping, and behavioral analytics optimization.",
     icon: BarChart3,
+    accent: "bg-[#fffbe2]",
   },
 ];
 
 export default function ServicesSection() {
   return (
-    <section className="relative overflow-hidden bg-[#f7f7f5] py-24 lg:py-32">
-      {/* Background */}
-      <div className="absolute inset-0 opacity-[0.03]">
-        <div className="absolute left-0 top-0 h-full w-full bg-[radial-gradient(circle_at_top_left,black_1px,transparent_1px)] bg-[size:26px_26px]" />
+    <section className="relative bg-[#f7f7f5] py-24 lg:py-48 overflow-visible">
+      {/* Background Pattern */}
+      <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
+        <div className="absolute left-0 top-0 h-full w-full bg-[radial-gradient(circle_at_top_left,black_1px,transparent_1px)] bg-[size:32px_32px]" />
       </div>
 
-      <div className="relative mx-auto max-w-7xl px-5 lg:px-8">
-        <div className="grid gap-16 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
-          {/* Left Content */}
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="sticky top-24 h-fit"
-          >
-            <div className="mb-6 inline-flex items-center rounded-full border border-black/10 bg-[#c7fff1] px-4 py-2 text-xs font-medium tracking-wide text-black">
-              Services overview
-            </div>
+      <div className="relative mx-auto max-w-7xl px-6 lg:px-12">
+        <div className="grid gap-16 lg:grid-cols-[0.7fr_1.3fr] lg:gap-32 items-start">
+          
+          {/* Left Column: Sticky Header */}
+          <div className="lg:sticky lg:top-32 h-fit space-y-10 mb-12 lg:mb-0">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <div className="mb-8 inline-flex items-center rounded-full border border-black/10 bg-white px-5 py-2.5 text-[11px] font-black uppercase tracking-[0.2em] text-black">
+                <span className="mr-3 inline-block h-2 w-2 rounded-full bg-[#c7fff1] animate-pulse" />
+                Expertise & Impact
+              </div>
 
-            <h2 className="max-w-[500px] text-5xl font-medium leading-[0.95] tracking-[-0.04em] text-[#111111] sm:text-6xl lg:text-7xl">
-              Our
-              <br />
-              performance-
-              <br />
-              focused services.
-            </h2>
+              <h2 className="text-6xl md:text-7xl lg:text-8xl font-medium leading-[0.85] tracking-[-0.06em] text-[#111111]">
+                Our
+                <br />
+                Performance
+                <br />
+                Driven
+                <br />
+                Stack.
+              </h2>
 
-            <p className="mt-7 max-w-md text-[15px] leading-7 text-black/50">
-              Smart, creative, and targeted growth systems — tailored to empower your brand digitally.
-            </p>
+              <p className="mt-10 max-w-sm text-[17px] leading-relaxed text-black/50 font-medium">
+                We build proprietary growth systems that merge elite creative with engineering precision.
+              </p>
 
-            <button className="group mt-10 inline-flex items-center gap-3 rounded-full bg-black px-6 py-4 text-sm font-medium text-white transition-all duration-300 hover:scale-[1.02] hover:bg-[#111111] active:scale-[0.98]">
-              View full services breakdown
-              <span className="flex h-7 w-7 items-center justify-center rounded-full bg-white text-black transition-transform duration-300 group-hover:rotate-45">
-                <ArrowUpRight size={15} strokeWidth={2.5} />
-              </span>
-            </button>
-          </motion.div>
+              <div className="pt-12">
+                <button className="group relative overflow-hidden inline-flex items-center gap-4 rounded-full bg-black px-10 py-6 text-xs font-black uppercase tracking-[0.2em] text-white transition-all duration-500 hover:scale-[1.02] active:scale-95 shadow-2xl shadow-black/20">
+                  Full Service List
+                  <ArrowUpRight className="w-5 h-5 transition-transform duration-500 group-hover:rotate-45" />
+                </button>
+              </div>
+            </motion.div>
+          </div>
 
-          {/* Right Cards */}
-          <div className="relative">
-            <div className="flex flex-col gap-5">
-              {services.map((service, index) => {
-                const Icon = service.icon;
-
-                return (
-                  <motion.div
-                    key={service.title}
-                    initial={{ opacity: 0, y: 60 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.15 }}
-                    transition={{
-                      duration: 0.7,
-                      delay: index * 0.06,
-                      ease: [0.22, 1, 0.36, 1],
-                    }}
-                    whileHover={{ y: -4 }}
-                    className="group relative overflow-hidden rounded-[28px] border border-black/5 bg-white p-7 shadow-[0_10px_50px_rgba(0,0,0,0.04)] transition-all duration-500"
-                  >
-                    {/* Hover Gradient */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-[#c7fff1]/0 via-[#c7fff1]/30 to-[#c7fff1]/0 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-
-                    <div className="relative flex flex-col gap-8 sm:flex-row sm:items-center sm:justify-between">
-                      <div className="flex items-start gap-5">
-                        <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border border-black/10 bg-[#fafafa] text-black transition-all duration-500 group-hover:scale-110 group-hover:border-[#c7fff1] group-hover:bg-[#c7fff1]">
-                          <Icon size={24} strokeWidth={1.7} />
-                        </div>
-
-                        <div>
-                          <h3 className="text-[20px] font-medium tracking-[-0.02em] text-[#111111]">
-                            {service.title}
-                          </h3>
-
-                          <p className="mt-2 max-w-xl text-sm leading-7 text-black/50">
-                            {service.description}
-                          </p>
-                        </div>
-                      </div>
-
-                      <motion.button
-                        whileHover={{ scale: 1.06 }}
-                        whileTap={{ scale: 0.97 }}
-                        className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-black/10 bg-black text-white transition-all duration-300 group-hover:rotate-45"
-                      >
-                        <ArrowUpRight size={18} strokeWidth={2.2} />
-                      </motion.button>
-                    </div>
-                  </motion.div>
-                );
-              })}
-            </div>
+          {/* Right Column: Stacked Cards */}
+          <div className="flex flex-col gap-12 lg:gap-24 relative">
+            {services.map((service, index) => (
+              <ServiceCard 
+                key={service.title} 
+                service={service} 
+                index={index} 
+              />
+            ))}
           </div>
         </div>
-
-        {/* Bottom Feature Row */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-24 grid gap-10 border-t border-black/10 pt-10 sm:grid-cols-2 lg:grid-cols-4"
-        >
-          {[
-            "Deep audit & discovery.",
-            "Campaign planning & execution.",
-            "Weekly optimization cycles.",
-            "Conversion-focused reporting.",
-          ].map((item, i) => (
-            <div key={i} className="flex gap-4">
-              <div className="mt-2 h-2 w-2 rounded-full bg-[#8eff57]" />
-              <p className="text-sm leading-7 text-black/60">{item}</p>
-            </div>
-          ))}
-        </motion.div>
       </div>
     </section>
+  );
+}
+
+function ServiceCard({ service, index }: { service: typeof services[0], index: number }) {
+  const Icon = service.icon;
+  
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 100 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-5% 0px -5% 0px" }}
+      transition={{ duration: 0.8, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
+      className="w-full lg:sticky will-change-transform"
+      style={{
+        // Stacking Logic: Fixed offset based on index for the folding effect
+        top: `calc(80px + ${index * 32}px)`,
+        zIndex: 20 + index,
+      }}
+    >
+      <div className="group relative overflow-hidden rounded-[28px] border border-black/[0.04] bg-white p-10 md:p-14 shadow-[0_20px_100px_rgba(0,0,0,0.02)] transition-all duration-700 hover:shadow-[0_40px_120px_rgba(0,0,0,0.06)] transform-gpu">
+        
+        {/* Subtle Brand Hover Highlight */}
+        <div className={cn(
+          "absolute inset-0 opacity-0 transition-opacity duration-700 group-hover:opacity-[0.1]",
+          service.accent
+        )} />
+
+        <div className="relative flex flex-col gap-12 md:flex-row md:items-center md:justify-between">
+          <div className="flex flex-col md:flex-row items-start md:items-center gap-10">
+            {/* Premium Icon Box */}
+            <div className={cn(
+              "flex h-24 w-24 shrink-0 items-center justify-center rounded-[32px] border border-black/[0.03] transition-all duration-700 group-hover:scale-105 group-hover:rotate-3",
+              service.accent
+            )}>
+              <Icon size={36} strokeWidth={1.2} className="text-black transition-transform duration-700 group-hover:scale-110" />
+            </div>
+
+            <div className="space-y-4">
+              <h3 className="text-4xl font-medium tracking-[-0.03em] text-[#111111]">
+                {service.title}
+              </h3>
+              <p className="max-w-md text-lg leading-relaxed text-black/40 font-medium">
+                {service.description}
+              </p>
+            </div>
+          </div>
+
+          {/* Action Trigger */}
+          <button className="flex h-16 w-16 items-center justify-center rounded-full bg-black text-white transition-all duration-500 hover:scale-110 active:scale-90 group/btn shrink-0">
+            <ArrowUpRight size={28} strokeWidth={2} className="transition-transform duration-500 group-hover:rotate-45" />
+          </button>
+        </div>
+
+        {/* Index Number Indicator for Premium Feel */}
+        <div className="absolute top-10 right-14 text-[120px] font-black text-black/[0.015] leading-none select-none tracking-tighter transition-all duration-700 group-hover:text-black/[0.03] group-hover:-translate-y-2 pointer-events-none">
+          {index + 1}
+        </div>
+      </div>
+    </motion.div>
   );
 }
