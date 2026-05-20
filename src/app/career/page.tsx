@@ -256,7 +256,7 @@ export default function CareerPage() {
             </DialogHeader>
           </div>
           
-          <ScrollArea className="flex-1 max-h-[60vh] md:max-h-[70vh]">
+          <ScrollArea className="flex-1 min-h-0">
             <div className="p-6 md:p-10">
               <form onSubmit={handleApplySubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -357,7 +357,7 @@ export default function CareerPage() {
             </DialogHeader>
           </div>
           
-          <ScrollArea className="flex-1 max-h-[60vh] md:max-h-[70vh]">
+          <ScrollArea className="flex-1 min-h-0">
             <div className="p-6 md:p-10 space-y-10">
               <section className="space-y-4">
                 <h4 className="text-[10px] font-extrabold uppercase tracking-[0.3em] text-black/30">Job Description</h4>
