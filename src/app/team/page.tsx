@@ -48,6 +48,29 @@ export default function TeamPage() {
       <section className="py-24 bg-white">
         <div className="container mx-auto px-6 max-w-6xl">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+            
+            {/* Join the Team Card */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="group"
+            >
+              <div className="relative aspect-[4/5] rounded-[2rem] overflow-hidden bg-black flex flex-col items-center justify-center p-8 text-center border border-black transition-all duration-700 hover:scale-[1.02] shadow-2xl group-hover:shadow-[#f5b800]/10">
+                 <div className="space-y-4">
+                    <h3 className="text-2xl font-black text-white uppercase tracking-tight">JOIN THE TEAM</h3>
+                    <p className="text-[10px] font-bold text-[#f5b800] uppercase tracking-[0.2em]">We're Hiring</p>
+                    <p className="text-xs font-medium text-white/50 leading-relaxed uppercase tracking-widest px-2">
+                      We're always looking for brilliant minds to join our mission.
+                    </p>
+                    <button className="mt-6 px-8 py-4 rounded-full bg-[#f5b800] text-black text-[10px] font-black uppercase tracking-[0.2em] hover:bg-white transition-all active:scale-95">
+                      APPLY NOW
+                    </button>
+                 </div>
+              </div>
+            </motion.div>
+
             {teamMembers.map((member, idx) => {
               const placeholder = PlaceHolderImages.find(img => img.id === member.imageId);
               return (
@@ -56,7 +79,7 @@ export default function TeamPage() {
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: idx * 0.1 }}
+                  transition={{ duration: 0.6, delay: (idx + 1) * 0.1 }}
                   className="group"
                 >
                   <div className="relative aspect-[4/5] rounded-[2rem] overflow-hidden bg-black/[0.02] border border-black/[0.05] mb-6 shadow-2xl shadow-black/[0.02] transition-transform duration-700 group-hover:scale-[1.02]">
@@ -93,7 +116,7 @@ export default function TeamPage() {
         <div className="container mx-auto px-6 max-w-6xl">
           <div className="p-12 rounded-[3rem] bg-black text-white flex flex-col md:flex-row items-center justify-between gap-8 shadow-2xl">
             <div className="space-y-4 text-center md:text-left">
-              <h2 className="text-3xl font-black uppercase tracking-tighter">Want to join us?</h2>
+              <h2 className="text-3xl font-black uppercase tracking-tighter">Ready to work with us?</h2>
               <p className="text-sm font-bold uppercase tracking-widest opacity-60">We're always looking for fresh talent.</p>
             </div>
             <button className="px-10 py-5 rounded-full bg-[#f5b800] text-black text-xs font-black uppercase tracking-widest hover:translate-x-1 transition-all active:scale-95 flex items-center gap-3">
