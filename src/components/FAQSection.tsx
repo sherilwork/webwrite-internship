@@ -39,6 +39,15 @@ const faqs = [
 ]
 
 export function FAQSection() {
+  const CTASection = () => (
+    <div className="p-6 rounded-[2rem] bg-black/[0.02] border border-dashed border-black/10">
+      <p className="text-[10px] font-black uppercase tracking-widest text-black/30 mb-2">Still have questions?</p>
+      <a href="https://wa.me/917906627288" target="_blank" rel="noopener noreferrer" className="text-sm font-black text-black hover:text-[#f5b800] transition-colors underline decoration-[#f5b800]/30 underline-offset-4">
+        Get in touch with us on WhatsApp →
+      </a>
+    </div>
+  )
+
   return (
     <section className="bg-white py-20 lg:py-32 relative overflow-hidden border-t border-black/[0.03]">
       <div className="container mx-auto px-6">
@@ -69,19 +78,15 @@ export function FAQSection() {
                 Everything you need to know about our process, pricing, and how we help your brand grow.
               </p>
 
-              <div className="pt-4">
-                <div className="p-6 rounded-[2rem] bg-black/[0.02] border border-dashed border-black/10">
-                  <p className="text-[10px] font-black uppercase tracking-widest text-black/30 mb-2">Still have questions?</p>
-                  <a href="https://wa.me/917906627288" target="_blank" rel="noopener noreferrer" className="text-sm font-black text-black hover:text-[#f5b800] transition-colors underline decoration-[#f5b800]/30 underline-offset-4">
-                    Get in touch with us on WhatsApp →
-                  </a>
-                </div>
+              {/* CTA visible only on desktop in this column */}
+              <div className="pt-4 hidden lg:block">
+                <CTASection />
               </div>
             </motion.div>
           </div>
 
           {/* Right: Accordion */}
-          <div className="lg:col-span-7">
+          <div className="lg:col-span-7 flex flex-col gap-8">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -106,6 +111,17 @@ export function FAQSection() {
                   </AccordionItem>
                 ))}
               </Accordion>
+            </motion.div>
+
+            {/* CTA visible only on mobile at the end of the section */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="lg:hidden"
+            >
+              <CTASection />
             </motion.div>
           </div>
 
