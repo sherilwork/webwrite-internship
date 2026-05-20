@@ -14,7 +14,6 @@ import {
   Database,
   Layers,
   CheckCircle2,
-  ChevronRight,
   X
 } from "lucide-react"
 import { Navigation } from "@/components/Navigation"
@@ -28,7 +27,6 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-  DialogClose,
 } from "@/components/ui/dialog"
 import { ScrollArea } from "@/components/ui/scroll-area"
 
@@ -121,13 +119,13 @@ export default function CareerPage() {
         </div>
       </section>
 
-      {/* Job Openings */}
+      {/* Job Openings Grid */}
       <section className="py-24 bg-white">
         <div className="container mx-auto px-6 max-w-7xl">
           <div className="space-y-8">
             <h2 className="text-[10px] font-black uppercase tracking-[0.3em] text-black/30 border-b border-black/[0.05] pb-6">Current Openings ({jobs.length})</h2>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {jobs.map((job, idx) => (
                 <motion.div
                   key={job.id}
@@ -177,13 +175,13 @@ export default function CareerPage() {
                             VIEW DETAILS
                           </Button>
                         </DialogTrigger>
-                        <DialogContent className="max-w-lg p-0 bg-white border-none rounded-[1.5rem] md:rounded-[2rem] overflow-hidden shadow-2xl">
+                        <DialogContent className="w-[88%] md:max-w-3xl p-0 bg-white border-none rounded-[1.5rem] md:rounded-[2rem] overflow-hidden shadow-2xl">
                           <div className="bg-[#f5b800] p-6 md:p-8 text-black relative">
                             <DialogHeader>
                               <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-black/10 border border-black/5 mb-3 w-fit">
                                 <span className="text-[9px] font-black uppercase tracking-[0.2em]">Job Opening</span>
                               </div>
-                              <DialogTitle className="text-2xl md:text-3xl font-black uppercase tracking-tighter leading-tight mb-3">
+                              <DialogTitle className="text-xl md:text-3xl font-black uppercase tracking-tighter leading-tight mb-3">
                                 {selectedJob?.title}
                               </DialogTitle>
                               <div className="flex flex-wrap gap-3 opacity-70">
@@ -201,12 +199,9 @@ export default function CareerPage() {
                                 </div>
                               </div>
                             </DialogHeader>
-                            <DialogClose className="absolute right-4 top-4 p-2 rounded-full hover:bg-black/10 transition-colors">
-                              <X className="w-4 h-4" />
-                            </DialogClose>
                           </div>
                           
-                          <ScrollArea className="max-h-[50vh]">
+                          <ScrollArea className="max-h-[60vh]">
                             <div className="p-6 md:p-8 space-y-8">
                               <section className="space-y-3">
                                 <h4 className="text-[9px] font-black uppercase tracking-[0.3em] text-black/30">Job Description</h4>
@@ -217,7 +212,7 @@ export default function CareerPage() {
 
                               <section className="space-y-3">
                                 <h4 className="text-[9px] font-black uppercase tracking-[0.3em] text-black/30">Key Responsibilities</h4>
-                                <div className="grid grid-cols-1 gap-3">
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                                   {responsibilities.map((resp, i) => (
                                     <div key={i} className="flex items-center gap-3 p-3.5 rounded-xl bg-black/[0.02] border border-black/[0.04] group hover:bg-black transition-all">
                                       <CheckCircle2 className="w-4 h-4 text-[#f5b800]" />
