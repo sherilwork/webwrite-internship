@@ -5,6 +5,7 @@ import { ArrowLeft, ArrowRight, MousePointer2, Cpu, GraduationCap, ShoppingBag, 
 import Image from 'next/image'
 import { cn } from '@/lib/utils'
 import { gsap } from 'gsap'
+import { useIsMobile } from '@/hooks/use-mobile'
 
 /**
  * DESKTOP CONFIGURATION - HIGH PERFORMANCE ISOLATED
@@ -53,8 +54,7 @@ const FEATURED_CARDS = [
     imageUrl: "https://picsum.photos/seed/ws4/800/500"
   },
   {
-    id: 5,
-    title: "Sagar Disposal",
+    id: 5,    title: "Sagar Disposal",
     description: "A specialized digital platform for industrial disposal solutions, featuring a structured product catalog and optimized for professional B2B interactions.",
     icon: <Package className="w-5 h-5" />,
     stats: "B2B Catalog",
@@ -69,6 +69,7 @@ export function FeaturedWebsites() {
   const [websiteIndex, setWebsiteIndex] = useState(0)
   const [activeCategory, setActiveCategory] = useState("All")
   const [isMounted, setIsMounted] = useState(false)
+  const isMobile = useIsMobile()
 
   useEffect(() => {
     setIsMounted(true)
@@ -96,6 +97,8 @@ export function FeaturedWebsites() {
     if (!isMounted) return
 
     const cards = cardsRef.current.filter(Boolean) as HTMLDivElement[]
+    const xOffset = isMobile ? 300 : 600
+    const yOffset = isMobile ? 80 : 150
     
     // Reset positions and animate
     cards.forEach((card, index) => {
@@ -113,9 +116,9 @@ export function FeaturedWebsites() {
         })
       } else if (index < websiteIndex) {
         gsap.to(card, {
-          x: 600,
-          y: 150,
-          rotate: 15,
+          x: xOffset,
+          y: yOffset,
+          rotate: isMobile ? 5 : 15,
           opacity: 0,
           scale: 0.8,
           zIndex: 5,
@@ -125,9 +128,9 @@ export function FeaturedWebsites() {
         })
       } else {
         gsap.to(card, {
-          x: -600,
-          y: -150,
-          rotate: -15,
+          x: -xOffset,
+          y: -yOffset,
+          rotate: isMobile ? -5 : -15,
           opacity: 0,
           scale: 0.8,
           zIndex: 5,
@@ -137,10 +140,10 @@ export function FeaturedWebsites() {
         })
       }
     })
-  }, [websiteIndex, isMounted, filteredCards])
+  }, [websiteIndex, isMounted, filteredCards, isMobile])
 
   return (
-    <section className="bg-white py-12 md:py-24 overflow-hidden min-h-[800px] relative border-t border-black/[0.03]">
+    <section className="bg-white py-12 md:py-24 overflow-hidden min-h-[700px] md:min-h-[800px] relative border-t border-black/[0.03]">
       <div className="container mx-auto px-6">
         {/* Header Section */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-12 border-b border-black/[0.05] pb-6">
@@ -157,7 +160,7 @@ export function FeaturedWebsites() {
                 key={cat}
                 onClick={() => handleCategoryChange(cat)}
                 className={cn(
-                  "px-4 py-1.5 rounded-full text-[9px] font-black uppercase tracking-widest transition-all border",
+                  "px-3 md:px-4 py-1.5 rounded-full text-[8px] md:text-[9px] font-black uppercase tracking-widest transition-all border",
                   activeCategory === cat
                     ? "bg-black text-white border-black"
                     : "bg-transparent text-black/40 border-black/10 hover:border-black/30"
@@ -170,48 +173,48 @@ export function FeaturedWebsites() {
         </div>
 
         {/* Content Area */}
-        <div className="relative h-[500px] flex items-center justify-center">
+        <div className="relative h-[600px] md:h-[500px] flex items-center justify-center">
           {filteredCards.length > 0 ? (
             filteredCards.map((card, i) => (
               <div
                 key={`${activeCategory}-website-${card.id}`}
                 ref={el => { cardsRef.current[i] = el }}
-                className="absolute w-full max-w-[800px] bg-[#f7f7f5] backdrop-blur-2xl border border-black/[0.05] p-6 md:p-10 rounded-[32px] shadow-2xl shadow-black/5 opacity-0 transform-gpu will-change-transform overflow-hidden"
+                className="absolute w-full max-w-[800px] bg-[#f7f7f5] backdrop-blur-2xl border border-black/[0.05] p-5 md:p-10 rounded-[24px] md:rounded-[32px] shadow-2xl shadow-black/5 opacity-0 transform-gpu will-change-transform overflow-hidden"
                 style={{
                   zIndex: i === websiteIndex ? 10 : 5
                 }}
               >
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-                  <div className="space-y-6">
-                    <div className="flex items-center gap-4">
-                      <div className="w-10 h-10 bg-[#f5b800]/10 border border-[#f5b800]/40 rounded-xl flex items-center justify-center text-black">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 items-center">
+                  <div className="space-y-4 md:space-y-6">
+                    <div className="flex items-center gap-3 md:gap-4">
+                      <div className="w-8 h-8 md:w-10 md:h-10 bg-[#f5b800]/10 border border-[#f5b800]/40 rounded-xl flex items-center justify-center text-black">
                         {card.icon}
                       </div>
-                      <div className="px-3 py-1 bg-black/[0.03] border border-black/[0.05] rounded-full">
-                        <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-black/40">{card.tag}</span>
+                      <div className="px-2 md:px-3 py-1 bg-black/[0.03] border border-black/[0.05] rounded-full">
+                        <span className="text-[8px] md:text-[10px] uppercase tracking-[0.2em] font-bold text-black/40">{card.tag}</span>
                       </div>
                     </div>
-                    <div className="space-y-3">
-                      <h2 className="text-3xl md:text-4xl font-black text-black tracking-tighter leading-tight uppercase">
+                    <div className="space-y-2 md:space-y-3">
+                      <h2 className="text-2xl md:text-4xl font-black text-black tracking-tighter leading-tight uppercase">
                         {card.title}
                       </h2>
-                      <p className="text-black/40 text-sm md:text-base font-medium leading-relaxed">
+                      <p className="text-black/40 text-xs md:text-base font-medium leading-relaxed line-clamp-3 md:line-clamp-none">
                         {card.description}
                       </p>
                     </div>
-                    <div className="flex items-center gap-6 pt-4">
+                    <div className="flex items-center gap-6 pt-2 md:pt-4">
                       <a 
                         href={card.url} 
                         target="_blank" 
                         rel="noopener noreferrer" 
-                        className="group relative h-12 px-8 flex items-center gap-3 bg-black hover:bg-black/90 rounded-full transition-all duration-300 shadow-xl shadow-black/10"
+                        className="group relative h-10 md:h-12 px-6 md:px-8 flex items-center gap-3 bg-black hover:bg-black/90 rounded-full transition-all duration-300 shadow-xl shadow-black/10"
                       >
-                        <span className="text-white text-[12px] font-black uppercase tracking-widest">Visit site</span>
-                        <ArrowRight className="w-4 h-4 text-[#f5b800] group-hover:translate-x-1 transition-transform" />
+                        <span className="text-white text-[10px] md:text-[12px] font-black uppercase tracking-widest">Visit site</span>
+                        <ArrowRight className="w-3.5 h-3.5 md:w-4 md:h-4 text-[#f5b800] group-hover:translate-x-1 transition-transform" />
                       </a>
                     </div>
                   </div>
-                  <div className="relative aspect-[16/10] rounded-2xl overflow-hidden border border-black/[0.05] bg-black/[0.03] group shadow-2xl shadow-black/5">
+                  <div className="relative aspect-[16/10] rounded-xl md:rounded-2xl overflow-hidden border border-black/[0.05] bg-black/[0.03] group shadow-xl md:shadow-2xl shadow-black/5">
                     <Image
                       src={card.imageUrl}
                       alt={card.title}
@@ -231,22 +234,22 @@ export function FeaturedWebsites() {
           )}
 
           {filteredCards.length > 1 && (
-            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-4 z-50">
+            <div className="absolute bottom-0 md:bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-3 md:gap-4 z-50 w-full px-6 md:w-auto">
               <button 
                 onClick={() => handleWebsiteNav('prev')} 
-                className="group flex items-center gap-3 px-8 py-4 bg-black/[0.03] border border-black/[0.05] text-black text-[10px] uppercase tracking-[0.4em] font-black hover:bg-black hover:border-black hover:text-white transition-all duration-300"
-                style={{ clipPath: 'polygon(10% 0%, 100% 0%, 90% 100%, 0% 100%)' }}
+                className="group flex-1 md:flex-none flex items-center justify-center gap-2 md:gap-3 px-4 md:px-8 py-3 md:py-4 bg-black/[0.03] border border-black/[0.05] text-black text-[8px] md:text-[10px] uppercase tracking-[0.2em] md:tracking-[0.4em] font-black hover:bg-black hover:border-black hover:text-white transition-all duration-300"
+                style={{ clipPath: isMobile ? 'none' : 'polygon(10% 0%, 100% 0%, 90% 100%, 0% 100%)' }}
               >
-                <ArrowLeft className="w-5 h-5 text-[#f5b800] group-hover:-translate-x-1 transition-transform" />
+                <ArrowLeft className="w-4 h-4 md:w-5 md:h-5 text-[#f5b800] group-hover:-translate-x-1 transition-transform" />
                 Prev
               </button>
               <button 
                 onClick={() => handleWebsiteNav('next')} 
-                className="group flex items-center gap-3 px-8 py-4 bg-black/[0.03] border border-black/[0.05] text-black text-[10px] uppercase tracking-[0.4em] font-black hover:bg-black hover:border-black hover:text-white transition-all duration-300"
-                style={{ clipPath: 'polygon(10% 0%, 100% 0%, 90% 100%, 0% 100%)' }}
+                className="group flex-1 md:flex-none flex items-center justify-center gap-2 md:gap-3 px-4 md:px-8 py-3 md:py-4 bg-black/[0.03] border border-black/[0.05] text-black text-[8px] md:text-[10px] uppercase tracking-[0.2em] md:tracking-[0.4em] font-black hover:bg-black hover:border-black hover:text-white transition-all duration-300"
+                style={{ clipPath: isMobile ? 'none' : 'polygon(10% 0%, 100% 0%, 90% 100%, 0% 100%)' }}
               >
                 Next
-                <ArrowRight className="w-5 h-5 text-[#f5b800] group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="w-4 h-4 md:w-5 md:h-5 text-[#f5b800] group-hover:translate-x-1 transition-transform" />
               </button>
             </div>
           )}
