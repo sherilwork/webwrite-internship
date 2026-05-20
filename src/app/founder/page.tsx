@@ -73,21 +73,21 @@ export default function FounderPage() {
                     <div className="w-8 h-8 rounded-full bg-black/5 flex items-center justify-center group-hover:bg-[#f5b800]/20 transition-colors">
                       <Phone className="w-3.5 h-3.5" />
                     </div>
-                    <span className="text-[10px] font-bold tracking-wider uppercase">+91-7906627288</span>
+                    <span className="text-[13px] font-semibold text-black/80">+91-7906627288</span>
                   </div>
                   <a href="https://www.rishitiwari.netlify.app" target="_blank" className="flex items-center gap-3 text-black/60 group">
                     <div className="w-8 h-8 rounded-full bg-black/5 flex items-center justify-center group-hover:bg-[#f5b800]/20 transition-colors">
                       <Globe className="w-3.5 h-3.5" />
                     </div>
-                    <span className="text-[10px] font-bold tracking-wider uppercase">www.rishitiwari.netlify.app</span>
+                    <span className="text-[13px] font-semibold text-black/80">www.rishitiwari.netlify.app</span>
                   </a>
                   <div className="flex items-center gap-3 text-black/60 group">
                     <div className="w-8 h-8 rounded-full bg-black/5 flex items-center justify-center group-hover:bg-[#f5b800]/20 transition-colors">
                       <Mail className="w-3.5 h-3.5" />
                     </div>
                     <div className="flex flex-col">
-                      <span className="text-[9px] font-bold tracking-wider uppercase">therishitiwari@gmail.com</span>
-                      <span className="text-[9px] font-bold tracking-wider uppercase">rishi@webwrite.co.in</span>
+                      <span className="text-[13px] font-semibold text-black/80">therishitiwari@gmail.com</span>
+                      <span className="text-[13px] font-semibold text-black/80">rishi@webwrite.co.in</span>
                     </div>
                   </div>
                 </div>
