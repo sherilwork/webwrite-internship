@@ -198,7 +198,7 @@ export function FeaturedWork() {
 
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-12 border-b border-black/[0.05] pb-6">
           <div className="relative">
-            <h2 className="text-xl md:text-3xl font-black text-black leading-none tracking-tighter uppercase">
+            <h2 className="text-xl md:text-3xl font-black text-black leading-none tracking-tighter uppercase text-nowrap">
               Featured Videos
             </h2>
             <div className="w-8 md:w-12 h-1 bg-black mt-1" />
