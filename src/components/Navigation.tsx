@@ -90,7 +90,7 @@ export function Navigation() {
               </svg>
             </button>
           </SheetTrigger>
-          <SheetContent side="left" className="w-[50%] p-0 flex flex-col bg-white border-r">
+          <SheetContent side="left" className="w-[80%] p-0 flex flex-col bg-white border-r">
             <SheetHeader className="p-5 border-b text-left">
               <SheetTitle className="text-[10px] font-black uppercase tracking-[0.2em] text-black/30">Main Menu</SheetTitle>
             </SheetHeader>
