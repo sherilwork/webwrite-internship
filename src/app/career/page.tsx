@@ -90,8 +90,11 @@ function DetailPoint({ label }: { label: string }) {
 export function JobDetailsPopup({ viewingJob, setViewingJob, setSelectedJob }: { viewingJob: any, setViewingJob: any, setSelectedJob: any }) {
   return (
     <Dialog open={!!viewingJob} onOpenChange={(open) => !open && setViewingJob(null)}>
-        <DialogContent className="max-w-2xl bg-[#121212] border-white/10 text-white p-0 shadow-2xl overflow-y-auto max-h-[92vh] [&>button]:h-12 [&>button]:w-12 [&>button]:flex [&>button]:items-center [&>button]:justify-center [&>button]:rounded-full [&>button]:bg-white/5 [&>button]:hover:bg-white/10 [&>button]:transition-all [&>button]:border [&>button]:border-white/10 [&>button]:top-6 [&>button]:right-6 [&>button]:opacity-100 [&_svg]:size-6">
-          <div className="absolute top-0 left-0 w-full h-1 bg-[#ff6b1a] z-50" />
+        <DialogContent 
+          data-lenis-prevent
+          className="max-w-2xl bg-[#121212] border-white/10 text-white p-0 shadow-2xl overflow-y-auto max-h-[92vh] flex flex-col [&>button]:h-12 [&>button]:w-12 [&>button]:flex [&>button]:items-center [&>button]:justify-center [&>button]:rounded-full [&>button]:bg-white/5 [&>button]:hover:bg-white/10 [&>button]:transition-all [&>button]:border [&>button]:border-white/10 [&>button]:top-6 [&>button]:right-6 [&>button]:opacity-100 [&_svg]:size-6"
+        >
+          <div className="absolute top-0 left-0 w-full h-1 bg-[#ff6b1a] z-50 shrink-0" />
                      
           <div className="p-8 md:p-12 space-y-8">
             <div className="space-y-6">
@@ -161,7 +164,7 @@ export function JobDetailsPopup({ viewingJob, setViewingJob, setSelectedJob }: {
             </div>
           </div>
                      
-          <div className="px-12 pb-8 flex items-center justify-center opacity-10">
+          <div className="px-12 pb-8 flex items-center justify-center opacity-10 shrink-0">
              <span className="text-[8px] font-mono tracking-[0.5em] uppercase">We Are Hiring</span>
           </div>
         </DialogContent>
