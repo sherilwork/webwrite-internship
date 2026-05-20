@@ -51,7 +51,7 @@ const services = [
     accent: "bg-[#f0fff4]",
   },
   {
-    title: "Social Media Management",
+    title: "Social Media Marketing & Management",
     description: "Strategic management and growth of your voice across all major social platforms.",
     icon: Share2,
     accent: "bg-[#fffbe2]",
@@ -115,11 +115,11 @@ export default function ServicesSection() {
               </div>
 
               <p className="text-base md:text-lg text-black/50 font-medium leading-relaxed max-w-sm">
-                We build high-velocity growth systems that bridge the gap between creative vision and technical excellence. Simple solutions for complex growth.
+                We simplify growth. Our expert teams build systems that help your brand reach more people and convert them into loyal customers.
               </p>
 
-              <div className="pt-4 md:pt-6">
-                <Button className="rounded-full bg-black text-white px-8 md:px-10 py-6 md:py-7 text-[10px] md:text-xs font-bold uppercase tracking-widest hover:bg-black/90 transition-all hover:translate-x-1 active:scale-95 shadow-2xl shadow-black/20 group">
+              <div className="pt-2 md:pt-3">
+                <Button className="rounded-full bg-black text-white px-6 md:px-8 py-4 md:py-5 text-[10px] md:text-xs font-bold uppercase tracking-widest hover:bg-black/90 transition-all hover:translate-x-1 active:scale-95 shadow-2xl shadow-black/20 group">
                   Full Service List
                   <ArrowUpRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                 </Button>
@@ -162,7 +162,7 @@ function ServiceCard({ service, index }: { service: typeof services[0], index: n
         zIndex: 20 + index,
       }}
     >
-      <div className="group relative overflow-hidden rounded-[20px] border border-black/[0.04] bg-[#f7f7f5] p-5 md:p-6 shadow-[0_10px_40px_rgba(0,0,0,0.02)] transition-all duration-700 hover:shadow-[0_20px_60px_rgba(0,0,0,0.04)] transform-gpu min-h-[120px] md:min-h-[130px] flex items-center">
+      <div className="group relative overflow-hidden rounded-[20px] border border-black/[0.04] bg-[#f7f7f5] p-5 md:p-6 shadow-[0_10px_40px_rgba(0,0,0,0.02)] transition-all duration-700 hover:shadow-[0_20px_60px_rgba(0,0,0,0.04)] transform-gpu min-h-[100px] flex items-center">
         
         <div className={cn(
           "absolute inset-0 opacity-0 transition-opacity duration-700 group-hover:opacity-[0.08]",
@@ -172,28 +172,28 @@ function ServiceCard({ service, index }: { service: typeof services[0], index: n
         <div className="relative flex flex-col gap-4 md:flex-row md:items-center md:justify-between w-full">
           <div className="flex flex-col md:flex-row items-start md:items-center gap-5">
             <div className={cn(
-              "flex h-9 w-9 md:h-11 md:w-11 shrink-0 items-center justify-center rounded-[14px] border border-black/[0.03] transition-all duration-700 group-hover:scale-105",
+              "flex h-8 w-8 md:h-10 md:w-10 shrink-0 items-center justify-center rounded-[12px] border border-black/[0.03] transition-all duration-700 group-hover:scale-105",
               service.accent
             )}>
-              <Icon size={18} strokeWidth={1.5} className="text-black transition-transform duration-700 group-hover:scale-110" />
+              <Icon size={16} strokeWidth={1.5} className="text-black transition-transform duration-700 group-hover:scale-110" />
             </div>
 
-            <div className="space-y-1">
-              <h3 className="text-[15px] md:text-base font-black tracking-tight text-[#111111] uppercase">
+            <div className="space-y-0.5">
+              <h3 className="text-[14px] md:text-[15px] font-black tracking-tight text-[#111111] uppercase">
                 {service.title}
               </h3>
-              <p className="max-w-[260px] md:max-w-xs text-[10px] md:text-[11px] leading-relaxed text-black/40 font-medium">
+              <p className="max-w-[280px] md:max-w-md text-[10px] md:text-[11px] leading-relaxed text-black/40 font-medium">
                 {service.description}
               </p>
             </div>
           </div>
 
-          <button className="flex h-8 w-8 md:h-9 md:w-9 items-center justify-center rounded-full bg-black text-white transition-all duration-500 hover:scale-110 active:scale-90 group/btn shrink-0 shadow-lg shadow-black/10">
-            <ArrowUpRight size={16} strokeWidth={2} className="transition-transform duration-500 group-hover:rotate-45" />
+          <button className="flex h-7 w-7 md:h-8 md:w-8 items-center justify-center rounded-full bg-black text-white transition-all duration-500 hover:scale-110 active:scale-90 group/btn shrink-0 shadow-lg shadow-black/10">
+            <ArrowUpRight size={14} strokeWidth={2} className="transition-transform duration-500 group-hover:rotate-45" />
           </button>
         </div>
 
-        <div className="absolute top-3 right-5 text-[24px] md:text-[32px] font-black text-black/[0.01] leading-none select-none tracking-tighter transition-all duration-700 group-hover:text-black/[0.02] pointer-events-none">
+        <div className="absolute top-2 right-4 text-[20px] md:text-[24px] font-black text-black/[0.01] leading-none select-none tracking-tighter transition-all duration-700 group-hover:text-black/[0.02] pointer-events-none">
           {String(index + 1).padStart(2, '0')}
         </div>
       </div>
