@@ -110,7 +110,16 @@ export function Navigation() {
                    <ChevronLeft className="w-4 h-4 text-black/60 group-hover:text-[#f5b800] transition-colors" />
                 </button>
               </SheetClose>
-              <SheetTitle className="text-lg font-black text-black tracking-tight uppercase">Main Menu</SheetTitle>
+              <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
+              <div className="relative h-6 w-32">
+                <Image
+                  src={logo?.imageUrl || '/webwrite-logo.webp'}
+                  alt="Webwrite services logo"
+                  fill
+                  className="object-contain object-left"
+                  data-ai-hint="company logo"
+                />
+              </div>
             </SheetHeader>
             <div className="flex-1 overflow-y-auto py-2">
               <div className="flex flex-col">
