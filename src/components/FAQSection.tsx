@@ -72,8 +72,8 @@ export function FAQSection() {
               <div className="pt-4">
                 <div className="p-6 rounded-[2rem] bg-black/[0.02] border border-dashed border-black/10">
                   <p className="text-[10px] font-black uppercase tracking-widest text-black/30 mb-2">Still have questions?</p>
-                  <a href="mailto:info@webwrite.services" className="text-sm font-black text-black hover:text-[#f5b800] transition-colors underline decoration-[#f5b800]/30 underline-offset-4">
-                    Get in touch with us →
+                  <a href="https://wa.me/917906627288" target="_blank" rel="noopener noreferrer" className="text-sm font-black text-black hover:text-[#f5b800] transition-colors underline decoration-[#f5b800]/30 underline-offset-4">
+                    Get in touch with us on WhatsApp →
                   </a>
                 </div>
               </div>
