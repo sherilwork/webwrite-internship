@@ -28,7 +28,7 @@ export function Navigation() {
   const logo = PlaceHolderImages.find((img) => img.id === 'logo');
 
   return (
-    <header className="fixed top-10 left-0 right-0 z-50 flex justify-center px-4">
+    <header className="fixed top-16 left-0 right-0 z-50 flex justify-center px-4">
       <nav className="flex items-center justify-between w-full max-w-6xl px-4 py-2 bg-white/90 backdrop-blur-md rounded-full border border-border shadow-sm">
         <Link href="/" className="flex items-center gap-2">
           <div className="relative h-7 w-32 md:h-8 md:w-40">
