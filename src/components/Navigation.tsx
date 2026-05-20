@@ -1,4 +1,3 @@
-
 'use client';
 
 import * as React from 'react';
@@ -76,7 +75,7 @@ export function Navigation() {
                 viewBox="0 0 24 24"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
-                className="w-6 h-6"
+                className="w-7 h-7"
               >
                 <path
                   d="M4 10H20"
@@ -94,7 +93,7 @@ export function Navigation() {
             </button>
           </SheetTrigger>
           <SheetContent side="left" className="w-[80%] p-0 flex flex-col bg-white border-r overflow-visible">
-            {/* Custom Side Tab Close Button - Refined Mountain Curve Shape */}
+            {/* Custom Side Tab Close Button - Mountain Curve Shape */}
             <div className="absolute -right-10 bottom-40 z-50">
               <SheetClose asChild>
                 <button className="w-10 h-24 bg-white border-l-0 border border-black/[0.02] rounded-r-[32px] shadow-[20px_0_40px_-10px_rgba(0,0,0,0.08)] flex items-center justify-center pr-3 pl-0.5 group hover:w-11 transition-all duration-300 ease-in-out">
@@ -105,7 +104,7 @@ export function Navigation() {
               </SheetClose>
             </div>
 
-            <SheetHeader className="p-4 border-b flex flex-row items-center gap-3 space-y-0 text-left">
+            <SheetHeader className="pt-14 pb-4 px-4 border-b flex flex-row items-center gap-3 space-y-0 text-left">
               <SheetClose asChild>
                 <button className="w-9 h-9 rounded-xl border border-black/[0.03] bg-black/[0.01] flex items-center justify-center hover:bg-black/[0.04] transition-all hover:scale-105 active:scale-95 shrink-0 group">
                    <ChevronLeft className="w-4 h-4 text-black/60 group-hover:text-[#f5b800] transition-colors" />
