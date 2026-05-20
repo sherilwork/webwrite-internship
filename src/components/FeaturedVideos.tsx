@@ -4,15 +4,13 @@
 import React, { useState, useMemo, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import Image from "next/image"
-import { Play, ExternalLink, TrendingUp } from "lucide-react"
+import { Play, ExternalLink, TrendingUp, ArrowLeft, ArrowRight } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { PlaceHolderImages } from "@/lib/placeholder-images"
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
   type CarouselApi
 } from "@/components/ui/carousel"
 
@@ -242,9 +240,22 @@ export function FeaturedVideos() {
                     </CarouselItem>
                   ))}
                 </CarouselContent>
-                <div className="flex justify-center gap-2 mt-8">
-                  <CarouselPrevious className="static translate-y-0 h-10 w-10 border-black/5 hover:bg-black hover:text-white transition-all" />
-                  <CarouselNext className="static translate-y-0 h-10 w-10 border-black/5 hover:bg-black hover:text-white transition-all" />
+                
+                <div className="flex justify-center gap-3 mt-12">
+                  <button 
+                    onClick={() => api?.scrollPrev()} 
+                    className="group flex items-center justify-center gap-3 px-8 py-3 bg-black/[0.03] border border-black/[0.08] text-black text-[10px] uppercase tracking-[0.2em] font-black rounded-full hover:bg-black hover:border-black hover:text-white transition-all duration-300 shadow-lg shadow-black/5"
+                  >
+                    <ArrowLeft className="w-4 h-4 text-[#f5b800] group-hover:-translate-x-1 transition-transform" />
+                    Prev
+                  </button>
+                  <button 
+                    onClick={() => api?.scrollNext()} 
+                    className="group flex items-center justify-center gap-3 px-8 py-3 bg-black/[0.03] border border-black/[0.08] text-black text-[10px] uppercase tracking-[0.2em] font-black rounded-full hover:bg-black hover:border-black hover:text-white transition-all duration-300 shadow-lg shadow-black/5"
+                  >
+                    Next
+                    <ArrowRight className="w-4 h-4 text-[#f5b800] group-hover:translate-x-1 transition-transform" />
+                  </button>
                 </div>
               </Carousel>
             </motion.div>
