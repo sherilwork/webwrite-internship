@@ -49,7 +49,7 @@ export function FounderSection() {
 
               <div className="flex items-center gap-4 pt-4">
                 <button className="flex items-center gap-2 px-4 py-2 rounded-full border border-black/10 hover:bg-black hover:text-white transition-all group">
-                  <span className="text-[10px] font-bold uppercase tracking-widest">Connect on LinkedIn</span>
+                  <span className="text-[10px] font-bold uppercase tracking-widest">Know more</span>
                   <ArrowUpRight className="w-3 h-3 group-hover:rotate-45 transition-transform" />
                 </button>
                 <div className="flex gap-2">
