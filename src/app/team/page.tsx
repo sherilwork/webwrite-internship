@@ -11,6 +11,7 @@ import { Footer } from "@/components/Footer"
 import { GridBackground } from "@/components/GridBackground"
 import { teamMembers } from "@/constants/team"
 import { PlaceHolderImages } from "@/lib/placeholder-images"
+import { cn } from "@/lib/utils"
 
 export default function TeamPage() {
   return (
@@ -51,6 +52,7 @@ export default function TeamPage() {
             
             {teamMembers.map((member, idx) => {
               const placeholder = PlaceHolderImages.find(img => img.id === member.imageId);
+              const isFounder = member.id === 1;
               return (
                 <motion.div
                   key={member.id}
@@ -60,12 +62,17 @@ export default function TeamPage() {
                   transition={{ duration: 0.6, delay: idx * 0.1 }}
                   className="group"
                 >
-                  <div className="relative aspect-[4/5] rounded-[2rem] overflow-hidden bg-black/[0.02] border border-black/[0.05] mb-6 shadow-2xl shadow-black/[0.02] transition-transform duration-700 group-hover:scale-[1.02]">
+                  <div className={cn(
+                    "relative aspect-[4/5] rounded-[2rem] overflow-hidden mb-6 transition-transform duration-700 group-hover:scale-[1.02]",
+                    isFounder 
+                      ? "border-[3px] border-[#f5b800] shadow-2xl shadow-[#f5b800]/10" 
+                      : "bg-black/[0.02] border border-black/[0.05] shadow-2xl shadow-black/[0.02]"
+                  )}>
                     <Image
                       src={placeholder?.imageUrl || "https://picsum.photos/seed/placeholder/600/800"}
                       alt={member.name}
                       fill
-                      className="object-cover transition-all duration-1000"
+                      className="object-cover"
                     />
                   </div>
                   <div className="space-y-1">
