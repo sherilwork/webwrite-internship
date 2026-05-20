@@ -21,19 +21,19 @@ export function SubHeader() {
     <div className="fixed top-0 left-0 right-0 z-[60] h-10 bg-black flex items-center justify-between px-4 md:px-6 overflow-hidden">
       {/* Left Section: Info - Hidden on mobile, visible on desktop */}
       <div className="hidden lg:flex items-center gap-6 animate-in fade-in slide-in-from-left-4 duration-1000">
-        <div className="flex items-center gap-2 group cursor-pointer">
+        <a href="tel:+917906627288" className="flex items-center gap-2 group cursor-pointer">
           <Phone className="w-3.5 h-3.5 text-[#f5b800]" />
           <span className="text-[10px] md:text-[11px] font-bold text-white/80 uppercase tracking-wider group-hover:text-white transition-colors">
             +91 7906627288
           </span>
-        </div>
+        </a>
         <div className="h-4 w-px bg-white/10" />
-        <div className="flex items-center gap-2 group cursor-pointer">
+        <a href="mailto:info@webwrite.services" className="flex items-center gap-2 group cursor-pointer">
           <Mail className="w-4 h-4 text-[#f5b800]" />
-          <span className="text-[11px] font-bold text-white/80 uppercase tracking-wider group-hover:text-white transition-colors">
+          <span className="text-[11px] font-bold text-white/80 tracking-wider group-hover:text-white transition-colors">
             info@webwrite.services
           </span>
-        </div>
+        </a>
         <div className="h-4 w-px bg-white/10" />
         <Link href="/career" className="flex items-center gap-2 group cursor-pointer">
           <Briefcase className="w-4 h-4 text-[#f5b800]" />
