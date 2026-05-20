@@ -34,7 +34,7 @@ export function Navigation() {
     { label: 'Services', href: '/services', icon: Zap },
     { label: 'Portfolio', href: '/portfolio', icon: Layout },
     { label: 'Career', href: '/career', icon: Briefcase },
-    { label: 'Contact', href: '/#contact', icon: Mail },
+    { label: 'Contact', href: '/contact', icon: Mail },
   ];
 
   const logo = PlaceHolderImages.find((img) => img.id === 'logo');
@@ -68,7 +68,7 @@ export function Navigation() {
         </div>
 
         <Button asChild className="hidden md:inline-flex rounded-full bg-black hover:bg-black/90 text-white px-6 font-medium transition-transform active:scale-95 shadow-lg shadow-black/10">
-          <Link href="/#contact">Get started</Link>
+          <Link href="/contact">Get started</Link>
         </Button>
 
         <Sheet>
@@ -150,7 +150,7 @@ export function Navigation() {
               
               <div className="mt-8 px-8 mb-12">
                 <Button asChild className="w-full rounded-full bg-black text-white text-[12px] font-black uppercase tracking-[0.2em] py-8 hover:bg-black/90 shadow-2xl shadow-black/20 transition-all active:scale-95 border border-white/5">
-                  <Link href="/#contact">Get Started Now</Link>
+                  <Link href="/contact">Get Started Now</Link>
                 </Button>
               </div>
             </ScrollArea>

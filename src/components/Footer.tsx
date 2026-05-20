@@ -44,7 +44,7 @@ export function Footer() {
       { label: "Content Creation", href: "/services" },
     ],
     support: [
-      { label: "Contact Us", href: "/#contact" },
+      { label: "Contact Us", href: "/contact" },
       { label: "FAQs", href: "/#faq" },
       { label: "Privacy Policy", href: "#" },
       { label: "Terms of Service", href: "#" },
