@@ -15,7 +15,8 @@ import {
   Layout, 
   Building2, 
   Mail, 
-  Star 
+  Star,
+  Briefcase
 } from 'lucide-react';
 import {
   Sheet,
@@ -37,6 +38,7 @@ export function Navigation() {
     { label: 'Team', href: '/team', icon: Building2 },
     { label: 'Services', href: '/services', icon: Zap },
     { label: 'Portfolio', href: '/portfolio', icon: Layout },
+    { label: 'Career', href: '/career', icon: Briefcase },
     { label: 'Contact', href: '/contact', icon: Mail },
   ];
 

@@ -32,6 +32,7 @@ export function Footer() {
       { label: "Our Services", href: "/services" },
       { label: "Portfolio", href: "/portfolio" },
       { label: "Founder", href: "/founder" },
+      { label: "Career", href: "/career" },
     ],
     services: [
       { label: "Web Development", href: "/services" },
@@ -66,7 +67,7 @@ export function Footer() {
                 />
               </div>
             </Link>
-            <p className="text-sm font-medium text-black/50 leading-relaxed max-w-sm">
+            <p className="text-sm font-medium text-black/50 leading-relaxed max-sm">
               Crafting premium digital experiences that bridge the gap between vision and reality. We empower brands with high-performance web solutions and strategic digital marketing.
             </p>
             <div className="flex gap-3">
