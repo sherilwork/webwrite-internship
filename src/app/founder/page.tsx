@@ -40,10 +40,10 @@ export default function FounderPage() {
             Back to Home
           </Link>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
             
-            {/* Sidebar: Profile Info */}
-            <div className="lg:col-span-4 space-y-10">
+            {/* Sidebar: Profile Info - Sticky on Desktop */}
+            <div className="lg:col-span-4 space-y-10 lg:sticky lg:top-32 h-fit">
               <motion.div 
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
