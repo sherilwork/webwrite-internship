@@ -2,6 +2,7 @@
 "use client"
 
 import React from 'react'
+import { motion } from 'framer-motion'
 import { cn } from '@/lib/utils'
 import { 
   ShoppingBag, 
@@ -60,49 +61,15 @@ const industries: Industry[] = [
 ]
 
 export function IndustriesSection() {
-  const row1 = industries.slice(0, 11)
-  const row2 = industries.slice(11)
-
-  const MarqueeItem = ({ item }: { item: Industry }) => (
-    <div className="flex items-center shrink-0 px-3">
-      <div className="flex items-center gap-3 px-5 py-3 rounded-2xl bg-white border border-black/[0.05] shadow-[0_4px_20px_rgba(0,0,0,0.02)] group hover:border-[#f5b800]/50 hover:shadow-[0_8px_30px_rgba(245,184,0,0.05)] transition-all duration-500 cursor-default">
-        <div className="w-8 h-8 rounded-xl bg-black/[0.02] flex items-center justify-center text-black/40 group-hover:bg-[#f5b800] group-hover:text-black transition-all duration-500 shadow-sm">
-          <item.icon className="w-4 h-4" />
-        </div>
-        <span className="text-[13px] font-black text-black/80 uppercase tracking-tight transition-colors group-hover:text-black">
-          {item.name}
-        </span>
-      </div>
-    </div>
-  )
-
-  const MarqueeRow = ({ items, direction = 'left', speed = '40s' }: { 
-    items: Industry[], 
-    direction?: 'left' | 'right',
-    speed?: string
-  }) => (
-    <div className="flex overflow-hidden relative group w-full py-4">
-      <div 
-        className={cn(
-          "flex items-center will-change-transform transform-gpu",
-          direction === 'left' ? "animate-industry-left" : "animate-industry-right"
-        )}
-        style={{ '--duration': speed } as React.CSSProperties}
-      >
-        {items.map((item, idx) => <MarqueeItem key={idx} item={item} />)}
-        {items.map((item, idx) => <MarqueeItem key={`dup-${idx}`} item={item} />)}
-      </div>
-    </div>
-  )
-
   return (
     <section className="bg-white py-24 lg:py-32 relative overflow-hidden border-t border-black/[0.03]">
-      {/* Ambient background */}
-      <div className="absolute top-0 right-0 w-1/3 h-full bg-[#f5b800]/[0.02] blur-[120px] rounded-full pointer-events-none" />
+      {/* Background Ambient Glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-[600px] bg-[#f5b800]/[0.02] blur-[150px] rounded-full pointer-events-none" />
       
-      <div className="container mx-auto px-6 mb-12 md:mb-16">
-        <div className="max-w-4xl space-y-6">
-          <div className="space-y-4">
+      <div className="container mx-auto px-6">
+        {/* Centered Header Section */}
+        <div className="max-w-3xl mx-auto text-center space-y-8 mb-20">
+          <div className="space-y-4 flex flex-col items-center">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/[0.03] border border-black/[0.05]">
               <span className="w-1.5 h-1.5 rounded-full bg-[#f5b800]" />
               <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-black/60">Industries We Serve</span>
@@ -113,38 +80,40 @@ export function IndustriesSection() {
             </h2>
             <div className="w-16 md:w-20 h-1.5 bg-black mt-2" />
           </div>
-          <p className="text-base md:text-xl text-black/50 font-medium leading-relaxed max-w-2xl">
-            We deliver specialized digital solutions and AI-powered marketing across a diverse spectrum of industries, driving visibility and scalable growth with data-driven precision.
+          <p className="text-base md:text-xl text-black/40 font-medium leading-relaxed">
+            We provide AI-powered digital marketing solutions across multiple industries, helping businesses increase visibility, generate leads, and scale revenue with data-driven strategies.
           </p>
         </div>
-      </div>
 
-      <div className="flex flex-col gap-2 relative z-10">
-        <MarqueeRow items={row1} direction="left" speed="35s" />
-        <MarqueeRow items={row2} direction="right" speed="40s" />
-      </div>
+        {/* High-Fidelity Grid */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6">
+          {industries.map((item, idx) => (
+            <motion.div
+              key={idx}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: idx * 0.03, duration: 0.5 }}
+              className="group relative"
+            >
+              <div className="h-full flex flex-col items-center justify-center p-6 md:p-8 rounded-[2rem] bg-[#fcfcfc] border border-black/[0.04] shadow-[0_4px_20px_rgba(0,0,0,0.01)] hover:shadow-[0_20px_40px_rgba(0,0,0,0.05)] hover:border-[#f5b800]/30 hover:-translate-y-1 transition-all duration-500 cursor-default">
+                {/* Icon Container */}
+                <div className="w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-black/[0.02] flex items-center justify-center text-black/40 group-hover:bg-[#f5b800] group-hover:text-black transition-all duration-500 shadow-sm mb-6">
+                  <item.icon size={32} strokeWidth={1.5} className="transition-transform duration-500 group-hover:scale-110" />
+                </div>
+                
+                {/* Label */}
+                <span className="text-[11px] md:text-[13px] font-black text-black/60 uppercase tracking-[0.1em] text-center transition-colors group-hover:text-black">
+                  {item.name}
+                </span>
 
-      <style jsx global>{`
-        @keyframes industry-left {
-          0% { transform: translate3d(0, 0, 0); }
-          100% { transform: translate3d(-50%, 0, 0); }
-        }
-        @keyframes industry-right {
-          0% { transform: translate3d(-50%, 0, 0); }
-          100% { transform: translate3d(0, 0, 0); }
-        }
-        .animate-industry-left {
-          animation: industry-left var(--duration, 40s) linear infinite;
-        }
-        .animate-industry-right {
-          animation: industry-right var(--duration, 40s) linear infinite;
-        }
-        @media (max-width: 768px) {
-          .animate-industry-left, .animate-industry-right {
-            animation-duration: 25s;
-          }
-        }
-      `}</style>
+                {/* Subtle Accent Line */}
+                <div className="absolute bottom-6 w-4 h-0.5 bg-[#f5b800] opacity-0 group-hover:opacity-100 transition-all duration-500" />
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
     </section>
   )
 }
