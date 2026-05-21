@@ -63,8 +63,8 @@ const industries: Industry[] = [
 export function IndustriesSection() {
   return (
     <section className="bg-white py-24 lg:py-32 relative overflow-hidden border-t border-black/[0.03]">
-      {/* Background Ambient Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-[600px] bg-[#f5b800]/[0.02] blur-[150px] rounded-full pointer-events-none" />
+      {/* Background Ambient Glow - Optimized Opacity */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-[600px] bg-[#f5b800]/[0.015] blur-[150px] rounded-full pointer-events-none" />
       
       <div className="container mx-auto px-6">
         {/* Centered Header Section */}
@@ -85,30 +85,30 @@ export function IndustriesSection() {
           </p>
         </div>
 
-        {/* High-Fidelity Grid */}
+        {/* Optimized High-Fidelity Grid */}
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-5">
           {industries.map((item, idx) => (
             <motion.div
               key={idx}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: idx * 0.02, duration: 0.5 }}
-              className="group relative"
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ delay: idx * 0.015, duration: 0.4, ease: "easeOut" }}
+              className="group relative will-change-transform transform-gpu"
             >
-              <div className="h-full flex flex-col items-center justify-center p-4 md:p-5 rounded-[1.5rem] bg-[#fcfcfc] border border-black/[0.04] shadow-[0_4px_15px_rgba(0,0,0,0.01)] hover:shadow-[0_15px_30px_rgba(0,0,0,0.04)] hover:border-[#f5b800]/30 hover:-translate-y-1 transition-all duration-500 cursor-default">
+              <div className="h-full flex flex-col items-center justify-center p-4 md:p-5 rounded-[1.5rem] bg-[#fcfcfc] border border-black/[0.04] shadow-[0_4px_15px_rgba(0,0,0,0.01)] hover:shadow-[0_12px_25px_rgba(0,0,0,0.03)] hover:border-[#f5b800]/30 hover:-translate-y-1 transition-all duration-300 ease-out cursor-default transform-gpu">
                 {/* Icon Container */}
-                <div className="w-12 h-12 md:w-14 md:h-14 rounded-xl bg-black/[0.02] flex items-center justify-center text-black/40 group-hover:bg-[#f5b800] group-hover:text-black transition-all duration-500 shadow-sm mb-4">
-                  <item.icon size={24} strokeWidth={1.5} className="transition-transform duration-500 group-hover:scale-110" />
+                <div className="w-12 h-12 md:w-14 md:h-14 rounded-xl bg-black/[0.02] flex items-center justify-center text-black/40 group-hover:bg-[#f5b800] group-hover:text-black transition-all duration-300 ease-out shadow-sm mb-4">
+                  <item.icon size={24} strokeWidth={1.5} className="transition-transform duration-300 group-hover:scale-110" />
                 </div>
                 
                 {/* Label */}
-                <span className="text-[9px] md:text-[11px] font-black text-black/60 uppercase tracking-[0.1em] text-center transition-colors group-hover:text-black">
+                <span className="text-[9px] md:text-[11px] font-black text-black/60 uppercase tracking-[0.1em] text-center transition-colors duration-300 group-hover:text-black">
                   {item.name}
                 </span>
 
                 {/* Subtle Accent Line */}
-                <div className="absolute bottom-4 w-3 h-0.5 bg-[#f5b800] opacity-0 group-hover:opacity-100 transition-all duration-500" />
+                <div className="absolute bottom-4 w-3 h-0.5 bg-[#f5b800] opacity-0 group-hover:opacity-100 transition-all duration-300 ease-out" />
               </div>
             </motion.div>
           ))}
