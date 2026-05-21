@@ -96,7 +96,7 @@ export default function CareersPage() {
           <div className="space-y-6 max-w-3xl">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/[0.03] border border-black/[0.05]">
               <span className="w-1.5 h-1.5 rounded-full bg-[#f5b800]" />
-              <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-black/60">Join Our Team</span>
+              <span className="text-[10px] font-black uppercase tracking-[0.2em] text-black/60">Join Our Team</span>
             </div>
             <h1 className="text-4xl md:text-6xl font-black text-black leading-[1.05] tracking-tighter uppercase">
               DESIGN YOUR <br />
@@ -152,7 +152,7 @@ export default function CareersPage() {
       <Dialog open={!!viewingJob} onOpenChange={(open) => !open && setViewingJob(null)}>
         <DialogContent 
           data-lenis-prevent
-          className="max-w-2xl bg-white border-none p-0 shadow-2xl overflow-hidden rounded-[2rem] flex flex-col max-h-[90vh]"
+          className="max-w-2xl bg-white border border-black/5 p-0 shadow-2xl overflow-hidden rounded-xl flex flex-col max-h-[90vh]"
         >
           <div className="absolute top-0 left-0 w-full h-1.5 bg-[#f5b800] z-50" />
           
@@ -161,7 +161,7 @@ export default function CareersPage() {
               <div className="space-y-6">
                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/[0.03] border border-black/[0.05]">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#f5b800]" />
-                  <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-black/60">Job Opening</span>
+                  <span className="text-[10px] font-black uppercase tracking-[0.2em] text-black/60">Job Opening</span>
                 </div>
                 
                 <div className="space-y-4">
@@ -169,15 +169,15 @@ export default function CareersPage() {
                     {viewingJob?.role}
                   </DialogTitle>
                   <div className="flex flex-wrap gap-4 pt-2">
-                    <div className="flex items-center gap-2 text-black/40">
+                    <div className="flex items-center gap-2 text-black/60">
                       <MapPin className="w-4 h-4 text-[#f5b800]" />
                       <span className="text-[11px] font-black uppercase tracking-widest">{viewingJob?.location}</span>
                     </div>
-                    <div className="flex items-center gap-2 text-black/40">
+                    <div className="flex items-center gap-2 text-black/60">
                       <Calendar className="w-4 h-4 text-[#f5b800]" />
                       <span className="text-[11px] font-black uppercase tracking-widest">{viewingJob?.experience}</span>
                     </div>
-                    <div className="flex items-center gap-2 text-black/40">
+                    <div className="flex items-center gap-2 text-black/60">
                       <Clock className="w-4 h-4 text-[#f5b800]" />
                       <span className="text-[11px] font-black uppercase tracking-widest">{viewingJob?.type}</span>
                     </div>
@@ -233,7 +233,7 @@ export default function CareersPage() {
       <Dialog open={!!selectedJob} onOpenChange={(open) => !open && setSelectedJob(null)}>
         <DialogContent 
           data-lenis-prevent
-          className="max-w-2xl bg-white border-none p-0 shadow-2xl overflow-hidden rounded-[2rem] flex flex-col max-h-[90vh]"
+          className="max-w-2xl bg-white border border-black/5 p-0 shadow-2xl overflow-hidden rounded-xl flex flex-col max-h-[90vh]"
         >
           <div className="absolute top-0 left-0 w-full h-1.5 bg-[#f5b800] z-50" />
           
@@ -251,41 +251,41 @@ export default function CareersPage() {
               <form className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <Label className="text-[10px] uppercase tracking-[0.2em] font-black text-black/40 ml-1">Full Name *</Label>
+                    <Label className="text-[10px] uppercase tracking-[0.2em] font-black text-black ml-1">Full Name *</Label>
                     <Input 
                       placeholder="John Doe" 
-                      className="bg-black/[0.02] border-black/5 h-12 rounded-xl focus-visible:ring-[#f5b800]/30 text-black placeholder:text-black/10"
+                      className="bg-black/[0.02] border border-black/20 h-12 rounded-xl focus-visible:ring-[#f5b800]/30 text-black placeholder:text-black/10"
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label className="text-[10px] uppercase tracking-[0.2em] font-black text-black/40 ml-1">Email Address *</Label>
+                    <Label className="text-[10px] uppercase tracking-[0.2em] font-black text-black ml-1">Email Address *</Label>
                     <Input 
                       type="email" 
                       placeholder="john@example.com" 
-                      className="bg-black/[0.02] border-black/5 h-12 rounded-xl focus-visible:ring-[#f5b800]/30 text-black placeholder:text-black/10"
+                      className="bg-black/[0.02] border border-black/20 h-12 rounded-xl focus-visible:ring-[#f5b800]/30 text-black placeholder:text-black/10"
                     />
                   </div>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <Label className="text-[10px] uppercase tracking-[0.2em] font-black text-black/40 ml-1">Mobile Number *</Label>
+                    <Label className="text-[10px] uppercase tracking-[0.2em] font-black text-black ml-1">Mobile Number *</Label>
                     <Input 
                       placeholder="+91 9876543210" 
-                      className="bg-black/[0.02] border-black/5 h-12 rounded-xl focus-visible:ring-[#f5b800]/30 text-black placeholder:text-black/10"
+                      className="bg-black/[0.02] border border-black/20 h-12 rounded-xl focus-visible:ring-[#f5b800]/30 text-black placeholder:text-black/10"
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label className="text-[10px] uppercase tracking-[0.2em] font-black text-black/40 ml-1">Current Address *</Label>
+                    <Label className="text-[10px] uppercase tracking-[0.2em] font-black text-black ml-1">Current Address *</Label>
                     <Input 
                       placeholder="City, Country" 
-                      className="bg-black/[0.02] border-black/5 h-12 rounded-xl focus-visible:ring-[#f5b800]/30 text-black placeholder:text-black/10"
+                      className="bg-black/[0.02] border border-black/20 h-12 rounded-xl focus-visible:ring-[#f5b800]/30 text-black placeholder:text-black/10"
                     />
                   </div>
                 </div>
 
                 <div className="space-y-2">
-                  <Label className="text-[10px] uppercase tracking-[0.2em] font-black text-black/40 ml-1">Resume / CV (PDF, DOCX) *</Label>
+                  <Label className="text-[10px] uppercase tracking-[0.2em] font-black text-black ml-1">Resume / CV (PDF, DOCX) *</Label>
                   <div className="relative group/upload">
                     <input 
                       type="file" 
@@ -296,7 +296,7 @@ export default function CareersPage() {
                     />
                     <label 
                       htmlFor="resume-upload"
-                      className="flex items-center justify-between h-14 px-6 bg-black/[0.01] border border-dashed border-black/10 rounded-xl group-hover/upload:border-[#f5b800]/40 group-hover/upload:bg-[#f5b800]/5 transition-all cursor-pointer"
+                      className="flex items-center justify-between h-14 px-6 bg-black/[0.01] border border-dashed border-black/20 rounded-xl group-hover/upload:border-[#f5b800]/40 group-hover/upload:bg-[#f5b800]/5 transition-all cursor-pointer"
                     >
                       <span className="text-sm font-medium text-black/60 truncate max-w-[70%]">
                         {fileName}
@@ -335,7 +335,7 @@ function DetailPoint({ label }: { label: string }) {
   return (
     <div className="flex items-center gap-3">
       <div className="w-1.5 h-1.5 bg-[#f5b800] rotate-45" />
-      <span className="text-[10px] font-black uppercase tracking-[0.2em] text-black/40">{label}</span>
+      <span className="text-[10px] font-black uppercase tracking-[0.2em] text-black/60">{label}</span>
     </div>
   )
 }
@@ -343,7 +343,7 @@ function DetailPoint({ label }: { label: string }) {
 function JobCard({ job, index, onApply, onViewDetails }: { job: typeof JOBS[0], index: number, onApply: () => void, onViewDetails: () => void }) {
   return (
     <div 
-      className="group relative bg-black/[0.01] border border-black/[0.05] rounded-[2rem] p-8 overflow-hidden hover:border-[#f5b800]/30 hover:bg-white hover:shadow-2xl hover:shadow-black/5 transition-all duration-500 transform-gpu flex flex-col min-h-[480px]"
+      className="group relative bg-black/[0.01] border border-black/[0.05] rounded-xl p-8 overflow-hidden hover:border-[#f5b800]/30 hover:bg-white hover:shadow-2xl hover:shadow-black/5 transition-all duration-500 transform-gpu flex flex-col min-h-[480px]"
       style={{ animationDelay: `${0.05 * index}s` }}
     >
       <div className="relative z-10 space-y-6 flex-1">
