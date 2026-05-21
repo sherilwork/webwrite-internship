@@ -9,6 +9,7 @@ import ServicesSection from "@/components/ServicesSection"
 import { FeaturedVideos } from "@/components/FeaturedVideos"
 import { FeaturedWebsites } from "@/components/FeaturedWebsites"
 import { Tech } from "@/components/Tech"
+import { IndustriesSection } from "@/components/IndustriesSection"
 import { Testimonials } from "@/components/Testimonials"
 import { FounderSection } from "@/components/FounderSection"
 import { FAQSection } from "@/components/FAQSection"
@@ -26,6 +27,7 @@ export default function Home() {
       <FeaturedVideos />
       <FeaturedWebsites />
       <Tech />
+      <IndustriesSection />
       <Testimonials />
       <FounderSection />
       <FAQSection />
