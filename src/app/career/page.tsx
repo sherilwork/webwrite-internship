@@ -6,7 +6,7 @@ import { Navigation } from "@/components/Navigation"
 import { SubHeader } from "@/components/SubHeader"
 import { Footer } from "@/components/Footer"
 import { GridBackground } from "@/components/GridBackground"
-import { Briefcase, MapPin, Clock, Calendar, ArrowRight, Plus, Upload, Send, Info, CheckCircle2, ChevronLeft } from "lucide-react"
+import { Briefcase, MapPin, Clock, Calendar, ArrowRight, Plus, Upload, Send, Info, CheckCircle2 } from "lucide-react"
 import {
   Dialog,
   DialogContent,
@@ -15,9 +15,7 @@ import {
 } from "@/components/ui/dialog"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { Button } from "@/components/ui/button"
 import { ScrollArea } from "@/components/ui/scroll-area"
-import { cn } from "@/lib/utils"
 
 const JOBS = [
   {
@@ -92,21 +90,21 @@ export default function CareersPage() {
       <Navigation />
 
       {/* Hero Section */}
-      <section className="relative pt-48 pb-20 overflow-hidden">
+      <section className="relative pt-60 pb-20 overflow-hidden">
         <GridBackground gridSize={40} gridOpacity={0.03} showEdgeFade={true} className="h-[600px] absolute inset-0 -z-10" />
         <div className="container mx-auto px-6 max-w-6xl">
-          <div className="text-center space-y-6">
+          <div className="space-y-6 max-w-3xl">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/[0.03] border border-black/[0.05]">
               <span className="w-1.5 h-1.5 rounded-full bg-[#f5b800]" />
-              <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-black/60 font-orbitron">Join Our Team</span>
+              <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-black/60">Join Our Team</span>
             </div>
-            <h1 className="text-4xl md:text-7xl font-black text-black leading-none tracking-tighter uppercase font-orbitron">
+            <h1 className="text-4xl md:text-6xl font-black text-black leading-[1.05] tracking-tighter uppercase">
               DESIGN YOUR <br />
               <span className="text-[#f5b800]">PROFESSIONAL FUTURE</span>
             </h1>
-            <div className="w-20 h-2 bg-black mx-auto mt-4" />
-            <p className="text-lg md:text-xl text-black/50 font-medium leading-relaxed max-w-2xl mx-auto pt-4">
-              We're looking for innovative thinkers and expert builders to help us push the boundaries of digital experiences.
+            <div className="w-20 h-2 bg-black mt-4" />
+            <p className="text-lg md:text-xl text-black/50 font-medium leading-relaxed pt-4">
+              We're looking for innovative thinkers and expert builders to help us push the boundaries of digital experiences and build systems that work.
             </p>
           </div>
         </div>
@@ -134,7 +132,7 @@ export default function CareersPage() {
         <div className="container mx-auto px-6 max-w-6xl">
           <div className="p-12 rounded-[3rem] bg-[#f5b800] text-black flex flex-col items-center text-center gap-8 shadow-2xl shadow-[#f5b800]/20">
             <div className="space-y-4">
-              <h2 className="text-3xl md:text-5xl font-black uppercase tracking-tighter font-orbitron">Don't See a <span className="italic opacity-60">Fit?</span></h2>
+              <h2 className="text-3xl md:text-5xl font-black uppercase tracking-tighter">Don't See a <span className="italic opacity-60">Fit?</span></h2>
               <p className="text-sm md:text-lg font-bold uppercase tracking-widest opacity-60 max-w-xl">
                 Send us your portfolio anyway. We're always looking for exceptional talent to join our specialized teams.
               </p>
@@ -154,7 +152,7 @@ export default function CareersPage() {
       <Dialog open={!!viewingJob} onOpenChange={(open) => !open && setViewingJob(null)}>
         <DialogContent 
           data-lenis-prevent
-          className="max-w-2xl bg-white border-none p-0 shadow-2xl overflow-hidden rounded-[2rem] font-body flex flex-col max-h-[90vh]"
+          className="max-w-2xl bg-white border-none p-0 shadow-2xl overflow-hidden rounded-[2rem] flex flex-col max-h-[90vh]"
         >
           <div className="absolute top-0 left-0 w-full h-1.5 bg-[#f5b800] z-50" />
           
@@ -163,11 +161,11 @@ export default function CareersPage() {
               <div className="space-y-6">
                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/[0.03] border border-black/[0.05]">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#f5b800]" />
-                  <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-black/60 font-orbitron">Job Opening</span>
+                  <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-black/60">Job Opening</span>
                 </div>
                 
                 <div className="space-y-4">
-                  <DialogTitle className="text-3xl md:text-5xl font-black text-black tracking-tighter uppercase leading-[1.1] font-orbitron">
+                  <DialogTitle className="text-3xl md:text-5xl font-black text-black tracking-tighter uppercase leading-[1.1]">
                     {viewingJob?.role}
                   </DialogTitle>
                   <div className="flex flex-wrap gap-4 pt-2">
@@ -190,7 +188,7 @@ export default function CareersPage() {
               <div className="space-y-6 border-t border-black/5 pt-8">
                 <div className="flex items-center gap-3">
                    <Info className="w-4 h-4 text-[#f5b800]" />
-                   <h4 className="text-[12px] font-black uppercase tracking-[0.3em] font-orbitron text-black">Job Description</h4>
+                   <h4 className="text-[12px] font-black uppercase tracking-[0.3em] text-black">Job Description</h4>
                 </div>
                 <p className="text-black/50 text-base leading-relaxed font-medium">
                   {viewingJob?.description}
@@ -200,7 +198,7 @@ export default function CareersPage() {
               <div className="space-y-6 border-t border-black/5 pt-8">
                  <div className="flex items-center gap-3">
                    <CheckCircle2 className="w-4 h-4 text-[#f5b800]" />
-                   <h4 className="text-[12px] font-black uppercase tracking-[0.3em] font-orbitron text-black">Key Responsibilities</h4>
+                   <h4 className="text-[12px] font-black uppercase tracking-[0.3em] text-black">Key Responsibilities</h4>
                  </div>
                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <DetailPoint label="High-Quality Code Delivery" />
@@ -235,14 +233,14 @@ export default function CareersPage() {
       <Dialog open={!!selectedJob} onOpenChange={(open) => !open && setSelectedJob(null)}>
         <DialogContent 
           data-lenis-prevent
-          className="max-w-2xl bg-white border-none p-0 shadow-2xl overflow-hidden rounded-[2rem] font-body flex flex-col max-h-[90vh]"
+          className="max-w-2xl bg-white border-none p-0 shadow-2xl overflow-hidden rounded-[2rem] flex flex-col max-h-[90vh]"
         >
           <div className="absolute top-0 left-0 w-full h-1.5 bg-[#f5b800] z-50" />
           
           <ScrollArea className="flex-1 overflow-y-auto">
             <div className="p-8 md:p-12 space-y-8">
               <div className="space-y-4">
-                <DialogTitle className="text-2xl md:text-3xl font-black font-orbitron uppercase tracking-tight leading-tight text-black">
+                <DialogTitle className="text-2xl md:text-3xl font-black uppercase tracking-tight leading-tight text-black">
                   Apply for <span className="text-[#f5b800] italic">{selectedJob?.role}</span>
                 </DialogTitle>
                 <DialogDescription className="text-black/40 text-xs font-bold uppercase tracking-widest">
@@ -357,7 +355,7 @@ function JobCard({ job, index, onApply, onViewDetails }: { job: typeof JOBS[0], 
         </div>
 
         <div className="space-y-4">
-          <h3 className="text-2xl font-black text-black uppercase font-orbitron tracking-tight group-hover:text-[#f5b800] transition-colors">
+          <h3 className="text-2xl font-black text-black uppercase tracking-tight group-hover:text-[#f5b800] transition-colors">
             {job.role}
           </h3>
           
