@@ -3,11 +3,10 @@
 
 import * as React from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
+import { BrandLogo } from '@/components/common/BrandLogo';
 import { 
   ChevronLeft, 
   Home, 
@@ -71,19 +70,15 @@ export function Navigation() {
     ).slice(0, 5);
   }, [searchQuery]);
 
-  const logo = PlaceHolderImages.find(img => img.id === 'logo');
-
   return (
     <header className="fixed top-16 left-0 right-0 z-50 flex justify-center px-4 will-change-transform transform-gpu">
       <nav className="flex items-center justify-between w-full max-w-6xl px-4 py-2 bg-white/90 backdrop-blur-md rounded-full border border-border shadow-sm transition-all duration-300 hover:shadow-md h-14 md:h-16">
         <div className="flex items-center gap-2 pl-2">
           <Link href="/" className="flex items-center">
-            <Image 
-              src={logo?.imageUrl || "/smileo-logo.png"}
-              alt="Smileo Logo"
-              width={160}
-              height={50}
-              className="h-10 md:h-12 w-auto object-contain transition-transform duration-300 hover:scale-105"
+            <BrandLogo 
+              className="h-8 md:h-10"
+              width={140}
+              height={40}
               priority
             />
           </Link>
@@ -115,7 +110,6 @@ export function Navigation() {
         </div>
 
         <div className="flex items-center gap-2 pr-1">
-          {/* Desktop Search Toggle */}
           <button 
             onClick={() => setIsSearchOpen(true)}
             className="hidden md:flex items-center justify-center w-10 h-10 rounded-full hover:bg-black/5 transition-colors group"
@@ -131,7 +125,6 @@ export function Navigation() {
             </a>
           </Button>
 
-          {/* Mobile Search Toggle */}
           <button 
             onClick={() => setIsSearchOpen(true)}
             className="md:hidden p-2 text-black/70 hover:bg-black/5 rounded-full transition-all active:scale-90"
@@ -180,12 +173,10 @@ export function Navigation() {
 
               <SheetHeader className="pt-20 pb-8 px-8 border-b flex flex-row items-center gap-4 space-y-0 text-left">
                 <div className="flex-1">
-                  <Image 
-                    src={logo?.imageUrl || "/smileo-logo.png"}
-                    alt="Smileo Logo"
-                    width={140}
-                    height={40}
-                    className="h-10 w-auto object-contain"
+                  <BrandLogo 
+                    className="h-8 w-auto"
+                    width={120}
+                    height={32}
                   />
                 </div>
                 <SheetClose asChild>
@@ -209,6 +200,7 @@ export function Navigation() {
                       >
                         <Link
                           href={item.href}
+                          onClick={() => {}}
                           className={cn(
                             "flex items-center justify-between px-8 py-5 text-[14px] font-black hover:bg-black/[0.02] transition-all border-b border-black/[0.04] uppercase tracking-[0.2em] group",
                             isActive ? "text-[#f5b800]" : "text-black/80 hover:text-[#f5b800]"
@@ -247,10 +239,8 @@ export function Navigation() {
         </div>
       </nav>
 
-      {/* Working Search Dialog */}
       <Dialog open={isSearchOpen} onOpenChange={setIsSearchOpen}>
         <DialogContent className="sm:max-w-[600px] p-0 overflow-hidden bg-white/95 backdrop-blur-xl border-none shadow-2xl rounded-3xl [&>button:last-child]:hidden">
-          {/* Enhanced Close Button */}
           <DialogClose asChild>
             <button className="absolute top-6 right-6 w-11 h-11 rounded-full bg-black/[0.03] border border-black/5 flex items-center justify-center hover:bg-black hover:text-white transition-all duration-300 z-50 group shadow-sm active:scale-90">
               <X className="w-5 h-5 transition-transform group-hover:rotate-90" />
@@ -258,7 +248,7 @@ export function Navigation() {
           </DialogClose>
 
           <DialogHeader className="p-8 pb-0">
-            <DialogTitle className="sr-only">Search WebWrite Services</DialogTitle>
+            <DialogTitle className="sr-only">Search Smileo Group</DialogTitle>
             <div className="relative group mt-4">
               <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-black/20 group-focus-within:text-[#f5b800] transition-colors" />
               <Input 

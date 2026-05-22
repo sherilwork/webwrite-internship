@@ -3,7 +3,6 @@
 
 import React from "react"
 import Link from "next/link"
-import Image from "next/image"
 import { 
   ArrowUp, 
   Linkedin, 
@@ -15,7 +14,7 @@ import {
   Phone, 
   MapPin
 } from "lucide-react"
-import { PlaceHolderImages } from "@/lib/placeholder-images"
+import { BrandLogo } from "@/components/common/BrandLogo"
 
 export function Footer() {
   const scrollToTop = () => {
@@ -23,7 +22,6 @@ export function Footer() {
   };
 
   const currentYear = new Date().getFullYear();
-  const logo = PlaceHolderImages.find(img => img.id === 'logo');
 
   const footerLinks = {
     company: [
@@ -64,12 +62,10 @@ export function Footer() {
           <div className="lg:col-span-4 space-y-8">
             <div className="h-12 flex items-center">
               <Link href="/">
-                <Image 
-                  src={logo?.imageUrl || "/smileo-logo.png"}
-                  alt="Smileo Logo"
+                <BrandLogo 
+                  className="h-12 md:h-14 w-auto"
                   width={180}
-                  height={50}
-                  className="h-12 w-auto object-contain transition-transform duration-300 hover:scale-105"
+                  height={56}
                 />
               </Link>
             </div>
@@ -170,7 +166,7 @@ export function Footer() {
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-black/[0.05] flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-2 text-[10px] font-bold text-black/30 uppercase tracking-[0.1em]">
-            <span>© {currentYear} WebWrite Services. All rights reserved.</span>
+            <span>© {currentYear} Smileo Group. All rights reserved.</span>
           </div>
 
           <button 

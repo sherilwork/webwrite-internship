@@ -3,8 +3,7 @@
 
 import React, { useEffect, useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import Image from "next/image"
-import { PlaceHolderImages } from "@/lib/placeholder-images"
+import { BrandLogo } from "@/components/common/BrandLogo"
 
 export function Preloader() {
   const [loading, setLoading] = useState(true)
@@ -25,8 +24,6 @@ export function Preloader() {
     return () => clearInterval(timer)
   }, [])
 
-  const logo = PlaceHolderImages.find(img => img.id === 'logo');
-
   return (
     <AnimatePresence>
       {loading && (
@@ -46,12 +43,11 @@ export function Preloader() {
               />
               {/* Capsule with logo */}
               <div className="absolute inset-1 bg-white rounded-full flex items-center justify-center shadow-lg overflow-hidden border border-black/5 p-4">
-                <Image 
-                  src={logo?.imageUrl || "/smileo-logo.png"}
-                  alt="Smileo Logo"
-                  width={80}
-                  height={80}
-                  className="w-full h-full object-contain animate-pulse"
+                <BrandLogo 
+                  className="w-16 h-16 animate-pulse"
+                  width={64}
+                  height={64}
+                  priority
                 />
               </div>
             </div>
@@ -64,7 +60,7 @@ export function Preloader() {
                 transition={{ delay: 0.2 }}
                 className="text-3xl font-black text-black tracking-tighter uppercase"
               >
-                WebWrite Services
+                Smileo Group
               </motion.h1>
               <motion.p 
                 initial={{ opacity: 0 }}
