@@ -231,9 +231,9 @@ export function FeaturedVideos() {
                           layout
                           initial={false}
                           animate={{ 
-                            opacity: 1, // Keep all cards unblurred and visible
+                            opacity: 1, 
                             scale: isPlaying ? 1.15 : (isActive ? 1.1 : 0.95),
-                            filter: "grayscale(0)" // No more grayscale to keep thumbnails vibrant
+                            filter: "grayscale(0)"
                           }}
                           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
                           className={cn(
@@ -272,10 +272,10 @@ export function FeaturedVideos() {
                                   isActive={isActive} 
                                 />
                                 
-                                {/* Refined overlay: less intrusive dark tint and blur removed for better visual clarity */}
-                                <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center group-hover:backdrop-blur-[1px]">
-                                  <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center text-black transform scale-90 group-hover:scale-100 transition-all duration-500 shadow-2xl">
-                                    <Play className="w-7 h-7 fill-current ml-1" />
+                                {/* Always visible black play button */}
+                                <div className="absolute inset-0 flex items-center justify-center">
+                                  <div className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-black flex items-center justify-center text-[#f5b800] shadow-2xl transition-all duration-500 transform scale-100 group-hover:scale-110">
+                                    <Play className="w-6 h-6 md:w-7 md:h-7 fill-current ml-1" />
                                   </div>
                                 </div>
 
