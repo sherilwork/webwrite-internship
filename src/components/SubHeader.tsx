@@ -18,7 +18,7 @@ export function SubHeader() {
   const founder = founders[0]
 
   return (
-    <div className="fixed top-0 left-0 right-0 z-[60] h-10 bg-black flex items-center justify-between px-4 md:px-6 overflow-hidden">
+    <div className="fixed top-0 left-0 right-0 z-[60] h-10 bg-black flex items-center justify-between px-4 md:px-6 overflow-hidden border-b border-white/5">
       {/* Left Section: Info - Hidden on mobile, visible on desktop */}
       <div className="hidden lg:flex items-center gap-6 animate-in fade-in slide-in-from-left-4 duration-1000">
         <a href="tel:+917906627288" className="flex items-center gap-2 group cursor-pointer">
@@ -46,19 +46,19 @@ export function SubHeader() {
 
       {/* Center Section: Animated Proposal - Always visible, slightly scaled for mobile */}
       <div className="absolute left-1/2 -translate-x-1/2 flex items-center gap-2 md:gap-4 scale-90 md:scale-100">
-        <Cloud className="w-4 h-4 md:w-5 md:h-5 text-white/10 animate-cloud hidden sm:block" />
+        <Cloud className="w-4 h-4 md:w-5 md:h-5 text-white/5 animate-cloud hidden sm:block opacity-20" />
         <a 
           href="https://wa.me/917906627288" 
           target="_blank" 
           rel="noopener noreferrer"
-          className="flex items-center gap-2 group cursor-pointer bg-white/5 px-3 md:px-4 py-1 rounded-full border border-white/10 hover:border-[#f5b800]/50 transition-all whitespace-nowrap"
+          className="flex items-center gap-2.5 group cursor-pointer bg-[#f5b800]/10 px-4 md:px-5 py-1.5 rounded-full border border-[#f5b800]/30 hover:bg-[#f5b800]/20 hover:border-[#f5b800]/60 transition-all duration-300 whitespace-nowrap shadow-[0_0_15px_rgba(245,184,0,0.1)] hover:shadow-[0_0_20px_rgba(245,184,0,0.2)]"
         >
-          <span className="text-[9px] font-black text-white uppercase tracking-[0.15em] md:tracking-[0.25em]">
+          <span className="text-[9px] md:text-[10px] font-black text-white uppercase tracking-[0.15em] md:tracking-[0.25em]">
             Get a Proposal
           </span>
-          <Rocket className="w-3.5 h-3.5 md:w-4 md:h-4 text-[#f5b800] animate-rocket" />
+          <Rocket className="w-3.5 h-3.5 md:w-4 md:h-4 text-[#f5b800] animate-rocket drop-shadow-[0_0_5px_rgba(245,184,0,0.5)]" />
         </a>
-        <Cloud className="w-4 h-4 md:w-5 md:h-5 text-white/10 animate-cloud hidden sm:block" style={{ animationDelay: '2s' }} />
+        <Cloud className="w-4 h-4 md:w-5 md:h-5 text-white/5 animate-cloud hidden sm:block opacity-20" style={{ animationDelay: '2s' }} />
       </div>
 
       {/* Right Section: Socials - Hidden on mobile, visible on desktop */}
