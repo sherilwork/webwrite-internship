@@ -51,7 +51,7 @@ export function Navigation() {
           <div className="relative h-7 w-32 md:h-8 md:w-40">
             <Image
               src={logo?.imageUrl || '/webwrite-logo.webp'}
-              alt="Webwrite services logo"
+              alt="WebWrite Services Logo"
               fill
               className="object-contain object-left"
               priority
@@ -85,8 +85,11 @@ export function Navigation() {
           })}
         </div>
 
-        <Button asChild className="hidden md:inline-flex rounded-full bg-black hover:bg-black/90 text-white px-6 font-medium transition-transform active:scale-95 shadow-lg shadow-black/10 duration-200">
-          <a href="https://wa.me/917906627288" target="_blank" rel="noopener noreferrer">Get started</a>
+        <Button asChild className="hidden md:inline-flex rounded-full bg-black hover:bg-black/90 text-white px-7 py-2 text-[10px] font-black uppercase tracking-widest transition-all active:scale-95 shadow-lg shadow-black/10 duration-300 group">
+          <a href="https://wa.me/917906627288" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+            Schedule free consultation
+            <Zap className="w-3.5 h-3.5 text-[#f5b800] fill-[#f5b800] animate-pulse group-hover:scale-125 transition-transform" />
+          </a>
         </Button>
 
         <Sheet>
@@ -137,7 +140,7 @@ export function Navigation() {
               <div className="relative h-7 w-36">
                 <Image
                   src={logo?.imageUrl || '/webwrite-logo.webp'}
-                  alt="Webwrite services logo"
+                  alt="WebWrite Services Logo"
                   fill
                   className="object-contain object-left"
                   data-ai-hint="company logo"
@@ -184,8 +187,11 @@ export function Navigation() {
               </div>
               
               <div className="mt-4 px-8 mb-12">
-                <Button asChild className="w-full rounded-full bg-black text-white text-[12px] font-black uppercase tracking-[0.2em] py-7 hover:bg-black/90 shadow-2xl shadow-black/20 transition-all active:scale-95 border border-white/5 duration-200">
-                  <a href="https://wa.me/917906627288" target="_blank" rel="noopener noreferrer">Get Started Now</a>
+                <Button asChild className="w-full rounded-full bg-black text-white text-[12px] font-black uppercase tracking-[0.2em] py-7 hover:bg-black/90 shadow-2xl shadow-black/20 transition-all active:scale-95 border border-white/5 duration-200 group">
+                  <a href="https://wa.me/917906627288" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-3">
+                    Schedule free consultation
+                    <Zap className="w-4 h-4 text-[#f5b800] fill-[#f5b800] animate-pulse group-hover:scale-110 transition-transform" />
+                  </a>
                 </Button>
               </div>
             </ScrollArea>
