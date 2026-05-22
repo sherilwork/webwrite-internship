@@ -1,4 +1,3 @@
-
 'use client'
 
 import React, { useEffect, useRef, useState, useMemo, useCallback } from 'react'
@@ -7,8 +6,6 @@ import Image from 'next/image'
 import { cn } from '@/lib/utils'
 import { gsap } from 'gsap'
 import { useIsMobile } from '@/hooks/use-mobile'
-
-const categories = ["All", "Real Estate", "Education", "Community", "E-Commerce", "Shops"]
 
 const FEATURED_CARDS = [
   {
@@ -66,7 +63,7 @@ const FEATURED_CARDS = [
 export function FeaturedWebsites() {
   const cardsRef = useRef<(HTMLDivElement | null)[]>([])
   const [websiteIndex, setWebsiteIndex] = useState(0)
-  const [activeCategory, setActiveCategory] = useState("All")
+  const [activeCategory] = useState("All")
   const [isMounted, setIsMounted] = useState(false)
   const isMobile = useIsMobile()
 
@@ -86,11 +83,6 @@ export function FeaturedWebsites() {
       setWebsiteIndex((prev) => (prev - 1 + filteredCards.length) % filteredCards.length)
     }
   }, [filteredCards.length])
-
-  const handleCategoryChange = useCallback((cat: string) => {
-    setActiveCategory(cat)
-    setWebsiteIndex(0)
-  }, [])
 
   useEffect(() => {
     if (!isMounted || filteredCards.length === 0) return
@@ -150,23 +142,6 @@ export function FeaturedWebsites() {
               Featured Websites
             </h2>
             <div className="w-8 md:w-12 h-1 bg-[#f5b800] mt-1" />
-          </div>
-
-          <div className="flex flex-wrap gap-1.5">
-            {categories.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => handleCategoryChange(cat)}
-                className={cn(
-                  "px-3 md:px-4 py-1.5 rounded-full text-[8px] md:text-[9px] font-black uppercase tracking-widest transition-all border",
-                  activeCategory === cat
-                    ? "bg-black text-white border-black"
-                    : "bg-transparent text-black/40 border-black/10 hover:border-black/30"
-                )}
-              >
-                {cat}
-              </button>
-            ))}
           </div>
         </div>
 
