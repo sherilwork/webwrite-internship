@@ -11,57 +11,115 @@ import { useIsMobile } from "@/hooks/use-mobile"
 const testimonials = [
   {
     id: "1",
-    name: "Shyam Tiwari",
-    role: "Client",
-    content: "Outstanding team",
+    name: "Education Arena",
+    role: "Local Guide",
+    content: "WebWrite Services is doing an outstanding job in the field of social media management and video editing. From creating high-quality, engaging content to handling official pages.",
+    stars: 5
   },
   {
     id: "2",
-    name: "Sakshi Tiwari",
+    name: "Sundar Vibes",
     role: "Client",
-    content: "It's best Marketing agency in Etawah District, it's work is too good, best content and video editing, graphics everything 👍✨✨✨✨",
+    content: "Love to work with webwrite team, they made a fantastic website for my brand and also creatives for social media. Highly recommended for premium branding.",
+    stars: 5
   },
   {
     id: "3",
-    name: "Shivam Tiwari",
-    role: "Local Guide",
-    content: "इटावा के अंदर इनके जैसा काम कोई नहीं करता ✌️📸 बेस्ट h ye apne kam me",
+    name: "Squareup",
+    role: "Client",
+    content: "Handling all my operations and marketing best team! Love working with WebWrite team. They understand the vision perfectly.",
+    stars: 5
   },
   {
     id: "4",
-    name: "Anmol Editer",
+    name: "Function Up",
     role: "Client",
-    content: "etawah me sbse best agency hai bhout acha kaam de rhi h",
+    content: "WebWrite Services delivers exceptional web and app development services. Their expertise and customized solutions exceeded my expectations. Communication was efficient.",
+    stars: 5
   },
   {
     id: "5",
-    name: "Lado Sharma",
-    role: "Client",
-    content: "i love to work with webwrite team and enjoying making content for brands",
+    name: "SPS GLOBAL SCHOOL",
+    role: "Institutional Client",
+    content: "WebWrite services provides best social media marketing services to SPS Global School Jaswantnagar! Best Company for social media management & marketing.",
+    stars: 5
   },
   {
     id: "6",
-    name: "Rishi Tiwari",
-    role: "Client",
-    content: "Best marketing team in etawah district",
+    name: "Effortless Esports",
+    role: "Gaming Org",
+    content: "WebWrite Provides amazing web services and they have other services also! Highly recommend for your businesses. They are quick and professional.",
+    stars: 5
   },
   {
     id: "7",
-    name: "Indian Yuvang",
+    name: "SunShine Fitness",
     role: "Client",
-    content: "best marketing team in etawah hard working team",
+    content: "I love to work with them! they do an amazing work! I'm totally satisfied by their work! Recommend webwrite for anyone looking for growth.",
+    stars: 4
   },
   {
     id: "8",
-    name: "Buyify",
+    name: "PlayXpo Tech",
     role: "Client",
-    content: "best marketing agency in etawah love to work with team",
+    content: "Great experience with webwrite services! team also amazing. They delivered the project before the deadline with top-notch quality.",
+    stars: 5
   },
   {
     id: "9",
+    name: "Akshita Sales",
+    role: "Tech Client",
+    content: "Great work with webwrite Services! highly recommended for mobile and smart tech branding. Their strategies really work.",
+    stars: 5
+  },
+  {
+    id: "10",
+    name: "Kunal Chavan",
+    role: "Client",
+    content: "Good Work, having great experience with Team WebWrite! The technical support is very responsive and helpful.",
+    stars: 4
+  },
+  {
+    id: "11",
+    name: "Atharva Shetye",
+    role: "Client",
+    content: "Best IT Company for Development !!! WebWrite Services is the place to go if you want quality web solutions.",
+    stars: 5
+  },
+  {
+    id: "12",
+    name: "Harsh Vardhan",
+    role: "Client",
+    content: "Doing great work Rishi! keep it up... The team's dedication to project success is truly commendable.",
+    stars: 5
+  },
+  {
+    id: "13",
+    name: "Marathi Gamer",
+    role: "Client",
+    content: "Great job!!! The video editing and graphics for my channel were fantastic. Very happy with the results.",
+    stars: 4
+  },
+  {
+    id: "14",
     name: "ANKIT KUMAR",
     role: "Local Guide",
-    content: "update",
+    content: "Best service provider in the region. Their marketing strategies helped us gain a lot of visibility online.",
+    stars: 5
+  },
+  {
+    id: "15",
+    name: "Reema Yadav",
+    role: "Client",
+    content: "Professional and highly skilled team. They made the entire development process very smooth and stress-free.",
+    stars: 5
+  },
+  {
+    id: "16",
+    name: "S",
+    role: "Client",
+    content: "Excellent support and very reliable services. WebWrite has been a great partner for our digital journey.",
+    stars: 4
   }
 ]
 
@@ -74,8 +132,11 @@ function TestimonialCard({ testimonial }: { testimonial: typeof testimonials[0] 
       
       <div className="space-y-3 relative z-10">
         <div className="flex gap-0.5">
-          {[...Array(5)].map((_, i) => (
+          {[...Array(testimonial.stars)].map((_, i) => (
             <Star key={i} size={8} className="fill-[#f5b800] text-[#f5b800]" />
+          ))}
+          {testimonial.stars < 5 && [...Array(5 - testimonial.stars)].map((_, i) => (
+            <Star key={i} size={8} className="text-black/10" />
           ))}
         </div>
 
@@ -180,9 +241,10 @@ export function Testimonials() {
     setIsMounted(true)
   }, [])
 
-  const col1 = [testimonials[0], testimonials[3], testimonials[6]]
-  const col2 = [testimonials[1], testimonials[4], testimonials[7]]
-  const col3 = [testimonials[2], testimonials[5], testimonials[8]]
+  // Optimized distribution for 16 items across 3 columns
+  const col1 = [testimonials[0], testimonials[3], testimonials[6], testimonials[9], testimonials[12], testimonials[15]]
+  const col2 = [testimonials[1], testimonials[4], testimonials[7], testimonials[10], testimonials[13]]
+  const col3 = [testimonials[2], testimonials[5], testimonials[8], testimonials[11], testimonials[14]]
 
   const removeCard = () => {
     setMobileItems((prev) => prev.slice(1))
@@ -227,13 +289,13 @@ export function Testimonials() {
             <div className="relative w-full max-w-[320px] h-[200px]">
               <AnimatePresence initial={false}>
                 {mobileItems.length > 0 ? (
-                  mobileItems.slice(0, 3).reverse().map((t, idx) => (
+                  mobileItems.slice(0, 5).reverse().map((t, idx) => (
                     <TinderCard 
                       key={t.id} 
                       testimonial={t} 
                       onRemove={removeCard} 
-                      index={2 - idx} 
-                      total={3} 
+                      index={Math.min(4, mobileItems.slice(0, 5).length - 1) - idx} 
+                      total={5} 
                     />
                   ))
                 ) : (
@@ -277,12 +339,12 @@ export function Testimonials() {
             <div className="absolute top-0 inset-x-0 h-24 bg-gradient-to-b from-white to-transparent z-20 pointer-events-none" />
             <div className="absolute bottom-0 inset-x-0 h-24 bg-gradient-to-t from-white to-transparent z-20 pointer-events-none" />
 
-            <MarqueeColumn items={col1} direction="up" speed="30s" />
+            <MarqueeColumn items={col1} direction="up" speed="45s" />
             <div className="hidden md:block">
-              <MarqueeColumn items={col2} direction="down" speed="40s" />
+              <MarqueeColumn items={col2} direction="down" speed="55s" />
             </div>
             <div className="hidden lg:block">
-              <MarqueeColumn items={col3} direction="up" speed="35s" />
+              <MarqueeColumn items={col3} direction="up" speed="50s" />
             </div>
           </div>
         )}
