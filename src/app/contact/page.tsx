@@ -84,9 +84,14 @@ export default function ContactPage() {
                     <div className="w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-white shadow-sm flex items-center justify-center text-black group-hover:bg-[#f5b800] transition-colors">
                       <Mail className="w-5 h-5 md:w-6 md:h-6" />
                     </div>
-                    <div className="space-y-0.5">
+                    <div className="space-y-2">
                       <p className="text-[9px] md:text-[10px] font-black uppercase tracking-widest opacity-40">Email Us</p>
-                      <h3 className="text-base md:text-lg font-black tracking-tight group-hover:text-[#f5b800] transition-colors lowercase">support@webwrite.co.in</h3>
+                      <div className="flex flex-col gap-1">
+                        <h3 className="text-sm md:text-base font-black tracking-tight group-hover:text-[#f5b800] transition-colors lowercase">info@webwrite.co.in</h3>
+                        <h3 className="text-sm md:text-base font-black tracking-tight group-hover:text-[#f5b800] transition-colors lowercase">contact@webwrite.co.in</h3>
+                        <h3 className="text-sm md:text-base font-black tracking-tight group-hover:text-[#f5b800] transition-colors lowercase">hello@webwrite.co.in</h3>
+                        <h3 className="text-sm md:text-base font-black tracking-tight group-hover:text-[#f5b800] transition-colors lowercase">hr@webwrite.co.in</h3>
+                      </div>
                     </div>
                   </div>
                 </motion.div>
@@ -190,7 +195,7 @@ export default function ContactPage() {
                     <Input 
                       required 
                       type="email"
-                      placeholder="john@example.com" 
+                      placeholder="john@webwrite.co.in" 
                       className="bg-white/5 border-white/10 h-12 md:h-14 rounded-xl text-white placeholder:text-white/10 focus-visible:ring-[#f5b800] border-none" 
                     />
                   </div>

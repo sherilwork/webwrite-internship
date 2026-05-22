@@ -128,11 +128,11 @@ export function Footer() {
             <div className="space-y-6">
               <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-black">Get in Touch</h4>
               <div className="space-y-4">
-                <a href="mailto:support@webwrite.co.in" className="flex items-center gap-3 text-black/50 hover:text-black transition-colors group">
+                <a href="mailto:info@webwrite.co.in" className="flex items-center gap-3 text-black/50 hover:text-black transition-colors group">
                   <div className="w-8 h-8 rounded-lg bg-black/[0.03] flex items-center justify-center group-hover:bg-[#f5b800]/10">
                     <Mail className="w-3.5 h-3.5 text-black/40 group-hover:text-[#f5b800]" />
                   </div>
-                  <span className="text-[13px] font-semibold">support@webwrite.co.in</span>
+                  <span className="text-[13px] font-semibold">info@webwrite.co.in</span>
                 </a>
                 <a href="tel:+917906627288" className="flex items-center gap-3 text-black/50 hover:text-black transition-colors group">
                   <div className="w-8 h-8 rounded-lg bg-black/[0.03] flex items-center justify-center group-hover:bg-[#f5b800]/10">

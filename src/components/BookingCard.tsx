@@ -152,9 +152,9 @@ export function BookingCard({ imageUrl, onStepChange }: BookingCardProps) {
               <Phone className="w-3 h-3 text-[#f5b800]" />
               <span className="text-[10px] font-bold uppercase tracking-wider leading-none">+91 79066 27288</span>
             </a>
-            <a href="mailto:support@webwrite.co.in" className="flex items-center gap-1.5 text-black/60 hover:text-black transition-colors">
+            <a href="mailto:info@webwrite.co.in" className="flex items-center gap-1.5 text-black/60 hover:text-black transition-colors">
               <Mail className="w-3 h-3 text-[#f5b800]" />
-              <span className="text-[10px] font-bold lowercase tracking-wider leading-none">support@webwrite.co.in</span>
+              <span className="text-[10px] font-bold lowercase tracking-wider leading-none">info@webwrite.co.in</span>
             </a>
           </div>
         </div>
