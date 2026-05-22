@@ -249,7 +249,7 @@ export function Navigation() {
 
       {/* Working Search Dialog */}
       <Dialog open={isSearchOpen} onOpenChange={setIsSearchOpen}>
-        <DialogContent className="sm:max-w-[600px] p-0 overflow-hidden bg-white/95 backdrop-blur-xl border-none shadow-2xl rounded-3xl">
+        <DialogContent className="sm:max-w-[600px] p-0 overflow-hidden bg-white/95 backdrop-blur-xl border-none shadow-2xl rounded-3xl [&>button:last-child]:hidden">
           {/* Enhanced Close Button */}
           <DialogClose asChild>
             <button className="absolute top-6 right-6 w-11 h-11 rounded-full bg-black/[0.03] border border-black/5 flex items-center justify-center hover:bg-black hover:text-white transition-all duration-300 z-50 group shadow-sm active:scale-90">
