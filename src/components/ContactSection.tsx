@@ -1,4 +1,3 @@
-
 "use client"
 
 import React from "react"
@@ -70,19 +69,19 @@ export function ContactSection() {
 
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
               className="space-y-8"
             >
               <div className="space-y-6">
-                <a href="mailto:info@webwrite.services" className="flex items-center gap-5 group w-fit">
+                <a href="mailto:support@webwrite.co.in" className="flex items-center gap-5 group w-fit">
                   <div className="w-12 h-12 rounded-2xl bg-black/[0.02] border border-black/[0.05] flex items-center justify-center group-hover:bg-[#f5b800]/10 group-hover:border-[#f5b800]/30 transition-all duration-300">
                     <Mail className="w-5 h-5 text-black/40 group-hover:text-[#f5b800] transition-colors" />
                   </div>
                   <div className="space-y-0.5">
                     <p className="text-[10px] font-black uppercase tracking-widest text-black/20">Email Us</p>
-                    <p className="text-sm font-bold text-black group-hover:text-[#f5b800] transition-colors">info@webwrite.services</p>
+                    <p className="text-sm font-bold text-black group-hover:text-[#f5b800] transition-colors">support@webwrite.co.in</p>
                   </div>
                 </a>
 
@@ -166,7 +165,7 @@ export function ContactSection() {
                   <Input 
                     id="email"
                     type="email"
-                    placeholder="jane@webwrite.services" 
+                    placeholder="jane@webwrite.co.in" 
                     required
                     className="h-14 bg-white/50 border-black/5 focus-visible:ring-1 focus-visible:ring-[#f5b800] rounded-2xl text-[13px] font-medium"
                   />

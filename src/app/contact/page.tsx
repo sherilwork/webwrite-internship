@@ -1,4 +1,3 @@
-
 "use client"
 
 import React from "react"
@@ -87,7 +86,7 @@ export default function ContactPage() {
                     </div>
                     <div className="space-y-0.5">
                       <p className="text-[9px] md:text-[10px] font-black uppercase tracking-widest opacity-40">Email Us</p>
-                      <h3 className="text-base md:text-lg font-black tracking-tight group-hover:text-[#f5b800] transition-colors lowercase">info@webwrite.services</h3>
+                      <h3 className="text-base md:text-lg font-black tracking-tight group-hover:text-[#f5b800] transition-colors lowercase">support@webwrite.co.in</h3>
                     </div>
                   </div>
                 </motion.div>

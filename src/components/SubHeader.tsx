@@ -1,4 +1,3 @@
-
 "use client"
 
 import React from "react"
@@ -29,10 +28,10 @@ export function SubHeader() {
           </span>
         </a>
         <div className="h-4 w-px bg-white/10" />
-        <a href="mailto:info@webwrite.services" className="flex items-center gap-2 group cursor-pointer">
+        <a href="mailto:support@webwrite.co.in" className="flex items-center gap-2 group cursor-pointer">
           <Mail className="w-4 h-4 text-[#f5b800]" />
           <span className="text-[11px] font-bold text-white/80 tracking-wider group-hover:text-white transition-colors lowercase">
-            info@webwrite.services
+            support@webwrite.co.in
           </span>
         </a>
       </div>
