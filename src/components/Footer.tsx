@@ -1,4 +1,3 @@
-
 "use client"
 
 import React from "react"
@@ -29,7 +28,6 @@ export function Footer() {
       { label: "Our Services", href: "/services" },
       { label: "Portfolio", href: "/portfolio" },
       { label: "Founder", href: "/founder" },
-      { label: "Career", href: "/career" },
     ],
     services: [
       { label: "Web Development", href: "/services" },

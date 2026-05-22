@@ -48,7 +48,6 @@ export function Navigation() {
     { label: 'About', href: '/about', icon: Star },
     { label: 'Services', href: '/services', icon: Zap },
     { label: 'Portfolio', href: '/portfolio', icon: Layout },
-    { label: 'Career', href: '/career', icon: Briefcase },
     { label: 'Contact', href: '/contact', icon: Mail },
   ];
 
