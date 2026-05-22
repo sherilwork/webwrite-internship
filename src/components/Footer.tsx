@@ -27,7 +27,6 @@ export function Footer() {
       { label: "About Us", href: "/about" },
       { label: "Our Services", href: "/services" },
       { label: "Portfolio", href: "/portfolio" },
-      { label: "Founder", href: "/founder" },
     ],
     services: [
       { label: "Web Development", href: "/services" },
