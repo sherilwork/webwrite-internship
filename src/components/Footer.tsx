@@ -17,8 +17,6 @@ import {
 import { PlaceHolderImages } from "@/lib/placeholder-images"
 
 export function Footer() {
-  const logo = PlaceHolderImages.find((img) => img.id === 'logo');
-
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -62,17 +60,9 @@ export function Footer() {
           
           {/* Brand Info */}
           <div className="lg:col-span-4 space-y-8">
-            <Link href="/" className="inline-block transition-transform active:scale-95">
-              <div className="relative h-8 w-40">
-                <Image
-                  src={logo?.imageUrl || '/webwrite-logo.webp'}
-                  alt="WebWrite Services Logo"
-                  fill
-                  className="object-contain object-left"
-                  data-ai-hint="company logo"
-                />
-              </div>
-            </Link>
+            <div className="h-8">
+              {/* Logo removed */}
+            </div>
             <p className="text-sm font-medium text-black/50 leading-relaxed max-sm">
               Crafting premium digital experiences that bridge the gap between vision and reality. We empower brands with high-performance web solutions and strategic digital marketing.
             </p>

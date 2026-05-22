@@ -9,8 +9,6 @@ export function Preloader() {
   const [loading, setLoading] = useState(true)
   const [progress, setProgress] = useState(0)
 
-  const logo = PlaceHolderImages.find((img) => img.id === 'logo')
-
   useEffect(() => {
     const timer = setInterval(() => {
       setProgress((prev) => {
@@ -35,7 +33,7 @@ export function Preloader() {
           className="fixed inset-0 z-[100] bg-white flex flex-col items-center justify-center p-6 text-center"
         >
           <div className="relative flex flex-col items-center max-w-sm w-full">
-            {/* Logo Container with Spinner Effect */}
+            {/* Spinner Container */}
             <div className="relative w-24 h-24 mb-8">
               {/* Spinner Arc using Theme Color #f5b800 */}
               <motion.div
@@ -43,16 +41,9 @@ export function Preloader() {
                 animate={{ rotate: 360 }}
                 transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
               />
-              {/* Logo Capsule */}
+              {/* Capsule without logo */}
               <div className="absolute inset-1 bg-white rounded-full flex items-center justify-center shadow-lg overflow-hidden border border-black/5">
-                <Image
-                  src={logo?.imageUrl || "/webwrite-logo.webp"}
-                  alt="WebWrite Logo"
-                  width={60}
-                  height={60}
-                  className="object-contain"
-                  priority
-                />
+                <div className="w-10 h-10 bg-black/5 rounded-full animate-pulse" />
               </div>
             </div>
 

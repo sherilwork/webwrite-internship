@@ -70,23 +70,12 @@ export function Navigation() {
     ).slice(0, 5);
   }, [searchQuery]);
 
-  const logo = PlaceHolderImages.find((img) => img.id === 'logo');
-
   return (
     <header className="fixed top-16 left-0 right-0 z-50 flex justify-center px-4 will-change-transform transform-gpu">
       <nav className="flex items-center justify-between w-full max-w-6xl px-4 py-2 bg-white/90 backdrop-blur-md rounded-full border border-border shadow-sm transition-all duration-300 hover:shadow-md">
-        <Link href="/" className="flex items-center gap-2 transition-transform active:scale-95 duration-200">
-          <div className="relative h-7 w-32 md:h-8 md:w-40">
-            <Image
-              src={logo?.imageUrl || '/webwrite-logo.webp'}
-              alt="WebWrite Services Logo"
-              fill
-              className="object-contain object-left"
-              priority
-              data-ai-hint="company logo"
-            />
-          </div>
-        </Link>
+        <div className="flex items-center gap-2">
+          {/* Logo removed */}
+        </div>
 
         <div className="hidden md:flex items-center gap-6">
           {navItems.map((item) => {
@@ -184,16 +173,6 @@ export function Navigation() {
                   </button>
                 </SheetClose>
                 <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
-                <div className="relative h-7 w-36">
-                  <Image
-                    src={logo?.imageUrl || '/webwrite-logo.webp'}
-                    alt="WebWrite Services Logo"
-                    fill
-                    className="object-contain object-left"
-                    data-ai-hint="company logo"
-                    priority
-                  />
-                </div>
               </SheetHeader>
               
               <ScrollArea className="flex-1 h-full scroll-smooth">
