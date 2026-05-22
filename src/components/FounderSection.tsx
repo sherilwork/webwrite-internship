@@ -13,11 +13,14 @@ export function FounderSection() {
 
   return (
     <section className="bg-white py-20 lg:py-32 relative overflow-hidden border-t border-black/[0.03]">
+      {/* Background Ambient Effect */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-[600px] bg-[#f5b800]/[0.01] blur-[150px] rounded-full pointer-events-none" />
+
       <div className="container mx-auto px-6">
-        <div className="flex flex-col lg:flex-row gap-12 lg:gap-24 items-center">
+        <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-center justify-center">
           
           {/* Left: Founder Message */}
-          <div className="flex-1 order-2 lg:order-1 space-y-8">
+          <div className="flex-1 order-2 lg:order-1 space-y-8 lg:translate-x-8">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -77,7 +80,7 @@ export function FounderSection() {
           </div>
 
           {/* Right: Visual Image */}
-          <div className="flex-1 order-1 lg:order-2 w-full max-w-[260px] md:max-w-[320px] lg:max-w-[380px]">
+          <div className="flex-1 order-1 lg:order-2 w-full max-w-[260px] md:max-w-[320px] lg:max-w-[380px] lg:-translate-x-8">
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
