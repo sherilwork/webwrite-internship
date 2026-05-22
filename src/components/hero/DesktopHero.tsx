@@ -124,7 +124,7 @@ export function DesktopHero() {
 
             {/* Right Group */}
             <div className="flex flex-row items-center justify-end gap-0">
-              <div className="relative w-[600px] aspect-[16/10] -mr-40 mt-12 z-20 pointer-events-none animate-in fade-in slide-in-from-right-12 duration-1000 ease-out group will-change-transform">
+              <div className="relative w-[850px] aspect-[16/10] -mr-64 mt-12 z-20 pointer-events-none animate-in fade-in slide-in-from-right-12 duration-1000 ease-out group will-change-transform">
                 <div className="absolute top-[0%] bottom-[5%] left-[25%] right-[25%] bg-blue-100/40 rounded-[5rem] -z-10 blur-xl" />
                 
                 <Image 
