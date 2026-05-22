@@ -99,7 +99,8 @@ const VimeoThumbnail = ({ videoUrl, alt, isActive }: { videoUrl: string; alt: st
     let isMounted = true
     
     setThumbnail(null)
-    fetch(`https://vimeo.com/api/oembed.json?url=https://vimeo.com/${videoId}`)
+    // Requesting 1280 width to ensure high quality thumbnails
+    fetch(`https://vimeo.com/api/oembed.json?url=https://vimeo.com/${videoId}&width=1280`)
       .then(res => res.json())
       .then(data => {
         if (isMounted) setThumbnail(data.thumbnail_url)
@@ -123,6 +124,7 @@ const VimeoThumbnail = ({ videoUrl, alt, isActive }: { videoUrl: string; alt: st
             isActive ? "scale-105" : "scale-100"
           )}
           sizes="(max-width: 768px) 100vw, 33vw"
+          priority={isActive}
         />
       ) : (
         <div className="w-full h-full flex items-center justify-center">
@@ -229,9 +231,9 @@ export function FeaturedVideos() {
                           layout
                           initial={false}
                           animate={{ 
-                            opacity: isActive ? 1 : 0.4, 
-                            scale: isPlaying ? 1.15 : (isActive ? 1.1 : 0.8),
-                            filter: (isActive || isPlaying) ? "grayscale(0)" : "grayscale(0.6)"
+                            opacity: 1, // Keep all cards unblurred and visible
+                            scale: isPlaying ? 1.15 : (isActive ? 1.1 : 0.95),
+                            filter: "grayscale(0)" // No more grayscale to keep thumbnails vibrant
                           }}
                           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
                           className={cn(
@@ -270,13 +272,14 @@ export function FeaturedVideos() {
                                   isActive={isActive} 
                                 />
                                 
-                                <div className="absolute inset-0 bg-black/30 opacity-40 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center backdrop-blur-[1px] group-hover:backdrop-blur-[3px]">
+                                {/* Refined overlay: less intrusive dark tint and blur removed for better visual clarity */}
+                                <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center group-hover:backdrop-blur-[1px]">
                                   <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center text-black transform scale-90 group-hover:scale-100 transition-all duration-500 shadow-2xl">
                                     <Play className="w-7 h-7 fill-current ml-1" />
                                   </div>
                                 </div>
 
-                                <div className="absolute inset-x-0 bottom-0 p-8 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                                <div className="absolute inset-x-0 bottom-0 p-8 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                                     <p className="text-[10px] font-bold text-[#f5b800] uppercase tracking-widest mb-1">{project.category}</p>
                                     <h4 className="text-white text-lg font-black leading-tight tracking-tight uppercase">{project.title}</h4>
                                 </div>
