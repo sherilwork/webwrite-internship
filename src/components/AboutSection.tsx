@@ -1,4 +1,3 @@
-
 "use client"
 
 import React from "react"
@@ -32,7 +31,7 @@ export function AboutSection() {
               </div>
               
               <p className="text-base md:text-lg text-black/50 font-medium leading-relaxed">
-                At Webwrite, we started with a simple belief: that big dreams deserve digital spaces that work. We've grown into a partner that builds websites that connect and content that resonates. Every project is an opportunity to turn a simple idea into a real success.
+                At WebWrite, we started with a simple belief: that big dreams deserve digital spaces that work. We've grown into a partner that builds websites that connect and content that resonates. Every project is an opportunity to turn a simple idea into a real success.
               </p>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-3 md:gap-y-4 gap-x-8">
@@ -71,7 +70,7 @@ export function AboutSection() {
               <div className="relative aspect-square md:aspect-[4/3] w-full bg-black/[0.01] border border-black/[0.05] rounded-[2rem] md:rounded-[3rem] overflow-hidden backdrop-blur-sm flex items-center justify-center shadow-2xl shadow-black/5">
                 <Image 
                   src={aboutImage}
-                  alt="Webwrite journey"
+                  alt="WebWrite journey"
                   fill
                   className="object-cover transition-transform duration-1000 group-hover:scale-105"
                   data-ai-hint="team business"

@@ -47,7 +47,7 @@ export function Preloader() {
               <div className="absolute inset-1 bg-white rounded-full flex items-center justify-center shadow-lg overflow-hidden border border-black/5">
                 <Image
                   src={logo?.imageUrl || "/webwrite-logo.webp"}
-                  alt="Webwrite Logo"
+                  alt="WebWrite Logo"
                   width={60}
                   height={60}
                   className="object-contain"
@@ -64,7 +64,7 @@ export function Preloader() {
                 transition={{ delay: 0.2 }}
                 className="text-3xl font-black text-black tracking-tighter uppercase"
               >
-                Webwrite Services
+                WebWrite Services
               </motion.h1>
               <motion.p 
                 initial={{ opacity: 0 }}

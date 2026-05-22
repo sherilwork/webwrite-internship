@@ -1,4 +1,3 @@
-
 "use client"
 
 import React from "react"
@@ -76,7 +75,7 @@ export default function AboutPage() {
             </h1>
             <div className="w-20 h-2 bg-black mt-4" />
             <p className="text-lg md:text-xl text-black/50 font-medium leading-relaxed pt-4">
-              At Webwrite, we started small, with big dreams. Over time, we've grown into a place that creates digital solutions that make a difference. We’re here to help brands succeed online by building websites that work well and content that connects with people.
+              At WebWrite Services, we started small, with big dreams. Over time, we've grown into a place that creates digital solutions that make a difference. We’re here to help brands succeed online by building websites that work well and content that connects with people.
             </p>
             <p className="text-sm md:text-base text-black/40 leading-relaxed">
               With every project, we turn simple ideas into real opportunities, helping our clients leave a lasting mark in the digital world.

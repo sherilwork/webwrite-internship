@@ -59,7 +59,7 @@ export function Footer() {
               <div className="relative h-8 w-40">
                 <Image
                   src={logo?.imageUrl || '/webwrite-logo.webp'}
-                  alt="Webwrite services logo"
+                  alt="WebWrite Services Logo"
                   fill
                   className="object-contain object-left"
                   data-ai-hint="company logo"
@@ -154,7 +154,7 @@ export function Footer() {
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-black/[0.05] flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-2 text-[10px] font-bold text-black/30 uppercase tracking-[0.1em]">
-            <span>© {currentYear} Webwrite Services. All rights reserved.</span>
+            <span>© {currentYear} WebWrite Services. All rights reserved.</span>
           </div>
 
           <button 
