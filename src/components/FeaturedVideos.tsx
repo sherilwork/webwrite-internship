@@ -1,4 +1,3 @@
-
 "use client"
 
 import React, { useState, useMemo, useEffect, useCallback } from "react"
@@ -12,7 +11,6 @@ import {
   CarouselItem,
   type CarouselApi
 } from "@/components/ui/carousel"
-import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog"
 
 // --- Configuration & Data ---
 
@@ -139,11 +137,14 @@ export function FeaturedVideos() {
   const [activeCategory, setActiveCategory] = useState("All")
   const [api, setApi] = useState<CarouselApi>()
   const [selectedIndex, setSelectedIndex] = useState(0)
-  const [selectedVideo, setSelectedVideo] = useState<string | null>(null)
+  const [playingVideoUrl, setPlayingVideoUrl] = useState<string | null>(null)
 
   useEffect(() => {
     if (!api) return
-    const onSelect = () => setSelectedIndex(api.selectedScrollSnap())
+    const onSelect = () => {
+      setSelectedIndex(api.selectedScrollSnap())
+      setPlayingVideoUrl(null) // Reset video on scroll
+    }
     onSelect()
     api.on("select", onSelect)
     api.on("reInit", onSelect)
@@ -161,6 +162,7 @@ export function FeaturedVideos() {
   const handleCategoryChange = useCallback((cat: string) => {
     setActiveCategory(cat)
     setSelectedIndex(0)
+    setPlayingVideoUrl(null)
     if (api) api.scrollTo(0)
   }, [api])
 
@@ -216,6 +218,8 @@ export function FeaturedVideos() {
                 <CarouselContent className="-ml-4 items-center h-[500px]">
                   {filteredProjects.map((project, index) => {
                     const isActive = index === selectedIndex
+                    const isPlaying = playingVideoUrl === project.videoUrl
+
                     return (
                       <CarouselItem 
                         key={`${project.id}-${index}`} 
@@ -226,30 +230,58 @@ export function FeaturedVideos() {
                           initial={false}
                           animate={{ 
                             opacity: isActive ? 1 : 0.4, 
-                            scale: isActive ? 1.1 : 0.8,
-                            filter: isActive ? "grayscale(0)" : "grayscale(0.6)"
+                            scale: isPlaying ? 1.15 : (isActive ? 1.1 : 0.8),
+                            filter: (isActive || isPlaying) ? "grayscale(0)" : "grayscale(0.6)"
                           }}
                           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                          className="group relative aspect-[3/4] cursor-pointer will-change-transform transform-gpu"
-                          onClick={() => setSelectedVideo(project.videoUrl)}
+                          className={cn(
+                            "group relative aspect-[3/4] cursor-pointer will-change-transform transform-gpu",
+                            isPlaying && "z-50"
+                          )}
+                          onClick={() => {
+                            if (!isPlaying && isActive) setPlayingVideoUrl(project.videoUrl)
+                            else if (!isActive && api) api.scrollTo(index)
+                          }}
                         >
                           <div className="relative w-full h-full rounded-[2rem] overflow-hidden bg-[#f7f7f5] border border-black/[0.05] shadow-2xl transition-all duration-700 transform-gpu">
-                            <VimeoThumbnail 
-                              videoUrl={project.videoUrl} 
-                              alt={project.title} 
-                              isActive={isActive} 
-                            />
-                            
-                            <div className="absolute inset-0 bg-black/30 opacity-40 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center backdrop-blur-[1px] group-hover:backdrop-blur-[3px]">
-                              <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center text-black transform scale-90 group-hover:scale-100 transition-all duration-500 shadow-2xl">
-                                <Play className="w-7 h-7 fill-current ml-1" />
+                            {isPlaying ? (
+                              <div className="relative w-full h-full bg-black">
+                                <iframe
+                                  src={`https://player.vimeo.com/video/${extractVimeoId(project.videoUrl)}?autoplay=1&color=f5b800&title=0&byline=0&portrait=0`}
+                                  className="w-full h-full border-none"
+                                  allow="autoplay; fullscreen; picture-in-picture"
+                                  allowFullScreen
+                                />
+                                <button 
+                                  onClick={(e) => {
+                                    e.stopPropagation();
+                                    setPlayingVideoUrl(null);
+                                  }}
+                                  className="absolute top-4 right-4 w-8 h-8 rounded-full bg-black/40 backdrop-blur-md text-white flex items-center justify-center hover:bg-black/60 transition-all z-10"
+                                >
+                                  <X className="w-4 h-4" />
+                                </button>
                               </div>
-                            </div>
+                            ) : (
+                              <>
+                                <VimeoThumbnail 
+                                  videoUrl={project.videoUrl} 
+                                  alt={project.title} 
+                                  isActive={isActive} 
+                                />
+                                
+                                <div className="absolute inset-0 bg-black/30 opacity-40 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center backdrop-blur-[1px] group-hover:backdrop-blur-[3px]">
+                                  <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center text-black transform scale-90 group-hover:scale-100 transition-all duration-500 shadow-2xl">
+                                    <Play className="w-7 h-7 fill-current ml-1" />
+                                  </div>
+                                </div>
 
-                            <div className="absolute inset-x-0 bottom-0 p-8 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                                <p className="text-[10px] font-bold text-[#f5b800] uppercase tracking-widest mb-1">{project.category}</p>
-                                <h4 className="text-white text-lg font-black leading-tight tracking-tight uppercase">{project.title}</h4>
-                            </div>
+                                <div className="absolute inset-x-0 bottom-0 p-8 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                                    <p className="text-[10px] font-bold text-[#f5b800] uppercase tracking-widest mb-1">{project.category}</p>
+                                    <h4 className="text-white text-lg font-black leading-tight tracking-tight uppercase">{project.title}</h4>
+                                </div>
+                              </>
+                            )}
                           </div>
                         </motion.div>
                       </CarouselItem>
@@ -278,26 +310,6 @@ export function FeaturedVideos() {
           </AnimatePresence>
         </div>
       </div>
-
-      <Dialog open={!!selectedVideo} onOpenChange={() => setSelectedVideo(null)}>
-        <DialogContent className="max-w-[90vw] md:max-w-[85vw] lg:max-w-6xl p-0 bg-black border-none overflow-hidden aspect-[9/16] md:aspect-video rounded-[2.5rem] md:rounded-[2rem] shadow-[0_0_100px_rgba(0,0,0,0.5)]">
-          <DialogTitle className="sr-only">Video Player</DialogTitle>
-          {selectedVideo && (
-            <iframe
-              src={`https://player.vimeo.com/video/${extractVimeoId(selectedVideo)}?autoplay=1&color=f5b800&title=0&byline=0&portrait=0`}
-              className="w-full h-full"
-              allow="autoplay; fullscreen; picture-in-picture"
-              allowFullScreen
-            />
-          )}
-          <button 
-            onClick={() => setSelectedVideo(null)}
-            className="absolute top-6 right-6 w-12 h-12 rounded-full bg-black/40 backdrop-blur-md text-white flex items-center justify-center hover:bg-black/60 transition-all z-50 hover:scale-110 active:scale-90"
-          >
-            <X className="w-6 h-6" />
-          </button>
-        </DialogContent>
-      </Dialog>
     </section>
   )
 }
