@@ -44,19 +44,19 @@ export function SubHeader() {
         </a>
       </div>
 
-      {/* Center Section: Animated Proposal - Always visible, slightly scaled for mobile */}
+      {/* Center Section: Animated Proposal - Always visible, highly highlighted */}
       <div className="absolute left-1/2 -translate-x-1/2 flex items-center gap-2 md:gap-4 scale-90 md:scale-100">
         <Cloud className="w-4 h-4 md:w-5 md:h-5 text-white/5 animate-cloud hidden sm:block opacity-20" />
         <a 
           href="https://wa.me/917906627288" 
           target="_blank" 
           rel="noopener noreferrer"
-          className="flex items-center gap-2.5 group cursor-pointer bg-[#f5b800]/10 px-4 md:px-5 py-1.5 rounded-full border border-[#f5b800]/30 hover:bg-[#f5b800]/20 hover:border-[#f5b800]/60 transition-all duration-300 whitespace-nowrap shadow-[0_0_15px_rgba(245,184,0,0.1)] hover:shadow-[0_0_20px_rgba(245,184,0,0.2)]"
+          className="flex items-center gap-2.5 group cursor-pointer bg-[#f5b800] px-4 md:px-5 py-1.5 rounded-full border border-[#f5b800] hover:bg-white hover:border-white transition-all duration-300 whitespace-nowrap shadow-[0_0_20px_rgba(245,184,0,0.4)] hover:shadow-[0_0_30px_rgba(245,184,0,0.6)] hover:scale-105 active:scale-95"
         >
-          <span className="text-[9px] md:text-[10px] font-black text-white uppercase tracking-[0.15em] md:tracking-[0.25em]">
+          <span className="text-[9px] md:text-[10px] font-black text-black uppercase tracking-[0.15em] md:tracking-[0.25em]">
             Get a Proposal
           </span>
-          <Rocket className="w-3.5 h-3.5 md:w-4 md:h-4 text-[#f5b800] animate-rocket drop-shadow-[0_0_5px_rgba(245,184,0,0.5)]" />
+          <Rocket className="w-3.5 h-3.5 md:w-4 md:h-4 text-black animate-rocket drop-shadow-[0_0_3px_rgba(0,0,0,0.2)]" />
         </a>
         <Cloud className="w-4 h-4 md:w-5 md:h-5 text-white/5 animate-cloud hidden sm:block opacity-20" style={{ animationDelay: '2s' }} />
       </div>
