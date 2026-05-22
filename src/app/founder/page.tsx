@@ -1,3 +1,4 @@
+
 "use client"
 
 import React from "react"
@@ -64,7 +65,7 @@ export default function FounderPage() {
                 </div>
 
                 <p className="text-[11px] font-medium text-black/50 leading-relaxed italic">
-                  "Founder & CEO at WebWrite Services | Full Stack Web Developer | Entrepreneur ( Business Mindset Personality )"
+                  "{founder.quote}"
                 </p>
 
                 <div className="space-y-4 pt-4 border-t border-black/5">
