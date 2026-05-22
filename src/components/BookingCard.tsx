@@ -26,6 +26,7 @@ import { useIsMobile } from "@/hooks/use-mobile"
 
 interface BookingCardProps {
   imageUrl?: string
+  onStepChange?: (isDetails: boolean) => void
 }
 
 const TIME_SLOTS = [
@@ -38,7 +39,7 @@ const TIME_SLOTS = [
   "09:00 PM"
 ]
 
-export function BookingCard({ imageUrl }: BookingCardProps) {
+export function BookingCard({ imageUrl, onStepChange }: BookingCardProps) {
   const isMobile = useIsMobile()
   const days = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"]
   
@@ -56,6 +57,11 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
     setToday(startOfDay(now))
     setIsMounted(true)
   }, [])
+
+  // Notify parent of step change
+  useEffect(() => {
+    onStepChange?.(isDetailsStep)
+  }, [isDetailsStep, onStepChange])
 
   const [formData, setFormData] = useState({
     name: "",
@@ -143,11 +149,11 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
 
           <div className="flex flex-col items-center justify-center gap-2 w-full pt-4 border-t border-black/5">
             <a href="tel:+917906627288" className="flex items-center gap-1.5 text-black/60 hover:text-black transition-colors">
-              <Phone className="w-2.5 h-2.5 text-[#f5b800]" />
+              <Phone className="w-3 h-3 text-[#f5b800]" />
               <span className="text-[10px] font-bold uppercase tracking-wider leading-none">+91 79066 27288</span>
             </a>
             <a href="mailto:support@webwrite.co.in" className="flex items-center gap-1.5 text-black/60 hover:text-black transition-colors">
-              <Mail className="w-2.5 h-2.5 text-[#f5b800]" />
+              <Mail className="w-3 h-3 text-[#f5b800]" />
               <span className="text-[10px] font-bold lowercase tracking-wider leading-none">support@webwrite.co.in</span>
             </a>
           </div>

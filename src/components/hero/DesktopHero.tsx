@@ -8,6 +8,7 @@ import { Navigation } from "@/components/Navigation"
 import { SubHeader } from "@/components/SubHeader"
 import { BookingCard } from "@/components/BookingCard"
 import { PlaceHolderImages } from "@/lib/placeholder-images"
+import { cn } from "@/lib/utils"
 
 export function DesktopHero() {
   const [settings] = useState({
@@ -21,10 +22,11 @@ export function DesktopHero() {
 
   const phrases = ["Digital Marketing", "Meta ads", "Video editing"]
   const [phraseIndex, setPhraseIndex] = useState(0)
-  const [currentText, setCurrentText] = useState(phrases[0]) // Start with first phrase to avoid flash
+  const [currentText, setCurrentText] = useState(phrases[0])
   const [isDeleting, setIsDeleting] = useState(false)
   const [typingSpeed, setTypingSpeed] = useState(150)
   const [isMounted, setIsMounted] = useState(false)
+  const [isFillingDetails, setIsFillingDetails] = useState(false)
 
   useEffect(() => {
     setIsMounted(true)
@@ -39,7 +41,7 @@ export function DesktopHero() {
       setTypingSpeed(100)
       if (currentText === fullText) {
         setIsDeleting(true)
-        setTypingSpeed(2500) // Longer pause at end
+        setTypingSpeed(2500)
       }
     } else {
       setCurrentText(fullText.substring(0, currentText.length - 1))
@@ -74,10 +76,8 @@ export function DesktopHero() {
         className="h-full"
       >
         <div className="container mx-auto px-6 h-full flex items-center justify-center pt-32 pb-4">
-          {/* Main Container - Shifted slightly right by reducing negative margin from -ml-40 to -ml-20 */}
           <div className="w-full flex flex-row items-center justify-between gap-0 h-full -ml-20 relative">
             
-            {/* Left Content Area - Positioned with lower z-index and relative to sit behind the right group */}
             <div className="flex-1 max-w-2xl flex flex-col items-start text-left gap-3 animate-in fade-in slide-in-from-left-12 duration-1000 ease-out relative z-10 h-full pt-12 pb-8 will-change-transform">
               <div className="flex items-center gap-2 bg-white border border-black/5 rounded-full px-2.5 py-1 shadow-sm -mt-4 transition-transform hover:scale-105">
                 <div className="bg-[#f5b800] text-white px-3 py-1 rounded-full text-[9px] font-black tracking-widest uppercase shrink-0">
@@ -123,10 +123,11 @@ export function DesktopHero() {
               </div>
             </div>
 
-            {/* Right Group - Overlays the left content slightly with negative margin and higher z-index (z-20) */}
             <div className="flex flex-row items-center justify-end gap-0 -ml-24 relative z-20">
-              {/* Hero Image Overlay - Positioned above the card with z-40 */}
-              <div className="relative w-[850px] aspect-[16/10] -mr-72 mt-12 pointer-events-none animate-in fade-in slide-in-from-right-12 duration-1000 ease-out group will-change-transform z-40">
+              <div className={cn(
+                "relative w-[850px] aspect-[16/10] -mr-72 mt-12 pointer-events-none animate-in fade-in slide-in-from-right-12 duration-1000 ease-out group will-change-transform transition-all",
+                isFillingDetails ? "z-20 opacity-30 blur-sm" : "z-40"
+              )}>
                 <div className="absolute top-[0%] bottom-[5%] left-[25%] right-[25%] bg-blue-100/40 rounded-[5rem] -z-10 blur-xl" />
                 
                 <Image 
@@ -140,9 +141,11 @@ export function DesktopHero() {
                 />
               </div>
 
-              {/* Booking Card - Layered behind image with z-30 */}
               <div className="w-auto flex justify-end relative z-30 transform transition-all duration-500 hover:translate-x-[-10px]">
-                <BookingCard imageUrl="/hero-illustration.png" />
+                <BookingCard 
+                  imageUrl="/hero-illustration.png" 
+                  onStepChange={setIsFillingDetails}
+                />
               </div>
             </div>
           </div>
