@@ -49,7 +49,7 @@ export function FAQSection() {
   )
 
   return (
-    <section className="bg-white py-20 lg:py-32 relative overflow-hidden border-t border-black/[0.03]">
+    <section className="bg-white pt-20 pb-12 lg:pt-32 lg:pb-16 relative overflow-hidden border-t border-black/[0.03]">
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
           
@@ -74,7 +74,7 @@ export function FAQSection() {
                 <div className="w-16 md:w-20 h-1.5 bg-black mt-2" />
               </div>
               
-              <p className="text-sm md:text-lg text-black/50 font-medium leading-relaxed max-w-sm">
+              <p className="text-sm md:text-lg text-black/50 font-medium leading-relaxed max-sm">
                 Everything you need to know about our process, pricing, and how we help your brand grow.
               </p>
 
