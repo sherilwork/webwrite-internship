@@ -1,7 +1,7 @@
 export const founders = [
   {
     id: 1,
-    name: "Rishi Tiwari",
+    name: "Smileo group",
     role: "Founder & CEO",
     image: "https://picsum.photos/seed/rishi/800/1000",
     fallbackImage: "https://picsum.photos/seed/founder/800/1000",
