@@ -76,7 +76,7 @@ export function IndustriesSection() {
   const MarqueeGroup = () => (
     <div className="flex items-center gap-12 md:gap-24 px-6 md:px-12 whitespace-nowrap">
       {brandLogos.map((logo) => (
-        <div key={logo.id} className="relative h-12 w-28 md:h-20 md:w-48 shrink-0 grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-500 transform-gpu cursor-pointer">
+        <div key={logo.id} className="relative h-12 w-28 md:h-20 md:w-48 shrink-0 transform-gpu cursor-pointer">
           <Image 
             src={logo.src} 
             alt="Collaborator Brand" 
@@ -162,10 +162,6 @@ export function IndustriesSection() {
           </div>
 
           <div className="relative overflow-hidden w-full -mx-6 md:-mx-12">
-            {/* Mask for smooth edges */}
-            <div className="absolute inset-y-0 left-0 w-24 md:w-64 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
-            <div className="absolute inset-y-0 right-0 w-24 md:w-64 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
-
             <div className="flex overflow-hidden">
               <div 
                 className="flex py-10 animate-brand-marquee-left hover:[animation-play-state:paused] transition-all duration-700"
