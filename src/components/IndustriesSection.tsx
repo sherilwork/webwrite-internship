@@ -61,34 +61,7 @@ const industries: Industry[] = [
   { name: "Rentals", icon: Key },
 ]
 
-const brandLogos = [
-  { id: 1, src: "/clients-logo/imgi_16_WhatsApp-Image-2025-04-27-at-12.17.08_40b3f6fc.jpg" },
-  { id: 2, src: "/clients-logo/imgi_17_logochiilumchai.png" },
-  { id: 3, src: "/clients-logo/imgi_18_IMG_2520-scaled.png" },
-  { id: 4, src: "/clients-logo/imgi_19_Untitleddesign-modified-2.png" },
-  { id: 5, src: "/clients-logo/imgi_20_file.png" },
-  { id: 6, src: "/clients-logo/imgi_21_41096640619.png" },
-  { id: 7, src: "/clients-logo/imgi_23_IMG_0062-1.png" },
-  { id: 8, src: "/clients-logo/imgi_24_Ajmera-Trends-1.png" },
-];
-
 export function IndustriesSection() {
-  const MarqueeGroup = () => (
-    <div className="flex items-center gap-16 md:gap-32 px-6 md:px-12 whitespace-nowrap">
-      {brandLogos.map((logo) => (
-        <div key={logo.id} className="relative h-16 w-40 md:h-28 md:w-64 shrink-0 transform-gpu cursor-pointer">
-          <Image 
-            src={logo.src} 
-            alt="Collaborator Brand" 
-            fill 
-            className="object-contain" 
-            sizes="(max-width: 768px) 160px, 256px"
-          />
-        </div>
-      ))}
-    </div>
-  )
-
   return (
     <div className="bg-white">
       {/* Industries Section */}
@@ -135,51 +108,6 @@ export function IndustriesSection() {
           </div>
         </div>
       </section>
-
-      {/* Independent Collaborations Section */}
-      <section className="bg-white pt-24 pb-12 lg:pt-32 lg:pb-16 relative overflow-hidden border-t border-black/[0.03]">
-        <div className="container mx-auto px-6">
-          <div className="max-w-4xl mx-auto text-center space-y-8 mb-20">
-            <div className="space-y-4 flex flex-col items-center">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/[0.03] border border-black/[0.05]">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#f5b800]" />
-                <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-black/60">Our Partners</span>
-              </div>
-              <h2 className="text-3xl md:text-5xl lg:text-6xl font-black text-black leading-[1.05] tracking-tighter uppercase">
-                COLLABORATIONS WITH <br />
-                <span className="text-[#f5b800]">LEADING BRANDS</span>
-              </h2>
-              <div className="w-16 md:w-20 h-1.5 bg-black mt-2" />
-            </div>
-            <p className="text-base md:text-xl text-black/40 font-medium leading-relaxed max-w-2xl mx-auto">
-              Get to know the talented individuals who make our company thrive. Our diverse team brings together a wealth of expertise.
-            </p>
-          </div>
-
-          <div className="relative overflow-hidden w-full -mx-6 md:-mx-12">
-            <div className="flex overflow-hidden">
-              <div 
-                className="flex py-12 animate-brand-marquee-left hover:[animation-play-state:paused] transition-all duration-700"
-                style={{ '--duration': '40s' } as React.CSSProperties}
-              >
-                <MarqueeGroup />
-                <MarqueeGroup />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <style jsx global>{`
-        @keyframes brand-marquee-left {
-          0% { transform: translate3d(0, 0, 0); }
-          100% { transform: translate3d(-50%, 0, 0); }
-        }
-        .animate-brand-marquee-left {
-          animation: brand-marquee-left var(--duration, 40s) linear infinite;
-          will-change: transform;
-        }
-      `}</style>
     </div>
   )
 }
