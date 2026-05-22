@@ -74,10 +74,11 @@ export function DesktopHero() {
         className="h-full"
       >
         <div className="container mx-auto px-6 h-full flex items-center justify-center pt-32 pb-4">
-          <div className="w-full flex flex-row items-center justify-between gap-4 h-full -ml-12">
+          {/* Main Container - Shifted even more to the left */}
+          <div className="w-full flex flex-row items-center justify-between gap-0 h-full -ml-40 relative">
             
-            {/* Left Content Area */}
-            <div className="flex-1 flex flex-col items-start text-left gap-3 animate-in fade-in slide-in-from-left-12 duration-1000 ease-out z-30 h-full pt-12 pb-8 will-change-transform">
+            {/* Left Content Area - Positioned with lower z-index to allow overlay */}
+            <div className="flex-1 max-w-2xl flex flex-col items-start text-left gap-3 animate-in fade-in slide-in-from-left-12 duration-1000 ease-out z-10 h-full pt-12 pb-8 will-change-transform">
               <div className="flex items-center gap-2 bg-white border border-black/5 rounded-full px-2.5 py-1 shadow-sm -mt-4 transition-transform hover:scale-105">
                 <div className="bg-[#f5b800] text-white px-3 py-1 rounded-full text-[9px] font-black tracking-widest uppercase shrink-0">
                   CLARITY
@@ -87,7 +88,7 @@ export function DesktopHero() {
 
               <div className="space-y-1 mt-2 w-full">
                 <h1 className="text-5xl font-black text-black leading-tight tracking-tighter flex items-center flex-wrap gap-x-3">
-                  <div className="relative inline-block h-[1.1em] min-w-[320px] overflow-visible z-40">
+                  <div className="relative inline-block h-[1.1em] min-w-[320px] overflow-visible">
                     <span className="whitespace-nowrap absolute left-0 top-0 transition-all duration-300">
                       {currentText}
                       <span className="inline-block w-[3px] h-[0.8em] bg-[#f5b800] ml-1 align-middle animate-pulse" />
@@ -122,9 +123,10 @@ export function DesktopHero() {
               </div>
             </div>
 
-            {/* Right Group */}
-            <div className="flex flex-row items-center justify-end gap-0">
-              <div className="relative w-[850px] aspect-[16/10] -mr-64 mt-12 z-20 pointer-events-none animate-in fade-in slide-in-from-right-12 duration-1000 ease-out group will-change-transform">
+            {/* Right Group - Overlays the left content slightly with negative margin and higher z-index */}
+            <div className="flex flex-row items-center justify-end gap-0 -ml-24 relative z-20">
+              {/* Hero Image Overlay */}
+              <div className="relative w-[850px] aspect-[16/10] -mr-72 mt-12 pointer-events-none animate-in fade-in slide-in-from-right-12 duration-1000 ease-out group will-change-transform">
                 <div className="absolute top-[0%] bottom-[5%] left-[25%] right-[25%] bg-blue-100/40 rounded-[5rem] -z-10 blur-xl" />
                 
                 <Image 
@@ -138,7 +140,8 @@ export function DesktopHero() {
                 />
               </div>
 
-              <div className="w-auto flex justify-end relative z-30 transform transition-all duration-500">
+              {/* Booking Card - Highest z-index for interaction */}
+              <div className="w-auto flex justify-end relative z-30 transform transition-all duration-500 hover:translate-x-[-10px]">
                 <BookingCard imageUrl="/hero-illustration.png" />
               </div>
             </div>
