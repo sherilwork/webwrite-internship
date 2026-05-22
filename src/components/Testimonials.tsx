@@ -11,75 +11,57 @@ import { useIsMobile } from "@/hooks/use-mobile"
 const testimonials = [
   {
     id: "1",
-    name: "Aarav Sharma",
-    role: "CEO, TechPulse",
-    content: "Webwrite delivered a growth engine. Our conversions jumped 45% in weeks.",
+    name: "Shyam Tiwari",
+    role: "Client",
+    content: "Outstanding team",
   },
   {
     id: "2",
-    name: "Priya Malhotra",
-    role: "Founder, LuxeDecor",
-    content: "Strategic thinking is their forte. Design and performance are perfectly balanced.",
+    name: "Sakshi Tiwari",
+    role: "Client",
+    content: "It's best Marketing agency in Etawah District, it's work is too good, best content and video editing, graphics everything 👍✨✨✨✨",
   },
   {
     id: "3",
-    name: "Rohan Gupta",
-    role: "Director, FinEdge",
-    content: "Streamlined our complex inventory management with a powerful B2B portal.",
+    name: "Shivam Tiwari",
+    role: "Local Guide",
+    content: "इटावा के अंदर इनके जैसा काम कोई नहीं करता ✌️📸 बेस्ट h ye apne kam me",
   },
   {
     id: "4",
-    name: "Ishani Das",
-    role: "Manager, EduSmart",
-    content: "Efficiency meets creativity. Handled 100k students with zero friction.",
+    name: "Anmol Editer",
+    role: "Client",
+    content: "etawah me sbse best agency hai bhout acha kaam de rhi h",
   },
   {
     id: "5",
-    name: "Arjun Verma",
-    role: "Co-Founder, HealthHub",
-    content: "The SEO strategy cut our acquisition cost by half. Incredible results.",
+    name: "Lado Sharma",
+    role: "Client",
+    content: "i love to work with webwrite team and enjoying making content for brands",
   },
   {
     id: "6",
-    name: "Sanjana Rao",
-    role: "Lead, CloudCompute",
-    content: "A partnership built on trust. Community-first approach that really works.",
+    name: "Rishi Tiwari",
+    role: "Client",
+    content: "Best marketing team in etawah district",
   },
   {
     id: "7",
-    name: "Vikram Singh",
-    role: "CEO, AgroTrade",
-    content: "Simplified our supply chain digital story. Highly professional team.",
+    name: "Indian Yuvang",
+    role: "Client",
+    content: "best marketing team in etawah hard working team",
   },
   {
     id: "8",
-    name: "Meera Iyer",
-    role: "Founder, StyleHub",
-    content: "Cinematic quality campaign that elevated our brand presence significantly.",
+    name: "Buyify",
+    role: "Client",
+    content: "best marketing agency in etawah love to work with team",
   },
   {
     id: "9",
-    name: "Kavya Nair",
-    role: "Director, BioMed",
-    content: "Empowered our business with tools to lead the industry with clarity.",
-  },
-  {
-    id: "10",
-    name: "Aditya Joshi",
-    role: "Product Lead, SmartHome",
-    content: "Creative and responsive. An essential extension of our core team.",
-  },
-  {
-    id: "11",
-    name: "Ananya Mittal",
-    role: "Manager, GreenEnergy",
-    content: "Delivered solutions that connect and content that resonates deeply.",
-  },
-  {
-    id: "12",
-    name: "Yash Kapoor",
-    role: "Founder, AdTech",
-    content: "High-impact digital strategy that really scales. Exceptional work.",
+    name: "ANKIT KUMAR",
+    role: "Local Guide",
+    content: "update",
   }
 ]
 
@@ -97,7 +79,7 @@ function TestimonialCard({ testimonial }: { testimonial: typeof testimonials[0] 
           ))}
         </div>
 
-        <p className="text-black/70 font-medium leading-snug text-[11px] md:text-[12px] italic line-clamp-2 min-h-[2.5em]">
+        <p className="text-black/70 font-medium leading-snug text-[11px] md:text-[12px] italic line-clamp-3 min-h-[3em]">
           "{testimonial.content}"
         </p>
 
@@ -198,9 +180,9 @@ export function Testimonials() {
     setIsMounted(true)
   }, [])
 
-  const col1 = [testimonials[0], testimonials[3], testimonials[6], testimonials[9]]
-  const col2 = [testimonials[1], testimonials[4], testimonials[7], testimonials[10]]
-  const col3 = [testimonials[2], testimonials[5], testimonials[8], testimonials[11]]
+  const col1 = [testimonials[0], testimonials[3], testimonials[6]]
+  const col2 = [testimonials[1], testimonials[4], testimonials[7]]
+  const col3 = [testimonials[2], testimonials[5], testimonials[8]]
 
   const removeCard = () => {
     setMobileItems((prev) => prev.slice(1))
