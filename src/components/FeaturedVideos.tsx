@@ -136,7 +136,7 @@ const VimeoThumbnail = ({ videoUrl, alt, isActive }: { videoUrl: string; alt: st
 }
 
 export function FeaturedVideos() {
-  const [activeCategory, setActiveCategory] = useState("All")
+  const [activeCategory] = useState("All")
   const [api, setApi] = useState<CarouselApi>()
   const [selectedIndex, setSelectedIndex] = useState(0)
   const [playingVideoUrl, setPlayingVideoUrl] = useState<string | null>(null)
@@ -161,13 +161,6 @@ export function FeaturedVideos() {
     return featuredVideos.filter((p) => p.category === activeCategory)
   }, [activeCategory])
 
-  const handleCategoryChange = useCallback((cat: string) => {
-    setActiveCategory(cat)
-    setSelectedIndex(0)
-    setPlayingVideoUrl(null)
-    if (api) api.scrollTo(0)
-  }, [api])
-
   return (
     <section className="bg-white py-12 md:py-20 overflow-hidden">
       <div className="container mx-auto px-6">
@@ -178,23 +171,6 @@ export function FeaturedVideos() {
               Featured Videos
             </h2>
             <div className="w-8 md:w-12 h-1 bg-[#f5b800] mt-1" />
-          </div>
-
-          <div className="flex flex-wrap gap-1.5">
-            {categories.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => handleCategoryChange(cat)}
-                className={cn(
-                  "px-4 py-1.5 rounded-full text-[9px] font-black uppercase tracking-widest transition-all border",
-                  activeCategory === cat
-                    ? "bg-black text-white border-black"
-                    : "bg-transparent text-black/40 border-black/10 hover:border-black/30"
-                )}
-              >
-                {cat}
-              </button>
-            ))}
           </div>
         </div>
 
