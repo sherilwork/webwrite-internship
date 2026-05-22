@@ -187,10 +187,10 @@ export function Navigation() {
               </div>
               
               <div className="mt-4 px-8 mb-12">
-                <Button asChild className="w-full rounded-full bg-black text-white text-[12px] font-black uppercase tracking-[0.2em] py-7 hover:bg-black/90 shadow-2xl shadow-black/20 transition-all active:scale-95 border border-white/5 duration-200 group">
+                <Button asChild className="w-full rounded-full bg-black text-white text-[10px] font-black uppercase tracking-[0.15em] py-5 hover:bg-black/90 shadow-2xl shadow-black/20 transition-all active:scale-95 border border-white/5 duration-200 group">
                   <a href="https://wa.me/917906627288" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-3">
                     Schedule free consultation
-                    <Zap className="w-4 h-4 text-[#f5b800] fill-[#f5b800] animate-pulse group-hover:scale-110 transition-transform" />
+                    <Zap className="w-3.5 h-3.5 text-[#f5b800] fill-[#f5b800] animate-pulse group-hover:scale-110 transition-transform" />
                   </a>
                 </Button>
               </div>
