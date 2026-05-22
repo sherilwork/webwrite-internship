@@ -142,14 +142,14 @@ export function BookingCard({ imageUrl }: BookingCardProps) {
           </div>
 
           <div className="flex flex-col items-center justify-center gap-2 w-full pt-4 border-t border-black/5">
-            <div className="flex items-center gap-1.5 text-black/60">
+            <a href="tel:+917906627288" className="flex items-center gap-1.5 text-black/60 hover:text-black transition-colors">
               <Phone className="w-2.5 h-2.5 text-[#f5b800]" />
-              <span className="text-[8px] font-bold uppercase tracking-wider leading-none">+1 (555) 000-1234</span>
-            </div>
-            <div className="flex items-center gap-1.5 text-black/60">
+              <span className="text-[8px] font-bold uppercase tracking-wider leading-none">+91 79066 27288</span>
+            </a>
+            <a href="mailto:support@webwrite.co.in" className="flex items-center gap-1.5 text-black/60 hover:text-black transition-colors">
               <Mail className="w-2.5 h-2.5 text-[#f5b800]" />
-              <span className="text-[8px] font-bold uppercase tracking-wider leading-none">support@webwrite.co.in</span>
-            </div>
+              <span className="text-[8px] font-bold lowercase tracking-wider leading-none">support@webwrite.co.in</span>
+            </a>
           </div>
         </div>
       ) : !isDetailsStep ? (
