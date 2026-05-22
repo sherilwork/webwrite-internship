@@ -1,3 +1,4 @@
+
 "use client"
 
 import React from "react"
@@ -20,10 +21,10 @@ export function AboutSection() {
               <div className="space-y-4">
                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/[0.03] border border-black/[0.05]">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#f5b800]" />
-                  <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-black/60">Our Story</span>
+                  <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-black/60">Who we are</span>
                 </div>
                 <h2 className="text-2xl md:text-4xl lg:text-5xl font-black text-black leading-[1.05] tracking-tighter uppercase">
-                  Meet Etawah‘s first <br />
+                  Meet Kanpur‘s first <br />
                   <span className="text-[#f5b800]">Creative market agency</span>
                 </h2>
                 <p className="text-xs md:text-sm font-black uppercase tracking-[0.1em] text-black/40">
@@ -34,10 +35,10 @@ export function AboutSection() {
               
               <div className="space-y-6 text-base md:text-lg text-black/50 font-medium leading-relaxed">
                 <p>
-                  Webwrite Services represents a modern approach to digital growth, where creativity meets strategy with clarity. Since 2023, working across multiple industries including education, events, restaurants, jewellery, and local businesses, one thing became clear — brands do not fail because of competition, they fail because their digital presence lacks direction, consistency, and trust.
+                  Smileo Group is an initiative by a team of corporate trainers and industry experts. The idea behind Smileo Group is to fulfill the gap between our existing education framework and the evolving business landscape. It will be our push to distinguish such holes and offer the most ideal preparing modules to profit the individuals and business on the loose.
                 </p>
                 <p>
-                  Over 4+ years of experience working across 20+ industries and serving clients in 5+ countries worldwide, Webwrite Services has developed a structured understanding of how brands are discovered, remembered, and trusted in the digital world.
+                  With the development and infiltration of web and portable platforms, we accept the fundamental system for an organization in the future would be founded on the union of web and versatile stages. Thus we have propelled our courses in the internet and portable space.
                 </p>
               </div>
 
