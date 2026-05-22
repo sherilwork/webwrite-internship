@@ -15,8 +15,8 @@
     },
     {
       "id": "logo",
-      "description": "Webwrite Services Logo",
-      "imageUrl": "/webwrite-logo.webp",
+      "description": "Smileo Brand Logo",
+      "imageUrl": "/smileo-logo.png",
       "imageHint": "company logo"
     },
     {
@@ -80,45 +80,69 @@
       "imageHint": "corporate office"
     },
     {
+      "id": "work-video-6",
+      "description": "Animation Masterclass",
+      "imageUrl": "https://picsum.photos/seed/33/800/450",
+      "imageHint": "animation reel"
+    },
+    {
+      "id": "work-video-7",
+      "description": "Global Event Reel",
+      "imageUrl": "https://picsum.photos/seed/34/800/450",
+      "imageHint": "event production"
+    },
+    {
+      "id": "work-video-8",
+      "description": "3D Product Render",
+      "imageUrl": "https://picsum.photos/seed/35/800/450",
+      "imageHint": "3d visual"
+    },
+    {
+      "id": "work-video-9",
+      "description": "Short Film Series",
+      "imageUrl": "https://picsum.photos/seed/36/800/450",
+      "imageHint": "cinematic story"
+    },
+    {
       "id": "team-1",
-      "description": "Team Member 1",
-      "imageUrl": "https://picsum.photos/seed/team1/600/800",
+      "description": "Rishi Tiwari",
+      "imageUrl": "/team/team-memeber-1.png",
       "imageHint": "professional portrait"
     },
     {
       "id": "team-2",
-      "description": "Team Member 2",
-      "imageUrl": "https://picsum.photos/seed/team2/600/800",
+      "description": "ANKIT KUSHWAH",
+      "imageUrl": "/team/team-member-2.png",
       "imageHint": "professional portrait"
     },
     {
       "id": "team-3",
-      "description": "Team Member 3",
-      "imageUrl": "https://picsum.photos/seed/team3/600/800",
+      "description": "SAKSHI TIWARI",
+      "imageUrl": "/team/team-member-3.png",
       "imageHint": "professional portrait"
     },
     {
       "id": "team-4",
-      "description": "Team Member 4",
-      "imageUrl": "https://picsum.photos/seed/team4/600/800",
+      "description": "RAM SUNDAR DUBEY",
+      "imageUrl": "/team/team-member-4.png",
       "imageHint": "professional portrait"
     },
     {
       "id": "team-5",
-      "description": "Team Member 5",
-      "imageUrl": "https://picsum.photos/seed/team5/600/800",
+      "description": "AKASH SAMDARSHI",
+      "imageUrl": "/team/team-member-5.png",
       "imageHint": "professional portrait"
     },
     {
       "id": "team-6",
-      "description": "Team Member 6",
-      "imageUrl": "https://picsum.photos/seed/team6/600/800",
+      "description": "ANMOL TRIAPTHI",
+      "imageUrl": "/team/team-member-6.png",
       "imageHint": "professional portrait"
     },
     {
       "id": "team-7",
-      "description": "Team Member 7",
-      "imageUrl": "https://picsum.photos/seed/team7/600/800",
+      "description": "SHERIL",
+      "imageUrl": "/team/team-member-7.png",
       "imageHint": "professional portrait"
     }
   ]

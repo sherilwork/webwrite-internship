@@ -1,3 +1,4 @@
+
 "use client"
 
 import React from "react"
@@ -22,6 +23,7 @@ export function Footer() {
   };
 
   const currentYear = new Date().getFullYear();
+  const logo = PlaceHolderImages.find(img => img.id === 'logo');
 
   const footerLinks = {
     company: [
@@ -60,8 +62,16 @@ export function Footer() {
           
           {/* Brand Info */}
           <div className="lg:col-span-4 space-y-8">
-            <div className="h-8">
-              {/* Logo removed */}
+            <div className="h-12 flex items-center">
+              <Link href="/">
+                <Image 
+                  src={logo?.imageUrl || "/smileo-logo.png"}
+                  alt="Smileo Logo"
+                  width={180}
+                  height={50}
+                  className="h-12 w-auto object-contain transition-transform duration-300 hover:scale-105"
+                />
+              </Link>
             </div>
             <p className="text-sm font-medium text-black/50 leading-relaxed max-sm">
               Crafting premium digital experiences that bridge the gap between vision and reality. We empower brands with high-performance web solutions and strategic digital marketing.

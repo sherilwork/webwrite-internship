@@ -1,3 +1,4 @@
+
 "use client"
 
 import React, { useEffect, useState } from "react"
@@ -24,6 +25,8 @@ export function Preloader() {
     return () => clearInterval(timer)
   }, [])
 
+  const logo = PlaceHolderImages.find(img => img.id === 'logo');
+
   return (
     <AnimatePresence>
       {loading && (
@@ -34,16 +37,22 @@ export function Preloader() {
         >
           <div className="relative flex flex-col items-center max-w-sm w-full">
             {/* Spinner Container */}
-            <div className="relative w-24 h-24 mb-8">
+            <div className="relative w-28 h-28 mb-8">
               {/* Spinner Arc using Theme Color #f5b800 */}
               <motion.div
                 className="absolute inset-0 rounded-full border-4 border-transparent border-t-[#f5b800]"
                 animate={{ rotate: 360 }}
                 transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
               />
-              {/* Capsule without logo */}
-              <div className="absolute inset-1 bg-white rounded-full flex items-center justify-center shadow-lg overflow-hidden border border-black/5">
-                <div className="w-10 h-10 bg-black/5 rounded-full animate-pulse" />
+              {/* Capsule with logo */}
+              <div className="absolute inset-1 bg-white rounded-full flex items-center justify-center shadow-lg overflow-hidden border border-black/5 p-4">
+                <Image 
+                  src={logo?.imageUrl || "/smileo-logo.png"}
+                  alt="Smileo Logo"
+                  width={80}
+                  height={80}
+                  className="w-full h-full object-contain animate-pulse"
+                />
               </div>
             </div>
 

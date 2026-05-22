@@ -1,3 +1,4 @@
+
 'use client';
 
 import * as React from 'react';
@@ -70,11 +71,22 @@ export function Navigation() {
     ).slice(0, 5);
   }, [searchQuery]);
 
+  const logo = PlaceHolderImages.find(img => img.id === 'logo');
+
   return (
     <header className="fixed top-16 left-0 right-0 z-50 flex justify-center px-4 will-change-transform transform-gpu">
-      <nav className="flex items-center justify-between w-full max-w-6xl px-4 py-2 bg-white/90 backdrop-blur-md rounded-full border border-border shadow-sm transition-all duration-300 hover:shadow-md">
-        <div className="flex items-center gap-2">
-          {/* Logo removed */}
+      <nav className="flex items-center justify-between w-full max-w-6xl px-4 py-2 bg-white/90 backdrop-blur-md rounded-full border border-border shadow-sm transition-all duration-300 hover:shadow-md h-14 md:h-16">
+        <div className="flex items-center gap-2 pl-2">
+          <Link href="/" className="flex items-center">
+            <Image 
+              src={logo?.imageUrl || "/smileo-logo.png"}
+              alt="Smileo Logo"
+              width={160}
+              height={50}
+              className="h-10 md:h-12 w-auto object-contain transition-transform duration-300 hover:scale-105"
+              priority
+            />
+          </Link>
         </div>
 
         <div className="hidden md:flex items-center gap-6">
@@ -102,7 +114,7 @@ export function Navigation() {
           })}
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 pr-1">
           {/* Desktop Search Toggle */}
           <button 
             onClick={() => setIsSearchOpen(true)}
@@ -112,7 +124,7 @@ export function Navigation() {
             <Search className="w-4 h-4 text-black/50 group-hover:text-black transition-colors" />
           </button>
 
-          <Button asChild className="hidden md:inline-flex rounded-full bg-black hover:bg-black/90 text-white px-7 py-2 text-[10px] font-black uppercase tracking-widest transition-all active:scale-95 shadow-lg shadow-black/10 duration-300 group">
+          <Button asChild className="hidden md:inline-flex rounded-full bg-black hover:bg-black/90 text-white px-7 py-2 text-[10px] font-black uppercase tracking-widest transition-all active:scale-95 shadow-lg shadow-black/10 duration-300 group h-10">
             <a href="https://wa.me/917906627288" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
               Schedule free consultation
               <Zap className="w-3.5 h-3.5 text-[#f5b800] fill-[#f5b800] animate-pulse group-hover:scale-125 transition-transform" />
@@ -167,6 +179,15 @@ export function Navigation() {
               </div>
 
               <SheetHeader className="pt-20 pb-8 px-8 border-b flex flex-row items-center gap-4 space-y-0 text-left">
+                <div className="flex-1">
+                  <Image 
+                    src={logo?.imageUrl || "/smileo-logo.png"}
+                    alt="Smileo Logo"
+                    width={140}
+                    height={40}
+                    className="h-10 w-auto object-contain"
+                  />
+                </div>
                 <SheetClose asChild>
                   <button className="w-9 h-9 rounded-full border border-black/10 bg-black/5 flex items-center justify-center hover:bg-black transition-all hover:scale-105 active:scale-95 shrink-0 group">
                      <ChevronLeft className="w-5 h-5 text-black group-hover:text-[#f5b800] transition-colors duration-200" />
