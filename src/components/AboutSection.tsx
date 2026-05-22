@@ -23,10 +23,13 @@ export function AboutSection() {
                   <span className="w-1.5 h-1.5 rounded-full bg-[#f5b800]" />
                   <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-black/60">Our Story</span>
                 </div>
-                <h2 className="text-2xl md:text-4xl lg:text-5xl font-black text-black leading-[1.05] tracking-tighter">
-                  FROM SMALL STEPS <br />
-                  <span className="text-[#f5b800]">TO BIG IDEAS</span>
+                <h2 className="text-2xl md:text-4xl lg:text-5xl font-black text-black leading-[1.05] tracking-tighter uppercase">
+                  Meet Etawah‘s first <br />
+                  <span className="text-[#f5b800]">Creative market agency</span>
                 </h2>
+                <p className="text-xs md:text-sm font-black uppercase tracking-[0.1em] text-black/40">
+                  defining how brands build digital priority
+                </p>
                 <div className="w-16 md:w-20 h-1.5 bg-black mt-2" />
               </div>
               
