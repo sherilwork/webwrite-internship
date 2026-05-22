@@ -33,6 +33,7 @@ import {
   DialogContent,
   DialogHeader,
   DialogTitle,
+  DialogClose,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -249,21 +250,28 @@ export function Navigation() {
       {/* Working Search Dialog */}
       <Dialog open={isSearchOpen} onOpenChange={setIsSearchOpen}>
         <DialogContent className="sm:max-w-[600px] p-0 overflow-hidden bg-white/95 backdrop-blur-xl border-none shadow-2xl rounded-3xl">
-          <DialogHeader className="p-6 pb-0">
+          {/* Enhanced Close Button */}
+          <DialogClose asChild>
+            <button className="absolute top-6 right-6 w-11 h-11 rounded-full bg-black/[0.03] border border-black/5 flex items-center justify-center hover:bg-black hover:text-white transition-all duration-300 z-50 group shadow-sm active:scale-90">
+              <X className="w-5 h-5 transition-transform group-hover:rotate-90" />
+            </button>
+          </DialogClose>
+
+          <DialogHeader className="p-8 pb-0">
             <DialogTitle className="sr-only">Search WebWrite Services</DialogTitle>
-            <div className="relative group">
+            <div className="relative group mt-4">
               <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-black/20 group-focus-within:text-[#f5b800] transition-colors" />
               <Input 
                 autoFocus
                 placeholder="What can we help you find?"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full h-14 pl-12 bg-black/5 border-none rounded-2xl text-lg font-medium focus-visible:ring-2 focus-visible:ring-[#f5b800]/30 transition-all"
+                className="w-full h-16 pl-12 bg-black/5 border-none rounded-2xl text-lg md:text-xl font-medium focus-visible:ring-2 focus-visible:ring-[#f5b800]/30 transition-all"
               />
             </div>
           </DialogHeader>
           
-          <ScrollArea className="max-h-[400px] p-6">
+          <ScrollArea className="max-h-[400px] p-8">
             {searchQuery ? (
               <div className="space-y-4">
                 <p className="text-[10px] font-black uppercase tracking-[0.2em] text-black/30 px-2">Search Results</p>
@@ -273,37 +281,37 @@ export function Navigation() {
                       key={idx} 
                       href={item.href}
                       onClick={() => setIsSearchOpen(false)}
-                      className="flex items-center justify-between p-4 rounded-2xl hover:bg-black/5 transition-all group"
+                      className="flex items-center justify-between p-5 rounded-2xl hover:bg-black/5 transition-all group border border-transparent hover:border-black/5"
                     >
                       <div className="flex items-center gap-4">
-                        <div className="w-10 h-10 rounded-xl bg-white border border-black/5 flex items-center justify-center text-black/40 group-hover:text-[#f5b800] group-hover:bg-[#f5b800]/10 transition-all">
-                          <item.icon className="w-5 h-5" />
+                        <div className="w-12 h-12 rounded-xl bg-white border border-black/5 flex items-center justify-center text-black/40 group-hover:text-[#f5b800] group-hover:bg-[#f5b800]/10 transition-all">
+                          <item.icon className="w-6 h-6" />
                         </div>
-                        <span className="font-bold text-black group-hover:translate-x-1 transition-transform">{item.label}</span>
+                        <span className="font-bold text-black text-base group-hover:translate-x-1 transition-transform">{item.label}</span>
                       </div>
-                      <ArrowRight className="w-4 h-4 text-black/20 group-hover:text-[#f5b800] transition-colors" />
+                      <ArrowRight className="w-5 h-5 text-black/20 group-hover:text-[#f5b800] transition-colors" />
                     </Link>
                   ))
                 ) : (
                   <div className="py-12 text-center space-y-3">
-                    <div className="w-12 h-12 rounded-full bg-black/5 flex items-center justify-center mx-auto">
-                      <X className="w-6 h-6 text-black/20" />
+                    <div className="w-14 h-14 rounded-full bg-black/5 flex items-center justify-center mx-auto">
+                      <X className="w-7 h-7 text-black/20" />
                     </div>
                     <p className="text-sm font-medium text-black/40">No matching results found for "{searchQuery}"</p>
                   </div>
                 )}
               </div>
             ) : (
-              <div className="space-y-6">
-                <div className="space-y-3">
+              <div className="space-y-8">
+                <div className="space-y-4">
                   <p className="text-[10px] font-black uppercase tracking-[0.2em] text-black/30 px-2">Quick Navigation</p>
-                  <div className="grid grid-cols-2 gap-2">
+                  <div className="grid grid-cols-2 gap-3">
                     {navItems.slice(0, 4).map((item, idx) => (
                       <Link 
                         key={idx} 
                         href={item.href}
                         onClick={() => setIsSearchOpen(false)}
-                        className="flex items-center gap-3 p-3 rounded-xl hover:bg-black/5 transition-all font-bold text-sm"
+                        className="flex items-center gap-3 p-4 rounded-2xl bg-black/[0.01] hover:bg-black/5 transition-all font-bold text-sm border border-black/5"
                       >
                         <item.icon className="w-4 h-4 text-[#f5b800]" />
                         {item.label}
@@ -312,14 +320,14 @@ export function Navigation() {
                   </div>
                 </div>
                 
-                <div className="space-y-3">
+                <div className="space-y-4">
                   <p className="text-[10px] font-black uppercase tracking-[0.2em] text-black/30 px-2">Popular Services</p>
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-2.5">
                     {['Meta Ads', 'Web Design', 'SEO', 'App Dev', 'Content'].map((tag, idx) => (
                       <button 
                         key={idx}
                         onClick={() => setSearchQuery(tag)}
-                        className="px-4 py-2 rounded-full bg-black/5 hover:bg-[#f5b800]/10 hover:text-[#f5b800] border border-black/5 transition-all text-xs font-bold uppercase tracking-widest"
+                        className="px-5 py-2.5 rounded-full bg-black/5 hover:bg-[#f5b800]/10 hover:text-[#f5b800] border border-black/5 transition-all text-[11px] font-black uppercase tracking-widest"
                       >
                         {tag}
                       </button>
