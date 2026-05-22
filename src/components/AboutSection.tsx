@@ -1,12 +1,11 @@
 "use client"
 
 import React from "react"
-import { ArrowRight, CheckCircle2 } from "lucide-react"
+import { ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
 import Link from "next/link"
 import { PlaceHolderImages } from "@/lib/placeholder-images"
-import { cn } from "@/lib/utils"
 
 export function AboutSection() {
   const aboutImage = PlaceHolderImages.find(img => img.id === 'about-section')?.imageUrl || "/about-image.png"
@@ -33,26 +32,13 @@ export function AboutSection() {
                 <div className="w-16 md:w-20 h-1.5 bg-black mt-2" />
               </div>
               
-              <p className="text-base md:text-lg text-black/50 font-medium leading-relaxed">
-                At WebWrite, we started with a simple belief: that big dreams deserve digital spaces that work. We've grown into a partner that builds websites that connect and content that resonates. Every project is an opportunity to turn a simple idea into a real success.
-              </p>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-3 md:gap-y-4 gap-x-8">
-                {[
-                  "Personalized Solutions",
-                  "Simple, Effective Designs",
-                  "Content That Connects",
-                  "Practical Innovation",
-                  "Long-Term Growth Focus",
-                  "Clear Communication"
-                ].map((feature, idx) => (
-                  <div key={idx} className="flex items-center gap-3 group">
-                    <div className="w-5 h-5 md:w-6 md:h-6 rounded-full bg-black/5 flex items-center justify-center shrink-0 group-hover:bg-[#f5b800]/20 transition-colors">
-                      <CheckCircle2 className="w-3 md:w-3.5 h-3 md:h-3.5 text-black group-hover:text-[#f5b800] transition-colors" />
-                    </div>
-                    <span className="text-[11px] md:text-[13px] font-black uppercase tracking-wider text-black/80">{feature}</span>
-                  </div>
-                ))}
+              <div className="space-y-6 text-base md:text-lg text-black/50 font-medium leading-relaxed">
+                <p>
+                  Webwrite Services represents a modern approach to digital growth, where creativity meets strategy with clarity. Since 2023, working across multiple industries including education, events, restaurants, jewellery, and local businesses, one thing became clear — brands do not fail because of competition, they fail because their digital presence lacks direction, consistency, and trust.
+                </p>
+                <p>
+                  Over 4+ years of experience working across 20+ industries and serving clients in 5+ countries worldwide, Webwrite Services has developed a structured understanding of how brands are discovered, remembered, and trusted in the digital world.
+                </p>
               </div>
 
               <div className="pt-4 md:pt-6">
