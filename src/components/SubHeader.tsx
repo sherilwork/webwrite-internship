@@ -8,7 +8,8 @@ import {
   Twitter, 
   Linkedin, 
   Instagram,
-  Youtube
+  Youtube,
+  Globe
 } from "lucide-react"
 
 export function SubHeader() {
@@ -31,10 +32,20 @@ export function SubHeader() {
         </a>
       </div>
 
+      {/* Global Announcement Section - Centered */}
+      <div className="flex-1 flex justify-center items-center px-4">
+        <div className="flex items-center gap-2 animate-in fade-in zoom-in-95 duration-1000">
+          <Globe className="w-3 h-3 text-[#f5b800] animate-pulse" />
+          <span className="text-[8px] md:text-[10px] font-black text-[#f5b800] uppercase tracking-[0.25em] whitespace-nowrap">
+            Global Reach • Serving Worldwide
+          </span>
+        </div>
+      </div>
+
       {/* Mobile-only Phone Link (left) */}
       <div className="flex lg:hidden items-center animate-in fade-in duration-1000">
         <a href="tel:+917906627288" className="flex items-center gap-1.5 group">
-          <Phone className="w-3.5 h-3.5 text-[#f5b800]" />
+          <Phone className="w-3 h-3 text-[#f5b800]" />
           <span className="text-[9px] font-black text-white/90 uppercase tracking-tighter">Call Now</span>
         </a>
       </div>
