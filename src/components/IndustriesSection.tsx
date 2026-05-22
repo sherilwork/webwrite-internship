@@ -137,7 +137,7 @@ export function IndustriesSection() {
       </section>
 
       {/* Independent Collaborations Section */}
-      <section className="bg-white py-24 lg:py-32 relative overflow-hidden border-t border-black/[0.03]">
+      <section className="bg-white pt-24 pb-12 lg:pt-32 lg:pb-16 relative overflow-hidden border-t border-black/[0.03]">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto text-center space-y-8 mb-20">
             <div className="space-y-4 flex flex-col items-center">
