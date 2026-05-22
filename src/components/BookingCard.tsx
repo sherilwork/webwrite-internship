@@ -148,13 +148,13 @@ export function BookingCard({ imageUrl, onStepChange }: BookingCardProps) {
           </div>
 
           <div className="flex flex-col items-center justify-center gap-2 w-full pt-4 border-t border-black/5">
-            <a href="tel:+917906627288" className="flex items-center gap-1.5 text-black/60 hover:text-black transition-colors">
+            <a href="tel:+15550000000" className="flex items-center gap-1.5 text-black/60 hover:text-black transition-colors">
               <Phone className="w-3 h-3 text-[#f5b800]" />
-              <span className="text-[10px] font-bold uppercase tracking-wider leading-none">+91 79066 27288</span>
+              <span className="text-[10px] font-bold uppercase tracking-wider leading-none">+1 (555) 000-0000</span>
             </a>
-            <a href="mailto:info@webwrite.co.in" className="flex items-center gap-1.5 text-black/60 hover:text-black transition-colors">
+            <a href="mailto:hello@example.com" className="flex items-center gap-1.5 text-black/60 hover:text-black transition-colors">
               <Mail className="w-3 h-3 text-[#f5b800]" />
-              <span className="text-[10px] font-bold lowercase tracking-wider leading-none">info@webwrite.co.in</span>
+              <span className="text-[10px] font-bold lowercase tracking-wider leading-none">hello@example.com</span>
             </a>
           </div>
         </div>
@@ -387,11 +387,11 @@ export function BookingCard({ imageUrl, onStepChange }: BookingCardProps) {
           <span className="text-[8px] font-bold text-[#f5b800] uppercase tracking-wide">Time Zone</span>
         </div>
         <div className="bg-black/5 px-2.5 py-1 rounded-full border border-black/10 flex items-center gap-1.5 hover:bg-black/10 transition-colors cursor-pointer">
-          <span className="text-[8px] font-medium text-black/50">Asia/Kolkata</span>
+          <span className="text-[8px] font-medium text-black/50">GMT</span>
           <div className="w-3.5 h-2.5 bg-black/10 rounded-sm flex flex-col overflow-hidden">
-            <div className="flex-1 bg-[#FF9933]" />
+            <div className="flex-1 bg-[#444]" />
             <div className="flex-1 bg-white" />
-            <div className="flex-1 bg-[#138808]" />
+            <div className="flex-1 bg-[#444]" />
           </div>
         </div>
       </div>

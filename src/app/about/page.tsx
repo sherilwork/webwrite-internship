@@ -75,7 +75,7 @@ export default function AboutPage() {
             </h1>
             <div className="w-20 h-2 bg-black mt-4" />
             <p className="text-lg md:text-xl text-black/50 font-medium leading-relaxed pt-4">
-              At WebWrite Services, we started small, with big dreams. Over time, we've grown into a place that creates digital solutions that make a difference. We’re here to help brands succeed online by building websites that work well and content that connects with people.
+              At Smileo Group, we started small, with big dreams. Over time, we've grown into a place that creates digital solutions that make a difference. We’re here to help brands succeed online by building websites that work well and content that connects with people.
             </p>
             <p className="text-sm md:text-base text-black/40 leading-relaxed">
               With every project, we turn simple ideas into real opportunities, helping our clients leave a lasting mark in the digital world.
@@ -89,7 +89,7 @@ export default function AboutPage() {
         <div className="absolute top-0 right-0 w-1/3 h-full bg-[#f5b800]/10 blur-[100px] rounded-full" />
         <div className="container mx-auto px-6 max-w-6xl flex flex-col md:flex-row items-center justify-between gap-12">
           <div className="space-y-4">
-            <h2 className="text-white text-3xl font-black uppercase tracking-tighter">WebWrite Story</h2>
+            <h2 className="text-white text-3xl font-black uppercase tracking-tighter">Smileo Story</h2>
             <div className="flex items-center gap-4">
               <span className="text-[10px] font-black uppercase tracking-widest text-[#f5b800]">Established</span>
               <div className="h-px w-12 bg-white/20" />
@@ -102,7 +102,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* The WebWrite Way Section */}
+      {/* The Smileo Way Section */}
       <section className="py-24 bg-white">
         <div className="container mx-auto px-6 max-w-6xl">
           <div className="space-y-12">
@@ -114,7 +114,7 @@ export default function AboutPage() {
             >
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/[0.03] border border-black/[0.05]">
                 <Zap className="w-3.5 h-3.5 text-[#f5b800]" />
-                <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-black/60">The WebWrite Way</span>
+                <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-black/60">The Smileo Way</span>
               </div>
               <h2 className="text-3xl md:text-5xl font-black text-black leading-tight tracking-tighter uppercase">
                 WHY OUR AGENCY <br />
@@ -157,7 +157,7 @@ export default function AboutPage() {
               <h2 className="text-3xl font-black uppercase tracking-tighter">Ready to write your story?</h2>
               <p className="text-sm font-bold uppercase tracking-widest opacity-60">Let's build something exceptional together.</p>
             </div>
-            <a href="https://wa.me/917906627288" target="_blank" rel="noopener noreferrer">
+            <a href="https://wa.me/15550000000" target="_blank" rel="noopener noreferrer">
               <button className="px-10 py-5 rounded-full bg-black text-white text-xs font-black uppercase tracking-widest hover:translate-x-1 transition-all active:scale-95 flex items-center gap-3">
                 Start a project
                 <ArrowRight className="w-4 h-4" />

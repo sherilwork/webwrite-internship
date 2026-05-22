@@ -1,4 +1,3 @@
-
 "use client"
 
 import React from "react"
@@ -69,29 +68,23 @@ export default function FounderPage() {
                 </p>
 
                 <div className="space-y-4 pt-4 border-t border-black/5">
-                  <a href="tel:+917906627288" className="flex items-center gap-3 text-black/60 group hover:text-black transition-colors">
+                  <a href="tel:+15550000000" className="flex items-center gap-3 text-black/60 group hover:text-black transition-colors">
                     <div className="w-8 h-8 rounded-full bg-black/5 flex items-center justify-center group-hover:bg-[#f5b800]/20 transition-colors">
                       <Phone className="w-3.5 h-3.5" />
                     </div>
-                    <span className="text-[13px] font-semibold">+91-7906627288</span>
+                    <span className="text-[13px] font-semibold">+1 (555) 000-0000</span>
                   </a>
-                  <a href="https://webwrite.co.in/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-black/60 group hover:text-black transition-colors">
+                  <a href="https://example.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-black/60 group hover:text-black transition-colors">
                     <div className="w-8 h-8 rounded-full bg-black/5 flex items-center justify-center group-hover:bg-[#f5b800]/20 transition-colors">
                       <Globe className="w-3.5 h-3.5" />
                     </div>
-                    <span className="text-[13px] font-semibold">webwrite.co.in</span>
+                    <span className="text-[13px] font-semibold">example.com</span>
                   </a>
-                  <a href="mailto:therishitiwari@gmail.com" className="flex items-center gap-3 text-black/60 group hover:text-black transition-colors">
+                  <a href="mailto:hello@example.com" className="flex items-center gap-3 text-black/60 group hover:text-black transition-colors">
                     <div className="w-8 h-8 rounded-full bg-black/5 flex items-center justify-center group-hover:bg-[#f5b800]/20 transition-colors">
                       <Mail className="w-3.5 h-3.5" />
                     </div>
-                    <span className="text-[13px] font-semibold text-black/80">therishitiwari@gmail.com</span>
-                  </a>
-                  <a href="mailto:rishi@webwrite.co.in" className="flex items-center gap-3 text-black/60 group hover:text-black transition-colors">
-                    <div className="w-8 h-8 rounded-full bg-black/5 flex items-center justify-center group-hover:bg-[#f5b800]/20 transition-colors">
-                      <Mail className="w-3.5 h-3.5" />
-                    </div>
-                    <span className="text-[13px] font-semibold text-black/80">rishi@webwrite.co.in</span>
+                    <span className="text-[13px] font-semibold text-black/80">hello@example.com</span>
                   </a>
                 </div>
 
@@ -102,10 +95,10 @@ export default function FounderPage() {
 
                 <div className="flex gap-2 pt-2">
                   {[
-                    { icon: Twitter, href: "https://x.com/the_rishitiwari" },
-                    { icon: Facebook, href: "https://www.facebook.com/profile.php?id=100042787220282" },
-                    { icon: Linkedin, href: "https://www.linkedin.com/in/therishitiwari/" },
-                    { icon: Instagram, href: "https://www.instagram.com/the.rishitiwari/" }
+                    { icon: Twitter, href: "https://x.com" },
+                    { icon: Facebook, href: "https://facebook.com" },
+                    { icon: Linkedin, href: "https://linkedin.com" },
+                    { icon: Instagram, href: "https://instagram.com" }
                   ].map((social, idx) => (
                     <a key={idx} href={social.href} target="_blank" className="w-9 h-9 rounded-full bg-black/[0.03] flex items-center justify-center hover:bg-black hover:text-white transition-all">
                       <social.icon className="w-4 h-4" />
@@ -127,13 +120,13 @@ export default function FounderPage() {
                 <h2 className="text-3xl font-black text-black tracking-tighter uppercase leading-none">The Story of Rishi Tiwari</h2>
                 <div className="space-y-4 text-sm md:text-base text-black/60 font-medium leading-relaxed">
                   <p>
-                    Rishi Tiwari is the visionary founder and CEO of WebWrite Services, a dynamic digital solutions firm specializing in full-stack development and custom web applications. With a deep-rooted passion for technology and problem-solving, Rishi has built WebWrite into a leading agency known for its innovative, high-performance digital products and cutting-edge web solutions.
+                    Rishi Tiwari is the visionary founder and CEO of Smileo Group, a dynamic digital solutions firm specializing in full-stack development and custom web applications. With a deep-rooted passion for technology and problem-solving, Rishi has built Smileo into a leading agency known for its innovative, high-performance digital products and cutting-edge web solutions.
                   </p>
                   <p>
                     Hailing from a tech-savvy background, Rishi’s fascination with computers and coding began at an early age, sparking his journey into the world of software development. His natural curiosity for how things work led him to explore a wide range of programming languages, frameworks, and platforms, laying the groundwork for his future success in the full-stack development field.
                   </p>
                   <p>
-                    Throughout his career, Rishi has been driven by a mission to leverage technology to solve complex business challenges. His leadership at WebWrite Services reflects this commitment, as he guides his team in delivering bespoke solutions that push the boundaries of innovation, helping clients enhance their digital presence and achieve sustainable growth in a competitive marketplace.
+                    Throughout his career, Rishi has been driven by a mission to leverage technology to solve complex business challenges. His leadership at Smileo Group reflects this commitment, as he guides his team in delivering bespoke solutions that push the boundaries of innovation, helping clients enhance their digital presence and achieve sustainable growth in a competitive marketplace.
                   </p>
                 </div>
               </section>
@@ -150,26 +143,20 @@ export default function FounderPage() {
                     {
                       date: "Apr 2023 - Present",
                       role: "Founder & CEO",
-                      company: "WebWrite Services",
+                      company: "Smileo Group",
                       desc: "Leading-edge firm specializing in web development, IT consulting, and bespoke digital solutions."
                     },
                     {
                       date: "Sep 2024 - Present",
                       role: "Tech Head",
-                      company: "Akshita Sales",
+                      company: "Tech Partners",
                       desc: "Managing technical operations for a leading consumer electronics provider specializing in mobile and smart tech."
                     },
                     {
                       date: "Apr 2024 - Aug 2024",
                       role: "Chief Technology Officer",
-                      company: "Effortless Esports",
+                      company: "Global Esports",
                       desc: "Architecting technical infrastructure for a dedicated esports organization hosting global events."
-                    },
-                    {
-                      date: "Oct 2023 - Apr 2024",
-                      role: "Founder",
-                      company: "Buyify Clothing",
-                      desc: "Built and managed an e-commerce brand for custom designed apparel."
                     }
                   ].map((exp, idx) => (
                     <div key={idx} className="relative pl-8 group">

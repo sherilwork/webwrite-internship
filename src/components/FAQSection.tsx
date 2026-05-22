@@ -1,4 +1,3 @@
-
 "use client"
 
 import React from "react"
@@ -13,7 +12,7 @@ import {
 
 const faqs = [
   {
-    question: "What digital services does WebWrite specialize in?",
+    question: "What digital services does Smileo Group specialize in?",
     answer: "We specialize in end-to-end digital solutions including full-stack web development, high-performance mobile applications, strategic digital marketing (Meta & Google Ads), and premium video editing for brand storytelling."
   },
   {
@@ -42,7 +41,7 @@ export function FAQSection() {
   const CTASection = () => (
     <div className="p-6 rounded-[2rem] bg-black/[0.02] border border-dashed border-black/10">
       <p className="text-[10px] font-black uppercase tracking-widest text-black/30 mb-2">Still have questions?</p>
-      <a href="https://wa.me/917906627288" target="_blank" rel="noopener noreferrer" className="text-sm font-black text-black hover:text-[#f5b800] transition-colors underline decoration-[#f5b800]/30 underline-offset-4">
+      <a href="https://wa.me/15550000000" target="_blank" rel="noopener noreferrer" className="text-sm font-black text-black hover:text-[#f5b800] transition-colors underline decoration-[#f5b800]/30 underline-offset-4">
         Get in touch with us on WhatsApp →
       </a>
     </div>

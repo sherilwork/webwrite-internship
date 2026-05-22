@@ -60,7 +60,7 @@ export function Navigation() {
       { label: 'Web Development', href: '/services', icon: Zap },
       { label: 'Video Editing', href: '/services', icon: Zap },
       { label: 'App Development', href: '/services', icon: Zap },
-      { label: 'Rishi Tiwari', href: '/founder', icon: Star },
+      { label: 'Our Story', href: '/about', icon: Star },
     ];
     return items.filter(item => 
       item.label.toLowerCase().includes(query)
@@ -116,7 +116,7 @@ export function Navigation() {
           </button>
 
           <Button asChild className="hidden md:inline-flex rounded-full bg-black hover:bg-black/90 text-white px-7 py-2 text-[10px] font-black uppercase tracking-widest transition-all active:scale-95 shadow-lg shadow-black/10 duration-300 group h-10">
-            <a href="https://wa.me/917906627288" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+            <a href="https://wa.me/15550000000" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
               Get Started
               <Zap className="w-3.5 h-3.5 text-[#f5b800] fill-[#f5b800] animate-pulse group-hover:scale-125 transition-transform" />
             </a>
@@ -224,7 +224,7 @@ export function Navigation() {
                 
                 <div className="mt-4 px-8 mb-12">
                   <Button asChild className="w-full rounded-full bg-black text-white text-[10px] font-black uppercase tracking-[0.15em] py-5 hover:bg-black/90 shadow-2xl shadow-black/20 transition-all active:scale-95 border border-white/5 duration-200 group">
-                    <a href="https://wa.me/917906627288" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-3">
+                    <a href="https://wa.me/15550000000" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-3">
                       Get Started
                       <Zap className="w-3.5 h-3.5 text-[#f5b800] fill-[#f5b800] animate-pulse group-hover:scale-110 transition-transform" />
                     </a>

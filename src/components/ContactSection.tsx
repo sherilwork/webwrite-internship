@@ -75,23 +75,23 @@ export function ContactSection() {
               className="space-y-8"
             >
               <div className="space-y-6">
-                <a href="mailto:info@webwrite.co.in" className="flex items-center gap-5 group w-fit">
+                <a href="mailto:hello@example.com" className="flex items-center gap-5 group w-fit">
                   <div className="w-12 h-12 rounded-2xl bg-black/[0.02] border border-black/[0.05] flex items-center justify-center group-hover:bg-[#f5b800]/10 group-hover:border-[#f5b800]/30 transition-all duration-300">
                     <Mail className="w-5 h-5 text-black/40 group-hover:text-[#f5b800] transition-colors" />
                   </div>
                   <div className="space-y-0.5">
                     <p className="text-[10px] font-black uppercase tracking-widest text-black/20">Email Us</p>
-                    <p className="text-sm font-bold text-black group-hover:text-[#f5b800] transition-colors">info@webwrite.co.in</p>
+                    <p className="text-sm font-bold text-black group-hover:text-[#f5b800] transition-colors">hello@example.com</p>
                   </div>
                 </a>
 
-                <a href="tel:+917906627288" className="flex items-center gap-5 group w-fit">
+                <a href="tel:+15550000000" className="flex items-center gap-5 group w-fit">
                   <div className="w-12 h-12 rounded-2xl bg-black/[0.02] border border-black/[0.05] flex items-center justify-center group-hover:bg-[#f5b800]/10 group-hover:border-[#f5b800]/30 transition-all duration-300">
                     <Phone className="w-5 h-5 text-black/40 group-hover:text-[#f5b800] transition-colors" />
                   </div>
                   <div className="space-y-0.5">
                     <p className="text-[10px] font-black uppercase tracking-widest text-black/20">Call Us</p>
-                    <p className="text-sm font-bold text-black group-hover:text-[#f5b800] transition-colors">+91-7906627288</p>
+                    <p className="text-sm font-bold text-black group-hover:text-[#f5b800] transition-colors">+1 (555) 000-0000</p>
                   </div>
                 </a>
 
@@ -101,7 +101,7 @@ export function ContactSection() {
                   </div>
                   <div className="space-y-0.5">
                     <p className="text-[10px] font-black uppercase tracking-widest text-black/20">Our Location</p>
-                    <p className="text-sm font-bold text-black">Uttar Pradesh, India</p>
+                    <p className="text-sm font-bold text-black">Innovation Way, Global HQ</p>
                   </div>
                 </div>
               </div>
@@ -110,10 +110,10 @@ export function ContactSection() {
                 <p className="text-[10px] font-black uppercase tracking-widest text-black/30 mb-4">Follow our journey</p>
                 <div className="flex gap-3">
                   {[
-                    { icon: Linkedin, href: "https://www.linkedin.com/company/webwrite-services/" },
-                    { icon: Instagram, href: "https://www.instagram.com/webwriteservices" },
-                    { icon: Twitter, href: "https://x.com/webwrite_co_in" },
-                    { icon: Facebook, href: "https://www.facebook.com/webwrite.services/" }
+                    { icon: Linkedin, href: "https://linkedin.com" },
+                    { icon: Instagram, href: "https://instagram.com" },
+                    { icon: Twitter, href: "https://twitter.com" },
+                    { icon: Facebook, href: "https://facebook.com" }
                   ].map((social, idx) => (
                     <a 
                       key={idx} 
@@ -165,7 +165,7 @@ export function ContactSection() {
                   <Input 
                     id="email"
                     type="email"
-                    placeholder="jane@webwrite.co.in" 
+                    placeholder="jane@example.com" 
                     required
                     className="h-14 bg-white/50 border-black/5 focus-visible:ring-1 focus-visible:ring-[#f5b800] rounded-2xl text-[13px] font-medium"
                   />
@@ -185,7 +185,7 @@ export function ContactSection() {
                   <Label htmlFor="message" className="text-[10px] font-black uppercase tracking-widest text-black/40 ml-1">Your Message</Label>
                   <Textarea 
                     id="message"
-                    placeholder="Hi Rishi, I'd like to discuss a new web project..." 
+                    placeholder="Hi Team, I'd like to discuss a new project..." 
                     required
                     className="min-h-[160px] bg-white/50 border-black/5 focus-visible:ring-1 focus-visible:ring-[#f5b800] rounded-[1.5rem] text-[13px] font-medium p-6 resize-none"
                   />

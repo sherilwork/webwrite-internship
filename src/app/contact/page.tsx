@@ -87,10 +87,8 @@ export default function ContactPage() {
                     <div className="space-y-2">
                       <p className="text-[9px] md:text-[10px] font-black uppercase tracking-widest opacity-40">Email Us</p>
                       <div className="flex flex-col gap-1">
-                        <h3 className="text-sm md:text-base font-black tracking-tight group-hover:text-[#f5b800] transition-colors lowercase">info@webwrite.co.in</h3>
-                        <h3 className="text-sm md:text-base font-black tracking-tight group-hover:text-[#f5b800] transition-colors lowercase">contact@webwrite.co.in</h3>
-                        <h3 className="text-sm md:text-base font-black tracking-tight group-hover:text-[#f5b800] transition-colors lowercase">hello@webwrite.co.in</h3>
-                        <h3 className="text-sm md:text-base font-black tracking-tight group-hover:text-[#f5b800] transition-colors lowercase">hr@webwrite.co.in</h3>
+                        <h3 className="text-sm md:text-base font-black tracking-tight group-hover:text-[#f5b800] transition-colors lowercase">hello@example.com</h3>
+                        <h3 className="text-sm md:text-base font-black tracking-tight group-hover:text-[#f5b800] transition-colors lowercase">info@example.com</h3>
                       </div>
                     </div>
                   </div>
@@ -109,7 +107,7 @@ export default function ContactPage() {
                     </div>
                     <div className="space-y-0.5">
                       <p className="text-[9px] md:text-[10px] font-black uppercase tracking-widest opacity-40">Call Us</p>
-                      <h3 className="text-base md:text-lg font-black uppercase tracking-tight">+91-7906627288</h3>
+                      <h3 className="text-base md:text-lg font-black uppercase tracking-tight">+1 (555) 000-0000</h3>
                     </div>
                   </div>
                 </motion.div>
@@ -127,7 +125,7 @@ export default function ContactPage() {
                     </div>
                     <div className="space-y-0.5">
                       <p className="text-[9px] md:text-[10px] font-black uppercase tracking-widest opacity-40">Our Base</p>
-                      <h3 className="text-base md:text-lg font-black uppercase tracking-tight leading-tight">Etawah, Uttar Pradesh <br /> 206001, UP, IN</h3>
+                      <h3 className="text-base md:text-lg font-black uppercase tracking-tight leading-tight">123 Digital Square, Innovation City, <br /> Global HQ</h3>
                     </div>
                   </div>
                 </motion.div>
@@ -149,7 +147,7 @@ export default function ContactPage() {
                    </div>
                    <div>
                       <p className="text-[10px] font-black uppercase tracking-widest text-black/40">Work Hours</p>
-                      <p className="text-sm font-bold text-black/80">Mon - Sat: 10AM - 7PM IST</p>
+                      <p className="text-sm font-bold text-black/80">Mon - Sat: 10AM - 7PM GMT</p>
                    </div>
                 </div>
               </div>
@@ -195,7 +193,7 @@ export default function ContactPage() {
                     <Input 
                       required 
                       type="email"
-                      placeholder="john@webwrite.co.in" 
+                      placeholder="john@example.com" 
                       className="bg-white/5 border-white/10 h-12 md:h-14 rounded-xl text-white placeholder:text-white/10 focus-visible:ring-[#f5b800] border-none" 
                     />
                   </div>

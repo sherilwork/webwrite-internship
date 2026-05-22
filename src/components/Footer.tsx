@@ -45,10 +45,9 @@ export function Footer() {
   };
 
   const contactEmails = [
-    "info@webwrite.co.in",
-    "contact@webwrite.co.in",
-    "hello@webwrite.co.in",
-    "hr@webwrite.co.in"
+    "hello@example.com",
+    "info@example.com",
+    "support@example.com"
   ];
 
   return (
@@ -72,11 +71,11 @@ export function Footer() {
             </p>
             <div className="flex gap-3">
               {[
-                { icon: Linkedin, href: "https://www.linkedin.com/company/webwrite-services/" },
-                { icon: Instagram, href: "https://www.instagram.com/webwriteservices" },
-                { icon: Twitter, href: "https://x.com/webwrite_co_in" },
-                { icon: Facebook, href: "https://www.facebook.com/webwrite.services/" },
-                { icon: Youtube, href: "https://www.youtube.com/@webwriteservices" }
+                { icon: Linkedin, href: "https://linkedin.com" },
+                { icon: Instagram, href: "https://instagram.com" },
+                { icon: Twitter, href: "https://twitter.com" },
+                { icon: Facebook, href: "https://facebook.com" },
+                { icon: Youtube, href: "https://youtube.com" }
               ].map((social, idx) => (
                 <a 
                   key={idx} 
@@ -144,17 +143,17 @@ export function Footer() {
                   ))}
                 </div>
                 
-                <a href="tel:+917906627288" className="flex items-center gap-3 text-black/50 hover:text-black transition-colors group">
+                <a href="tel:+15550000000" className="flex items-center gap-3 text-black/50 hover:text-black transition-colors group">
                   <div className="w-8 h-8 rounded-lg bg-black/[0.03] flex items-center justify-center group-hover:bg-[#f5b800]/10 shrink-0">
                     <Phone className="w-3.5 h-3.5 text-black/40 group-hover:text-[#f5b800]" />
                   </div>
-                  <span className="text-[13px] font-semibold">+91-7906627288</span>
+                  <span className="text-[13px] font-semibold">+1 (555) 000-0000</span>
                 </a>
                 <div className="flex items-center gap-3 text-black/50 group">
                   <div className="w-8 h-8 rounded-lg bg-black/[0.03] flex items-center justify-center shrink-0">
                     <MapPin className="w-3.5 h-3.5 text-black/40" />
                   </div>
-                  <span className="text-[13px] font-semibold">Etawah, Uttar Pradesh, India</span>
+                  <span className="text-[13px] font-semibold">123 Innovation Way, Tech City, Global</span>
                 </div>
               </div>
             </div>
