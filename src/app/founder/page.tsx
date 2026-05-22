@@ -102,10 +102,10 @@ export default function FounderPage() {
 
                 <div className="flex gap-2 pt-2">
                   {[
-                    { icon: Twitter, href: "https://x.com/webwrite_co_in" },
-                    { icon: Facebook, href: "https://www.facebook.com/webwrite.services/" },
-                    { icon: Linkedin, href: "https://www.linkedin.com/company/webwrite-services/" },
-                    { icon: Instagram, href: "https://www.instagram.com/webwriteservices" }
+                    { icon: Twitter, href: "https://x.com/the_rishitiwari" },
+                    { icon: Facebook, href: "https://www.facebook.com/profile.php?id=100042787220282" },
+                    { icon: Linkedin, href: "https://www.linkedin.com/in/therishitiwari/" },
+                    { icon: Instagram, href: "https://www.instagram.com/the.rishitiwari/" }
                   ].map((social, idx) => (
                     <a key={idx} href={social.href} target="_blank" className="w-9 h-9 rounded-full bg-black/[0.03] flex items-center justify-center hover:bg-black hover:text-white transition-all">
                       <social.icon className="w-4 h-4" />

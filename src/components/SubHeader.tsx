@@ -1,3 +1,4 @@
+
 "use client"
 
 import React from "react"
@@ -12,11 +13,8 @@ import {
   Instagram,
   Youtube
 } from "lucide-react"
-import { founders } from "@/constants/founder"
 
 export function SubHeader() {
-  const founder = founders[0]
-
   return (
     <div className="fixed top-0 left-0 right-0 z-[60] h-10 bg-black flex items-center justify-between px-4 md:px-6 overflow-hidden border-b border-white/5">
       {/* Left Section: Info - Hidden on mobile, visible on desktop */}
@@ -61,22 +59,22 @@ export function SubHeader() {
         <Cloud className="w-4 h-4 md:w-5 md:h-5 text-white/5 animate-cloud hidden sm:block opacity-20" style={{ animationDelay: '2s' }} />
       </div>
 
-      {/* Right Section: Socials - Hidden on mobile, visible on desktop */}
+      {/* Right Section: Socials - Hidden on mobile, visible on desktop (Company Accounts) */}
       <div className="hidden lg:flex items-center gap-6 animate-in fade-in slide-in-from-right-4 duration-1000">
         <div className="flex items-center gap-4 opacity-60">
-          <a href={founder.facebook} target="_blank" rel="noopener noreferrer" className="hover:scale-110 transition-transform">
+          <a href="https://www.facebook.com/webwrite.services/" target="_blank" rel="noopener noreferrer" className="hover:scale-110 transition-transform">
             <Facebook className="w-4 h-4 text-white hover:text-[#f5b800] transition-colors" />
           </a>
-          <a href={founder.twitter} target="_blank" rel="noopener noreferrer" className="hover:scale-110 transition-transform">
+          <a href="https://x.com/webwrite_co_in" target="_blank" rel="noopener noreferrer" className="hover:scale-110 transition-transform">
             <Twitter className="w-4 h-4 text-white hover:text-[#f5b800] transition-colors" />
           </a>
-          <a href={founder.linkedin} target="_blank" rel="noopener noreferrer" className="hover:scale-110 transition-transform">
+          <a href="https://www.linkedin.com/company/webwrite-services/" target="_blank" rel="noopener noreferrer" className="hover:scale-110 transition-transform">
             <Linkedin className="w-4 h-4 text-white hover:text-[#f5b800] transition-colors" />
           </a>
-          <a href={founder.instagram} target="_blank" rel="noopener noreferrer" className="hover:scale-110 transition-transform">
+          <a href="https://www.instagram.com/webwriteservices" target="_blank" rel="noopener noreferrer" className="hover:scale-110 transition-transform">
             <Instagram className="w-4 h-4 text-white hover:text-[#f5b800] transition-colors" />
           </a>
-          <a href={founder.youtube} target="_blank" rel="noopener noreferrer" className="hover:scale-110 transition-transform">
+          <a href="https://www.youtube.com/@webwriteservices" target="_blank" rel="noopener noreferrer" className="hover:scale-110 transition-transform">
             <Youtube className="w-4 h-4 text-white hover:text-[#f5b800] transition-colors" />
           </a>
         </div>
