@@ -4,17 +4,14 @@
 import React from "react";
 import { motion } from "framer-motion";
 import {
-  Palette,
   Code,
   Smartphone,
   Video,
   Zap,
-  Share2,
   Search,
-  UserCheck,
-  PenTool,
   Layers,
   ArrowUpRight,
+  Cpu,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -22,9 +19,9 @@ import Link from "next/link";
 
 const services = [
   {
-    title: "Branding",
-    description: "Building distinctive brand identities that resonate and endure in a crowded market.",
-    icon: Palette,
+    title: "Software Development",
+    description: "Custom enterprise software solutions designed for scalability, security, and high-performance business operations.",
+    icon: Cpu,
     accent: "bg-[#c7fff1]",
   },
   {
@@ -52,28 +49,10 @@ const services = [
     accent: "bg-[#f0fff4]",
   },
   {
-    title: "Social Media Marketing & Management",
-    description: "Strategic management and growth of your voice across all major social platforms.",
-    icon: Share2,
-    accent: "bg-[#fffbe2]",
-  },
-  {
     title: "SEO",
     description: "Advanced optimization strategies to dominate search results and drive organic traffic.",
     icon: Search,
     accent: "bg-[#e8fff8]",
-  },
-  {
-    title: "UGC",
-    description: "Authentic user-generated content that builds community trust and drives conversions.",
-    icon: UserCheck,
-    accent: "bg-[#f0f4ff]",
-  },
-  {
-    title: "Content Creation",
-    description: "Creative storytelling through high-impact visuals and compelling written narrative.",
-    icon: PenTool,
-    accent: "bg-[#fff5e6]",
   },
   {
     title: "Graphic Design",

@@ -1,20 +1,18 @@
+
 "use client"
 
 import React from "react"
 import { motion } from "framer-motion"
 import { 
-  Palette, 
   Code, 
   Smartphone, 
   Video, 
   Zap, 
-  Share2, 
   Search, 
-  UserCheck, 
-  PenTool, 
   Layers,
   ArrowRight,
-  CheckCircle2
+  CheckCircle2,
+  Cpu
 } from "lucide-react"
 import { Navigation } from "@/components/Navigation"
 import { SubHeader } from "@/components/SubHeader"
@@ -24,9 +22,9 @@ import { cn } from "@/lib/utils"
 
 const services = [
   {
-    title: "Branding",
-    description: "Building distinctive brand identities that resonate and endure in a crowded market. We create the visual and emotional foundation for your success.",
-    icon: Palette,
+    title: "Software Development",
+    description: "Custom enterprise software solutions designed for scalability, security, and high-performance business operations. We build tools that power your growth.",
+    icon: Cpu,
     accent: "bg-[#c7fff1]",
   },
   {
@@ -54,28 +52,10 @@ const services = [
     accent: "bg-[#f0fff4]",
   },
   {
-    title: "Social Media Management",
-    description: "Strategic management and growth of your voice across all major social platforms, ensuring consistent engagement and brand authority.",
-    icon: Share2,
-    accent: "bg-[#fffbe2]",
-  },
-  {
     title: "SEO Optimization",
     description: "Advanced search engine optimization strategies to dominate search results, drive organic traffic, and establish long-term relevance.",
     icon: Search,
     accent: "bg-[#e8fff8]",
-  },
-  {
-    title: "UGC Content",
-    description: "Authentic user-generated content strategies that build community trust, drive social proof, and significantly increase conversions.",
-    icon: UserCheck,
-    accent: "bg-[#f0f4ff]",
-  },
-  {
-    title: "Content Creation",
-    description: "Creative storytelling through high-impact visuals and compelling written narrative tailored for your specific audience segments.",
-    icon: PenTool,
-    accent: "bg-[#fff5e6]",
   },
   {
     title: "Graphic Design",
