@@ -74,7 +74,7 @@ export function DesktopHero() {
         className="h-full"
       >
         <div className="container mx-auto px-6 h-full flex items-center justify-center pt-32 pb-4">
-          <div className="w-full flex flex-row items-center justify-between gap-4 h-full">
+          <div className="w-full flex flex-row items-center justify-between gap-4 h-full -ml-12">
             
             {/* Left Content Area */}
             <div className="flex-1 flex flex-col items-start text-left gap-3 animate-in fade-in slide-in-from-left-12 duration-1000 ease-out z-30 h-full pt-12 pb-8 will-change-transform">
