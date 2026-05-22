@@ -125,8 +125,8 @@ export function DesktopHero() {
 
             {/* Right Group - Overlays the left content slightly with negative margin and higher z-index (z-20) */}
             <div className="flex flex-row items-center justify-end gap-0 -ml-24 relative z-20">
-              {/* Hero Image Overlay */}
-              <div className="relative w-[850px] aspect-[16/10] -mr-72 mt-12 pointer-events-none animate-in fade-in slide-in-from-right-12 duration-1000 ease-out group will-change-transform">
+              {/* Hero Image Overlay - Positioned above the card with z-40 */}
+              <div className="relative w-[850px] aspect-[16/10] -mr-72 mt-12 pointer-events-none animate-in fade-in slide-in-from-right-12 duration-1000 ease-out group will-change-transform z-40">
                 <div className="absolute top-[0%] bottom-[5%] left-[25%] right-[25%] bg-blue-100/40 rounded-[5rem] -z-10 blur-xl" />
                 
                 <Image 
@@ -140,7 +140,7 @@ export function DesktopHero() {
                 />
               </div>
 
-              {/* Booking Card - Highest z-index (z-30) for interaction */}
+              {/* Booking Card - Layered behind image with z-30 */}
               <div className="w-auto flex justify-end relative z-30 transform transition-all duration-500 hover:translate-x-[-10px]">
                 <BookingCard imageUrl="/hero-illustration.png" />
               </div>
