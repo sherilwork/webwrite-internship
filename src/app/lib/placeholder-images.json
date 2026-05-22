@@ -95,6 +95,12 @@
       "description": "Short Film Series",
       "imageUrl": "https://picsum.photos/seed/36/800/450",
       "imageHint": "cinematic story"
+    },
+    {
+      "id": "team-1",
+      "description": "Rishi Tiwari",
+      "imageUrl": "https://picsum.photos/seed/rishi/800/1000",
+      "imageHint": "indian man"
     }
   ]
 }
