@@ -74,11 +74,11 @@ export function DesktopHero() {
         className="h-full"
       >
         <div className="container mx-auto px-6 h-full flex items-center justify-center pt-32 pb-4">
-          {/* Main Container - Shifted even more to the left */}
-          <div className="w-full flex flex-row items-center justify-between gap-0 h-full -ml-40 relative">
+          {/* Main Container - Shifted slightly right by reducing negative margin from -ml-40 to -ml-20 */}
+          <div className="w-full flex flex-row items-center justify-between gap-0 h-full -ml-20 relative">
             
-            {/* Left Content Area - Positioned with lower z-index to allow overlay */}
-            <div className="flex-1 max-w-2xl flex flex-col items-start text-left gap-3 animate-in fade-in slide-in-from-left-12 duration-1000 ease-out z-10 h-full pt-12 pb-8 will-change-transform">
+            {/* Left Content Area - Positioned with lower z-index and relative to sit behind the right group */}
+            <div className="flex-1 max-w-2xl flex flex-col items-start text-left gap-3 animate-in fade-in slide-in-from-left-12 duration-1000 ease-out relative z-10 h-full pt-12 pb-8 will-change-transform">
               <div className="flex items-center gap-2 bg-white border border-black/5 rounded-full px-2.5 py-1 shadow-sm -mt-4 transition-transform hover:scale-105">
                 <div className="bg-[#f5b800] text-white px-3 py-1 rounded-full text-[9px] font-black tracking-widest uppercase shrink-0">
                   CLARITY
@@ -123,7 +123,7 @@ export function DesktopHero() {
               </div>
             </div>
 
-            {/* Right Group - Overlays the left content slightly with negative margin and higher z-index */}
+            {/* Right Group - Overlays the left content slightly with negative margin and higher z-index (z-20) */}
             <div className="flex flex-row items-center justify-end gap-0 -ml-24 relative z-20">
               {/* Hero Image Overlay */}
               <div className="relative w-[850px] aspect-[16/10] -mr-72 mt-12 pointer-events-none animate-in fade-in slide-in-from-right-12 duration-1000 ease-out group will-change-transform">
@@ -140,7 +140,7 @@ export function DesktopHero() {
                 />
               </div>
 
-              {/* Booking Card - Highest z-index for interaction */}
+              {/* Booking Card - Highest z-index (z-30) for interaction */}
               <div className="w-auto flex justify-end relative z-30 transform transition-all duration-500 hover:translate-x-[-10px]">
                 <BookingCard imageUrl="/hero-illustration.png" />
               </div>
