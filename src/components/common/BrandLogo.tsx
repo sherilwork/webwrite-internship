@@ -1,4 +1,3 @@
-
 'use client';
 
 import React from 'react';
@@ -17,7 +16,7 @@ interface BrandLogoProps {
 }
 
 /**
- * Single Source of Truth for the Smileo Brand Logo.
+ * Single Source of Truth for the Smiloe Brand Logo.
  * Uses only /smileo-logo.png and ensures consistent rendering across the app.
  */
 export function BrandLogo({
@@ -29,7 +28,7 @@ export function BrandLogo({
   return (
     <Image
       src="/smileo-logo.png"
-      alt="Smileo Group"
+      alt="Smiloe Group"
       width={width}
       height={height}
       className={cn("object-contain w-auto", className)}

@@ -1,4 +1,3 @@
-
 "use client"
 
 import React from "react"
@@ -9,7 +8,7 @@ import Link from "next/link"
 import { PlaceHolderImages } from "@/lib/placeholder-images"
 
 export function AboutSection() {
-  const aboutImage = PlaceHolderImages.find(img => img.id === 'about-section')?.imageUrl || "/about-image.png"
+  const aboutImage = PlaceHolderImages.find(img => img.id === 'about-section')?.imageUrl || "https://picsum.photos/seed/about-kanpur/1200/800"
 
   return (
     <div className="bg-white pt-12 md:pt-24">
@@ -35,7 +34,7 @@ export function AboutSection() {
               
               <div className="space-y-6 text-base md:text-lg text-black/50 font-medium leading-relaxed">
                 <p>
-                  Smileo Group is an initiative by a team of corporate trainers and industry experts. The idea behind Smileo Group is to fulfill the gap between our existing education framework and the evolving business landscape. It will be our push to distinguish such holes and offer the most ideal preparing modules to profit the individuals and business on the loose.
+                  Smiloe Group is an initiative by a team of corporate trainers and industry experts. The idea behind Smiloe Group is to fulfill the gap between our existing education framework and the evolving business landscape. It will be our push to distinguish such holes and offer the most ideal preparing modules to profit the individuals and business on the loose.
                 </p>
                 <p>
                   With the development and infiltration of web and portable platforms, we accept the fundamental system for an organization in the future would be founded on the union of web and versatile stages. Thus we have propelled our courses in the internet and portable space.
@@ -60,7 +59,7 @@ export function AboutSection() {
               <div className="relative aspect-square md:aspect-[4/3] w-full bg-black/[0.01] border border-black/[0.05] rounded-[2rem] md:rounded-[3rem] overflow-hidden backdrop-blur-sm flex items-center justify-center shadow-2xl shadow-black/5">
                 <Image 
                   src={aboutImage}
-                  alt="WebWrite journey"
+                  alt="Smiloe Group journey"
                   fill
                   className="object-cover transition-transform duration-1000 group-hover:scale-105"
                   data-ai-hint="team business"

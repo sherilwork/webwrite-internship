@@ -4,8 +4,8 @@ import { ScrollToTop } from '@/components/ScrollToTop';
 import { SmoothScroll } from '@/components/SmoothScroll';
 
 export const metadata: Metadata = {
-  title: 'WebWrite Services',
-  description: 'Expert digital solutions in web development, performance marketing, and cinematic video storytelling.',
+  title: 'Smiloe Group',
+  description: 'Expert digital solutions in software development, web development, and performance marketing.',
 };
 
 export default function RootLayout({

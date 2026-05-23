@@ -1,4 +1,3 @@
-
 "use client"
 
 import React, { useEffect, useState } from "react"
@@ -60,7 +59,7 @@ export function Preloader() {
                 transition={{ delay: 0.2 }}
                 className="text-3xl font-black text-black tracking-tighter uppercase"
               >
-                Smileo Group
+                Smiloe Group
               </motion.h1>
               <motion.p 
                 initial={{ opacity: 0 }}

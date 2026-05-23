@@ -33,7 +33,6 @@ export function Footer() {
       { label: "App Development", href: "/services" },
       { label: "Digital Marketing", href: "/services" },
       { label: "SEO Optimization", href: "/services" },
-      { label: "Content Creation", href: "/services" },
     ],
     support: [
       { label: "Contact Us", href: "/contact" },
@@ -142,7 +141,7 @@ export function Footer() {
                   ))}
                 </div>
                 
-                <a href="tel:+15550000000" className="flex items-center gap-3 text-black/50 hover:text-black transition-colors group">
+                <a href="tel:+15550000000" className="flex items-center gap-3 text-black/50 hover:text-black transition-colors group hidden md:flex">
                   <div className="w-8 h-8 rounded-lg bg-black/[0.03] flex items-center justify-center group-hover:bg-[#f5b800]/10 shrink-0">
                     <Phone className="w-3.5 h-3.5 text-black/40 group-hover:text-[#f5b800]" />
                   </div>
@@ -162,7 +161,7 @@ export function Footer() {
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-black/[0.05] flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-2 text-[10px] font-bold text-black/30 uppercase tracking-[0.1em]">
-            <span>© {currentYear} Smileo Group. All rights reserved.</span>
+            <span>© {currentYear} Smiloe Group. All rights reserved.</span>
           </div>
 
           <button 
