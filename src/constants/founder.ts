@@ -1,7 +1,7 @@
 export const founders = [
   {
     id: 1,
-    name: "Smiloe group",
+    name: "Smiloe Group",
     role: "Founder & CEO",
     image: "https://picsum.photos/seed/smiloe/800/1000",
     fallbackImage: "https://picsum.photos/seed/founder/800/1000",

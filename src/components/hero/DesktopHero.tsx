@@ -101,7 +101,7 @@ export function DesktopHero() {
 
               <p className="text-xs font-medium text-black/40 max-w-xs leading-relaxed mt-1">
                 Book a <span className="text-[#f5b800] font-bold">FREE Consultation</span> with <br />
-                <span className="text-black font-bold border-b border-black/10 pb-0.5">WebWrite Services Strategy Experts</span>
+                <span className="text-black font-bold border-b border-black/10 pb-0.5">Smiloe Group Strategy Experts</span>
               </p>
 
               <div className="grid grid-cols-3 gap-6 w-full max-w-lg py-6 mt-auto">

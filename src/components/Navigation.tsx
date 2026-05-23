@@ -245,7 +245,7 @@ export function Navigation() {
           </DialogClose>
 
           <DialogHeader className="p-8 pb-0">
-            <DialogTitle className="sr-only">Search Smileo Group</DialogTitle>
+            <DialogTitle className="sr-only">Search Smiloe Group</DialogTitle>
             <div className="relative group mt-4">
               <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-black/20 group-focus-within:text-[#f5b800] transition-colors" />
               <Input 

@@ -94,7 +94,7 @@ export function MobileHero() {
 
             <p className="text-[11px] font-medium text-black/40 max-w-[280px] leading-relaxed mx-auto">
               Book a <span className="text-[#f5b800] font-bold">FREE Consultation</span> with <br />
-              <span className="text-black font-bold border-b border-black/10 pb-0.5">WebWrite Services Strategy Experts</span>
+              <span className="text-black font-bold border-b border-black/10 pb-0.5">Smiloe Group Strategy Experts</span>
             </p>
           </div>
 
