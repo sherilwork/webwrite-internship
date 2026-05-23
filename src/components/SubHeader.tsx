@@ -34,17 +34,14 @@ export function SubHeader() {
           </a>
         </div>
 
-        {/* Mobile-only Phone Link */}
+        {/* Mobile-only Section (Phone hidden per request) */}
         <div className="flex lg:hidden items-center animate-in fade-in duration-1000">
-          <a href="tel:+15550000000" className="flex items-center gap-1.5 group">
-            <Phone className="w-3 h-3 text-[#f5b800]" />
-            <span className="text-[9px] font-black text-white/90 uppercase tracking-tighter">Call Now</span>
-          </a>
+          {/* Section intentionally empty or reserved for other mobile-only elements */}
         </div>
       </div>
 
       {/* Middle Section: Global Announcement */}
-      <div className="flex-[2] flex justify-center items-center px-2">
+      <div className="flex-1 flex justify-center items-center px-2">
         <div className="flex items-center gap-2 animate-in fade-in zoom-in-95 duration-1000">
           <Globe className="w-3 h-3 text-[#f5b800] animate-pulse" />
           <span className="text-[8px] md:text-[10px] font-black text-[#f5b800] uppercase tracking-[0.25em] whitespace-nowrap">
