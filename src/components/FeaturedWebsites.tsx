@@ -19,16 +19,6 @@ const FEATURED_CARDS = [
     imageUrl: "/features-websites/website-1.png"
   },
   {
-    id: 2,
-    title: "Sundar Vibes Store",
-    description: "A premium e-commerce experience designed for lifestyle and fashion, featuring a streamlined checkout process and responsive visual merchandising.",
-    icon: <ShoppingBag className="w-5 h-5" />,
-    stats: "Retail Logic",
-    tag: "E-COMMERCE",
-    url: "https://sundarvibesstore.com/",
-    imageUrl: "/features-websites/website-2.png"
-  },
-  {
     id: 3,
     title: "Sagar Disposal",
     description: "A specialized digital platform for industrial disposal solutions, featuring a structured product catalog and optimized for professional B2B interactions.",
