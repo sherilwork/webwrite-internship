@@ -15,7 +15,7 @@
     {
       "id": "about-section",
       "description": "About Section Branding Image",
-      "imageUrl": "/about-image.png",
+      "imageUrl": "https://picsum.photos/seed/about-kanpur/1200/800",
       "imageHint": "team success"
     },
     {
