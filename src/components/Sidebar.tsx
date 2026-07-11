@@ -3,6 +3,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { 
   LayoutDashboard, 
@@ -26,7 +27,21 @@ export default function Sidebar() {
 
   return (
     <aside className="w-64 h-screen bg-white border-r border-gray-100 flex flex-col sticky top-0">
-      <nav className="flex-1 px-4 space-y-1 mt-8">
+      {/* Branding Section */}
+      <div className="p-6">
+        <Link href="/dashboard" className="block">
+          <Image 
+            src="/webwrite-logo.webp" 
+            alt="Smiloe Group Logo" 
+            width={140} 
+            height={40} 
+            className="h-8 w-auto object-contain"
+            priority
+          />
+        </Link>
+      </div>
+
+      <nav className="flex-1 px-4 space-y-1">
         {MENU_ITEMS.map((item) => {
           const isActive = pathname === item.href;
           return (
