@@ -3,12 +3,11 @@
 
 import { 
   Users, 
-  Clock, 
-  CheckCircle2, 
-  XCircle, 
   CalendarDays,
   ArrowRight,
-  ExternalLink
+  ExternalLink,
+  GraduationCap,
+  Activity
 } from 'lucide-react';
 import { STATS, MOCK_APPLICANTS } from '@/lib/mock-data';
 import Link from 'next/link';
@@ -16,10 +15,9 @@ import { cn } from '@/lib/utils';
 
 const statCards = [
   { label: 'Total Applications', value: STATS.total, icon: Users, color: 'text-blue-600', bg: 'bg-blue-50' },
-  { label: 'Pending Review', value: STATS.pending, icon: Clock, color: 'text-amber-600', bg: 'bg-amber-50' },
-  { label: 'Approved', value: STATS.approved, icon: CheckCircle2, color: 'text-emerald-600', bg: 'bg-emerald-50' },
-  { label: 'Rejected', value: STATS.rejected, icon: XCircle, color: 'text-red-600', bg: 'bg-red-50' },
   { label: "Today's Applications", value: STATS.today, icon: CalendarDays, color: 'text-indigo-600', bg: 'bg-indigo-50' },
+  { label: 'Active Openings', value: STATS.active, icon: Activity, color: 'text-emerald-600', bg: 'bg-emerald-50' },
+  { label: 'Partner Colleges', value: STATS.colleges, icon: GraduationCap, color: 'text-amber-600', bg: 'bg-amber-50' },
 ];
 
 export default function Dashboard() {
@@ -30,7 +28,7 @@ export default function Dashboard() {
         <p className="text-muted-foreground text-sm">Welcome back, Admin. Here's what's happening today.</p>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {statCards.map((stat, i) => (
           <div key={i} className="bg-white border border-black/[0.05] p-6 rounded-2xl shadow-sm hover:shadow-md transition-all group">
             <div className={cn("w-10 h-10 rounded-xl flex items-center justify-center mb-4 transition-transform group-hover:scale-110", stat.bg)}>
@@ -62,7 +60,6 @@ export default function Dashboard() {
                 <th className="px-6 py-4 text-[10px] font-black uppercase tracking-widest text-muted-foreground">Name</th>
                 <th className="px-6 py-4 text-[10px] font-black uppercase tracking-widest text-muted-foreground">Position</th>
                 <th className="px-6 py-4 text-[10px] font-black uppercase tracking-widest text-muted-foreground">Applied On</th>
-                <th className="px-6 py-4 text-[10px] font-black uppercase tracking-widest text-muted-foreground">Status</th>
                 <th className="px-6 py-4 text-[10px] font-black uppercase tracking-widest text-muted-foreground text-right">Action</th>
               </tr>
             </thead>
@@ -85,17 +82,6 @@ export default function Dashboard() {
                   </td>
                   <td className="px-6 py-4">
                     <span className="text-sm text-muted-foreground">{applicant.appliedDate}</span>
-                  </td>
-                  <td className="px-6 py-4">
-                    <span className={cn(
-                      "px-2 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider",
-                      applicant.status === 'Approved' ? "bg-emerald-50 text-emerald-600 border border-emerald-100" :
-                      applicant.status === 'Rejected' ? "bg-red-50 text-red-600 border border-red-100" :
-                      applicant.status === 'Pending' ? "bg-amber-50 text-amber-600 border border-amber-100" :
-                      "bg-blue-50 text-blue-600 border border-blue-100"
-                    )}>
-                      {applicant.status}
-                    </span>
                   </td>
                   <td className="px-6 py-4 text-right">
                     <Link 

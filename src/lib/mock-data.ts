@@ -1,15 +1,4 @@
 
-export type ApplicationStatus = 
-  | 'Pending' 
-  | 'Reviewing' 
-  | 'Shortlisted' 
-  | 'Interview Scheduled' 
-  | 'Approved' 
-  | 'Rejected' 
-  | 'Offer Sent' 
-  | 'Joined' 
-  | 'Withdrawn';
-
 export interface Applicant {
   id: string;
   name: string;
@@ -18,7 +7,6 @@ export interface Applicant {
   college: string;
   role: string;
   appliedDate: string;
-  status: ApplicationStatus;
   avatar?: string;
 }
 
@@ -31,7 +19,6 @@ export const MOCK_APPLICANTS: Applicant[] = [
     college: "IIT Bombay",
     role: "Frontend Developer Intern",
     appliedDate: "2024-03-15",
-    status: "Pending",
   },
   {
     id: "2",
@@ -41,7 +28,6 @@ export const MOCK_APPLICANTS: Applicant[] = [
     college: "BITS Pilani",
     role: "UI/UX Design Intern",
     appliedDate: "2024-03-14",
-    status: "Shortlisted",
   },
   {
     id: "3",
@@ -51,7 +37,6 @@ export const MOCK_APPLICANTS: Applicant[] = [
     college: "DTU Delhi",
     role: "Backend Developer Intern",
     appliedDate: "2024-03-14",
-    status: "Interview Scheduled",
   },
   {
     id: "4",
@@ -61,7 +46,6 @@ export const MOCK_APPLICANTS: Applicant[] = [
     college: "NIT Trichy",
     role: "Data Science Intern",
     appliedDate: "2024-03-13",
-    status: "Approved",
   },
   {
     id: "5",
@@ -71,7 +55,6 @@ export const MOCK_APPLICANTS: Applicant[] = [
     college: "VIT Vellore",
     role: "Full Stack Developer Intern",
     appliedDate: "2024-03-12",
-    status: "Rejected",
   },
   {
     id: "6",
@@ -81,14 +64,12 @@ export const MOCK_APPLICANTS: Applicant[] = [
     college: "SRM University",
     role: "Marketing Intern",
     appliedDate: "2024-03-11",
-    status: "Pending",
   }
 ];
 
 export const STATS = {
   total: 245,
-  pending: 31,
-  approved: 112,
-  rejected: 102,
-  today: 8
+  today: 8,
+  active: 142,
+  colleges: 45
 };

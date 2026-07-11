@@ -3,31 +3,24 @@
 
 import { useState } from 'react';
 import { 
-  Filter, 
   Download, 
   RefreshCcw, 
   Search, 
   MoreHorizontal,
-  Check,
-  X,
   ChevronLeft,
-  ChevronRight
+  ChevronRight,
+  Eye,
+  Trash2
 } from 'lucide-react';
 import { MOCK_APPLICANTS } from '@/lib/mock-data';
-import { cn } from '@/lib/utils';
 import Link from 'next/link';
 
-const statuses = ["All", "Pending", "Approved", "Rejected", "Interview Scheduled", "Shortlisted"];
-
 export default function ApplicationsPage() {
-  const [selectedStatus, setSelectedStatus] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
 
   const filtered = MOCK_APPLICANTS.filter(app => {
-    const matchesStatus = selectedStatus === "All" || app.status === selectedStatus;
-    const matchesSearch = app.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
-                         app.college.toLowerCase().includes(searchQuery.toLowerCase());
-    return matchesStatus && matchesSearch;
+    return app.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
+           app.college.toLowerCase().includes(searchQuery.toLowerCase());
   });
 
   return (
@@ -59,23 +52,6 @@ export default function ApplicationsPage() {
               className="w-full bg-black/[0.02] border border-black/[0.05] rounded-lg pl-10 pr-4 py-2 text-sm focus:ring-1 focus:ring-black/10 outline-none transition-all"
             />
           </div>
-          
-          <div className="flex items-center gap-2 overflow-x-auto no-scrollbar w-full md:w-auto pb-2 md:pb-0">
-            {statuses.map((status) => (
-              <button
-                key={status}
-                onClick={() => setSelectedStatus(status)}
-                className={cn(
-                  "whitespace-nowrap px-3 py-1.5 rounded-lg text-[10px] font-black uppercase tracking-widest border transition-all",
-                  selectedStatus === status 
-                    ? "bg-black text-white border-black" 
-                    : "bg-transparent text-muted-foreground border-black/[0.05] hover:border-black/20"
-                )}
-              >
-                {status}
-              </button>
-            ))}
-          </div>
         </div>
 
         <div className="overflow-x-auto">
@@ -88,7 +64,7 @@ export default function ApplicationsPage() {
                 <th className="px-6 py-4 text-[10px] font-black uppercase tracking-widest text-muted-foreground">Applicant</th>
                 <th className="px-6 py-4 text-[10px] font-black uppercase tracking-widest text-muted-foreground">College</th>
                 <th className="px-6 py-4 text-[10px] font-black uppercase tracking-widest text-muted-foreground">Role</th>
-                <th className="px-6 py-4 text-[10px] font-black uppercase tracking-widest text-muted-foreground">Status</th>
+                <th className="px-6 py-4 text-[10px] font-black uppercase tracking-widest text-muted-foreground">Applied Date</th>
                 <th className="px-6 py-4 text-[10px] font-black uppercase tracking-widest text-muted-foreground text-right">Actions</th>
               </tr>
             </thead>
@@ -116,30 +92,23 @@ export default function ApplicationsPage() {
                     <span className="text-sm text-muted-foreground">{app.role}</span>
                   </td>
                   <td className="px-6 py-4">
-                    <span className={cn(
-                      "px-2 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider inline-flex",
-                      app.status === 'Approved' ? "bg-emerald-50 text-emerald-600 border border-emerald-100" :
-                      app.status === 'Rejected' ? "bg-red-50 text-red-600 border border-red-100" :
-                      app.status === 'Pending' ? "bg-amber-50 text-amber-600 border border-amber-100" :
-                      "bg-blue-50 text-blue-600 border border-blue-100"
-                    )}>
-                      {app.status}
-                    </span>
+                    <span className="text-sm text-muted-foreground">{app.appliedDate}</span>
                   </td>
                   <td className="px-6 py-4">
                     <div className="flex items-center justify-end gap-2">
-                      <button className="p-1.5 rounded-lg text-emerald-600 hover:bg-emerald-50 transition-colors" title="Approve">
-                        <Check className="w-4 h-4" />
-                      </button>
-                      <button className="p-1.5 rounded-lg text-red-600 hover:bg-red-50 transition-colors" title="Reject">
-                        <X className="w-4 h-4" />
-                      </button>
                       <Link 
                         href={`/applications/${app.id}`}
                         className="p-1.5 rounded-lg text-muted-foreground hover:bg-black/[0.05] hover:text-black transition-colors"
+                        title="View Details"
                       >
-                        <MoreHorizontal className="w-4 h-4" />
+                        <Eye className="w-4 h-4" />
                       </Link>
+                      <button className="p-1.5 rounded-lg text-red-600 hover:bg-red-50 transition-colors" title="Delete">
+                        <Trash2 className="w-4 h-4" />
+                      </button>
+                      <button className="p-1.5 rounded-lg text-muted-foreground hover:bg-black/[0.05] hover:text-black transition-colors">
+                        <MoreHorizontal className="w-4 h-4" />
+                      </button>
                     </div>
                   </td>
                 </tr>
