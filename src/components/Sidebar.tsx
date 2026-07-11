@@ -1,4 +1,3 @@
-
 'use client';
 
 import React from 'react';
@@ -37,7 +36,6 @@ export default function Sidebar() {
               className="object-cover"
             />
           </div>
-          <span className="font-bold text-lg tracking-tight">Smiloe Group</span>
         </Link>
       </div>
 
