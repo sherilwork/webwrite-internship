@@ -1,4 +1,3 @@
-
 'use client';
 
 import React from 'react';
@@ -12,12 +11,10 @@ import {
   Tooltip, 
   ResponsiveContainer,
   AreaChart,
-  Area,
-  PieChart,
-  Pie,
-  Cell
+  Area
 } from 'recharts';
-import { Users, CheckCircle2, XCircle, Activity } from 'lucide-react';
+import { Users, Activity, GraduationCap, Briefcase } from 'lucide-react';
+import { cn } from '@/lib/utils';
 
 const MONTHLY_DATA = [
   { name: 'Jan', apps: 40 },
@@ -36,10 +33,12 @@ const SKILLS_DATA = [
   { name: 'Java', value: 20 },
 ];
 
-const PIE_DATA = [
-  { name: 'Approved', value: 112, color: '#10b981' },
-  { name: 'Rejected', value: 102, color: '#f43f5e' },
-  { name: 'Pending', value: 31, color: '#f59e0b' },
+const COLLEGE_DATA = [
+  { name: 'IIT Bombay', value: 35 },
+  { name: 'BITS Pilani', value: 28 },
+  { name: 'DTU', value: 22 },
+  { name: 'Anna Univ', value: 18 },
+  { name: 'MNIT', value: 15 },
 ];
 
 export default function AnalyticsPage() {
@@ -51,9 +50,9 @@ export default function AnalyticsPage() {
         {/* Analytics Stats */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           <StatCard label="Total Applications" value="245" sub="+12% from last month" icon={Users} color="text-blue-600" />
-          <StatCard label="Approval Rate" value="45.7%" sub="+2.4% trend" icon={CheckCircle2} color="text-emerald-600" />
-          <StatCard label="Rejection Rate" value="41.6%" sub="-1.1% trend" icon={XCircle} color="text-rose-600" />
-          <StatCard label="Monthly Activity" value="Active" sub="98% system uptime" icon={Activity} color="text-indigo-600" />
+          <StatCard label="Partner Colleges" value="42" sub="+3 this semester" icon={GraduationCap} color="text-emerald-600" />
+          <StatCard label="Roles Posted" value="12" sub="Active openings" icon={Briefcase} color="text-amber-600" />
+          <StatCard label="System Uptime" value="99.9%" sub="All systems normal" icon={Activity} color="text-indigo-600" />
         </div>
 
         {/* Charts Grid */}
@@ -97,34 +96,19 @@ export default function AnalyticsPage() {
             </div>
           </ChartCard>
 
-          <ChartCard title="Application Status" description="Distribution of current statuses">
-            <div className="h-[300px] w-full flex items-center justify-center">
+          <ChartCard title="Top Colleges" description="Application volume by institution">
+            <div className="h-[300px] w-full">
               <ResponsiveContainer width="100%" height="100%">
-                <PieChart>
-                  <Pie
-                    data={PIE_DATA}
-                    innerRadius={60}
-                    outerRadius={80}
-                    paddingAngle={8}
-                    dataKey="value"
-                  >
-                    {PIE_DATA.map((entry, index) => (
-                      <Cell key={`cell-${index}`} fill={entry.color} />
-                    ))}
-                  </Pie>
+                <BarChart data={COLLEGE_DATA}>
+                  <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f0f0f0" />
+                  <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{ fontSize: 10, fontWeight: 700, fill: '#999' }} dy={10} />
+                  <YAxis axisLine={false} tickLine={false} tick={{ fontSize: 10, fontWeight: 700, fill: '#999' }} dx={-10} />
                   <Tooltip 
                     contentStyle={{ borderRadius: '12px', border: '1px solid #f0f0f0', boxShadow: '0 4px 12px rgba(0,0,0,0.05)', fontSize: '12px' }} 
                   />
-                </PieChart>
+                  <Bar dataKey="value" fill="#000" radius={[4, 4, 0, 0]} barSize={30} />
+                </BarChart>
               </ResponsiveContainer>
-              <div className="flex flex-col gap-2 ml-4">
-                {PIE_DATA.map(item => (
-                  <div key={item.name} className="flex items-center gap-2">
-                    <div className="w-2 h-2 rounded-full" style={{ backgroundColor: item.color }} />
-                    <span className="text-[10px] font-bold text-gray-500 uppercase tracking-wider">{item.name} ({item.value})</span>
-                  </div>
-                ))}
-              </div>
             </div>
           </ChartCard>
         </div>

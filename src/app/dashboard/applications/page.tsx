@@ -1,4 +1,3 @@
-
 'use client';
 
 import React, { useState } from 'react';
@@ -6,38 +5,22 @@ import Header from '@/components/Header';
 import { 
   Filter, 
   Download, 
-  RefreshCcw, 
   Search, 
-  MoreHorizontal,
   ChevronLeft,
   ChevronRight,
   Eye,
-  Check,
-  X
+  Mail,
+  Phone
 } from 'lucide-react';
 import { MOCK_APPLICANTS } from '@/lib/data';
-import { cn } from '@/lib/utils';
-import { ApplicationStatus } from '@/lib/types';
-
-const TABS: (ApplicationStatus | 'All')[] = [
-  'All',
-  'Pending',
-  'Shortlisted',
-  'Interview Scheduled',
-  'Approved',
-  'Rejected'
-];
 
 export default function ApplicationsPage() {
-  const [activeTab, setActiveTab] = useState<ApplicationStatus | 'All'>('All');
   const [searchQuery, setSearchQuery] = useState('');
 
   const filtered = MOCK_APPLICANTS.filter(app => {
-    const matchesTab = activeTab === 'All' || app.status === activeTab;
-    const matchesSearch = app.fullName.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                         app.college.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                         app.email.toLowerCase().includes(searchQuery.toLowerCase());
-    return matchesTab && matchesSearch;
+    return app.fullName.toLowerCase().includes(searchQuery.toLowerCase()) ||
+           app.college.toLowerCase().includes(searchQuery.toLowerCase()) ||
+           app.email.toLowerCase().includes(searchQuery.toLowerCase());
   });
 
   return (
@@ -47,23 +30,6 @@ export default function ApplicationsPage() {
       <div className="px-8 py-8 space-y-6">
         {/* Actions Bar */}
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-          <div className="flex items-center gap-1.5 p-1 bg-gray-100/50 rounded-lg border border-gray-100 w-fit">
-            {TABS.map((tab) => (
-              <button
-                key={tab}
-                onClick={() => setActiveTab(tab)}
-                className={cn(
-                  "px-3 py-1 rounded-md text-[10px] font-bold uppercase tracking-wider transition-all",
-                  activeTab === tab 
-                    ? "bg-white text-black shadow-sm border border-gray-100" 
-                    : "text-gray-400 hover:text-gray-600"
-                )}
-              >
-                {tab}
-              </button>
-            ))}
-          </div>
-
           <div className="flex items-center gap-3 w-full sm:w-auto">
             <div className="relative flex-1 sm:flex-none">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-gray-400" />
@@ -72,7 +38,7 @@ export default function ApplicationsPage() {
                 placeholder="Quick search..." 
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="pl-9 pr-4 py-1.5 bg-white border border-gray-200 rounded-lg text-xs outline-none w-full sm:w-48 focus:border-black transition-colors"
+                className="pl-9 pr-4 py-1.5 bg-white border border-gray-200 rounded-lg text-xs outline-none w-full sm:w-64 focus:border-black transition-colors"
               />
             </div>
             <button className="p-2 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors text-gray-500">
@@ -98,7 +64,6 @@ export default function ApplicationsPage() {
                   <th className="px-6 py-4 text-[10px] font-black uppercase tracking-widest text-gray-400">College</th>
                   <th className="px-6 py-4 text-[10px] font-black uppercase tracking-widest text-gray-400">Applied Role</th>
                   <th className="px-6 py-4 text-[10px] font-black uppercase tracking-widest text-gray-400">Date</th>
-                  <th className="px-6 py-4 text-[10px] font-black uppercase tracking-widest text-gray-400">Status</th>
                   <th className="px-6 py-4 text-[10px] font-black uppercase tracking-widest text-gray-400 text-right">Actions</th>
                 </tr>
               </thead>
@@ -129,18 +94,15 @@ export default function ApplicationsPage() {
                       <span className="text-[10px] text-gray-400 font-medium">{new Date(app.appliedDate).toLocaleDateString(undefined, { day: 'numeric', month: 'short' })}</span>
                     </td>
                     <td className="px-6 py-4">
-                      <StatusBadge status={app.status} />
-                    </td>
-                    <td className="px-6 py-4">
                       <div className="flex items-center justify-end gap-2">
-                        <button className="p-1.5 text-gray-400 hover:text-blue-600 hover:bg-blue-50 rounded-md transition-all">
+                        <button title="View Profile" className="p-1.5 text-gray-400 hover:text-black hover:bg-gray-50 rounded-md transition-all">
                           <Eye className="w-3.5 h-3.5" />
                         </button>
-                        <button className="p-1.5 text-gray-400 hover:text-emerald-600 hover:bg-emerald-50 rounded-md transition-all">
-                          <Check className="w-3.5 h-3.5" />
+                        <button title="Contact Email" className="p-1.5 text-gray-400 hover:text-blue-600 hover:bg-blue-50 rounded-md transition-all">
+                          <Mail className="w-3.5 h-3.5" />
                         </button>
-                        <button className="p-1.5 text-gray-400 hover:text-rose-600 hover:bg-rose-50 rounded-md transition-all">
-                          <X className="w-3.5 h-3.5" />
+                        <button title="Call Applicant" className="p-1.5 text-gray-400 hover:text-emerald-600 hover:bg-emerald-50 rounded-md transition-all">
+                          <Phone className="w-3.5 h-3.5" />
                         </button>
                       </div>
                     </td>
@@ -167,24 +129,5 @@ export default function ApplicationsPage() {
         </div>
       </div>
     </div>
-  );
-}
-
-function StatusBadge({ status }: { status: string }) {
-  const styles: Record<string, string> = {
-    'Pending': 'bg-amber-50 text-amber-600 border-amber-100',
-    'Approved': 'bg-emerald-50 text-emerald-600 border-emerald-100',
-    'Rejected': 'bg-rose-50 text-rose-600 border-rose-100',
-    'Interview Scheduled': 'bg-sky-50 text-sky-600 border-sky-100',
-    'Shortlisted': 'bg-purple-50 text-purple-600 border-purple-100',
-  };
-
-  return (
-    <span className={cn(
-      "px-2 py-0.5 rounded-full text-[9px] font-black uppercase tracking-wider border",
-      styles[status] || 'bg-gray-50 text-gray-400 border-gray-100'
-    )}>
-      {status}
-    </span>
   );
 }
