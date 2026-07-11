@@ -4,6 +4,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import Image from 'next/image';
 import { 
   LayoutDashboard, 
   Users, 
@@ -27,12 +28,17 @@ export default function Sidebar() {
   return (
     <aside className="w-64 h-screen bg-white border-r border-gray-100 flex flex-col sticky top-0">
       <div className="p-6">
-        <div className="flex items-center gap-2 px-2">
-          <div className="w-8 h-8 bg-black rounded-lg flex items-center justify-center">
-            <div className="w-4 h-4 bg-white rounded-sm rotate-45" />
+        <Link href="/dashboard" className="flex items-center gap-3 px-2 group">
+          <div className="relative w-8 h-8 overflow-hidden rounded-lg bg-gray-50 border border-gray-100">
+            <Image 
+              src="/webwrite-logo.webp" 
+              alt="Smiloe Group Logo" 
+              fill
+              className="object-cover"
+            />
           </div>
-          <span className="font-bold text-lg tracking-tight">Smiloe</span>
-        </div>
+          <span className="font-bold text-lg tracking-tight">Smiloe Group</span>
+        </Link>
       </div>
 
       <nav className="flex-1 px-4 space-y-1 mt-4">
@@ -61,12 +67,12 @@ export default function Sidebar() {
 
       <div className="p-4 mt-auto border-t border-gray-50">
         <div className="flex items-center gap-3 px-3 py-2 mb-2">
-          <div className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-[10px] font-bold">
-            AD
+          <div className="w-8 h-8 rounded-full bg-black text-white flex items-center justify-center text-[10px] font-bold uppercase">
+            SG
           </div>
           <div className="flex flex-col">
             <span className="text-xs font-bold text-black">Admin</span>
-            <span className="text-[10px] text-gray-400">admin@smiloe.com</span>
+            <span className="text-[10px] text-gray-400 font-medium">admin@smiloegroup.com</span>
           </div>
         </div>
         <button className="flex items-center gap-3 px-3 py-2 w-full text-gray-500 hover:text-red-600 transition-colors rounded-md hover:bg-red-50">
