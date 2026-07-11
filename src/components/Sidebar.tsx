@@ -1,3 +1,4 @@
+
 'use client';
 
 import React from 'react';
@@ -30,10 +31,11 @@ export default function Sidebar() {
         <Link href="/dashboard" className="block w-fit group">
           <div className="relative w-8 h-8 overflow-hidden rounded-lg bg-gray-50 border border-gray-100">
             <Image 
-              src="/webwrite-logo.webp" 
+              src="https://picsum.photos/seed/smiloe-logo/200/200" 
               alt="Smiloe Group Logo" 
               fill
               className="object-cover"
+              data-ai-hint="company logo"
             />
           </div>
         </Link>
