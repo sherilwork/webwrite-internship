@@ -1,11 +1,19 @@
-import type {Metadata} from 'next';
-import './globals.css';
-import { ScrollToTop } from '@/components/ScrollToTop';
-import { SmoothScroll } from '@/components/SmoothScroll';
+
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+import "./globals.css";
+import { Sidebar } from "@/components/layout/sidebar";
+import { Header } from "@/components/layout/header";
+
+const inter = Inter({ 
+  subsets: ["latin"],
+  display: 'swap',
+  variable: '--font-inter',
+});
 
 export const metadata: Metadata = {
-  title: 'Smiloe Group',
-  description: 'Expert digital solutions in software development, web development, and performance marketing.',
+  title: "Admin Dashboard | Internship Applications",
+  description: "Modern minimalist admin dashboard for managing internships",
 };
 
 export default function RootLayout({
@@ -14,17 +22,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-      </head>
-      <body className="font-body antialiased" suppressHydrationWarning>
-        <SmoothScroll>
-          {children}
-          <ScrollToTop />
-        </SmoothScroll>
+    <html lang="en" className={`${inter.variable}`}>
+      <body className="font-sans">
+        <div className="flex min-h-screen bg-[#fafafa]">
+          <Sidebar />
+          <main className="flex-1 flex flex-col">
+            <Header />
+            <div className="p-8 max-w-7xl mx-auto w-full">
+              {children}
+            </div>
+          </main>
+        </div>
       </body>
     </html>
   );
