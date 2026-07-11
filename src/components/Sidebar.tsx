@@ -27,7 +27,7 @@ export default function Sidebar() {
   return (
     <aside className="w-64 h-screen bg-white border-r border-gray-100 flex flex-col sticky top-0">
       <div className="p-6">
-        <Link href="/dashboard" className="flex items-center gap-3 px-2 group">
+        <Link href="/dashboard" className="block w-fit group">
           <div className="relative w-8 h-8 overflow-hidden rounded-lg bg-gray-50 border border-gray-100">
             <Image 
               src="/webwrite-logo.webp" 
