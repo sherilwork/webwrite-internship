@@ -27,8 +27,8 @@ export default function Dashboard() {
       fetch('/api/internship-applications').then(r => r.json()),
       fetch('/api/job-applications').then(r => r.json()),
     ]).then(([internships, jobs]) => {
-      setInternshipApps(internships || []);
-      setJobApps(jobs || []);
+      setInternshipApps(Array.isArray(internships) ? internships : []);
+      setJobApps(Array.isArray(jobs) ? jobs : []);
       setLoading(false);
     }).catch(() => setLoading(false));
   }, []);

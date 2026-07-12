@@ -30,7 +30,7 @@ export default function JobsPage() {
   useEffect(() => {
     fetch('/api/job-applications')
       .then(r => r.json())
-      .then(d => { setApplications(d); setLoading(false) })
+      .then(d => { setApplications(Array.isArray(d) ? d : []); setLoading(false) })
       .catch(() => setLoading(false))
   }, []);
 
