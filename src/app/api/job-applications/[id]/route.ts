@@ -1,7 +1,4 @@
-import { query, getPat } from '@/lib/supabase-admin'
-
-const PROJECT_REF = 'seudxuanrawjmrkfrobt'
-const STORAGE_API = `https://api.supabase.com/v1/projects/${PROJECT_REF}/storage/buckets/resumes/objects`
+import { supabaseAdmin } from '@/lib/supabase-admin'
 
 export async function PATCH(
   _req: Request,
@@ -10,12 +7,16 @@ export async function PATCH(
   try {
     const { id } = await params
     const body = await _req.json()
-    const sets: string[] = []
-    if (body.status !== undefined) sets.push(`status = '${body.status.replace(/'/g, "''")}'`)
-    if (body.stage !== undefined) sets.push(`stage = '${body.stage.replace(/'/g, "''")}'`)
-    if (sets.length === 0) return Response.json({ error: 'no fields to update' }, { status: 400 })
-    const sql = `UPDATE job_applications SET ${sets.join(', ')} WHERE id = ${Number(id)} RETURNING *`
-    const data = await query(sql)
+    const update: Record<string, string> = {}
+    if (body.status !== undefined) update.status = body.status
+    if (body.stage !== undefined) update.stage = body.stage
+    if (Object.keys(update).length === 0) return Response.json({ error: 'no fields to update' }, { status: 400 })
+    const { data, error } = await supabaseAdmin
+      .from('job_applications')
+      .update(update)
+      .eq('id', Number(id))
+      .select()
+    if (error) throw error
     return Response.json(data)
   } catch (e) {
     return Response.json({ error: (e as Error).message }, { status: 500 })
@@ -28,24 +29,23 @@ export async function DELETE(
 ) {
   try {
     const { id } = await params
-    const SUPABASE_PAT = getPat()
-    const records = await query(`SELECT resume_url FROM job_applications WHERE id = ${Number(id)}`)
-    const record = records?.[0]
-    if (record?.resume_url) {
-      const urlPath = record.resume_url.split('/resumes/')[1]
-      if (urlPath && SUPABASE_PAT) {
-        await fetch(STORAGE_API, {
-          method: 'DELETE',
-          headers: {
-            'Authorization': `Bearer ${SUPABASE_PAT}`,
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ prefixes: [urlPath] }),
-        })
+    const { data: records } = await supabaseAdmin
+      .from('job_applications')
+      .select('resume_url')
+      .eq('id', Number(id))
+      .single()
+    if (records?.resume_url) {
+      const urlPath = records.resume_url.split('/resumes/')[1]
+      if (urlPath) {
+        await supabaseAdmin.storage.from('resumes').remove([urlPath])
       }
     }
-    const sql = `DELETE FROM job_applications WHERE id = ${Number(id)} RETURNING *`
-    const data = await query(sql)
+    const { data, error } = await supabaseAdmin
+      .from('job_applications')
+      .delete()
+      .eq('id', Number(id))
+      .select()
+    if (error) throw error
     return Response.json(data)
   } catch (e) {
     return Response.json({ error: (e as Error).message }, { status: 500 })
