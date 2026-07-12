@@ -7,6 +7,8 @@ import { cn } from '@/lib/utils';
 import type { SupabaseApplication } from '@/lib/types';
 import { AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
 
+export const dynamic = 'force-dynamic';
+
 type AppWithType = SupabaseApplication & { _type: 'Internship' | 'Job' };
 
 const statusColors: Record<string, string> = {

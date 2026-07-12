@@ -1,10 +1,11 @@
-
 'use client';
 
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { supabase } from '@/lib/supabase';
 import Sidebar from '@/components/Sidebar';
+
+export const dynamic = 'force-dynamic';
 
 export default function DashboardLayout({
   children,

@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import Header from '@/components/Header';
-import { 
+import {
   Search,
   ChevronLeft,
   ChevronRight,
@@ -14,6 +14,8 @@ import {
 import { cn } from '@/lib/utils';
 import type { SupabaseApplication } from '@/lib/types';
 import ApplicationDetail from '@/components/ApplicationDetail';
+
+export const dynamic = 'force-dynamic';
 
 export default function ApplicationsPage() {
   const [applications, setApplications] = useState<SupabaseApplication[]>([]);
