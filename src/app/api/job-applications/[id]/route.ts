@@ -1,6 +1,17 @@
+import { readFileSync } from 'fs'
+import { join } from 'path'
 import { query } from '@/lib/supabase-admin'
 
-const SUPABASE_PAT = process.env.SUPABASE_PAT || ''
+function getPat(): string {
+  try {
+    const config = readFileSync(join(process.cwd(), 'config.json'), 'utf-8')
+    return JSON.parse(config).SUPABASE_PAT || ''
+  } catch {
+    return process.env.SUPABASE_PAT || ''
+  }
+}
+
+const SUPABASE_PAT = getPat()
 const PROJECT_REF = 'seudxuanrawjmrkfrobt'
 const STORAGE_API = `https://api.supabase.com/v1/projects/${PROJECT_REF}/storage/buckets/resumes/objects`
 

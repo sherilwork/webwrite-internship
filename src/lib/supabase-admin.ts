@@ -1,4 +1,16 @@
-const SUPABASE_PAT = process.env.SUPABASE_PAT || ''
+import { readFileSync } from 'fs'
+import { join } from 'path'
+
+function getPat(): string {
+  try {
+    const config = readFileSync(join(process.cwd(), 'config.json'), 'utf-8')
+    return JSON.parse(config).SUPABASE_PAT || ''
+  } catch {
+    return process.env.SUPABASE_PAT || ''
+  }
+}
+
+const SUPABASE_PAT = getPat()
 
 const API_BASE = 'https://api.supabase.com/v1/projects/seudxuanrawjmrkfrobt/database/query'
 
