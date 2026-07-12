@@ -1,17 +1,5 @@
-import { readFileSync } from 'fs'
-import { join } from 'path'
-import { query } from '@/lib/supabase-admin'
+import { query, getPat } from '@/lib/supabase-admin'
 
-function getPat(): string {
-  try {
-    const config = readFileSync(join(process.cwd(), 'config.json'), 'utf-8')
-    return JSON.parse(config).SUPABASE_PAT || ''
-  } catch {
-    return process.env.SUPABASE_PAT || ''
-  }
-}
-
-const SUPABASE_PAT = getPat()
 const PROJECT_REF = 'seudxuanrawjmrkfrobt'
 const STORAGE_API = `https://api.supabase.com/v1/projects/${PROJECT_REF}/storage/buckets/resumes/objects`
 
@@ -40,11 +28,12 @@ export async function DELETE(
 ) {
   try {
     const { id } = await params
+    const SUPABASE_PAT = getPat()
     const records = await query(`SELECT resume_url FROM internship_applications WHERE id = ${Number(id)}`)
     const record = records?.[0]
     if (record?.resume_url) {
       const urlPath = record.resume_url.split('/resumes/')[1]
-      if (urlPath) {
+      if (urlPath && SUPABASE_PAT) {
         await fetch(STORAGE_API, {
           method: 'DELETE',
           headers: {

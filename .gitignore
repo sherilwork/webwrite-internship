@@ -45,3 +45,4 @@ firebase-debug.log
 firestore-debug.log.idx/
 config.json
 dotenv-content.txt
+config-content.txt

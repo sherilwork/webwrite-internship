@@ -1,20 +1,15 @@
-import { readFileSync } from 'fs'
-import { join } from 'path'
-
-function getPat(): string {
-  try {
-    const config = readFileSync(join(process.cwd(), 'config.json'), 'utf-8')
-    return JSON.parse(config).SUPABASE_PAT || ''
-  } catch {
-    return process.env.SUPABASE_PAT || ''
-  }
-}
-
-const SUPABASE_PAT = getPat()
+const SUPABASE_PAT = process.env.SUPABASE_PAT || ''
 
 const API_BASE = 'https://api.supabase.com/v1/projects/seudxuanrawjmrkfrobt/database/query'
 
+export function getPat(): string {
+  return SUPABASE_PAT
+}
+
 export async function query(sql: string) {
+  if (!SUPABASE_PAT) {
+    throw new Error('SUPABASE_PAT environment variable is not set')
+  }
   const res = await fetch(API_BASE, {
     method: 'POST',
     headers: {
