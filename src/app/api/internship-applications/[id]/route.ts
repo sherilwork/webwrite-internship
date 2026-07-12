@@ -1,6 +1,6 @@
 import { query } from '@/lib/supabase-admin'
 
-const SUPABASE_PAT = process.env.SUPABASE_PAT!
+const SUPABASE_PAT = process.env.SUPABASE_PAT || ''
 const PROJECT_REF = 'seudxuanrawjmrkfrobt'
 const STORAGE_API = `https://api.supabase.com/v1/projects/${PROJECT_REF}/storage/buckets/resumes/objects`
 

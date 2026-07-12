@@ -1,4 +1,4 @@
-const SUPABASE_PAT = process.env.SUPABASE_PAT!
+const SUPABASE_PAT = process.env.SUPABASE_PAT || ''
 
 const API_BASE = 'https://api.supabase.com/v1/projects/seudxuanrawjmrkfrobt/database/query'
 

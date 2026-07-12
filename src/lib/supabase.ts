@@ -1,10 +1,9 @@
 import { createClient, type SupabaseClient } from "@supabase/supabase-js"
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
-const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://seudxuanrawjmrkfrobt.supabase.co'
+const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || 'sb_publishable_Xvzy1443abf1YXVdgPZqWQ_itD_Cx6P'
 
 function createNoopClient(): SupabaseClient {
-  const noop = () => ({ data: { user: null, session: null }, error: null })
   const noopSub = { data: { subscription: { unsubscribe: () => {} } } }
   const noopChain: any = new Proxy({}, {
     get: (_, prop) => {
