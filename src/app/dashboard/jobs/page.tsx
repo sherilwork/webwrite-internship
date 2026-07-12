@@ -15,7 +15,7 @@ import { cn } from '@/lib/utils';
 import type { SupabaseApplication } from '@/lib/types';
 import ApplicationDetail from '@/components/ApplicationDetail';
 
-export default function ApplicationsPage() {
+export default function JobsPage() {
   const [applications, setApplications] = useState<SupabaseApplication[]>([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [statusFilter, setStatusFilter] = useState<'all' | 'Approved' | 'Rejected'>('all');
@@ -26,7 +26,7 @@ export default function ApplicationsPage() {
   const [confirmDelete, setConfirmDelete] = useState<SupabaseApplication | null>(null);
 
   useEffect(() => {
-    fetch('/api/internship-applications')
+    fetch('/api/job-applications')
       .then(r => r.json())
       .then(d => { setApplications(d); setLoading(false) })
       .catch(() => setLoading(false))
@@ -44,7 +44,7 @@ export default function ApplicationsPage() {
   });
 
   const handleStatusUpdate = async (app: SupabaseApplication, status: string) => {
-    const res = await fetch(`/api/internship-applications/${app.id}`, {
+    const res = await fetch(`/api/job-applications/${app.id}`, {
       method: 'PATCH',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ status }),
@@ -61,7 +61,7 @@ export default function ApplicationsPage() {
   };
 
   const handleDelete = async (id: number) => {
-    await fetch(`/api/internship-applications/${id}`, { method: 'DELETE' });
+    await fetch(`/api/job-applications/${id}`, { method: 'DELETE' });
     setApplications(prev => prev.filter(a => a.id !== id));
   };
 
@@ -73,7 +73,7 @@ export default function ApplicationsPage() {
 
   return (
     <div className="flex flex-col min-h-screen">
-      <Header title="Internship Applications" />
+      <Header title="Job Applications" />
       
       <div className="px-8 py-8 space-y-6">
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
@@ -188,7 +188,7 @@ export default function ApplicationsPage() {
                             value={app.stage || ''}
                             onChange={async (e) => {
                               const val = e.target.value;
-                              await fetch(`/api/internship-applications/${app.id}`, {
+                              await fetch(`/api/job-applications/${app.id}`, {
                                 method: 'PATCH',
                                 headers: { 'Content-Type': 'application/json' },
                                 body: JSON.stringify({ stage: val }),
