@@ -2,7 +2,6 @@
 'use client';
 
 import React from 'react';
-import { Search, User } from 'lucide-react';
 
 interface Props {
   title: string;
