@@ -1,3 +1,4 @@
+
 'use client';
 
 import { X, ExternalLink, FileText } from 'lucide-react';
@@ -36,7 +37,6 @@ export default function ApplicationDetail({ app, onClose }: Props) {
             <DetailField label="Mobile" value={app.mobile} />
             <DetailField label="City" value={app.city} />
             <DetailField label="Application ID" value={app.application_id || '—'} />
-            <DetailField label="Status" value={app.status || 'Pending'} />
             <DetailField label="Applied On" value={new Date(app.created_at).toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' })} />
           </div>
 
