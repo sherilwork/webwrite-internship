@@ -69,7 +69,7 @@ export default function Sidebar() {
           <img src="/profile-avatar-1.png" alt="Profile" className="w-8 h-8 rounded-full object-cover" />
           <div className="flex flex-col">
             <span className="text-xs font-bold text-black">Admin</span>
-            <span className="text-[10px] text-gray-400 font-medium">admin@smiloegroup.com</span>
+            <span className="text-[10px] text-gray-400 font-medium">admin@webwrite.co.in</span>
           </div>
         </div>
         <button onClick={async () => { await supabase.auth.signOut(); router.push('/login'); }} className="flex items-center gap-3 px-3 py-2 w-full text-gray-500 hover:text-red-600 transition-colors rounded-md hover:bg-red-50">
